@@ -1,0 +1,19 @@
+{
+  "name": "landing-page-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lineups-io/landing-page-theme.git"
+  },
+  "author": "Lucas Blancas <lablancas@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lineups-io/landing-page-theme/issues"
+  },
+  "homepage": "https://github.com/lineups-io/landing-page-theme#readme"
+}
