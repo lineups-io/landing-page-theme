@@ -1,7 +1,8 @@
-const theme = require('./theme.js')
+const { base, getTheme } = require('./theme.js')
 const typography = require('./typography')
 
 module.exports = {
-  theme,
+  base,
+  getTheme,
   typography,
 }

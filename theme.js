@@ -26,7 +26,7 @@ const base = {
   },
 }
 
-module.exports = (theme = base, override = {}) => {
+const getTheme = (theme = base, override = {}) => {
   return {
     nav: {
       container: `
@@ -358,4 +358,9 @@ module.exports = (theme = base, override = {}) => {
     ...theme,
     ...override,
   }
+}
+
+module.exports = {
+  base,
+  getTheme,
 }
