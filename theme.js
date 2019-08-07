@@ -1,3 +1,5 @@
+const { headerFontFamily, bodyFontFamily } = require('./typography.js')
+
 const base = {
   gutter: 15,
   colors: {
@@ -19,8 +21,8 @@ const base = {
     black: '#000000',
   },
   fonts: {
-    header: 'Avenir, sans-serif',
-    body: 'Avenir, sans-serif',
+    header: headerFontFamily.join(','),
+    body: bodyFontFamily.join(','),
   },
 }
 
