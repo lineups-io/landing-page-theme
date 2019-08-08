@@ -37,6 +37,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       logo: `
         height: 100%;
+        width: 220px;
         padding: ${ theme.gutter }px 0;
         margin-left: ${ theme.gutter * -2 / 3 }px;
 
