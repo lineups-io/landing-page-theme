@@ -254,6 +254,8 @@ export const getTheme = (theme = base, override = {}) => {
 
       h2 {
         color: ${ theme.colors.black };
+        font-size: 2rem;
+        font-weight: 500;
       }
 
       a {
