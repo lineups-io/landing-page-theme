@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "babel src --out-dir .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/lineups-io/landing-page-theme/issues"
   },
-  "homepage": "https://github.com/lineups-io/landing-page-theme#readme"
+  "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "babel-preset-gatsby-package": "^0.2.2"
+  }
 }
