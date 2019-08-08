@@ -245,6 +245,7 @@ export const getTheme = (theme = base, override = {}) => {
           background-color: ${ theme.colors.primary };
           &[href]:hover {
             color: ${ theme.colors.white };
+            background-color: ${ theme.colors.primary };
           }
         }
       `,
