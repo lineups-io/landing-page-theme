@@ -1,6 +1,8 @@
-const { headerFontFamily, bodyFontFamily } = require('./typography.js')
+import typography from './typography.js'
 
-const base = {
+const { headerFontFamily, bodyFontFamily } = typography
+
+export const base = {
   gutter: 15,
   colors: {
     primary: '#0085ca',
@@ -26,7 +28,7 @@ const base = {
   },
 }
 
-const getTheme = (theme = base, override = {}) => {
+export const getTheme = (theme = base, override = {}) => {
   return {
     nav: {
       container: `
@@ -358,9 +360,4 @@ const getTheme = (theme = base, override = {}) => {
     ...theme,
     ...override,
   }
-}
-
-module.exports = {
-  base,
-  getTheme,
 }

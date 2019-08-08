@@ -1,7 +1,7 @@
-const { base, getTheme } = require('./theme.js')
-const typography = require('./typography')
+import { base, getTheme } from './theme.js'
+import typography from './typography'
 
-module.exports = {
+export default {
   base,
   getTheme,
   typography,

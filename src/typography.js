@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   headerFontFamily: ['Avenir', 'sans-serif'],
   bodyFontFamily: ['Avenir', 'sans-serif'],
   bodyWeight: 500,
