@@ -29,7 +29,7 @@ var base = {
       900: '#212121'
     },
     white: '#ffffff',
-    black: '#000000'
+    black: '#333333'
   },
   fonts: {
     header: headerFontFamily.join(','),
@@ -49,11 +49,11 @@ var getTheme = function getTheme(theme, override) {
 
   return (0, _extends2.default)({
     nav: {
-      container: "\n        background-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n      ",
+      container: "\n        background-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n      ",
       logo: "\n        height: 100%;\n        padding: " + theme.gutter + "px 0;\n        margin-left: " + theme.gutter * -2 / 3 + "px;\n\n        polygon, path {\n          fill: " + theme.colors.white + ";\n        }\n      ",
-      link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: " + theme.colors.primary + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.white + ";\n          text-decoration: none;\n          border-color: " + theme.colors.white + ";\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
+      link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: " + theme.colors.black + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.white + ";\n          text-decoration: none;\n          border-color: " + theme.colors.white + ";\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
       menu: {
-        container: "\n          background-color: " + theme.colors.primary + ";\n        ",
+        container: "\n          background-color: " + theme.colors.black + ";\n        ",
         hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
         link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-bottom-width: 3px;\n          font-size: 1.5em;\n        "
       }
@@ -75,7 +75,7 @@ var getTheme = function getTheme(theme, override) {
     },
     link: "\n      display: block;\n      color: " + theme.colors.gray['700'] + ";\n\n      border: 0;\n      background-color: transparent;\n      padding: 0;\n\n      &[href] {\n        cursor: pointer;\n        text-decoration: none;\n      }\n\n      &[href]:hover {\n        text-decoration: underline;\n        color: " + theme.colors.black + ";\n      }\n    ",
     button: {
-      primary: "\n        background-color: " + theme.colors.primary + ";\n        border-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
+      primary: "\n        background-color: " + theme.colors.black + ";\n        border-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
       danger: "\n        background-color: red;\n        border-color: red;\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
       outline: "\n        background-color: " + theme.colors.white + ";\n      ",
       default: "\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['300'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        color: " + theme.colors.gray['700'] + ";\n\n        &::after {\n          border-color: " + theme.colors.gray['700'] + ";\n        }\n      ",
@@ -108,7 +108,7 @@ var getTheme = function getTheme(theme, override) {
     map: {
       container: "\n        background-color: " + theme.colors.gray['200'] + ";\n      ",
       pin: {
-        active: "\n          fill: " + theme.colors.black + ";\n        ",
+        active: "\n          fill: " + theme.colors.secondary + ";\n        ",
         default: "\n          fill: " + theme.colors.primary + ";\n        "
       },
       cluster: "\n        color: " + theme.colors.white + ";\n\n        svg * {\n          fill: " + theme.colors.secondary + ";\n        }\n      "
