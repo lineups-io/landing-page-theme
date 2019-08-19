@@ -289,23 +289,23 @@ export const getTheme = (theme = base, override = {}) => {
     },
     footer: {
       container: `
-        background-color: ${ theme.colors.white };
-        color: ${ theme.colors.gray['700'] };
+        background-color: ${ theme.colors.black };
+        color: ${ theme.colors.white };
         border-width: 1px 0 0 0;
         border-style: solid;
-        border-color: ${ theme.colors.gray['200'] };
+        border-color: ${ theme.colors.black };
       `,
       header: `
       `,
       link: `
-        color: ${ theme.colors.gray['700'] };
+        color: ${ theme.colors.white };
 
         svg * {
-          fill: ${ theme.colors.gray['700'] };
+          fill: ${ theme.colors.white };
         }
 
         svg:hover * {
-          fill: ${ theme.colors.black };
+          fill: ${ theme.colors.white };
         }
 
         & {
@@ -314,7 +314,7 @@ export const getTheme = (theme = base, override = {}) => {
 
         &[href]:hover {
           text-decoration: underline;
-          color: ${ theme.colors.black };
+          color: ${ theme.colors.white };
         }
       `,
     },
