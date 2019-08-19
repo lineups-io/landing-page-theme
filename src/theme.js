@@ -20,7 +20,7 @@ export const base = {
       900: '#212121',
     },
     white: '#ffffff',
-    black: '#000000',
+    black: '#333333',
   },
   fonts: {
     header: headerFontFamily.join(','),
@@ -32,7 +32,7 @@ export const getTheme = (theme = base, override = {}) => {
   return {
     nav: {
       container: `
-        background-color: ${ theme.colors.primary };
+        background-color: ${ theme.colors.black };
         color: ${ theme.colors.white };
       `,
       logo: `
@@ -49,11 +49,11 @@ export const getTheme = (theme = base, override = {}) => {
         font-size: 0.8em;
         letter-spacing: 1px;
         font-weight: bold;
-        background-color: ${ theme.colors.primary };
+        background-color: ${ theme.colors.black };
         color: ${ theme.colors.white };
         border-width: 0 0 2px 0;
         border-style: solid;
-        border-color: ${ theme.colors.primary };
+        border-color: ${ theme.colors.black };
         text-decoration: none;
 
         &:hover, &[href]:hover {
@@ -68,7 +68,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       menu: {
         container: `
-          background-color: ${ theme.colors.primary };
+          background-color: ${ theme.colors.black };
         `,
         hamburger: `
           background-color: ${ theme.colors.white };
@@ -165,8 +165,8 @@ export const getTheme = (theme = base, override = {}) => {
     `,
     button: {
       primary: `
-        background-color: ${ theme.colors.primary };
-        border-color: ${ theme.colors.primary };
+        background-color: ${ theme.colors.black };
+        border-color: ${ theme.colors.black };
         color: ${ theme.colors.white };
 
         &[href]:hover {
@@ -344,7 +344,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       pin: {
         active: `
-          fill: ${ theme.colors.black };
+          fill: ${ theme.colors.secondary };
         `,
         default: `
           fill: ${ theme.colors.primary };
