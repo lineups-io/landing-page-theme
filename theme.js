@@ -94,9 +94,9 @@ var getTheme = function getTheme(theme, override) {
       link: "\n        font-size: 0.9em;\n        color: " + theme.colors.gray['700'] + ";\n\n        &[href]:hover {\n          color: " + theme.colors.black + ";\n          text-decoration: underline;\n        }\n      "
     },
     footer: {
-      container: "\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.gray['700'] + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n      ",
+      container: "\n        background-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: " + theme.colors.black + ";\n      ",
       header: "\n      ",
-      link: "\n        color: " + theme.colors.gray['700'] + ";\n\n        svg * {\n          fill: " + theme.colors.gray['700'] + ";\n        }\n\n        svg:hover * {\n          fill: " + theme.colors.black + ";\n        }\n\n        & {\n          cursor: pointer;\n        }\n\n        &[href]:hover {\n          text-decoration: underline;\n          color: " + theme.colors.black + ";\n        }\n      "
+      link: "\n        color: " + theme.colors.white + ";\n\n        svg * {\n          fill: " + theme.colors.white + ";\n        }\n\n        svg:hover * {\n          fill: " + theme.colors.white + ";\n        }\n\n        & {\n          cursor: pointer;\n        }\n\n        &[href]:hover {\n          text-decoration: underline;\n          color: " + theme.colors.white + ";\n        }\n      "
     },
     label: "\n      color: " + theme.colors.gray['700'] + ";\n      font-size: .9em;\n    ",
     slider: {
