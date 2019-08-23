@@ -66,7 +66,7 @@ var getTheme = function getTheme(theme, override) {
     },
     card: {
       body: "\n        background-color: " + theme.colors.white + ";\n        border-width: 2px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n\n        margin: " + theme.gutter * -2 + "px " + theme.gutter + "px 0;\n        z-index: 1000;\n\n        @media (min-width: 768px) {\n          margin: 0;\n          border-width: 1px;\n        }\n      ",
-      hover: "\n        border-color: " + theme.colors.primary + ";\n      ",
+      hover: "\n        border-color: " + theme.colors.gray['200'] + ";\n        box-shadow: " + theme.colors.primary + " 0 0 " + theme.gutter * 2 / 3 + "px " + theme.gutter * -1 / 3 + "px;\n      ",
       title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.25em;\n        line-height: 1em;\n      ",
       address: "\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1em;\n        font-weight: lighter;\n      ",
       bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.8em;\n        font-weight: lighter;\n      ",
