@@ -132,7 +132,7 @@ export const getTheme = (theme = base, override = {}) => {
       bedrooms: `
         text-transform: uppercase;
         color: ${ theme.colors.gray['700'] };
-        font-size: 0.8em;
+        font-size: 0.9em;
         font-weight: lighter;
       `,
       amount: `
