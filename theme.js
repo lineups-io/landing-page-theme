@@ -69,7 +69,7 @@ var getTheme = function getTheme(theme, override) {
       hover: "\n        border-color: " + theme.colors.gray['200'] + ";\n        box-shadow: " + theme.colors.primary + " 0 0 " + theme.gutter * 2 / 3 + "px " + theme.gutter * -1 / 3 + "px;\n      ",
       title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.25em;\n        line-height: 1em;\n      ",
       address: "\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1em;\n        font-weight: lighter;\n      ",
-      bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.8em;\n        font-weight: lighter;\n      ",
+      bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.9em;\n        font-weight: lighter;\n      ",
       amount: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n      ",
       adLabel: "\n        color: " + theme.colors.black + ";\n        background-color: " + theme.colors.white + ";\n        box-shadow: 0 0 2px 2px " + theme.colors.gray['300'] + ";\n      "
     },
