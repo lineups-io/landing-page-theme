@@ -111,7 +111,7 @@ export const getTheme = (theme = base, override = {}) => {
         z-index: 1000;
 
         @media (min-width: 768px) {
-          margin: -${ theme.gutter * -1 }px ${ theme.gutter }px 0 ${ theme.gutter }px;
+          margin: ${ theme.gutter * -1 }px ${ theme.gutter }px 0 ${ theme.gutter }px;
           border-width: 1px;
         }
       `,
