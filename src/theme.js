@@ -140,6 +140,13 @@ export const getTheme = (theme = base, override = {}) => {
       hover: `
         border-color: ${ theme.colors.primary };
       `,
+      row: {
+        body: `
+        `,
+        hover: `
+
+        `,
+      },
       title: `
         color: ${ theme.colors.black };
         font-size: 1.25em;
