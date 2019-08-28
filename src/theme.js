@@ -111,7 +111,6 @@ export const getTheme = (theme = base, override = {}) => {
         z-index: 1000;
 
         @media (min-width: 768px) {
-          margin: 0;
           border-width: 1px;
         }
       `,
@@ -121,6 +120,9 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       row: {
         body: `
+          @media (min-width: 768px) {
+            margin: 0 ${ theme.gutter }px;
+          }
         `,
         hover: `
 
