@@ -119,6 +119,13 @@ export const getTheme = (theme = base, override = {}) => {
         border-color: ${ theme.colors.gray['200'] };
         box-shadow: ${ theme.colors.primary } 0 0 ${ theme.gutter * 2 / 3 }px ${ theme.gutter * -1 / 3 }px;
       `,
+      row: {
+        body: `
+        `,
+        hover: `
+
+        `,
+      },
       title: `
         color: ${ theme.colors.black };
         font-size: 1.25em;
