@@ -82,7 +82,7 @@ var getTheme = function getTheme(theme, override) {
       primary: "\n        background-color: " + theme.colors.black + ";\n        border-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
       danger: "\n        background-color: red;\n        border-color: red;\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
       outline: "\n        background-color: " + theme.colors.white + ";\n      ",
-      default: "\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['300'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        color: " + theme.colors.gray['700'] + ";\n\n        &::after {\n          border-color: " + theme.colors.gray['700'] + ";\n        }\n      ",
+      default: "\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        color: " + theme.colors.gray['700'] + ";\n\n        &::after {\n          border-color: " + theme.colors.gray['700'] + ";\n        }\n      ",
       link: "\n        border-color: " + theme.colors.white + ";\n        background-color: " + theme.colors.white + ";\n      ",
       disabled: "\n        color: " + theme.colors.gray['300'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        border-color: " + theme.colors.gray['200'] + ";\n      "
     },
