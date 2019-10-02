@@ -195,7 +195,7 @@ export const getTheme = (theme = base, override = {}) => {
       default: `
         border-width: 1px;
         border-style: solid;
-        border-color: ${ theme.colors.gray['300'] };
+        border-color: ${ theme.colors.gray['200'] };
         background-color: ${ theme.colors.gray['200'] };
         color: ${ theme.colors.gray['700'] };
 
