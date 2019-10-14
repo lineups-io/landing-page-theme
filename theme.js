@@ -65,7 +65,7 @@ var getTheme = function getTheme(theme, override) {
       disclaimer: "\n        font-size: 0.9em;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     card: {
-      body: "\n        background-color: " + theme.colors.white + ";\n        border-width: 2px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n\n        margin: " + theme.gutter * -2 + "px " + theme.gutter + "px 0;\n        z-index: 1000;\n\n        @media (min-width: 768px) {\n          margin: 0;\n          border-width: 1px;\n        }\n      ",
+      body: "\n        background-color: " + theme.colors.white + ";\n        border-width: 2px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['700'] + ";\n\n        margin: " + theme.gutter * -2 + "px " + theme.gutter + "px 0;\n        z-index: 1000;\n\n        @media (min-width: 768px) {\n          margin: 0;\n          border-width: 1px;\n        }\n      ",
       hover: "\n        border-color: " + theme.colors.primary + ";\n      ",
       row: {
         body: "\n        ",
