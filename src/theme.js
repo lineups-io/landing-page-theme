@@ -174,6 +174,10 @@ export const getTheme = (theme = base, override = {}) => {
         box-shadow: 0 0 2px 2px ${ theme.colors.gray['300'] };
       `,
       button: `
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: .9em;
+        letter-spacing: 0.5px;
       `,
     },
     link: `
