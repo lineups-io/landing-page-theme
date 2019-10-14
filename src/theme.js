@@ -127,7 +127,7 @@ export const getTheme = (theme = base, override = {}) => {
         background-color: ${ theme.colors.white };
         border-width: 2px;
         border-style: solid;
-        border-color: ${ theme.colors.gray['200'] };
+        border-color: ${ theme.colors.gray['700'] };
 
         margin: ${ theme.gutter * -2 }px ${ theme.gutter }px 0;
         z-index: 1000;
