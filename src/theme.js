@@ -154,6 +154,8 @@ export const getTheme = (theme = base, override = {}) => {
         background-color: ${ theme.colors.white };
         box-shadow: 0 0 2px 2px ${ theme.colors.gray['300'] };
       `,
+      button: `
+      `,
     },
     link: `
       display: block;
