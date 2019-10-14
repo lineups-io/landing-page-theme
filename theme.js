@@ -76,7 +76,7 @@ var getTheme = function getTheme(theme, override) {
       bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.8em;\n        font-weight: lighter;\n      ",
       amount: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n      ",
       adLabel: "\n        color: " + theme.colors.black + ";\n        background-color: " + theme.colors.white + ";\n        box-shadow: 0 0 2px 2px " + theme.colors.gray['300'] + ";\n      ",
-      button: "\n      "
+      button: "\n        font-weight: 600;\n        text-transform: uppercase;\n        font-size: .9em;\n        letter-spacing: 0.5px;\n      "
     },
     link: "\n      display: block;\n      color: " + theme.colors.gray['700'] + ";\n\n      border: 0;\n      background-color: transparent;\n      padding: 0;\n\n      &[href] {\n        cursor: pointer;\n        text-decoration: none;\n      }\n\n      &[href]:hover {\n        text-decoration: underline;\n        color: " + theme.colors.black + ";\n      }\n    ",
     button: {
