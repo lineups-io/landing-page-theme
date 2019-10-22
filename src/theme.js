@@ -126,8 +126,9 @@ export const getTheme = (theme = base, override = {}) => {
       },
       title: `
         color: ${ theme.colors.black };
-        font-size: 1.25em;
+        font-size: 1.5em;
         line-height: 1em;
+        font-weight: 500;
       `,
       address: `
         color: ${ theme.colors.black };
