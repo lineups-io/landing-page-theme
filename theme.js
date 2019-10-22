@@ -100,8 +100,8 @@ var getTheme = function getTheme(theme, override) {
     },
     well: "\n      background-color: " + theme.colors.gray['200'] + ";\n      color: " + theme.colors.black + ";\n      font-size: 1.1em;\n      font-family: " + headerFontFamily + ";\n\n      h2, h3, h4, h5, h6 {\n        color: " + theme.colors.black + ";\n      }\n\n      a {\n        display: inline;\n        color: " + theme.colors.black + ";\n        box-shadow: " + theme.colors.primary + " 0px -2px 0px inset;\n        text-decoration: none;\n        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: " + theme.colors.primary + ";\n      }\n\n      a[href]:hover {\n        text-decoration: none;\n        background-color: " + theme.colors.primary + ";\n      }\n    ",
     related: {
-      header: "\n        font-size: 1em;\n        font-weight: bold;\n        color: " + theme.colors.black + ";\n      ",
-      link: "\n        font-size: 0.9em;\n        color: " + theme.colors.black + ";\n\n        &[href]:hover {\n          color: " + theme.colors.black + ";\n          text-decoration: underline;\n        }\n      "
+      header: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.black + ";\n      ",
+      link: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n\n        &[href]:hover {\n          color: " + theme.colors.black + ";\n          text-decoration: underline;\n        }\n      "
     },
     footer: {
       container: "\n        background-color: " + theme.colors.primary + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: " + theme.colors.primary + ";\n      ",

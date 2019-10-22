@@ -284,12 +284,12 @@ export const getTheme = (theme = base, override = {}) => {
     `,
     related: {
       header: `
-        font-size: 1em;
+        font-size: 1.2em;
         font-weight: bold;
         color: ${ theme.colors.black };
       `,
       link: `
-        font-size: 0.9em;
+        font-size: 1.1em;
         color: ${ theme.colors.black };
 
         &[href]:hover {
