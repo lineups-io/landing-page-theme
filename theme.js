@@ -51,18 +51,18 @@ var getTheme = function getTheme(theme, override) {
     nav: {
       container: "\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 0 0 1px 0;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n      ",
       logo: "\n        height: 100%;\n        padding: " + theme.gutter + "px 0;\n        margin-left: " + theme.gutter + "px;\n      ",
-      link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n      ",
+      link: "\n        text-transform: none;\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: normal;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n      ",
       menu: {
         container: "\n          background-color: #27283b;\n        ",
         hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
-        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          background-color: #27283b;\n          color: " + theme.colors.white + ";\n          font-size: 1.5em;\n        "
+        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          background-color: #27283b;\n          color: " + theme.colors.white + ";\n          font-size: 2.2em;\n        "
       }
     },
     main: {
       container: "\n        background-color: " + theme.colors.white + "\n      ",
       title: "\n        margin: 0;\n        font-size: 2.5rem;\n        font-weight: 500;\n      ",
-      description: "\n        font-weight: lighter;\n        font-size: 1.25em;\n        color: " + theme.colors.black + ";\n      ",
-      disclaimer: "\n        font-size: 0.9em;\n        color: " + theme.colors.black + ";\n      "
+      description: "\n        font-size: 1.25em;\n        color: " + theme.colors.black + ";\n      ",
+      disclaimer: "\n        font-size: 1em;\n        color: " + theme.colors.black + ";\n      "
     },
     card: {
       body: "\n        background-color: " + theme.colors.white + ";\n        border-width: 2px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n\n        margin: " + theme.gutter * -2 + "px " + theme.gutter + "px 0;\n        z-index: 1000;\n\n        @media (min-width: 768px) {\n          margin: 0;\n          border-width: 1px;\n        }\n      ",
@@ -72,8 +72,8 @@ var getTheme = function getTheme(theme, override) {
         hover: "\n\n        "
       },
       title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.25em;\n        line-height: 1em;\n      ",
-      address: "\n        color: " + theme.colors.black + ";\n        font-size: 1em;\n        font-weight: lighter;\n      ",
-      bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.black + ";\n        font-size: 0.8em;\n        font-weight: lighter;\n      ",
+      address: "\n        color: " + theme.colors.black + ";\n        font-size: 1em;\n      ",
+      bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.black + ";\n        font-size: 0.8em;\n      ",
       amount: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n      ",
       adLabel: "\n        color: " + theme.colors.black + ";\n        background-color: " + theme.colors.white + ";\n        box-shadow: 0 0 2px 2px " + theme.colors.gray['300'] + ";\n      ",
       button: "\n      "
