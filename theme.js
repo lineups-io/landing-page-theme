@@ -76,7 +76,7 @@ var getTheme = function getTheme(theme, override) {
         body: "\n        ",
         hover: "\n\n        "
       },
-      title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.25em;\n        line-height: 1em;\n      ",
+      title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.5em;\n        line-height: 1em;\n        font-weight: 500;\n      ",
       address: "\n        color: " + theme.colors.black + ";\n        font-size: 1em;\n      ",
       bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.black + ";\n        font-size: 0.8em;\n      ",
       amount: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n      ",
