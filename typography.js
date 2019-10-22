@@ -3,8 +3,8 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _default = {
-  headerFontFamily: ['Beauchef', 'sans-serif'],
-  bodyFontFamily: ['Calluna', 'serif'],
+  headerFontFamily: ['Calluna', 'serif'],
+  bodyFontFamily: ['Beauchef', 'sans-serif'],
   bodyWeight: 400,
   overrideThemeStyles: function overrideThemeStyles(vr, options, styles) {
     return {
