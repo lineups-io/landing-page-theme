@@ -55,6 +55,7 @@ var getTheme = function getTheme(theme, override) {
       menu: {
         container: "\n          background-color: #27283b;\n        ",
         hamburger: {
+          height: 3,
           width: 20,
           offset: 7,
           color: theme.colors.primary
