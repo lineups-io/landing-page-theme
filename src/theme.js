@@ -62,7 +62,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       menu: {
         container: `
-          background-color: '#27283b';
+          background-color: #27283b;
         `,
         hamburger: `
           background-color: ${ theme.colors.white };
@@ -73,6 +73,7 @@ export const getTheme = (theme = base, override = {}) => {
           justify-content: center;
           border-width: 0 0 3px 0;
           border-color: ${ theme.colors.primary };
+          background-color: #27283b;
           color: ${ theme.colors.white };
           font-size: 1.5em;
         `,
