@@ -85,7 +85,7 @@ var getTheme = function getTheme(theme, override) {
     },
     link: "\n      display: block;\n      color: " + theme.colors.black + ";\n\n      border: 0;\n      background-color: transparent;\n      padding: 0;\n\n      &[href] {\n        cursor: pointer;\n        text-decoration: none;\n      }\n\n      &[href]:hover {\n        text-decoration: underline;\n        color: " + theme.colors.black + ";\n      }\n    ",
     button: {
-      primary: "\n        background-color: " + theme.colors.primary + ";\n        border-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
+      primary: "\n        background-color: " + theme.colors.primary + ";\n        border-color: " + theme.colors.primary + ";\n        color: " + theme.colors.black + ";\n\n        &[href]:hover {\n          color: " + theme.colors.black + ";\n        }\n      ",
       danger: "\n        background-color: red;\n        border-color: red;\n        color: " + theme.colors.white + ";\n\n        &[href]:hover {\n          color: " + theme.colors.white + ";\n        }\n      ",
       outline: "\n        background-color: " + theme.colors.white + ";\n      ",
       default: "\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        color: " + theme.colors.black + ";\n\n        &::after {\n          border-color: " + theme.colors.black + ";\n        }\n      ",
