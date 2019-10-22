@@ -173,10 +173,10 @@ export const getTheme = (theme = base, override = {}) => {
       primary: `
         background-color: ${ theme.colors.primary };
         border-color: ${ theme.colors.primary };
-        color: ${ theme.colors.white };
+        color: ${ theme.colors.black };
 
         &[href]:hover {
-          color: ${ theme.colors.white };
+          color: ${ theme.colors.black };
         }
       `,
       danger: `
