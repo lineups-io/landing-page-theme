@@ -64,9 +64,11 @@ export const getTheme = (theme = base, override = {}) => {
         container: `
           background-color: #27283b;
         `,
-        hamburger: `
-          background-color: ${ theme.colors.white };
-        `,
+        hamburger: {
+          width: 20,
+          offset: 7,
+          color: theme.colors.primary,
+        },
         link: `
           padding: ${ theme.gutter * 2 / 3 }px 0;
           display: flex;

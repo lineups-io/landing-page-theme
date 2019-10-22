@@ -54,7 +54,11 @@ var getTheme = function getTheme(theme, override) {
       link: "\n        text-transform: none;\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: normal;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n      ",
       menu: {
         container: "\n          background-color: #27283b;\n        ",
-        hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
+        hamburger: {
+          width: 20,
+          offset: 7,
+          color: theme.colors.primary
+        },
         link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          background-color: #27283b;\n          color: " + theme.colors.white + ";\n          font-size: 2.2em;\n        "
       }
     },
