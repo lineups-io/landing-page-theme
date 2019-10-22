@@ -116,7 +116,8 @@ export const getTheme = (theme = base, override = {}) => {
         }
       `,
       hover: `
-        border-color: ${ theme.colors.primary };
+        border-color: ${ theme.colors.gray['200'] };
+        box-shadow: ${ theme.colors.primary } 0 0 ${ theme.gutter * 2 / 3 }px ${ theme.gutter * -1 / 3 }px;
       `,
       row: {
         body: `
