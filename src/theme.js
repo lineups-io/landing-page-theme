@@ -78,6 +78,7 @@ export const getTheme = (theme = base, override = {}) => {
           background-color: #27283b;
           color: ${ theme.colors.white };
           font-size: 2.2em;
+          font-weight: 600;
         `,
       },
     },
