@@ -50,7 +50,7 @@ var getTheme = function getTheme(theme, override) {
   return (0, _extends2.default)({
     nav: {
       container: "\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 0 0 1px 0;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n      ",
-      logo: "\n        height: 100%;\n        padding: " + theme.gutter + "px 0;\n        margin-left: " + theme.gutter + "px;\n      ",
+      logo: "\n        height: 100%;\n        padding: " + theme.gutter + "px 0;\n      ",
       link: "\n        text-transform: none;\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: normal;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n      ",
       menu: {
         container: "\n          background-color: #27283b;\n        ",
