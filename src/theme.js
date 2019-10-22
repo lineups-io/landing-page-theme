@@ -259,8 +259,10 @@ export const getTheme = (theme = base, override = {}) => {
     well: `
       background-color: ${ theme.colors.gray['200'] };
       color: ${ theme.colors.black };
+      font-size: 1.1em;
+      font-family: ${ headerFontFamily };
 
-      h2 {
+      h2, h3, h4, h5, h6 {
         color: ${ theme.colors.black };
       }
 
@@ -277,6 +279,7 @@ export const getTheme = (theme = base, override = {}) => {
 
       a[href]:hover {
         text-decoration: none;
+        background-color: ${ theme.colors.primary };
       }
     `,
     related: {
