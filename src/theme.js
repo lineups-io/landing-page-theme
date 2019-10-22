@@ -44,10 +44,10 @@ export const getTheme = (theme = base, override = {}) => {
         margin-left: ${ theme.gutter }px;
       `,
       link: `
-        text-transform: uppercase;
-        font-size: 0.8em;
+        text-transform: none;
+        font-size: 1.2em;
         letter-spacing: 1px;
-        font-weight: bold;
+        font-weight: normal;
         background-color: ${ theme.colors.white };
         color: ${ theme.colors.black };
         border-width: 1px;
@@ -75,7 +75,7 @@ export const getTheme = (theme = base, override = {}) => {
           border-color: ${ theme.colors.primary };
           background-color: #27283b;
           color: ${ theme.colors.white };
-          font-size: 1.5em;
+          font-size: 2.2em;
         `,
       },
     },
@@ -89,12 +89,11 @@ export const getTheme = (theme = base, override = {}) => {
         font-weight: 500;
       `,
       description: `
-        font-weight: lighter;
         font-size: 1.25em;
         color: ${ theme.colors.black };
       `,
       disclaimer: `
-        font-size: 0.9em;
+        font-size: 1em;
         color: ${ theme.colors.black };
       `,
     },
@@ -131,13 +130,11 @@ export const getTheme = (theme = base, override = {}) => {
       address: `
         color: ${ theme.colors.black };
         font-size: 1em;
-        font-weight: lighter;
       `,
       bedrooms: `
         text-transform: uppercase;
         color: ${ theme.colors.black };
         font-size: 0.8em;
-        font-weight: lighter;
       `,
       amount: `
         font-size: 1.1em;
