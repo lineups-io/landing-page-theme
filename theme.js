@@ -53,9 +53,9 @@ var getTheme = function getTheme(theme, override) {
       logo: "\n        height: 100%;\n        padding: " + theme.gutter + "px 0;\n        margin-left: " + theme.gutter + "px;\n      ",
       link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n      ",
       menu: {
-        container: "\n          background-color: '#27283b';\n        ",
+        container: "\n          background-color: #27283b;\n        ",
         hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
-        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          color: " + theme.colors.white + ";\n          font-size: 1.5em;\n        "
+        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          background-color: #27283b;\n          color: " + theme.colors.white + ";\n          font-size: 1.5em;\n        "
       }
     },
     main: {
