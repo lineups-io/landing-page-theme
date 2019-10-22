@@ -65,6 +65,7 @@ export const getTheme = (theme = base, override = {}) => {
           background-color: #27283b;
         `,
         hamburger: {
+          height: 3,
           width: 20,
           offset: 7,
           color: theme.colors.primary,
