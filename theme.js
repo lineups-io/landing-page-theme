@@ -56,7 +56,7 @@ var getTheme = function getTheme(theme, override) {
         container: "\n          background-color: #27283b;\n          padding-top: 100px;\n        ",
         hamburger: {
           height: 3,
-          width: 20,
+          width: 16,
           offset: 7,
           color: theme.colors.primary
         },
