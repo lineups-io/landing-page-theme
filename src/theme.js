@@ -72,8 +72,6 @@ export const getTheme = (theme = base, override = {}) => {
         },
         link: `
           padding: ${ theme.gutter * 2 / 3 }px 0;
-          display: flex;
-          justify-content: center;
           border-width: 0 0 3px 0;
           border-color: ${ theme.colors.primary };
           background-color: #27283b;
