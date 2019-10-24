@@ -103,6 +103,32 @@ export const getTheme = (theme = base, override = {}) => {
         `,
       },
     },
+    locations: {
+      subTitle: `
+        font-family: ${ headerFontFamily };
+        color: ${ theme.colors.primary };
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: .9em;
+      `,
+      title: `
+        font-family: ${ bodyFontFamily };
+        color: ${ theme.colors.gray['700'] };
+        font-size: 1.875em;
+        font-weight: lighter;
+      `,
+      apartment: `
+
+      `,
+      market: `
+
+      `,
+      state: `
+        font-size: 1.2em;
+        font-weight: bold;
+        color: ${ theme.colors.gray['700'] };
+      `,
+    },
     main: {
       container: `
         background-color: ${ theme.colors.white }
