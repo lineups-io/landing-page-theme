@@ -90,7 +90,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       title: `
         font-family: ${ bodyFontFamily };
-        color: ${ theme.colors.gray['700'] };
+        color: ${ theme.colors.black };
         font-size: 1.5em;
       `,
       apartment: `
