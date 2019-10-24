@@ -101,6 +101,7 @@ export const getTheme = (theme = base, override = {}) => {
         font-family: Open Sans, serif;
         font-weight: lighter;
         text-transform: uppercase;
+        letter-spacing: 2px;
 
         &:after {
           display: block;
