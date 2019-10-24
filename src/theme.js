@@ -112,7 +112,7 @@ export const getTheme = (theme = base, override = {}) => {
           margin-top: 5px;
         }
 
-        &:hover {
+        &[href]:hover {
           text-decoration: none;
         }
       `,
