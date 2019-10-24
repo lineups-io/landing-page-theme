@@ -64,10 +64,10 @@ var getTheme = function getTheme(theme, override) {
       }
     },
     locations: {
-      subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        text-transform: uppercase;\n        font-weight: bold;\n        font-size: .9em;\n      ",
-      title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1.875em;\n        font-weight: lighter;\n      ",
-      apartment: "\n\n      ",
-      market: "\n\n      ",
+      subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        font-size: 1.1em;\n      ",
+      title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1.5em;\n      ",
+      apartment: "\n        font-family: Open Sans, serif;\n        font-weight: lighter;\n      ",
+      market: "\n        font-family: Open Sans, serif;\n        font-weight: lighter;\n        text-transform: uppercase;\n\n        &:after {\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: rgb(242, 183, 31);\n          margin-top: 5px;\n        }\n      ",
       state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     main: {
