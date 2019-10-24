@@ -98,7 +98,7 @@ export const getTheme = (theme = base, override = {}) => {
         font-weight: lighter;
 
         &[href]:hover {
-          color: ${ theme.colors.black };
+          color: #000000;
         }
       `,
       market: `
@@ -117,7 +117,7 @@ export const getTheme = (theme = base, override = {}) => {
         }
 
         &[href]:hover {
-          color: ${ theme.colors.black };
+          color: #000000;
           text-decoration: none;
         }
       `,
