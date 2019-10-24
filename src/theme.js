@@ -96,6 +96,10 @@ export const getTheme = (theme = base, override = {}) => {
       apartment: `
         font-family: Open Sans, serif;
         font-weight: lighter;
+
+        &[href]:hover {
+          color: ${ theme.colors.black };
+        }
       `,
       market: `
         font-family: Open Sans, serif;
@@ -113,6 +117,7 @@ export const getTheme = (theme = base, override = {}) => {
         }
 
         &[href]:hover {
+          color: ${ theme.colors.black };
           text-decoration: none;
         }
       `,
