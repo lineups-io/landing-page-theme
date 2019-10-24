@@ -86,21 +86,30 @@ export const getTheme = (theme = base, override = {}) => {
       subTitle: `
         font-family: ${ headerFontFamily };
         color: ${ theme.colors.primary };
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: .9em;
+        font-size: 1.1em;
       `,
       title: `
         font-family: ${ bodyFontFamily };
         color: ${ theme.colors.gray['700'] };
-        font-size: 1.875em;
-        font-weight: lighter;
+        font-size: 1.5em;
       `,
       apartment: `
-
+        font-family: Open Sans, serif;
+        font-weight: lighter;
       `,
       market: `
+        font-family: Open Sans, serif;
+        font-weight: lighter;
+        text-transform: uppercase;
 
+        &:after {
+          display: block;
+          content: " ";
+          height: 2px;
+          width: 20px;
+          background-color: rgb(242, 183, 31);
+          margin-top: 5px;
+        }
       `,
       state: `
         font-size: 1.2em;
