@@ -111,6 +111,10 @@ export const getTheme = (theme = base, override = {}) => {
           background-color: rgb(242, 183, 31);
           margin-top: 5px;
         }
+
+        &:hover {
+          text-decoration: none;
+        }
       `,
       state: `
         font-size: 1.2em;
