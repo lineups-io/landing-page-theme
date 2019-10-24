@@ -63,6 +63,13 @@ var getTheme = function getTheme(theme, override) {
         link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          border-width: 0 0 3px 0;\n          border-color: " + theme.colors.primary + ";\n          background-color: #27283b;\n          color: " + theme.colors.white + ";\n          font-size: 2.2em;\n          font-weight: 600;\n          text-transform: uppercase;\n        "
       }
     },
+    locations: {
+      subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        text-transform: uppercase;\n        font-weight: bold;\n        font-size: .9em;\n      ",
+      title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1.875em;\n        font-weight: lighter;\n      ",
+      apartment: "\n\n      ",
+      market: "\n\n      ",
+      state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
+    },
     main: {
       container: "\n        background-color: " + theme.colors.white + "\n      ",
       title: "\n        margin: 0;\n        font-size: 2.5rem;\n        font-weight: 500;\n      ",
