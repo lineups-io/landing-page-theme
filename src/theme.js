@@ -88,13 +88,14 @@ export const getTheme = (theme = base, override = {}) => {
         container: `
           background-color: ${ theme.colors.primary };
         `,
-        hamburger: `
-          background-color: ${ theme.colors.white };
-        `,
+        hamburger: {
+          height: 3,
+          width: 20,
+          offset: 7,
+          color: theme.colors.white,
+        },
         link: `
           padding: ${ theme.gutter * 2 / 3 }px 0;
-          display: flex;
-          justify-content: center;
           font-size: 1.5em;
 
           &::before {
