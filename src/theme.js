@@ -51,15 +51,32 @@ export const getTheme = (theme = base, override = {}) => {
         font-weight: bold;
         background-color: ${ theme.colors.black };
         color: ${ theme.colors.white };
-        border-width: 0 0 2px 0;
-        border-style: solid;
-        border-color: ${ theme.colors.black };
         text-decoration: none;
+
+        position: relative;
+        &::before {
+          content: "";
+          width: 0;
+          height: 2px;
+          background-color: ${ theme.colors.white };
+          position: absolute;
+          z-index: 2;
+          left: 0;
+          bottom: 0;
+          opacity: 0;
+          visibility: hidden;
+          transition: all .3s ease-in-out;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          visibility: visible;
+          width: 100%;
+        }
 
         &:hover, &[href]:hover {
           color: ${ theme.colors.white };
           text-decoration: none;
-          border-color: ${ theme.colors.white };
         }
 
         &[aria-haspopup]::after {
