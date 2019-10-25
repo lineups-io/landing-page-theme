@@ -54,7 +54,12 @@ var getTheme = function getTheme(theme, override) {
       link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: " + theme.colors.primary + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.white + ";\n          text-decoration: none;\n          border-color: " + theme.colors.white + ";\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
       menu: {
         container: "\n          background-color: " + theme.colors.primary + ";\n        ",
-        hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
+        hamburger: {
+          height: 3,
+          width: 20,
+          offset: 7,
+          color: theme.colors.white
+        },
         link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          border-bottom-width: 3px;\n          font-size: 1.5em;\n        "
       }
     },
