@@ -55,7 +55,7 @@ var getTheme = function getTheme(theme, override) {
       menu: {
         container: "\n          background-color: " + theme.colors.primary + ";\n        ",
         hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
-        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          border-bottom-width: 3px;\n          font-size: 1.5em;\n        "
+        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          border-bottom-width: 3px;\n          font-size: 1.5em;\n        "
       }
     },
     locations: {
