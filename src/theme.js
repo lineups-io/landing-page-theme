@@ -75,8 +75,6 @@ export const getTheme = (theme = base, override = {}) => {
         `,
         link: `
           padding: ${ theme.gutter * 2 / 3 }px 0;
-          display: flex;
-          justify-content: center;
           border-bottom-width: 3px;
           font-size: 1.5em;
         `,
