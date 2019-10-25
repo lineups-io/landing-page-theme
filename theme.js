@@ -54,8 +54,13 @@ var getTheme = function getTheme(theme, override) {
       link: "\n        text-transform: uppercase;\n        font-size: 0.8em;\n        letter-spacing: 1px;\n        font-weight: bold;\n        background-color: " + theme.colors.primary + ";\n        color: " + theme.colors.white + ";\n        text-decoration: none;\n\n        position: relative;\n        &::before {\n          content: \"\";\n          width: 0;\n          height: 2px;\n          background-color: " + theme.colors.white + ";\n          position: absolute;\n          z-index: 2;\n          left: 0;\n          bottom: 0;\n          opacity: 0;\n          visibility: hidden;\n          transition: all .3s ease-in-out;\n        }\n\n        &:hover::before {\n          opacity: 1;\n          visibility: visible;\n          width: 100%;\n        }\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.white + ";\n          text-decoration: none;\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
       menu: {
         container: "\n          background-color: " + theme.colors.primary + ";\n        ",
-        hamburger: "\n          background-color: " + theme.colors.white + ";\n        ",
-        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          display: flex;\n          justify-content: center;\n          font-size: 1.5em;\n\n          &::before {\n            height: 3px;\n          }\n        "
+        hamburger: {
+          height: 3,
+          width: 20,
+          offset: 7,
+          color: theme.colors.white
+        },
+        link: "\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          font-size: 1.5em;\n\n          &::before {\n            height: 3px;\n          }\n        "
       }
     },
     locations: {
