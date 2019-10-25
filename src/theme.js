@@ -166,7 +166,7 @@ export const getTheme = (theme = base, override = {}) => {
       row: {
         body: `
           @media (min-width: 768px) {
-            margin: 0 ${ theme.gutter }px;
+            margin: 0 0 0 ${ theme.gutter }px;
           }
         `,
         hover: `
