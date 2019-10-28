@@ -14,8 +14,8 @@ var headerFontFamily = _typography.default.headerFontFamily,
 var base = {
   gutter: 15,
   colors: {
-    primary: '#0085ca',
-    secondary: '#ca4500',
+    primary: '#f04f27',
+    secondary: '#316884',
     gray: {
       50: '#FAFAFA',
       100: '#F5F5F5',
