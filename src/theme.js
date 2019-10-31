@@ -40,7 +40,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       logo: `
         height: 100%;
-        padding: ${ theme.gutter }px 0;
+        padding: ${ theme.gutter * 1 / 3 }px 0;
       `,
       link: `
         font-size: 1.2em;
