@@ -67,7 +67,7 @@ var getTheme = function getTheme(theme, override) {
       subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        font-size: 1.1em;\n      ",
       title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 1.5em;\n      ",
       apartment: "\n        font-weight: 300;\n      ",
-      market: "\n        text-transform: uppercase;\n        font-size: 1.1em;\n        font-weight: 300;\n\n        &[href]:hover {\n          text-decoration: none;\n        }\n\n        &:after {\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: " + theme.colors.primary + ";\n          margin-top: 5px;\n        }\n      ",
+      market: "\n        text-transform: uppercase;\n        font-size: 1.1em;\n        font-weight: 300;\n\n        &[href]:hover {\n          text-decoration: none;\n        }\n\n        &:after {\n          position: absolute;\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: " + theme.colors.primary + ";\n          margin-top: 5px;\n        }\n      ",
       state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     main: {
