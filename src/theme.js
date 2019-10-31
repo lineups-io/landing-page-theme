@@ -108,6 +108,7 @@ export const getTheme = (theme = base, override = {}) => {
         letter-spacing: 2px;
 
         &:after {
+          position: absolute;
           display: block;
           content: " ";
           height: 2px;

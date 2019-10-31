@@ -67,7 +67,7 @@ var getTheme = function getTheme(theme, override) {
       subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        font-size: 1.1em;\n      ",
       title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.black + ";\n        font-size: 1.5em;\n      ",
       apartment: "\n        font-family: Open Sans, serif;\n        font-weight: lighter;\n\n        &[href]:hover {\n          color: #000000;\n        }\n      ",
-      market: "\n        font-family: Open Sans, serif;\n        font-weight: lighter;\n        text-transform: uppercase;\n        letter-spacing: 2px;\n\n        &:after {\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: rgb(242, 183, 31);\n          margin-top: 5px;\n        }\n\n        &[href]:hover {\n          color: #000000;\n          text-decoration: none;\n        }\n      ",
+      market: "\n        font-family: Open Sans, serif;\n        font-weight: lighter;\n        text-transform: uppercase;\n        letter-spacing: 2px;\n\n        &:after {\n          position: absolute;\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: rgb(242, 183, 31);\n          margin-top: 5px;\n        }\n\n        &[href]:hover {\n          color: #000000;\n          text-decoration: none;\n        }\n      ",
       state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     main: {
