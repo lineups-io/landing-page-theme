@@ -103,6 +103,7 @@ export const getTheme = (theme = base, override = {}) => {
         }
 
         &:after {
+          position: absolute;
           display: block;
           content: " ";
           height: 2px;
