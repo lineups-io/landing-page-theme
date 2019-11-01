@@ -1,4 +1,7 @@
-# Redirect default Netlify subdomain to primary domain
+# Redirect domain aliases to primary domain
+https://rentals.apartmentsinstpaul.com/* https://rentals.tbigos.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
 https://bigos.netlify.com/* https://rentals.tbigos.com/:splat 301!
 
 / /locations
