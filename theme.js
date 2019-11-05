@@ -29,7 +29,7 @@ var base = {
       900: '#212121'
     },
     white: '#ffffff',
-    black: '#000000'
+    black: '#58585b'
   },
   fonts: {
     header: headerFontFamily.join(','),
@@ -49,30 +49,30 @@ var getTheme = function getTheme(theme, override) {
 
   return (0, _extends2.default)({
     nav: {
-      container: "\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        border-bottom-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['200'] + ";\n      ",
-      logo: "\n        height: 100%;\n        min-width: 138px;\n\n        polygon, path {\n        }\n      ",
-      link: "\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: 400;\n        background-color: " + theme.colors.white + ";\n        color: " + theme.colors.black + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: #97a3ae;\n          text-decoration: none;\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
+      container: "\n        background-color: #000000;\n        color: " + theme.colors.white + ";\n        border-bottom-width: 1px;\n        border-style: solid;\n        border-color: #000000;\n      ",
+      logo: "\n        height: 100%;\n        min-width: 138px;\n        padding: " + theme.gutter + "px 0;\n\n        polygon, path {\n        }\n      ",
+      link: "\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: 400;\n        background-color: #000000;\n        color: " + theme.colors.white + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
       menu: {
-        container: "\n          background-color: " + theme.colors.gray['200'] + ";\n          padding-top: 100px;\n        ",
+        container: "\n          background-color: #000000;\n          padding-top: 100px;\n        ",
         hamburger: {
           height: 3,
           width: 20,
           offset: 7,
-          color: theme.colors.black
+          color: theme.colors.white
         },
-        link: "\n          background-color: " + theme.colors.gray['200'] + ";\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          border-bottom-width: 3px;\n          font-size: 1.5em;\n        "
+        link: "\n          background-color: #000000;\n          padding: " + theme.gutter * 2 / 3 + "px 0;\n          border-bottom-width: 3px;\n          font-size: 2.5em;\n          font-weight: 300;\n        "
       }
     },
     locations: {
-      subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: #97a3ae;\n        font-weight: 400;\n        font-size: 1.1em;\n      ",
-      title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.primary + ";\n        font-size: 1.5em;\n        font-weight: 400;\n      ",
+      subTitle: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n        font-weight: 400;\n        font-size: 1.1em;\n      ",
+      title: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.black + ";\n        font-size: 1.5em;\n        font-weight: 400;\n      ",
       apartment: "\n        font-weight: 300;\n      ",
       market: "\n        text-transform: uppercase;\n        font-size: 1.1em;\n        font-weight: 300;\n\n        &:after {\n          position: absolute;\n          display: block;\n          content: \" \";\n          height: 2px;\n          width: 20px;\n          background-color: " + theme.colors.primary + ";\n          margin-top: 5px;\n        }\n        &[href]:hover {\n          color: #000000;\n          text-decoration: none;\n        }\n      ",
       state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     main: {
       container: "\n        background-color: " + theme.colors.gray['200'] + ";\n      ",
-      title: "\n        margin: 0;\n        font-size: 2.5rem;\n        font-weight: 500;\n      ",
+      title: "\n        margin: 0;\n        font-size: 2.5rem;\n        font-weight: 500;\n        color: #000000;\n      ",
       description: "\n        font-weight: 400;\n        font-size: 1.1em;\n        color: " + theme.colors.gray['700'] + ";\n      ",
       disclaimer: "\n        font-size: 0.9em;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
@@ -83,11 +83,11 @@ var getTheme = function getTheme(theme, override) {
         body: "\n          @media (min-width: 768px) {\n            margin: 0 0 0 " + theme.gutter + "px;\n          }\n        ",
         hover: "\n\n        "
       },
-      title: "\n        color: " + theme.colors.black + ";\n        font-size: 1.5em;\n        line-height: 1em;\n        font-weight: 400;\n      ",
+      title: "\n        color: #000000;\n        font-size: 1.5em;\n        line-height: 1em;\n        font-weight: 400;\n      ",
       address: "\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.9em;\n        font-weight: 400;\n      ",
       bedrooms: "\n        text-transform: uppercase;\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.8em;\n        font-weight: 400;\n      ",
-      amount: "\n        font-size: 1.1em;\n        color: " + theme.colors.black + ";\n      ",
-      adLabel: "\n        color: " + theme.colors.black + ";\n        background-color: " + theme.colors.white + ";\n        box-shadow: 0 0 2px 2px " + theme.colors.gray['300'] + ";\n      ",
+      amount: "\n        font-size: 1em;\n        color: #000000;\n      ",
+      adLabel: "\n        color: #000000;\n        background-color: " + theme.colors.white + ";\n        box-shadow: 0 0 2px 2px " + theme.colors.gray['300'] + ";\n      ",
       button: "\n        font-size: 0.9em;\n        border-color: transparent;\n      "
     },
     link: "\n      display: block;\n      color: " + theme.colors.gray['700'] + ";\n\n      border: 0;\n      background-color: transparent;\n      padding: 0;\n\n      &[href] {\n        cursor: pointer;\n        text-decoration: none;\n      }\n\n      &[href]:hover {\n        text-decoration: underline;\n        color: " + theme.colors.black + ";\n      }\n    ",
@@ -105,14 +105,15 @@ var getTheme = function getTheme(theme, override) {
       header: "\n        color: " + theme.colors.gray['700'] + ";\n        font-weight: bold;\n      ",
       item: "\n        color: " + theme.colors.gray['700'] + ";\n        font-size: 0.9em;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.black + ";\n          background-color: " + theme.colors.gray['200'] + ";\n          text-decoration: none;\n        }\n\n        &[aria-current='page'], &.active {\n          color: " + theme.colors.white + ";\n          background-color: " + theme.colors.primary + ";\n          &[href]:hover {\n            color: " + theme.colors.white + ";\n            background-color: " + theme.colors.primary + ";\n          }\n        }\n      "
     },
-    well: "\n      background-color: " + theme.colors.white + ";\n      color: " + theme.colors.black + ";\n\n      h3 {\n        font-size: 1.5rem;\n        font-weight: 400;\n      }\n\n      a {\n        display: inline;\n        color: " + theme.colors.primary + ";\n        box-shadow: #98a4ae 0px -2px 0px inset;\n        text-decoration: none;\n        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: #98a4ae;\n      }\n\n      a[href]:hover {\n        text-decoration: none;\n      }\n    ",
+    well: "\n      background-color: " + theme.colors.white + ";\n      color: " + theme.colors.black + ";\n\n      h2 {\n        color: #000000;\n      }\n\n      h3 {\n        font-size: 1.5rem;\n        font-weight: 400;\n      }\n\n      a {\n        display: inline;\n        color: " + theme.colors.black + ";\n        box-shadow: " + theme.colors.primary + " 0px -2px 0px inset;\n        text-decoration: none;\n        transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;\n        border-width: 0 0 2px 0;\n        border-style: solid;\n        border-color: " + theme.colors.primary + ";\n      }\n\n      a[href]:hover {\n        text-decoration: none;\n      }\n    ",
     related: {
-      header: "\n        font-size: 1em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      ",
+      header: "\n        font-size: 1em;\n        font-weight: bold;\n        color: #000000;\n      ",
       link: "\n        font-size: 0.9em;\n        color: " + theme.colors.gray['700'] + ";\n\n        &[href]:hover {\n          color: " + theme.colors.black + ";\n          text-decoration: underline;\n        }\n      "
     },
     footer: {
-      container: "\n        background-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: " + theme.colors.black + ";\n      ",
-      header: "\n      ",
+      container: "\n        background-color: #000000;\n        color: " + theme.colors.white + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: #000000;\n      ",
+      header: "\n        font-family: " + headerFontFamily + ";\n        color: " + theme.colors.primary + ";\n      ",
+      copyright: "\n        font-family: " + bodyFontFamily + ";\n        color: " + theme.colors.white + ";\n      ",
       link: "\n        font-size: 0.9em;\n        color: " + theme.colors.white + ";\n\n        svg * {\n          fill: " + theme.colors.white + ";\n        }\n\n        svg:hover * {\n          fill: " + theme.colors.white + ";\n        }\n\n        & {\n          cursor: pointer;\n        }\n\n        &[href]:hover {\n          text-decoration: underline;\n          color: " + theme.colors.white + ";\n        }\n      "
     },
     label: "\n      color: " + theme.colors.gray['700'] + ";\n      font-size: .9em;\n    ",

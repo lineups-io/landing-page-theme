@@ -20,7 +20,7 @@ export const base = {
       900: '#212121',
     },
     white: '#ffffff',
-    black: '#000000',
+    black: '#58585b',
   },
   fonts: {
     header: headerFontFamily.join(','),
@@ -32,15 +32,16 @@ export const getTheme = (theme = base, override = {}) => {
   return {
     nav: {
       container: `
-        background-color: ${ theme.colors.white };
-        color: ${ theme.colors.black };
+        background-color: #000000;
+        color: ${ theme.colors.white };
         border-bottom-width: 1px;
         border-style: solid;
-        border-color: ${ theme.colors.gray['200'] };
+        border-color: #000000;
       `,
       logo: `
         height: 100%;
         min-width: 138px;
+        padding: ${ theme.gutter }px 0;
 
         polygon, path {
         }
@@ -49,12 +50,12 @@ export const getTheme = (theme = base, override = {}) => {
         font-size: 1.2em;
         letter-spacing: 1px;
         font-weight: 400;
-        background-color: ${ theme.colors.white };
-        color: ${ theme.colors.black };
+        background-color: #000000;
+        color: ${ theme.colors.white };
         text-decoration: none;
 
         &:hover, &[href]:hover {
-          color: #97a3ae;
+          color: ${ theme.colors.primary };
           text-decoration: none;
         }
 
@@ -64,33 +65,34 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       menu: {
         container: `
-          background-color: ${ theme.colors.gray['200'] };
+          background-color: #000000;
           padding-top: 100px;
         `,
         hamburger: {
           height: 3,
           width: 20,
           offset: 7,
-          color: theme.colors.black,
+          color: theme.colors.white,
         },
         link: `
-          background-color: ${ theme.colors.gray['200'] };
+          background-color: #000000;
           padding: ${ theme.gutter * 2 / 3 }px 0;
           border-bottom-width: 3px;
-          font-size: 1.5em;
+          font-size: 2.5em;
+          font-weight: 300;
         `,
       },
     },
     locations: {
       subTitle: `
         font-family: ${ headerFontFamily };
-        color: #97a3ae;
+        color: ${ theme.colors.primary };
         font-weight: 400;
         font-size: 1.1em;
       `,
       title: `
         font-family: ${ bodyFontFamily };
-        color: ${ theme.colors.primary };
+        color: ${ theme.colors.black };
         font-size: 1.5em;
         font-weight: 400;
       `,
@@ -130,6 +132,7 @@ export const getTheme = (theme = base, override = {}) => {
         margin: 0;
         font-size: 2.5rem;
         font-weight: 500;
+        color: #000000;
       `,
       description: `
         font-weight: 400;
@@ -170,7 +173,7 @@ export const getTheme = (theme = base, override = {}) => {
         `,
       },
       title: `
-        color: ${ theme.colors.black };
+        color: #000000;
         font-size: 1.5em;
         line-height: 1em;
         font-weight: 400;
@@ -187,11 +190,11 @@ export const getTheme = (theme = base, override = {}) => {
         font-weight: 400;
       `,
       amount: `
-        font-size: 1.1em;
-        color: ${ theme.colors.black };
+        font-size: 1em;
+        color: #000000;
       `,
       adLabel: `
-        color: ${ theme.colors.black };
+        color: #000000;
         background-color: ${ theme.colors.white };
         box-shadow: 0 0 2px 2px ${ theme.colors.gray['300'] };
       `,
@@ -308,6 +311,10 @@ export const getTheme = (theme = base, override = {}) => {
       background-color: ${ theme.colors.white };
       color: ${ theme.colors.black };
 
+      h2 {
+        color: #000000;
+      }
+
       h3 {
         font-size: 1.5rem;
         font-weight: 400;
@@ -315,13 +322,13 @@ export const getTheme = (theme = base, override = {}) => {
 
       a {
         display: inline;
-        color: ${ theme.colors.primary };
-        box-shadow: #98a4ae 0px -2px 0px inset;
+        color: ${ theme.colors.black };
+        box-shadow: ${ theme.colors.primary } 0px -2px 0px inset;
         text-decoration: none;
         transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;
         border-width: 0 0 2px 0;
         border-style: solid;
-        border-color: #98a4ae;
+        border-color: ${ theme.colors.primary };
       }
 
       a[href]:hover {
@@ -332,7 +339,7 @@ export const getTheme = (theme = base, override = {}) => {
       header: `
         font-size: 1em;
         font-weight: bold;
-        color: ${ theme.colors.gray['700'] };
+        color: #000000;
       `,
       link: `
         font-size: 0.9em;
@@ -346,13 +353,19 @@ export const getTheme = (theme = base, override = {}) => {
     },
     footer: {
       container: `
-        background-color: ${ theme.colors.black };
+        background-color: #000000;
         color: ${ theme.colors.white };
         border-width: 1px 0 0 0;
         border-style: solid;
-        border-color: ${ theme.colors.black };
+        border-color: #000000;
       `,
       header: `
+        font-family: ${ headerFontFamily };
+        color: ${ theme.colors.primary };
+      `,
+      copyright: `
+        font-family: ${ bodyFontFamily };
+        color: ${ theme.colors.white };
       `,
       link: `
         font-size: 0.9em;
