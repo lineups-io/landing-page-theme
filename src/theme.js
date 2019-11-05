@@ -124,7 +124,7 @@ export const getTheme = (theme = base, override = {}) => {
     },
     main: {
       container: `
-        background-color: ${ theme.colors.white };
+        background-color: ${ theme.colors.gray['200'] };
       `,
       title: `
         margin: 0;
