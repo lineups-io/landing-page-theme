@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 45 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>NRED-Logo-Reverse (1)</title>
+<svg width="452px" height="508px" viewBox="0 0 452 508" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>nolan-fav</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <polygon id="path-1" points="0.06 0.433 38.286 0.433 38.286 30.173 0.06 30.173"></polygon>
+        <polygon id="path-1" points="0.6144 4.43392 392.04864 4.43392 392.04864 308.97152 0.6144 308.97152"></polygon>
+        <polygon id="path-3" points="0.6144 4.43392 392.04864 4.43392 392.04864 308.97152 0.6144 308.97152"></polygon>
     </defs>
-    <g id="NRED-Logo-Reverse-(1)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polyline id="Fill-1" fill="#E4E4E3" points="6 29 12.6100548 50 18 47.3914395 13.0876571 30.1628761 6 29"></polyline>
-        <polyline id="Fill-2" fill="#FFFFFE" points="13 30 18.0336124 47 44 34.8988177 13 30"></polyline>
-        <g id="Group-6">
-            <mask id="mask-2" fill="white">
-                <use xlink:href="#path-1"></use>
-            </mask>
-            <g id="Clip-4"></g>
-            <polyline id="Fill-3" fill="#D8232A" mask="url(#mask-2)" points="33.852 7.482 8.571 24.336 38.286 30.173 33.852 7.482"></polyline>
-            <polyline id="Fill-5" fill="#972528" mask="url(#mask-2)" points="32.475 0.433 0 22.652 8.571 24.336 33.852 7.482 32.475 0.433"></polyline>
+    <g id="Favicons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nolan-fav" transform="translate(0.000000, -4.000000)">
+            <polyline id="Fill-1" fill="#171716" fill-rule="nonzero" points="56.00256 294.53312 126.01344 512 183.10144 484.98688 131.072 306.57536 56.00256 294.53312"></polyline>
+            <polyline id="Fill-2" fill="#5A5A5A" fill-rule="nonzero" points="131.072 306.56512 183.11168 484.98688 451.56352 357.98016 131.072 306.56512"></polyline>
+            <g id="Group-6">
+                <g id="Fill-3-Clipped">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <polyline id="Fill-3" fill="#D8232A" fill-rule="nonzero" mask="url(#mask-2)" points="346.64448 76.61568 87.76704 249.20064 392.04864 308.97152 346.64448 76.61568"></polyline>
+                </g>
+                <g id="Fill-5-Clipped">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <polyline id="Fill-5" fill="#972528" fill-rule="nonzero" mask="url(#mask-4)" points="332.544 4.43392 0 231.95648 87.76704 249.20064 346.64448 76.61568 332.544 4.43392"></polyline>
+                </g>
+            </g>
         </g>
     </g>
 </svg>
