@@ -347,6 +347,8 @@ export const getTheme = (theme = base, override = {}) => {
       header: `
         font-family: ${ headerFontFamily };
       `,
+      copyright: `
+      `,
       link: `
         color: ${ theme.colors.white };
         font-size: 0.9em;
