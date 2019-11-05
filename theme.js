@@ -71,7 +71,7 @@ var getTheme = function getTheme(theme, override) {
       state: "\n        font-size: 1.2em;\n        font-weight: bold;\n        color: " + theme.colors.gray['700'] + ";\n      "
     },
     main: {
-      container: "\n        background-color: " + theme.colors.white + ";\n      ",
+      container: "\n        background-color: " + theme.colors.gray['200'] + ";\n      ",
       title: "\n        margin: 0;\n        font-size: 2.5rem;\n        font-weight: 500;\n      ",
       description: "\n        font-weight: 400;\n        font-size: 1.1em;\n        color: " + theme.colors.gray['700'] + ";\n      ",
       disclaimer: "\n        font-size: 0.9em;\n        color: " + theme.colors.gray['700'] + ";\n      "
