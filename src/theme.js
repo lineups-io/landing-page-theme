@@ -197,6 +197,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       button: `
         font-size: 0.9em;
+        border-color: transparent;
       `,
     },
     link: `
