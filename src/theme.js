@@ -242,8 +242,8 @@ export const getTheme = (theme = base, override = {}) => {
       default: `
         border-width: 1px;
         border-style: solid;
-        border-color: ${ theme.colors.gray['200'] };
-        background-color: ${ theme.colors.gray['200'] };
+        border-color: ${ theme.colors.gray['400'] };
+        background-color: ${ theme.colors.gray['300'] };
         color: ${ theme.colors.gray['700'] };
 
         &::after {
