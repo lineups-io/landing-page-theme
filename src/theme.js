@@ -354,6 +354,8 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       header: `
       `,
+      copyright: `
+      `,
       link: `
         font-size: 0.9em;
         color: ${ theme.colors.white };
