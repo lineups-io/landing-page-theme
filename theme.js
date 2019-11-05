@@ -113,6 +113,7 @@ var getTheme = function getTheme(theme, override) {
     footer: {
       container: "\n        background-color: " + theme.colors.black + ";\n        color: " + theme.colors.white + ";\n        border-width: 1px 0 0 0;\n        border-style: solid;\n        border-color: " + theme.colors.black + ";\n      ",
       header: "\n      ",
+      copyright: "\n      ",
       link: "\n        font-size: 0.9em;\n        color: " + theme.colors.white + ";\n\n        svg * {\n          fill: " + theme.colors.white + ";\n        }\n\n        svg:hover * {\n          fill: " + theme.colors.white + ";\n        }\n\n        & {\n          cursor: pointer;\n        }\n\n        &[href]:hover {\n          text-decoration: underline;\n          color: " + theme.colors.white + ";\n        }\n      "
     },
     label: "\n      color: " + theme.colors.gray['700'] + ";\n      font-size: .9em;\n    ",
