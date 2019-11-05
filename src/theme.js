@@ -358,6 +358,8 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       header: `
       `,
+      copyright: `
+      `,
       link: `
         color: ${ theme.colors.black };
 
