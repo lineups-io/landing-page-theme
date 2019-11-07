@@ -1,1 +1,4 @@
+# Optional: Redirect default Netlify subdomain to primary domain
+https://trinity.netlify.com/* https://rentals.trinity-pm.com/:splat 301!
+
 / /locations
