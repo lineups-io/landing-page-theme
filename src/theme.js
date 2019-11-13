@@ -259,9 +259,9 @@ export const getTheme = (theme = base, override = {}) => {
         background-color: ${ theme.colors.white };
       `,
       disabled: `
-        color: ${ theme.colors.gray['300'] };
-        background-color: ${ theme.colors.gray['200'] };
-        border-color: ${ theme.colors.gray['200'] };
+        color: ${ theme.colors.gray['400'] };
+        background-color: ${ theme.colors.gray['300'] };
+        border-color: ${ theme.colors.gray['400'] };
       `,
     },
     dropdown: {
@@ -402,7 +402,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       handle: `
         background: ${ theme.colors.white };
-        border-color: ${ theme.colors.gray['200'] };
+        border-color: ${ theme.colors.gray['400'] };
       `,
       progressBar: `
         background-color: ${ theme.colors.primary };
