@@ -307,6 +307,7 @@ export const getTheme = (theme = base, override = {}) => {
     well: `
       background-color: ${ theme.colors.white };
       color: ${ theme.colors.black };
+      font-weight: 400;
 
       h3 {
         font-size: 1.5rem;
