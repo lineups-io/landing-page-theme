@@ -97,7 +97,7 @@ var getTheme = function getTheme(theme, override) {
       outline: "\n        background-color: " + theme.colors.white + ";\n      ",
       default: "\n        border-width: 1px;\n        border-style: solid;\n        border-color: " + theme.colors.gray['400'] + ";\n        background-color: " + theme.colors.gray['300'] + ";\n        color: " + theme.colors.gray['700'] + ";\n\n        &::after {\n          border-color: " + theme.colors.gray['700'] + ";\n        }\n      ",
       link: "\n        border-color: " + theme.colors.white + ";\n        background-color: " + theme.colors.white + ";\n      ",
-      disabled: "\n        color: " + theme.colors.gray['300'] + ";\n        background-color: " + theme.colors.gray['200'] + ";\n        border-color: " + theme.colors.gray['200'] + ";\n      "
+      disabled: "\n        color: " + theme.colors.gray['400'] + ";\n        background-color: " + theme.colors.gray['300'] + ";\n        border-color: " + theme.colors.gray['400'] + ";\n      "
     },
     dropdown: {
       toggle: "\n        &::after {\n          content: \" \";\n          border-left: 5px solid transparent;\n          border-right: 5px solid transparent;\n          border-top-width: 5px;\n          border-top-style: solid;\n          border-top-color: " + theme.colors.gray['700'] + ";\n          margin-left: 10px;\n          margin-right: -5px;\n        }\n      ",
@@ -120,7 +120,7 @@ var getTheme = function getTheme(theme, override) {
     slider: {
       text: "\n        color: " + theme.colors.gray['700'] + ";\n      ",
       background: "\n        background-color: " + theme.colors.gray['200'] + ";\n      ",
-      handle: "\n        background: " + theme.colors.white + ";\n        border-color: " + theme.colors.gray['200'] + ";\n      ",
+      handle: "\n        background: " + theme.colors.white + ";\n        border-color: " + theme.colors.gray['400'] + ";\n      ",
       progressBar: "\n        background-color: " + theme.colors.primary + ";\n      "
     },
     map: {
