@@ -388,7 +388,7 @@ export const getTheme = (theme = base, override = {}) => {
         color: ${ theme.colors.gray['700'] };
       `,
       background: `
-        background-color: ${ theme.colors.gray['200'] };
+        background-color: ${ theme.colors.gray['400'] };
       `,
       handle: `
         background: ${ theme.colors.white };

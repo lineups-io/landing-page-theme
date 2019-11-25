@@ -119,7 +119,7 @@ var getTheme = function getTheme(theme, override) {
     label: "\n      color: " + theme.colors.gray['700'] + ";\n      font-size: .9em;\n    ",
     slider: {
       text: "\n        color: " + theme.colors.gray['700'] + ";\n      ",
-      background: "\n        background-color: " + theme.colors.gray['200'] + ";\n      ",
+      background: "\n        background-color: " + theme.colors.gray['400'] + ";\n      ",
       handle: "\n        background: " + theme.colors.white + ";\n        border-color: " + theme.colors.gray['400'] + ";\n      ",
       progressBar: "\n        background-color: " + theme.colors.primary + ";\n      "
     },
