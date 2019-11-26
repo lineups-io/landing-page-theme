@@ -192,6 +192,7 @@ export const getTheme = (theme = base, override = {}) => {
       amount: `
         font-size: 1em;
         color: #000000;
+        text-decoration: underline;
       `,
       adLabel: `
         color: #000000;
