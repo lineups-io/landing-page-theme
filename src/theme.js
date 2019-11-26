@@ -184,6 +184,7 @@ export const getTheme = (theme = base, override = {}) => {
         font-size: 1em;
         font-weight: 500;
         color: ${ theme.colors.black };
+        text-decoration: underline;
       `,
       adLabel: `
         color: ${ theme.colors.black };
