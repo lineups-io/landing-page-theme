@@ -160,7 +160,6 @@ export const getTheme = (theme = base, override = {}) => {
         z-index: 1000;
 
         @media (min-width: 768px) {
-          margin: 0;
           border-width: 1px;
         }
       `,
