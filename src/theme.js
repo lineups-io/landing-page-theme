@@ -94,13 +94,17 @@ export const getTheme = (theme = base, override = {}) => {
         font-weight: 300;
       `,
       market: `
-        text-transform: uppercase;
         font-size: 1.1em;
         font-weight: 300;
 
         &[href]:hover {
           text-decoration: none;
         }
+      `,
+      state: `
+        font-size: 1.2em;
+        font-weight: bold;
+        color: ${ theme.colors.gray['700'] };
 
         &:after {
           position: absolute;
@@ -109,13 +113,7 @@ export const getTheme = (theme = base, override = {}) => {
           height: 2px;
           width: 20px;
           background-color: ${ theme.colors.primary };
-          margin-top: 5px;
         }
-      `,
-      state: `
-        font-size: 1.2em;
-        font-weight: bold;
-        color: ${ theme.colors.gray['700'] };
       `,
     },
     main: {
