@@ -50,7 +50,7 @@ var getTheme = function getTheme(theme, override) {
   return (0, _extends2.default)({
     nav: {
       container: "\n        background-color: #000000;\n        color: " + theme.colors.white + ";\n        border-bottom-width: 1px;\n        border-style: solid;\n        border-color: #000000;\n      ",
-      logo: "\n        height: 100%;\n        min-width: 138px;\n        padding: " + theme.gutter + "px 0;\n\n        polygon, path {\n        }\n      ",
+      logo: "\n        height: 100%;\n        min-width: 138px;\n        padding: " + theme.gutter * 2 / 3 + "px 0;\n\n        polygon, path {\n        }\n      ",
       link: "\n        font-size: 1.2em;\n        letter-spacing: 1px;\n        font-weight: 400;\n        background-color: #000000;\n        color: " + theme.colors.white + ";\n        text-decoration: none;\n\n        &:hover, &[href]:hover {\n          color: " + theme.colors.primary + ";\n          text-decoration: none;\n        }\n\n        &[aria-haspopup]::after {\n          border-top-color: " + theme.colors.white + "\n        }\n      ",
       menu: {
         container: "\n          background-color: #000000;\n          padding-top: 100px;\n        ",

@@ -41,7 +41,7 @@ export const getTheme = (theme = base, override = {}) => {
       logo: `
         height: 100%;
         min-width: 138px;
-        padding: ${ theme.gutter }px 0;
+        padding: ${ theme.gutter * 2 / 3 }px 0;
 
         polygon, path {
         }
