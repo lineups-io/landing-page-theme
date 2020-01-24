@@ -1,4 +1,1 @@
-# Redirect default Netlify subdomain to primary domain
-https://nolanred.netlify.com/* https://live.nolanred.com/:splat 301!
-
 / /locations
