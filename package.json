@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir .",
+    "clean": "rm -rf .cache public",
+    "build": "gatsby build",
+    "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
+    "develop": "yarn clean && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +20,13 @@
     "url": "https://github.com/lineups-io/landing-page-theme/issues"
   },
   "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "babel-preset-gatsby-package": "^0.2.2"
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "gatsby": "^2.17.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-offline": "^2.0.15",
+    "gatsby-theme-landing-page": "*"
   }
 }
