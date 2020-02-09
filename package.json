@@ -34,7 +34,7 @@
     "gatsby-plugin-offline": "^3.0.34",
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v0.0.1",
-    "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v0.0.2",
+    "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v0.0.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
