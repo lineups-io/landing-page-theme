@@ -13,6 +13,18 @@ module.exports = {
   },
   'plugins': [
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: process.env.TITLE,
+        short_name: process.env.TITLE,
+        start_url: '/',
+        background_color: '#FFFFFF',
+        theme_color: '#E51F3B',
+        display: 'minimal-ui',
+        icon: 'src/images/icon.svg', // This path is relative to the root of the site.
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         ids: process.env.GOOGLE_TAG_MANAGER_ID.split(','),
@@ -35,6 +47,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-offline',
     'gatsby-theme-apartment-page',
     'gatsby-theme-landing-page',
   ]
