@@ -47,7 +47,7 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-offline',
+    'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-apartment-page',
     'gatsby-theme-landing-page',
   ]
