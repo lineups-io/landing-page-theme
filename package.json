@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "./preinstall.sh",
+    "preinstall": "bash preinstall.sh",
     "clean": "rm -rf .cache public",
     "build": "gatsby build",
     "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
