@@ -48,6 +48,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-theme-apartment-page',
     'gatsby-theme-landing-page',
   ]
 }
