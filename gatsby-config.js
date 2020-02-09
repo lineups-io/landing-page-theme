@@ -11,7 +11,7 @@ module.exports = {
     title: process.env.TITLE,
     siteUrl: process.env.URL,
   },
-  "plugins": [
+  'plugins': [
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
