@@ -24,6 +24,29 @@ module.exports = {
         icon: 'src/images/icon.svg', // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        ids: process.env.GOOGLE_TAG_MANAGER_ID.split(','),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/noindex/*', '/search'],
+      },
+    },
+    'gatsby-plugin-meta-redirect',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        allPageHeaders: [
+          'Link: <https://www.googletagmanager.com>; rel=preconnect;',
+          'Link: <https://www.google-analytics.com>; rel=preconnect;',
+          'Link: <https://api.mixpanel.com>; rel=preconnect;',
+        ],
+      },
+    },
     'gatsby-plugin-offline',
     'gatsby-theme-landing-page',
   ]

@@ -23,8 +23,13 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.12",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-google-tagmanager": "^2.1.25",
     "gatsby-plugin-manifest": "^2.2.41",
+    "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-netlify": "^2.1.32",
     "gatsby-plugin-offline": "^3.0.34",
+    "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-theme-landing-page": "git+https://4bf005fe38d92b4f1cf2fb4e9f94499858f2a6f9:x-oauth-basic@github.com:lineups-io/gatsby-theme-landing-page.git#v0.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
