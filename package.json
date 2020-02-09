@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "./preinstall.sh",
     "clean": "rm -rf .cache public",
     "build": "gatsby build",
     "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
@@ -30,8 +31,8 @@
     "gatsby-plugin-netlify": "^2.1.32",
     "gatsby-plugin-offline": "^3.0.34",
     "gatsby-plugin-sitemap": "^2.2.27",
-    "gatsby-theme-apartment-page": "git+https://4bf005fe38d92b4f1cf2fb4e9f94499858f2a6f9:x-oauth-basic@github.com:lineups-io/gatsby-theme-apartment-page.git#v0.0.1",
-    "gatsby-theme-landing-page": "git+https://4bf005fe38d92b4f1cf2fb4e9f94499858f2a6f9:x-oauth-basic@github.com:lineups-io/gatsby-theme-landing-page.git#v0.0.2",
+    "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v0.0.1",
+    "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v0.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
