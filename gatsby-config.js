@@ -7,6 +7,10 @@ require('dotenv').config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: process.env.TITLE,
+    siteUrl: process.env.URL,
+  },
   "plugins": [
     {
       resolve: 'gatsby-plugin-manifest',
