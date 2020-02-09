@@ -23,6 +23,7 @@
   "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "eslint-loader": "^3.0.3",
     "gatsby": "^2.19.12",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-google-tagmanager": "https://github.com/lineups-io/gatsby-plugin-google-tagmanager.git#v2.1.25a",
