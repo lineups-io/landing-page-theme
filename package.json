@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
   "dependencies": {
-    "babel-preset-gatsby-package": "^0.2.16",
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.12",
     "gatsby-plugin-google-tagmanager": "https://github.com/lineups-io/gatsby-plugin-google-tagmanager.git#v2.1.25a",
