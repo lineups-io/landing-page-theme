@@ -48,6 +48,9 @@ module.exports = {
       },
     },
     'gatsby-plugin-remove-serviceworker',
+    'gatsby-plugin-react-svg',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
     'gatsby-theme-apartment-page',
     'gatsby-theme-landing-page',
   ]
