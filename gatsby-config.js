@@ -47,6 +47,30 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Lineups',
+        fieldName: 'lineups',
+        url: process.env.GRAPHQL_API_URI,
+        headers: {
+          Authorization: `Bearer ${ process.env.GRAPHQL_API_KEY }`,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-landing-pages',
+      options: {
+        account: process.env.ACCOUNT,
+        url: process.env.GRAPHQL_API_URI,
+        headers: {
+          Authorization: `Bearer ${ process.env.GRAPHQL_API_KEY }`,
+        },
+      },
+    },
+    'gatsby-transformer-remark',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-styled-components',
