@@ -6,7 +6,7 @@ export const base = {
   gutter: 15,
   colors: {
     primary: '#E51F3B',
-    secondary: '#E51F3B',
+    secondary: '#0D5EA9',
     gray: {
       50: '#FAFAFA',
       100: '#F5F5F5',
@@ -354,15 +354,15 @@ export const getTheme = (theme = base, override = {}) => {
     },
     footer: {
       container: `
-        background-color: #000000;
+        background-color: ${ theme.colors.secondary };
         color: ${ theme.colors.white };
         border-width: 1px 0 0 0;
         border-style: solid;
-        border-color: #000000;
+        border-color: ${ theme.colors.secondary };
       `,
       header: `
         font-family: ${ headerFontFamily };
-        color: ${ theme.colors.primary };
+        color: ${ theme.colors.white };
       `,
       copyright: `
         font-family: ${ bodyFontFamily };
