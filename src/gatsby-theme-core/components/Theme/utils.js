@@ -364,6 +364,7 @@ export const getTheme = (theme = base, override = {}) => {
       header: `
         font-family: ${ headerFontFamily };
         color: ${ theme.colors.white };
+        font-weight: 600;
         padding-bottom: ${ theme.gutter * 1 / 3 }px;
       `,
       copyright: `
