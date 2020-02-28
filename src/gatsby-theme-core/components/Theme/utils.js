@@ -79,7 +79,7 @@ export const getTheme = (theme = base, override = {}) => {
         },
         link: `
           background-color: #000000;
-          padding: ${ theme.gutter * 2 / 3 }px 0;
+          padding: ${ theme.gutter }px 0;
           border-bottom-width: 3px;
           font-size: 1.5em;
           font-weight: 300;
