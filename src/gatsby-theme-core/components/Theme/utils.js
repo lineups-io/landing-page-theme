@@ -54,6 +54,8 @@ export const getTheme = (theme = base, override = {}) => {
         background-color: #000000;
         color: ${ theme.colors.white };
         text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2.75px;
 
         &:hover, &[href]:hover {
           color: ${ theme.colors.orange };
