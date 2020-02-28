@@ -7,6 +7,7 @@ export const base = {
   colors: {
     primary: '#E51F3B',
     secondary: '#0D5EA9',
+    orange: '#EFB31E',
     gray: {
       50: '#FAFAFA',
       100: '#F5F5F5',
@@ -55,7 +56,7 @@ export const getTheme = (theme = base, override = {}) => {
         text-decoration: none;
 
         &:hover, &[href]:hover {
-          color: ${ theme.colors.primary };
+          color: ${ theme.colors.orange };
           text-decoration: none;
         }
 
