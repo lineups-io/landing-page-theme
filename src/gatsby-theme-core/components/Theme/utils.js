@@ -56,6 +56,7 @@ export const getTheme = (theme = base, override = {}) => {
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 2.75px;
+        position: relative;
 
         &:hover, &[href]:hover {
           color: ${ theme.colors.orange };
@@ -64,6 +65,26 @@ export const getTheme = (theme = base, override = {}) => {
 
         &[aria-haspopup]::after {
           border-top-color: ${ theme.colors.white }
+        }
+
+        &::before {
+            content: "";
+            width: 0px;
+            height: 3px;
+            background-color: ${ theme.colors.orange };
+            position: absolute;
+            z-index: 2;
+            left: 15px;
+            bottom: -2px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            visibility: visible;
+            width: calc(100% - 30px);
         }
       `,
       menu: {
@@ -83,6 +104,12 @@ export const getTheme = (theme = base, override = {}) => {
           border-bottom-width: 3px;
           font-size: 1.5em;
           font-weight: 300;
+
+          &:hover::before {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+          }
         `,
       },
     },
