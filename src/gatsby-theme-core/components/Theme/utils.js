@@ -286,8 +286,8 @@ export const getTheme = (theme = base, override = {}) => {
         }
       `,
       link: `
-        border-color: ${ theme.colors.white };
-        background-color: ${ theme.colors.white };
+        border-color: transparent;
+        background-color: transparent;
       `,
       disabled: `
         color: ${ theme.colors.gray['400'] };
