@@ -1,6 +1,6 @@
 export default {
-  headerFontFamily: ['Source Sans Pro', 'sans-serif'],
-  bodyFontFamily: ['Oxygen', 'sans-serif'],
+  headerFontFamily: ['Inter', 'sans-serif'],
+  bodyFontFamily: ['Inter', 'sans-serif'],
   bodyWeight: 400,
   overrideThemeStyles: (vr, options, styles) => {
     return {
