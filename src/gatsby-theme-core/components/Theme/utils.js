@@ -48,7 +48,7 @@ export const getTheme = (theme = base, override = {}) => {
         }
       `,
       link: `
-        font-size: 1.2em;
+        font-size: 0.8em;
         letter-spacing: 1px;
         font-weight: 400;
         background-color: #000000;
@@ -79,7 +79,7 @@ export const getTheme = (theme = base, override = {}) => {
           background-color: #000000;
           padding: ${ theme.gutter * 2 / 3 }px 0;
           border-bottom-width: 3px;
-          font-size: 2.5em;
+          font-size: 1.5em;
           font-weight: 300;
         `,
       },
