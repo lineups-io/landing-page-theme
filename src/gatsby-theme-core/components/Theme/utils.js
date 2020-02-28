@@ -69,7 +69,7 @@ export const getTheme = (theme = base, override = {}) => {
       menu: {
         container: `
           background-color: #000000;
-          padding-top: 100px;
+          padding-top: 30px;
         `,
         hamburger: {
           height: 3,
