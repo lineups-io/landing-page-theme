@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Lucas Blancas <lablancas@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lineups-io/landing-page-site.git"
+  },
   "scripts": {
     "preinstall": "bash preinstall.sh",
     "clean": "rm -rf .cache public",
@@ -12,10 +16,6 @@
     "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
     "develop": "yarn clean && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lineups-io/landing-page-theme.git"
   },
   "bugs": {
     "url": "https://github.com/lineups-io/landing-page-theme/issues"
