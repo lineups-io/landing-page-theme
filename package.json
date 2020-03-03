@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/lineups-io/landing-page-site.git"
   },
+  "bugs": {
+    "url": "https://github.com/lineups-io/landing-page-site/issues"
+  },
   "homepage": "https://github.com/lineups-io/landing-page-site#readme",
   "scripts": {
     "preinstall": "bash preinstall.sh",
@@ -17,9 +20,6 @@
     "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
     "develop": "yarn clean && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/lineups-io/landing-page-theme/issues"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
