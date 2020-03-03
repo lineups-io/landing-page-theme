@@ -9,6 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/lineups-io/landing-page-site.git"
   },
+  "homepage": "https://github.com/lineups-io/landing-page-site#readme",
   "scripts": {
     "preinstall": "bash preinstall.sh",
     "clean": "rm -rf .cache public",
@@ -20,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/lineups-io/landing-page-theme/issues"
   },
-  "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
