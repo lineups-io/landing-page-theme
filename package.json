@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "author": "Lucas Blancas <lablancas@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "preinstall": "bash preinstall.sh",
     "clean": "rm -rf .cache public",
@@ -15,8 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/lineups-io/landing-page-theme.git"
   },
-  "author": "Lucas Blancas <lablancas@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lineups-io/landing-page-theme/issues"
   },
