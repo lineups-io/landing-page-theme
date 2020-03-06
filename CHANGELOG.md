@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/lineups-io/landing-page-site/compare/v1.0.4...v1.0.5) (2020-03-06)
+
+
+### Bug Fixes
+
+* 🐛 add core-js polyfill in develop stage (IE11 fix) ([4919fe3](https://github.com/lineups-io/landing-page-site/commit/4919fe33bd7e0f27834c928b44ce6d42c07ccea0))
+* 🐛 upgrade gatsby-theme-apartment-page ([c5482b2](https://github.com/lineups-io/landing-page-site/commit/c5482b2d749e740fa620196b53dbc9e0ec61a88d))
+* 🐛 upgrade gatsby-theme-core ([3fb833d](https://github.com/lineups-io/landing-page-site/commit/3fb833d558b40304a03cf09c7242ef5c89c0ca61))
+
 ### [1.0.4](https://github.com/lineups-io/landing-page-site/compare/v1.0.3...v1.0.4) (2020-03-04)
 
 
