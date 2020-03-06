@@ -33,11 +33,11 @@ export const getTheme = (theme = base, override = {}) => {
   return {
     nav: {
       container: `
-        background-color: #000000;
+        background-color: ${ theme.colors.secondary };
         color: ${ theme.colors.white };
         border-bottom-width: 1px;
         border-style: solid;
-        border-color: #000000;
+        border-color: ${ theme.colors.secondary };
       `,
       logo: `
         height: 100%;
@@ -51,7 +51,7 @@ export const getTheme = (theme = base, override = {}) => {
         font-size: 0.8em;
         letter-spacing: 1px;
         font-weight: 400;
-        background-color: #000000;
+        background-color: ${ theme.colors.secondary };
         color: ${ theme.colors.white };
         text-decoration: none;
         text-transform: uppercase;
@@ -89,7 +89,7 @@ export const getTheme = (theme = base, override = {}) => {
       `,
       menu: {
         container: `
-          background-color: #000000;
+          background-color: ${ theme.colors.secondary };
           padding-top: 30px;
         `,
         hamburger: {
@@ -99,7 +99,7 @@ export const getTheme = (theme = base, override = {}) => {
           color: theme.colors.white,
         },
         link: `
-          background-color: #000000;
+          background-color: ${ theme.colors.secondary };
           padding: ${ theme.gutter }px 0;
           border-bottom-width: 3px;
           font-size: 1.5em;
