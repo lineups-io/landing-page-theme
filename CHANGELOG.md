@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.12](https://github.com/lineups-io/landing-page-site/compare/v1.0.11...v1.0.12) (2020-03-10)
+
+
+### Bug Fixes
+
+* 🐛 upgrade gatsby-theme-apartment-page ([b45db63](https://github.com/lineups-io/landing-page-site/commit/b45db639fc3d7a88b4331ccdd2628625c7522ee2))
+* 🐛 upgrade gatsby-theme-core ([1929b45](https://github.com/lineups-io/landing-page-site/commit/1929b45c92c5c75d45be11ae6d74ef6083d08f9d))
+
 ### [1.0.11](https://github.com/lineups-io/landing-page-site/compare/v1.0.10...v1.0.11) (2020-03-10)
 
 
