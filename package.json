@@ -37,6 +37,7 @@
     "gatsby-theme-core": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-core.git#v1.1.5",
     "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v2.0.3",
     "gatsby-plugin-styled-components": "^3.1.19",
+    "gatsby-source-filesystem": "^2.1.53",
     "gatsby-source-graphql": "^2.1.33",
     "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.0.0",
     "gatsby-transformer-remark": "^2.6.51",
