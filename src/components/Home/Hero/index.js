@@ -20,7 +20,7 @@ export default () => {
     }
   `)
 
-  return <Section id='hero' dark noPadding>
+  return <Section id='hero' noPadding>
     <GatsbyImage fluid={data.hero.childImageSharp.fluid} />
     <Container>
       <Hero>

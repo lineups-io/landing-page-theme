@@ -6,27 +6,22 @@ import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
 
 const Section = styled.div`
   position: relative;
-  background-color: ${ props =>
-    props.bg || (props.dark
-      ? props.theme.colors.gray['700']
-      : props.theme.colors.white
-    ) };
-  color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+  background-color: ${ props => props.theme.colors.white };
+  color: ${ props => props.theme.colors.black };
   font-size: .8em;
 
   a, button {
-    border-color:
-      ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
-    color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+    border-color: ${ props => props.theme.colors.black };
+    color: ${ props => props.theme.colors.black };
   }
 
   a:hover, button:hover {
-    color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+    color: ${ props => props.theme.colors.black };
     text-decoration: none;
   }
 
   svg * {
-    fill: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+    fill: ${ props => props.theme.colors.black };
   }
 
   text-align: center;
