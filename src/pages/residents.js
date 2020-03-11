@@ -10,14 +10,14 @@ import ApartmentPicker from '../components/ApartmentPicker'
 
 const cards = [
   {
-    title: 'Renters Insurance',
-    image: 'insurance',
+    title: 'Stay Connected With Rockstar Capital',
+    image: 'rockstarCares',
     body: `
-      Protect yourself and your belongings by enrolling
-      in a renter's insurance policy.
+      Subscribe to our YouTube channel and stay
+      connected with everything we do.
     `,
     link: {
-      href: 'https://www.insureyourstuff.com/quote/quoteStep2.aspx?cid=109',
+      href: 'https://www.youtube.com/channel/UCwlPBGDHoWQcFY__F2grshQ/featured',
       children: 'Learn More',
     },
   },
@@ -74,7 +74,7 @@ export const query = graphql`
         }
       }
     }
-    insurance: file(relativePath: { eq: "residents/insurance.jpg" }) {
+    rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 850 maxHeight: 500) {
           ...GatsbyImageSharpFluid
