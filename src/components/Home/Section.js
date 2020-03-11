@@ -109,6 +109,15 @@ Section.Link = styled(Link)`
   > svg {
     margin-left: 25px;
   }
+
+  &[href]:hover {
+    text-decoration: none;
+    background-color: ${ props => props.theme.colors.secondary };
+    color: ${ props => props.theme.colors.white };
+  }
+  &[href]:hover > svg * {
+    fill: ${ props => props.theme.colors.white };
+  }
 `
 
 export default Section
