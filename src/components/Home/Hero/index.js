@@ -10,9 +10,9 @@ import Icon from 'gatsby-theme-core/src/components/Icon'
 export default () => {
   const data = useStaticQuery(graphql`
     query getHeroData {
-      hero: file(relativePath: { eq: "index/hero.jpg" }) {
+      hero: file(relativePath: { eq: "index/pool.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1600 cropFocus: CENTER) {
+          fluid(maxWidth: 2000 maxHeight: 800 cropFocus: CENTER) {
             ...GatsbyImageSharpFluid
           }
         }
