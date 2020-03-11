@@ -1,0 +1,79 @@
+import styled from 'styled-components'
+
+import Link from 'gatsby-theme-core/src/components/Link'
+
+const Hero = styled.div`
+  background-color: rgba(0, 0, 0, .6);
+  padding: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: left;
+
+  @media (min-width: 576px) {
+    position: absolute;
+    bottom: 30px;
+    z-index: 90;
+    width: 608px;
+    padding: 30px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+`
+
+Hero.Header = styled.h1`
+  margin-top: 0px;
+  padding-top: 17px;
+  padding-bottom: 9px;
+  color: ${ props => props.theme.colors.white };
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+
+
+  @media (min-width: 576px) {
+    &::before {
+      width: 24px;
+      height: 2px;
+      margin-right: 15px;
+      margin-bottom: 6px;
+      content: ' ';
+      display: inline-block;
+      background-color: ${ props => props.theme.colors.white };
+    }
+  }
+`
+
+Hero.Subheader = styled.h3`
+  display: inline;
+  font-family: 'Gilda Display', serif;
+  color: #fff !important;
+  font-size: 1.8em;
+  line-height: 44px;
+
+  @media (min-width: 576px) {
+    margin-left: 39px;
+  }
+`
+
+Hero.Link = styled(Link)`
+  margin-top: 33px;
+  font-size: .9em;
+  font-weight: 400;
+  display: block;
+  color: #fff;
+
+  @media (min-width: 576px) {
+    margin-left: 39px;
+  }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  > svg {
+    margin-left: 6px;
+  }
+`
+
+export default Hero
