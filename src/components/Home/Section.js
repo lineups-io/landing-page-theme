@@ -29,11 +29,6 @@ const Section = styled.div`
     fill: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
   }
 
-  h3 {
-    color:
-    ${ props => lighten(props.dark ? 0.2 : 0, props.theme.colors.primary) };
-  }
-
   text-align: center;
   padding-top: ${ props => props.noPadding ? 0 : 15 }px;
   padding-bottom: ${ props => props.noPadding ? 0 : 15 }px;
@@ -78,6 +73,7 @@ Section.Subheader = styled.h3`
   line-height: 1.5em;
   text-transform: uppercase;
   margin-bottom: 25px;
+  color: ${ props => props.theme.colors.primary };
 `
 
 Section.Body = styled(Col)`
