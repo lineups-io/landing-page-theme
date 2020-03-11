@@ -29,11 +29,6 @@ const Section = styled.div`
     fill: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
   }
 
-  h2::after {
-    background-color:
-    ${ props => lighten(props.dark ? 0.2 : 0, props.theme.colors.primary) };
-  }
-
   h3 {
     color:
     ${ props => lighten(props.dark ? 0.2 : 0, props.theme.colors.primary) };
@@ -72,6 +67,7 @@ Section.Header = styled.h2`
     content: ' ';
     display: ${ props => props.noBorder ? 'none' : 'block' };
     margin-top: 15px;
+    background-color: ${ props => props.theme.colors.orange };
   }
 `
 
