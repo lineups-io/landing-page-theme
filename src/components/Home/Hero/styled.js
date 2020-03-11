@@ -24,7 +24,7 @@ Hero.Header = styled.h1`
   margin-top: 0px;
   padding-top: 17px;
   padding-bottom: 9px;
-  color: ${ props => props.theme.colors.white };
+  color: ${ props => props.theme.colors.orange };
   font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
@@ -38,7 +38,7 @@ Hero.Header = styled.h1`
       margin-bottom: 6px;
       content: ' ';
       display: inline-block;
-      background-color: ${ props => props.theme.colors.white };
+      background-color: ${ props => props.theme.colors.orange };
     }
   }
 `
