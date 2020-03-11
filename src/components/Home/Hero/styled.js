@@ -45,7 +45,7 @@ Hero.Header = styled.h1`
 
 Hero.Subheader = styled.h3`
   display: inline;
-  font-family: 'Gilda Display', serif;
+  font-family: ${ props => props.theme.fonts.header };
   color: #fff !important;
   font-size: 1.8em;
   line-height: 44px;
