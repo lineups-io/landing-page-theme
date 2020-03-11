@@ -59,16 +59,42 @@ Hero.Link = styled(Link)`
   margin-top: 33px;
   font-size: .9em;
   font-weight: 400;
-  display: block;
+  display: inline-block;
+  position: relative;
+  padding: 5px 0;
   color: #fff;
 
   @media (min-width: 576px) {
     margin-left: 39px;
   }
 
-  &:hover {
+  &[href] {
     color: #fff;
+  }
+
+  &[href]:hover {
+    color: ${ props => props.theme.colors.orange };
     text-decoration: none;
+  }
+
+  &[href]::before {
+    content: "";
+    width: 0px;
+    height: 3px;
+    background-color: ${ props => props.theme.colors.orange };
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: -2px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
   }
 
   > svg {
