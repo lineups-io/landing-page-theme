@@ -62,8 +62,8 @@ Section.Header = styled.h2`
   font-weight: 400;
 
   &::after {
-    width: 24px;
-    height: 2px;
+    width: 48px;
+    height: 3px;
     content: ' ';
     display: ${ props => props.noBorder ? 'none' : 'block' };
     margin-top: 15px;
