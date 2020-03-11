@@ -61,7 +61,7 @@ Section.Aside = styled(Col)`
 `
 
 Section.Header = styled.h2`
-  font-family: 'Gilda Display', serif;
+  font-family: ${ props => props.theme.fonts.header };
   font-size: 2em;
   line-height: 1.25em;
   font-weight: 400;
@@ -76,7 +76,7 @@ Section.Header = styled.h2`
 `
 
 Section.Subheader = styled.h3`
-  font-family: 'Avenir', sans-serif;
+  font-family: ${ props => props.theme.fonts.header };
   font-weight: 600;
   font-size: 1em;
   line-height: 1.5em;
@@ -93,7 +93,7 @@ Section.Body = styled(Col)`
 `
 
 Section.Text = styled.p`
-  font-family: 'Gilda Display', serif;
+  font-family: ${ props => props.theme.fonts.body };
   font-size: 1.4em;
   line-height: 1.6em;
   font-weight: 200;
