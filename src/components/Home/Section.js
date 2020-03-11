@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { lighten } from 'polished'
 
 import Link from 'gatsby-theme-core/src/components/Link'
 import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
