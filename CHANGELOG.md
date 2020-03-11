@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/lineups-io/landing-page-site/compare/v1.0.14...v1.1.0) (2020-03-11)
+
+
+### Features
+
+* 🎸 add applicants and residents pages ([f9f42c2](https://github.com/lineups-io/landing-page-site/commit/f9f42c20d60f895860d33f2594b73d1a1e4ccbf0))
+* 🎸 add home page ([a52db82](https://github.com/lineups-io/landing-page-site/commit/a52db82fe98d2eda580c3f96330380e99269e55f))
+
 ### [1.0.14](https://github.com/lineups-io/landing-page-site/compare/v1.0.13...v1.0.14) (2020-03-11)
 
 
