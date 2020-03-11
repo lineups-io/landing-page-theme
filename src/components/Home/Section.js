@@ -54,7 +54,7 @@ Section.Header = styled.h2`
   font-family: ${ props => props.theme.fonts.header };
   font-size: 2em;
   line-height: 1.25em;
-  font-weight: 400;
+  font-weight: 600;
 
   &::after {
     width: 48px;
