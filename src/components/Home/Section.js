@@ -56,6 +56,13 @@ Section.Header = styled.h2`
   line-height: 1.25em;
   font-weight: 600;
 
+  span {
+    display: block;
+  }
+  span:first-child {
+    color: ${ props => props.theme.colors.primary };
+  }
+
   &::after {
     width: 48px;
     height: 3px;

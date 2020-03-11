@@ -38,7 +38,10 @@ export default () => {
       <Container>
         <Row>
           <Section.Aside>
-            <Section.Header>The Rockstar<br />Difference</Section.Header>
+            <Section.Header>
+              <span>The Rockstar</span>
+              <span>Difference</span>
+            </Section.Header>
           </Section.Aside>
           <Section.Body>
             <Section.Subheader>Welcome to Rockstar Capital</Section.Subheader>
@@ -68,7 +71,10 @@ export default () => {
       <Container>
         <Row>
           <Section.Aside>
-            <Section.Header>Rockstar<br />Cares</Section.Header>
+            <Section.Header>
+              <span>Rockstar</span>
+              <span>Cares</span>
+            </Section.Header>
           </Section.Aside>
           <Section.Body>
             <Section.Subheader>Building a Great Culture Through Connections #RockstarCares</Section.Subheader>
@@ -100,7 +106,10 @@ export default () => {
       <Container>
         <Row>
           <Section.Aside>
-            <Section.Header>Rockstar<br />Pride</Section.Header>
+            <Section.Header>
+              <span>Rockstar</span>
+              <span>Pride</span>
+            </Section.Header>
           </Section.Aside>
           <Section.Body>
             <Section.Subheader>Award-Winning Property Management #RockstarPride</Section.Subheader>
