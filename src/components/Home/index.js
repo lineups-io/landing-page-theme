@@ -1,4 +1,6 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import GatsbyImage from 'gatsby-image'
 import {
   faChevronRight,
 } from '@fortawesome/pro-light-svg-icons'
@@ -7,11 +9,29 @@ import Hero from './Hero'
 import Links from './Links'
 import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
 import Section from './Section'
-import Image from './Image'
 import Icon from 'gatsby-theme-core/src/components/Icon'
 
-export default () =>
-  <>
+export default () => {
+  const { lobby, kitchen } = useStaticQuery(graphql`
+    query getHomePagePhotos {
+      lobby: file(relativePath: { eq: "index/lobby.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000 maxHeight: 500 cropFocus: CENTER) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      kitchen: file(relativePath: { eq: "index/kitchen.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000 maxHeight: 500 cropFocus: CENTER) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  return <>
     <Hero />
     <Links />
     <Section id='rockstar-difference'>
@@ -43,9 +63,7 @@ export default () =>
         </Row>
       </Container>
     </Section>
-    <Image>
-      <img title='placeholder' alt='placeholder' src='' />
-    </Image>
+    <GatsbyImage fluid={lobby.childImageSharp.fluid} />
     <Section id='rockstar-cares'>
       <Container>
         <Row>
@@ -77,9 +95,7 @@ export default () =>
         </Row>
       </Container>
     </Section>
-    <Image>
-      <img title='placeholder' alt='placeholder' src='' />
-    </Image>
+    <GatsbyImage fluid={kitchen.childImageSharp.fluid} />
     <Section id='rockstar-pride'>
       <Container>
         <Row>
@@ -113,3 +129,4 @@ export default () =>
       </Container>
     </Section>
   </>
+}
