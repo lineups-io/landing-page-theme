@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/lineups-io/landing-page-site/compare/v1.1.5...v1.2.0) (2020-03-12)
+
+
+### Features
+
+* 🎸 add contact us and success pages ([f3b7f3a](https://github.com/lineups-io/landing-page-site/commit/f3b7f3aed898e47396eb6b23a2b858e80d0fc2d3))
+* 🎸 upgrade gatsby-theme-core ([cd62703](https://github.com/lineups-io/landing-page-site/commit/cd6270397c45507d54b1a71be15be518304ff94f))
+* 🎸 upgrade gatsby-theme-landing-page ([2cb7ba2](https://github.com/lineups-io/landing-page-site/commit/2cb7ba2029791d4ae2e19a50bf2a2225123f63e4))
+
+
+### Bug Fixes
+
+* 🐛 use gatsby image IE polyfill ([481bfaa](https://github.com/lineups-io/landing-page-site/commit/481bfaa9d3cbb07f8f9314f59e92610697a648b7))
+
 ### [1.1.5](https://github.com/lineups-io/landing-page-site/compare/v1.1.4...v1.1.5) (2020-03-12)
 
 ### [1.1.4](https://github.com/lineups-io/landing-page-site/compare/v1.1.3...v1.1.4) (2020-03-11)
