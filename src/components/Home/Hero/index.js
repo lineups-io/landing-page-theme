@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
+import GatsbyImage from 'gatsby-image/withIEPolyfill'
 
 import Hero from './styled'
 import Section from '../Section'
