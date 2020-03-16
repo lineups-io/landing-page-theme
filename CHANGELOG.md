@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/lineups-io/landing-page-site/compare/v1.5.1...v1.6.0) (2020-03-16)
+
+
+### Features
+
+* 🎸 add redirects for domain aliases to primary domain ([446f122](https://github.com/lineups-io/landing-page-site/commit/446f122bc13417a242ac1c371feddfe085ea64bf))
+
 ### [1.5.1](https://github.com/lineups-io/landing-page-site/compare/v1.5.0...v1.5.1) (2020-03-16)
 
 
