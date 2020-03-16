@@ -20,7 +20,7 @@ const Page = props => {
 
   return <PageContext.Provider value={{ site }}>
     <ThemeProvider>
-      <Helmet title='Contact Us' />
+      <Helmet title='Contact Form Received' />
       <Layout>
         <Placeholder>
           Thanks, we’ll be in touch soon!

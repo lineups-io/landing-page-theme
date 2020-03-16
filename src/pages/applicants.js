@@ -43,7 +43,7 @@ const Page = props => {
 
   return <PageContext.Provider value={{ site }}>
     <ThemeProvider>
-      <Helmet title='Online Application' />
+      <Helmet title='Rockstar Online Application' />
       <Layout>
         <ApartmentPicker
           h1='Welcome Future Neighbors.'
