@@ -1,2 +1,7 @@
+# Redirect domain aliases to primary domain
+https://oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/ 301!
+https://thecoveingleside.com/* https://rockstar.apartments/ingleside-tx/the-cove/ 301!
+https://steeplechaseaptsliving.com/* https://rockstar.apartments/alvin-tx/steeplechase/ 301!
+
 # Redirect default Netlify subdomain to primary domain
 https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
