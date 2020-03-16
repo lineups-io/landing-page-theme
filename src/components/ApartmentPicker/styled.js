@@ -24,7 +24,8 @@ export const CardContainer = styled(Card)`
   }
 `
 
-export const Header = styled.div`
+export const Header = styled.h1`
+  font-weight: 400;
   color: ${ props => props.theme.colors.darkgrey };
   font-size: 3em;
   padding-top: 40px;
@@ -32,7 +33,8 @@ export const Header = styled.div`
   text-align: center;
 `
 
-export const Description = styled.div`
+export const Description = styled.h2`
+  font-weight: 400;
   color: ${ props => props.theme.colors.darkgrey };
   font-size: .9em;
   text-align: center;
