@@ -17,6 +17,7 @@ const feedbackTypes = [
   'I have a question/comment about an apartment',
   'I have a question/comment for Rockstar',
   'I\'m interested in becoming a vendor',
+  'I\'m a resident with a question',
   'Other',
 ]
 
