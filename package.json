@@ -34,7 +34,7 @@
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-sitemap": "^2.2.27",
-    "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v1.7.0",
+    "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v1.8.0",
     "gatsby-theme-core": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-core.git#v1.3.1",
     "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v2.2.0",
     "gatsby-plugin-styled-components": "^3.1.19",
