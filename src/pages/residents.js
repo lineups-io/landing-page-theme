@@ -17,7 +17,7 @@ const cards = [
       connected with everything we do.
     `,
     link: {
-      href: 'https://www.youtube.com/channel/UCwlPBGDHoWQcFY__F2grshQ/featured',
+      href: 'https://www.youtube.com/playlist?list=PL7EjgErrsszXApWfPF0wALV76cs0kWq8C',
       children: 'Learn More',
     },
   },
