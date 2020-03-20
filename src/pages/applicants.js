@@ -10,6 +10,11 @@ import ApartmentPicker from '../components/ApartmentPicker'
 
 const cards = [
   {
+    title: 'Online Leasing',
+    image: 'portal',
+    body: 'View available apartments and lease online.',
+  },
+  {
     title: 'Connect With Rockstar Capital',
     image: 'rockstarCares',
     body: `
@@ -20,11 +25,6 @@ const cards = [
       href: 'https://www.youtube.com/channel/UCwlPBGDHoWQcFY__F2grshQ/featured',
       children: 'Learn More',
     },
-  },
-  {
-    title: 'Online Leasing',
-    image: 'portal',
-    body: 'View available apartments and lease online.',
   },
   {
     title: 'Feedback',
