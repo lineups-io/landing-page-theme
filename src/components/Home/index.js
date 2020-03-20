@@ -46,8 +46,8 @@ export default () => {
           <Section.Body>
             <Section.Subheader>Welcome to Rockstar Capital</Section.Subheader>
             <Section.Text>
-              Rockstar Capital was founded in 2011 and has grown to over 3,243
-              units across 19 apartment communities in Houston and surrounding
+              Rockstar Capital was founded in 2011 and has grown to over 3,672
+              units across 21 apartment communities in Houston and surrounding
               areas. We have a simple goal in mind: to create a better real
               estate organization based on genuine care for everyone involved.
               We are passionate about enriching the lives of everyone at Rockstar
@@ -114,16 +114,20 @@ export default () => {
           <Section.Body>
             <Section.Subheader>Award-Winning Property Management #RockstarPride</Section.Subheader>
             <Section.Text>
-              At Rockstar Capital Management, we strive to do our best, and
+              <p>
+              At Rockstar Capital, we strive to do our best, and
               next time, do it better. That’s why we are continuously working
               with best-in-class property management professionals who truly
               care about the quality of each community and the wellbeing of
               those who live there. Since opening our doors in 2011, we have
-              earned 15 city, state and national apartment awards as well as
+              earned 17 city, state and national apartment awards as well as
               being named #15 in the Fast Top 100 fastest growing companies
               with the Houston Business Journal. These numerous industry
-              awards reflect our high level of expertise and service. We’re
-              proud that our genuine care and expert knowledge shines through
+              awards reflect our high level of expertise and service.
+              </p>
+
+              <p>
+              We’re proud that our genuine care and expert knowledge shines through
               to all aspects of our properties. Those who work at Rockstar
               Capital, our very own Rockstars, are always giving back. We do
               this through our area outreach, by helping establish communities
@@ -132,6 +136,7 @@ export default () => {
               foundation of our shared history, and through every resident
               interaction, no matter how small. This is how we show our
               #RockstarPride.
+              </p>
             </Section.Text>
           </Section.Body>
         </Row>
