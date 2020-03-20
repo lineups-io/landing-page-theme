@@ -15,7 +15,7 @@ const Page = props => {
 
   return <PageContext.Provider value={{ site }}>
     <ThemeProvider>
-      <Helmet title='Texas Apartment for Rent' />
+      <Helmet title='Texas Apartments for Rent' />
       <Layout>
         <Nav />
         <Main>
