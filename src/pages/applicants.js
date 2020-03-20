@@ -10,7 +10,7 @@ import ApartmentPicker from '../components/ApartmentPicker'
 
 const cards = [
   {
-    title: 'Stay Connected With Rockstar Capital',
+    title: 'Connect With Rockstar Capital',
     image: 'rockstarCares',
     body: `
       Subscribe to our YouTube channel and stay
