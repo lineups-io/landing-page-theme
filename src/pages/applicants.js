@@ -12,14 +12,16 @@ const cards = [
   {
     title: 'Online Leasing',
     image: 'portal',
-    body: 'View available apartments and lease online.',
+    body: 'View available apartments and lease online. Use the form above to start your application now!',
   },
   {
-    title: 'Connect With Rockstar Capital',
+    title: 'Stay Connected With Rockstar Capital',
     image: 'rockstarCares',
     body: `
-      Subscribe to our YouTube channel and stay
-      connected with everything we do.
+      Follow us on your favorite social media
+      platform for daily content where you can
+      join Rockstar Capital’s journey to the top!
+      For an even closer look, check out our Youtube channel!
     `,
     link: {
       href: 'https://www.youtube.com/channel/UCwlPBGDHoWQcFY__F2grshQ/featured',
@@ -29,7 +31,7 @@ const cards = [
   {
     title: 'Feedback',
     image: 'feedback',
-    body: 'Question, comment ... we want to know.',
+    body:  'Any questions, comments, or concerns? We want to hear it! The Rockstar Team is standing by 24/7 to help assist you!',
     link: {
       href: 'contact-us',
       children: 'Tell Us Here',

@@ -15,24 +15,27 @@ const cards = [
     body: `
       Schedule rent payments, submit maintenance requests,
       renew your lease, and more.
+      Use the form above to log into your resident portal!
     `,
   },
   {
     title: 'Stay Connected With Rockstar Capital',
     image: 'rockstarCares',
     body: `
-      Subscribe to our YouTube channel and stay
-      connected with everything we do.
+      Follow us on your favorite social media
+      platform for daily content where you can
+      join Rockstar Capital’s journey to the top!
+      For an even closer look, check out our Youtube channel!
     `,
     link: {
-      href: 'https://www.youtube.com/playlist?list=PL7EjgErrsszXApWfPF0wALV76cs0kWq8C',
+      href: 'https://www.youtube.com/channel/UCwlPBGDHoWQcFY__F2grshQ/featured',
       children: 'Learn More',
     },
   },
   {
     title: 'Feedback',
     image: 'feedback',
-    body: 'Question, comment ... we want to know.',
+    body:  'Any questions, comments, or concerns? We want to hear it! The Rockstar Team is standing by 24/7 to help assist you!',
     link: {
       href: 'contact-us',
       children: 'Tell Us Here',
