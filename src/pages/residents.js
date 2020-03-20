@@ -10,6 +10,14 @@ import ApartmentPicker from '../components/ApartmentPicker'
 
 const cards = [
   {
+    title: 'Resident Portal',
+    image: 'portal',
+    body: `
+      Schedule rent payments, submit maintenance requests,
+      renew your lease, and more.
+    `,
+  },
+  {
     title: 'Stay Connected With Rockstar Capital',
     image: 'rockstarCares',
     body: `
@@ -20,14 +28,6 @@ const cards = [
       href: 'https://www.youtube.com/playlist?list=PL7EjgErrsszXApWfPF0wALV76cs0kWq8C',
       children: 'Learn More',
     },
-  },
-  {
-    title: 'Resident Portal',
-    image: 'portal',
-    body: `
-      Schedule rent payments, submit maintenance requests,
-      renew your lease, and more.
-    `,
   },
   {
     title: 'Feedback',
