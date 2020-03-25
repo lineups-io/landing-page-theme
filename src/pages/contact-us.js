@@ -9,13 +9,13 @@ import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
 import ContactForm from '../components/ContactForm'
 
 const Page = props => {
-  const { site } = props.data.lineups
+  const { site, apartments } = props.data.lineups
 
   return <PageContext.Provider value={{ site }}>
     <ThemeProvider>
       <Helmet title='Contact Us' />
       <Layout>
-        <ContactForm />
+        <ContactForm apartments={apartments.items} />
       </Layout>
     </ThemeProvider>
   </PageContext.Provider>
@@ -27,6 +27,12 @@ export const query = graphql`
       site: getAccountById(id: $account) {
           ...NavFields
           ...FooterFields
+      }
+      apartments: findApartments(filter: { account: $account } sort: [["name", "1"]]) {
+        count
+        items {
+          name
+        }
       }
     }
   }
