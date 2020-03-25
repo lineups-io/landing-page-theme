@@ -21,7 +21,7 @@ const feedbackTypes = [
   'Other',
 ]
 
-export default () => {
+export default ({ apartments }) => {
   const { background } = useStaticQuery(graphql`
     query getContactFormData {
       background: file(relativePath: { eq: "contact-us/background.jpg" }) {
@@ -81,6 +81,17 @@ export default () => {
                 <Form.Select id='feedbackType' name='feedbackType' required>
                   {feedbackTypes.map((type, key) =>
                     <option key={key} value={type}>{type}</option>
+                  )}
+                </Form.Select>
+              </Form.InputGroup>
+              <Form.InputGroup>
+                <Form.Label htmlFor='apartment'>
+                  Community
+                </Form.Label>
+                <Form.Select id='apartment' name='apartment' required>
+                  <option value=''>Not applicable</option>
+                  {apartments.map((apartment, key) =>
+                    <option key={key} value={apartment.name}>{apartment.name}</option>
                   )}
                 </Form.Select>
               </Form.InputGroup>
