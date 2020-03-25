@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/lineups-io/landing-page-site/compare/v1.10.0...v1.11.0) (2020-03-25)
+
+
+### Features
+
+* 🎸 add community dropdown to contact form ([b041a8f](https://github.com/lineups-io/landing-page-site/commit/b041a8f8b1c3f9391326d46a02190f9bcb133417))
+* 🎸 upgrade gatsby-theme-apartment-page ([91d7e13](https://github.com/lineups-io/landing-page-site/commit/91d7e13d590ce5c0471d548d7de04cdaeb102df9))
+
+
+### Bug Fixes
+
+* 🐛 upgrade gatsby-theme-landing-page ([987e0ee](https://github.com/lineups-io/landing-page-site/commit/987e0ee2647b3602166e1909d9673be137fc84ae))
+
 ## [1.10.0](https://github.com/lineups-io/landing-page-site/compare/v1.9.2...v1.10.0) (2020-03-20)
 
 
