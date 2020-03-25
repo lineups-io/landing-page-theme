@@ -52,7 +52,6 @@ module.exports = {
         allPageHeaders: [
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
-          'Link: <https://api.mixpanel.com>; rel=preconnect;',
         ],
       },
     },
