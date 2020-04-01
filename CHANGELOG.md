@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/lineups-io/landing-page-site/compare/v1.11.4...v2.0.0) (2020-04-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨 Using Engagement, Micro-Conversion, and Conversion as event categories
+* 🧨 Using Engagement, Micro-Conversion, and Conversion as event categories.
+* 🧨 Using Engagement, Micro-Conversion, and Conversion as event categories.
+
+* 💡 upgrade gatsby-theme-apartment-page ([a5f0bae](https://github.com/lineups-io/landing-page-site/commit/a5f0bae2cece1d239e94bd3e89014f92b8421eef))
+* 💡 upgrade gatsby-theme-core ([1f567c1](https://github.com/lineups-io/landing-page-site/commit/1f567c1c5c2bb53913ecd2e3568eabff0013b1ad))
+* 💡 upgrade gatsby-theme-landing-page ([d03c960](https://github.com/lineups-io/landing-page-site/commit/d03c9602bc082cadeed649d1384305f276917ddd))
+
 ### [1.11.4](https://github.com/lineups-io/landing-page-site/compare/v1.11.3...v1.11.4) (2020-03-31)
 
 ### [1.11.3](https://github.com/lineups-io/landing-page-site/compare/v1.11.2...v1.11.3) (2020-03-30)
