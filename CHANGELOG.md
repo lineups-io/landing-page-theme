@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/lineups-io/landing-page-site/compare/v2.1.0...v2.1.1) (2020-04-02)
+
+
+### Bug Fixes
+
+* 🐛 revert inadvertent change to theme versions ([1d3fa8e](https://github.com/lineups-io/landing-page-site/commit/1d3fa8e735a58d8c706c7788e7e809ebdf7d71d8))
+
 ## [2.1.0](https://github.com/lineups-io/landing-page-site/compare/v2.0.0...v2.1.0) (2020-04-02)
 
 
