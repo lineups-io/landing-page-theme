@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/lineups-io/landing-page-site/compare/v2.2.0...v2.3.0) (2020-04-07)
+
+
+### Features
+
+* 🎸 add redirected to query string for 301 redirects ([cf2f26c](https://github.com/lineups-io/landing-page-site/commit/cf2f26cdd39bcc7b69b679dd3ea1cf39fc08cb8c))
+* 🎸 upgrade gatsby-theme-apartment-page ([74444f6](https://github.com/lineups-io/landing-page-site/commit/74444f69ecf3f691d0ff15c1c44cfeb15e26b62a))
+
 ## [2.2.0](https://github.com/lineups-io/landing-page-site/compare/v2.1.2...v2.2.0) (2020-04-06)
 
 
