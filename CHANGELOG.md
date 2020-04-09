@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/lineups-io/landing-page-site/compare/v2.3.1...v2.5.0) (2020-04-09)
+
+
+### Features
+
+* 🎸 add footer logo ([5cafb85](https://github.com/lineups-io/landing-page-site/commit/5cafb85b83d85749f534fb4e36e7dbd46b6c525a))
+* 🎸 extend container styles from theme object ([bc80258](https://github.com/lineups-io/landing-page-site/commit/bc80258f1afe42bf82b08e0b898592bc8df30aa5))
+* 🎸 remove applicants and residents page ([67445c5](https://github.com/lineups-io/landing-page-site/commit/67445c567fdcbcbd02e08c882a035fb44319c17c))
+* 🎸 remove contact page ([d60f92a](https://github.com/lineups-io/landing-page-site/commit/d60f92ab03b9d7afcaf445d9170bde8582fb8c49))
+* 🎸 remove home page ([411cd6b](https://github.com/lineups-io/landing-page-site/commit/411cd6b8f4870040ce89d7c6e3a3fc4526400617))
+
+
+### Bug Fixes
+
+* 🐛 update theme color for site manifest ([4cbc9f9](https://github.com/lineups-io/landing-page-site/commit/4cbc9f964dc8117fc58d41f25bab19d0c6b96a6c))
+
 ## [2.4.0](https://github.com/lineups-io/landing-page-site/compare/v2.3.1...v2.4.0) (2020-04-09)
 
 
