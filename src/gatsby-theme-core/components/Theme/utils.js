@@ -30,11 +30,17 @@ export const base = {
 
 export const getTheme = (theme = base, override = {}) => {
   return {
+    container: `
+      @media (min-width: 1400px) {
+        max-width: 1340px;
+      }
+    `,
     nav: {
       container: `
         background-color: ${ theme.colors.white };
         color: ${ theme.colors.black };
         border-bottom-width: 1px;
+        border-width: 0 0 1px 0;
         border-style: solid;
         border-color: ${ theme.colors.gray['200'] };
       `,
