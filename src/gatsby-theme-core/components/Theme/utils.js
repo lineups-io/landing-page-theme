@@ -361,6 +361,7 @@ export const getTheme = (theme = base, override = {}) => {
         border-color: ${ theme.colors.black };
       `,
       header: `
+        font-weight: 500;
       `,
       copyright: `
       `,
