@@ -35,7 +35,7 @@ export const getTheme = (theme = base, override = {}) => {
       container: `
         background-color: ${ theme.colors.secondary };
         color: ${ theme.colors.white };
-        border-bottom-width: 1px;
+        border-width: 0 0 1px 0;
         border-style: solid;
         border-color: ${ theme.colors.secondary };
       `,
