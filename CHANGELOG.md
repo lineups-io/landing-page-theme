@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/lineups-io/landing-page-site/compare/v2.3.1...v2.4.0) (2020-04-09)
+
+
+### Features
+
+* 🎸 extend container styles from theme object ([bc80258](https://github.com/lineups-io/landing-page-site/commit/bc80258f1afe42bf82b08e0b898592bc8df30aa5))
+
 ### [2.3.1](https://github.com/lineups-io/landing-page-site/compare/v2.3.0...v2.3.1) (2020-04-09)
 
 ## [2.3.0](https://github.com/lineups-io/landing-page-site/compare/v2.2.0...v2.3.0) (2020-04-07)
