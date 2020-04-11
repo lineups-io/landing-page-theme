@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/lineups-io/landing-page-site/compare/rockstar@2.3.1...rockstar@2.4.0) (2020-04-11)
+
+
+### Features
+
+* 🎸 add footer logo ([6623481](https://github.com/lineups-io/landing-page-site/commit/662348135ebfb4e3f7be2df0f3107daf0a6fb533))
+* 🎸 extend container styles from theme object ([bc80258](https://github.com/lineups-io/landing-page-site/commit/bc80258f1afe42bf82b08e0b898592bc8df30aa5))
+* 🎸 show banner on regional and search pages ([12ab880](https://github.com/lineups-io/landing-page-site/commit/12ab88077f33228430a37e0b804344f11f3c5943))
+
 ### [2.3.1](https://github.com/lineups-io/landing-page-site/compare/v2.3.0...v2.3.1) (2020-04-09)
 
 ## [2.3.0](https://github.com/lineups-io/landing-page-site/compare/v2.2.0...v2.3.0) (2020-04-07)
