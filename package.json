@@ -1,25 +1,50 @@
 {
   "name": "landing-page-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "babel src --out-dir .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lineups-io/landing-page-theme.git"
-  },
+  "version": "2.6.0",
   "author": "Lucas Blancas <lablancas@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lineups-io/landing-page-theme/issues"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lineups-io/landing-page-site.git"
   },
-  "homepage": "https://github.com/lineups-io/landing-page-theme#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "babel-preset-gatsby-package": "^0.2.2"
+  "bugs": {
+    "url": "https://github.com/lineups-io/landing-page-site/issues"
+  },
+  "homepage": "https://github.com/lineups-io/landing-page-site#readme",
+  "scripts": {
+    "preinstall": "bash preinstall.sh",
+    "clean": "rm -rf .cache public",
+    "build": "gatsby build",
+    "build:env": "export $(grep -v '^#' .env.development | xargs -0) && yarn build",
+    "develop": "yarn clean && gatsby develop",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
+    "core-js": "^3.6.4",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.19.17",
+    "gatsby-image": "^2.2.43",
+    "gatsby-plugin-google-tagmanager": "https://github.com/lineups-io/gatsby-plugin-google-tagmanager.git#v2.1.25a",
+    "gatsby-plugin-manifest": "^2.2.41",
+    "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-netlify": "^2.1.32",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-react-svg": "^3.0.0",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-sitemap": "^2.2.27",
+    "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v2.2.1",
+    "gatsby-theme-core": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-core.git#v2.2.0",
+    "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v3.1.0",
+    "gatsby-plugin-styled-components": "^3.1.19",
+    "gatsby-source-filesystem": "^2.1.53",
+    "gatsby-source-graphql": "^2.1.33",
+    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.0.0",
+    "gatsby-transformer-remark": "^2.6.51",
+    "gatsby-transformer-sharp": "^2.3.14",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.1"
   }
 }
