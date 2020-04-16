@@ -33,6 +33,7 @@ export const getTheme = (theme = base, override = {}) => {
     container: `
     `,
     nav: {
+      background: theme.colors.black,
       container: `
         background-color: ${ theme.colors.black };
         color: ${ theme.colors.white };
