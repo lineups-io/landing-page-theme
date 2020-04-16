@@ -364,6 +364,7 @@ export const getTheme = (theme = base, override = {}) => {
       copyright: `
       `,
       link: `
+        padding-top: ${ theme.gutter * 1 / 3 }px;
         color: ${ theme.colors.white };
 
         svg * {
