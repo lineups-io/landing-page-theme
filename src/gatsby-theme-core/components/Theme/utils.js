@@ -31,9 +31,6 @@ export const base = {
 export const getTheme = (theme = base, override = {}) => {
   return {
     container: `
-      @media (min-width: 1400px) {
-        max-width: 1340px;
-      }
     `,
     nav: {
       container: `
