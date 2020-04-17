@@ -33,6 +33,23 @@ export const getTheme = (theme = base, override = {}) => {
   return {
     container: `
     `,
+    amenityIcons: `
+      color: ${ theme.colors.orange };
+    `,
+    bannerButton: `
+      background-color: ${ theme.colors.orange };
+      border-color: ${ theme.colors.orange };
+      color: black;
+    `,
+    readMore: `
+      color: ${ theme.colors.secondary };
+    `,
+    locationButton: `
+      border-color: ${ theme.colors.secondary };
+      svg {
+        color: ${ theme.colors.secondary };
+      }
+    `,
     nav: {
       background: theme.colors.secondary,
       container: `
