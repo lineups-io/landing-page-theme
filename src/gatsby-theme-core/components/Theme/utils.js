@@ -34,6 +34,7 @@ export const getTheme = (theme = base, override = {}) => {
     container: `
     `,
     nav: {
+      background: theme.colors.secondary,
       container: `
         background-color: ${ theme.colors.secondary };
         color: ${ theme.colors.white };
