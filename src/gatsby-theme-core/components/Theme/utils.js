@@ -50,6 +50,10 @@ export const getTheme = (theme = base, override = {}) => {
         color: ${ theme.colors.secondary };
       }
     `,
+    showMorePhotos: `
+      background-color: ${ theme.colors.primary };
+      color: ${ theme.colors.white };
+    `,
     nav: {
       background: theme.colors.secondary,
       container: `
