@@ -3,8 +3,7 @@ import { graphql } from 'gatsby'
 
 import Helmet from 'gatsby-theme-core/src/components/Helmet'
 import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
-import ThemeProvider from 'gatsby-theme-core/src/components/Theme'
-import Layout from 'gatsby-theme-core/src/components/Layout'
+import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 
 import ApartmentPicker from '../components/ApartmentPicker'
 
@@ -48,9 +47,8 @@ const Page = props => {
   const { site, apartments } = lineups
 
   return <PageContext.Provider value={{ site }}>
-    <ThemeProvider>
       <Helmet title='Rockstar Resident Portal - Pay Rent, Submit Service Request & More' />
-      <Layout>
+      <Layout {...site}>
         <ApartmentPicker
           h1='Welcome Neighbors.'
           cards={cards}
@@ -58,7 +56,6 @@ const Page = props => {
           {...images}
         />
       </Layout>
-    </ThemeProvider>
   </PageContext.Provider>
 }
 
