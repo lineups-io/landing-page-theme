@@ -80,7 +80,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
-    'gatsby-plugin-react-svg',
+    'gatsby-theme-atomic-design',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-theme-core',
