@@ -46,6 +46,7 @@ Form.Submit = styled.button`
 `
 
 Form.InputGroup = styled.div`
+  width: 100%;
   padding-bottom: ${ props => props.theme.gutter * 2 / 3 }px;
 `
 
