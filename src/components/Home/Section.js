@@ -63,7 +63,7 @@ Section.Header = styled.h2`
     content: ' ';
     display: ${ props => props.noBorder ? 'none' : 'block' };
     margin-top: 15px;
-    background-color: ${ props => props.theme.colors.orange };
+    background-color: ${ props => props.theme.colors.tertiary };
   }
 `
 
