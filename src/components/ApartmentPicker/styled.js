@@ -15,9 +15,9 @@ export const DropdownContainer = styled(Col)`
   }
 `
 
-export const CardContainer = styled(Card)`
+export const CardContainer = styled(Col)`
   width: 100%;
-  margin-bottom: 30px;
+  padding: ${ props => props.theme.gutter * 2 }px ${ props => props.theme.gutter }px;
 
   @media (min-width: 576px) {
     width: 33.33%;
@@ -38,4 +38,17 @@ export const Description = styled.h2`
   color: ${ props => props.theme.colors.gray700 };
   font-size: .9em;
   text-align: center;
+`
+
+export const CardText = styled.p`
+  flex: 1;
+  font-size: 0.9em;
+  color: ${ props => props.theme.colors.gray700 };
+`
+
+export const CardImage = styled.div`
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
 `
