@@ -1,1 +1,5 @@
+# Redirect default Netlify subdomain to primary domain
+https://renewapartmentcommunities.netlify.com/* https://rentals.renewapartmentcommunities.com/:splat 301!
+https://renewapartmentcommunities.netlify.app/* https://rentals.renewapartmentcommunities.com/:splat 301!
+
 / /locations
