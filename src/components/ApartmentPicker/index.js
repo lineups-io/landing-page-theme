@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import GatsbyImage from 'gatsby-image'
 
 import Card from 'gatsby-theme-landing-page/src/templates/LandingPage/Card/styled'
-import Dropdown from 'gatsby-theme-core/src/components/Dropdown'
 import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
 import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
+import Dropdown from 'gatsby-theme-atomic-design/src/molecules/Dropdown'
+import MenuItem from 'gatsby-theme-atomic-design/src/atoms/Dropdown/MenuItem'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 
 import {
   DropdownRow,
@@ -15,8 +17,6 @@ import {
 } from './styled.js'
 
 const ApartmentPicker = ({ cards, h1, apartments = [], ...images }) => {
-  const [show, setShow] = useState()
-
   return <Container>
     <Header>{h1}</Header>
     <Description>
@@ -24,19 +24,14 @@ const ApartmentPicker = ({ cards, h1, apartments = [], ...images }) => {
     </Description>
     <DropdownRow>
       <DropdownContainer>
-        <Dropdown onClose={() => setShow(false)}>
-          <Dropdown.Toggle onClick={() => setShow(!show)}>
-            Select Apartment
-          </Dropdown.Toggle>
-          <Dropdown.Menu show={show}>
+        <Dropdown selected='Select Apartment'>
             {apartments.filter(apartment => apartment.url)
               .map((apartment, i) =>
-                <Dropdown.Item key={i} href={apartment.url}>
-                  {apartment.name}
-                </Dropdown.Item>
+              <MenuItem key={i}>
+                <Link href={apartment.url}>{apartment.name}</Link>
+              </MenuItem>
               )
             }
-          </Dropdown.Menu>
         </Dropdown>
       </DropdownContainer>
     </DropdownRow>
