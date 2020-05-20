@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 
 import Helmet from 'gatsby-theme-core/src/components/Helmet'
-import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
 
 const Placeholder = styled.div`
   text-align: center;
@@ -17,14 +16,14 @@ const Placeholder = styled.div`
 const Page = props => {
   const { site } = props.data.lineups
 
-  return <PageContext.Provider value={{ site }}>
+  return <>
       <Helmet title='Contact Form Received' />
       <Layout {...site}>
         <Placeholder>
           Thanks, we’ll be in touch soon!
         </Placeholder>
       </Layout>
-  </PageContext.Provider>
+  </>
 }
 
 export const query = graphql`
