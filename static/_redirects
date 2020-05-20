@@ -1,1 +1,5 @@
+# Redirect default Netlify subdomain to primary domain
+https://arriveluxurycommunities.netlify.com/* https://rentals.arriveluxurycommunities.com/:splat 301!
+https://arriveluxurycommunities.netlify.app/* https://rentals.arriveluxurycommunities.com/:splat 301!
+
 / /locations
