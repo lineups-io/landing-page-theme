@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
 import Home from '../components/Home'
 
 const Page = props => {

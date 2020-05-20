@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 
 import ApartmentPicker from '../components/ApartmentPicker'
