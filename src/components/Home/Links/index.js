@@ -6,8 +6,8 @@ import {
 } from '@fortawesome/pro-light-svg-icons'
 
 import Section from '../Section'
-import { Container } from 'gatsby-theme-core/src/components/Layout/styled'
-import Icon from 'gatsby-theme-core/src/components/Icon'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import { Links, IconLink } from './styled'
 
 export default () =>

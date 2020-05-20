@@ -7,9 +7,10 @@ import {
 
 import Hero from './Hero'
 import Links from './Links'
-import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import Section from './Section'
-import Icon from 'gatsby-theme-core/src/components/Icon'
 
 export default () => {
   const { lobby, kitchen } = useStaticQuery(graphql`

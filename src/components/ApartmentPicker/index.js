@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import GatsbyImage from 'gatsby-image'
 
-import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
 import Card from 'gatsby-theme-landing-page/src/templates/LandingPage/Card/styled'
 import Dropdown from 'gatsby-theme-core/src/components/Dropdown'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 
 import {
   DropdownRow,
