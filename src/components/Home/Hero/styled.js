@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Link from 'gatsby-theme-core/src/components/Link'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 
 const Hero = styled.div`
   background-color: rgba(0, 0, 0, .6);

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import Link from 'gatsby-theme-core/src/components/Link'
-import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
+import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
 
 const Section = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
+import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
 
 const Form = styled(Col).attrs({
   'as': 'form',

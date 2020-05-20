@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { Container, Col } from 'gatsby-theme-core/src/components/Layout/styled'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
 
 export const BackgroundImage = styled.div`
   width: 100%;

@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import GatsbyImage from 'gatsby-image/withIEPolyfill'
 
 import Form from './Form'
-import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 
 import {
   Page,
