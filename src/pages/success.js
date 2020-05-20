@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
-
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
 const Placeholder = styled.div`
   text-align: center;
