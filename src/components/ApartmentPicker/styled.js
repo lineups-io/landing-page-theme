@@ -11,7 +11,7 @@ export const DropdownContainer = styled(Col)`
   width: 100%;
 
   @media (min-width: 768px) {
-    width: 50%;
+    max-width: 50%;
   }
 `
 
