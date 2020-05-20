@@ -22,7 +22,7 @@ export const Title = styled.h1`
 
 export const PageHeader = styled(Col)`
   width: 100%;
-  background-color: ${ props => props.theme.colors.gray['700'] };
+  background-color: ${ props => props.theme.colors.gray700 };
   color: ${ props => props.theme.colors.white };
   padding:
   ${ props => props.theme.gutter * 2 }px

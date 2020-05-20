@@ -26,7 +26,7 @@ export const CardContainer = styled(Card)`
 
 export const Header = styled.h1`
   font-weight: 400;
-  color: ${ props => props.theme.colors.darkgrey };
+  color: ${ props => props.theme.colors.gray700 };
   font-size: 3em;
   padding-top: 40px;
   padding-bottom: 10px;
@@ -35,7 +35,7 @@ export const Header = styled.h1`
 
 export const Description = styled.h2`
   font-weight: 400;
-  color: ${ props => props.theme.colors.darkgrey };
+  color: ${ props => props.theme.colors.gray700 };
   font-size: .9em;
   text-align: center;
 `

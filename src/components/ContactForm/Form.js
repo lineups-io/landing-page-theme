@@ -52,7 +52,7 @@ Form.InputGroup = styled.div`
 Form.Label = styled.label`
     width: 100%;
     display: block;
-    font-color: ${ props => props.theme.colors.gray['700'] };
+    font-color: ${ props => props.theme.colors.gray700 };
     font-size: .9em;
     line-height: 1.5em;
     padding-bottom: ${ props => props.theme.gutter * 1 / 3 }px;
@@ -60,8 +60,8 @@ Form.Label = styled.label`
 
 Form.Input = styled(Form.Label).attrs({ as: 'input' })`
     height: 32px;
-    background-color: ${ props => props.theme.colors.gray['200'] };
-    border: 1px solid ${ props => props.theme.colors.gray['300'] };
+    background-color: ${ props => props.theme.colors.gray200 };
+    border: 1px solid ${ props => props.theme.colors.gray300 };
     border-radius: 5px;
     padding: 5px;
 `
