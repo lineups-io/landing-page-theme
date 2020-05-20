@@ -81,7 +81,6 @@ module.exports = {
     'gatsby-theme-atomic-design',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
-    'gatsby-theme-core',
     'gatsby-theme-apartment-page',
     'gatsby-theme-landing-page',
   ]
