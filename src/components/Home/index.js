@@ -115,7 +115,6 @@ export default () => {
           <Section.Body>
             <Section.Subheader>Award-Winning Property Management #RockstarPride</Section.Subheader>
             <Section.Text>
-              <p>
               At Rockstar Capital, we strive to do our best, and
               next time, do it better. That’s why we are continuously working
               with best-in-class property management professionals who truly
@@ -125,9 +124,8 @@ export default () => {
               being named #15 in the Fast Top 100 fastest growing companies
               with the Houston Business Journal. These numerous industry
               awards reflect our high level of expertise and service.
-              </p>
-
-              <p>
+            </Section.Text>
+            <Section.Text>
               We’re proud that our genuine care and expert knowledge shines through
               to all aspects of our properties. Those who work at Rockstar
               Capital, our very own Rockstars, are always giving back. We do
@@ -137,7 +135,6 @@ export default () => {
               foundation of our shared history, and through every resident
               interaction, no matter how small. This is how we show our
               #RockstarPride.
-              </p>
             </Section.Text>
           </Section.Body>
         </Row>
