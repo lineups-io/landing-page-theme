@@ -17,10 +17,14 @@ export const DropdownContainer = styled(Col)`
 
 export const CardContainer = styled(Col)`
   width: 100%;
-  padding: ${ props => props.theme.gutter * 2 }px ${ props => props.theme.gutter }px;
+  flex: 1 1 100%;
+  padding: ${ props => props.theme.gutter }px 0;
+  margin: 0;
 
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     width: 33.33%;
+    flex: 0 0 33.33%;
+    padding: ${ props => props.theme.gutter * 2 }px ${ props => props.theme.gutter }px;
   }
 `
 
