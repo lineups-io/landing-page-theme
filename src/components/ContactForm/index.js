@@ -22,6 +22,7 @@ const feedbackTypes = [
   'Other',
 ]
 
+// FIXME: jsx-a11y warnings - add label from hidden input fields
 export default ({ apartments }) => {
   const { background } = useStaticQuery(graphql`
     query getContactFormData {
