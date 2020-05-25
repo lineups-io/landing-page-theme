@@ -23,6 +23,7 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.9",
     "gatsby-image": "^2.2.43",
+    "gatsby-plugin-algolia": "^0.11.0",
     "gatsby-plugin-google-tagmanager": "https://github.com/lineups-io/gatsby-plugin-google-tagmanager.git#v2.1.25a",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-meta-redirect": "^1.1.1",
@@ -33,13 +34,14 @@
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-source-graphql": "^2.5.2",
     "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.0.0",
-    "gatsby-theme-apartment-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-apartment-page.git#v3.0.3",
     "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v2.0.2",
-    "gatsby-theme-landing-page": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-landing-page.git#v4.0.2",
     "gatsby-transformer-remark": "^2.8.13",
     "gatsby-transformer-sharp": "^2.5.3",
+    "moment": "^2.26.0",
+    "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.3.2",
     "styled-components": "^5.1.0"
   }
 }
