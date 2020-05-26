@@ -23,7 +23,7 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.9",
     "gatsby-image": "^2.2.43",
-    "gatsby-plugin-algolia": "^0.11.0",
+    "gatsby-plugin-algolia": "https://github.com/lineups-io/gatsby-plugin-algolia.git#v0.11.1",
     "gatsby-plugin-google-tagmanager": "https://github.com/lineups-io/gatsby-plugin-google-tagmanager.git#v2.1.25a",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-meta-redirect": "^1.1.1",
