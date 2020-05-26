@@ -11374,9 +11374,9 @@ react-refresh@^0.7.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.2.tgz#f30978d21eb8cac6e2f2fde056a7d04f6844dd50"
   integrity sha512-u5l7fhAJXecWUJzVxzMRU2Zvw8m4QmDNHlTrT5uo3KBlYBhmChd7syAakBoay1yIiVhx/8Fi7a6v6kQZfsw81Q==
 
-"react-tracking@https://github.com/lineups-io/react-tracking.git#v7.3.4":
-  version "7.3.4"
-  resolved "https://github.com/lineups-io/react-tracking.git#e03d0b1aecb89966329aadc7569e9992c23bdba6"
+"react-tracking@https://github.com/lineups-io/react-tracking.git#v7.4.1":
+  version "7.4.1"
+  resolved "https://github.com/lineups-io/react-tracking.git#12cca22a6e352aa99b22f0d8d2b9fbda89367b53"
   dependencies:
     babel-preset-gatsby-package "^0.2.18"
     core-js "^3.3.2"

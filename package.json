@@ -41,7 +41,7 @@
     "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.3.4",
+    "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.4.1",
     "styled-components": "^5.1.0"
   }
 }
