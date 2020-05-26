@@ -10,7 +10,6 @@ import { useMultiContact } from 'gatsby-theme-atomic-design/src/atoms/MultiConta
 
 import ButtonDropdown from 'gatsby-theme-atomic-design/src/molecules/Dropdown/ButtonDropdown'
 
-// TODO: add dropdown button functionality for "Schedule a Tour"
 export default ({ selfGuidedTourUrl }) => {
   const multiContact = useMultiContact()
 
