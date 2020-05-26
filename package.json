@@ -33,7 +33,7 @@
     "gatsby-plugin-sitemap": "^2.4.3",
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-source-graphql": "^2.5.2",
-    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.0.0",
+    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.0.1",
     "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v2.1.0",
     "gatsby-transformer-remark": "^2.8.13",
     "gatsby-transformer-sharp": "^2.5.3",
@@ -41,7 +41,7 @@
     "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.4.1",
+    "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.4.2",
     "styled-components": "^5.1.0"
   }
 }
