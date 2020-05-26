@@ -55,4 +55,5 @@ export const CardImage = styled.div`
   height: 0;
   padding-bottom: 56.25%;
   overflow: hidden;
+  border-radius: 8px;
 `
