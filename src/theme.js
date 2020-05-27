@@ -301,7 +301,8 @@ export const getTheme = (theme = base, override = {}) => {
       color: ${ theme.colors.gray['700'] };
 
       h2 {
-        color: ${ theme.colors.black };
+        color: #333333;
+        font-weight: 400;
       }
 
       a {
