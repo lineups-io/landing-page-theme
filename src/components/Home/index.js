@@ -1,9 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import GatsbyImage from 'gatsby-image/withIEPolyfill'
-import {
-  faChevronRight,
-} from '@fortawesome/pro-light-svg-icons'
+import { faChevronRight } from './faChevronRight'
 
 import Hero from './Hero'
 import Links from './Links'
