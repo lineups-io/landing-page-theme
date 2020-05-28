@@ -1,6 +1,7 @@
 import React from 'react'
 import dayjs from 'dayjs'
 import styled from 'styled-components'
+import isBetween from 'dayjs/plugin/isBetween'
 
 import Background from 'gatsby-theme-atomic-design/src/atoms/Background'
 import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
@@ -9,6 +10,8 @@ import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
 import List from 'gatsby-theme-atomic-design/src/atoms/List'
 import ListItem from 'gatsby-theme-atomic-design/src/atoms/ListItem'
 import Heading from 'gatsby-theme-atomic-design/src/atoms/Typography/Heading'
+
+dayjs.extend(isBetween)
 
 const getActiveSpecials = specials =>
   specials.filter(special => special.isActive && dayjs().isBetween(specials.startDate, specials.endDate, 'day', '[]'))
