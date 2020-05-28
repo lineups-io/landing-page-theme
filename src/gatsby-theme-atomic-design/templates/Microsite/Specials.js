@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import styled from 'styled-components'
 
 import Background from 'gatsby-theme-atomic-design/src/atoms/Background'
@@ -11,7 +11,7 @@ import ListItem from 'gatsby-theme-atomic-design/src/atoms/ListItem'
 import Heading from 'gatsby-theme-atomic-design/src/atoms/Typography/Heading'
 
 const getActiveSpecials = specials =>
-  specials.filter(special => special.isActive && moment().isBetween(specials.startDate, specials.endDate, 'day', '[]'))
+  specials.filter(special => special.isActive && dayjs().isBetween(specials.startDate, specials.endDate, 'day', '[]'))
 
 const SpecialsBanner = styled(Background).attrs({
   type: 'tertiary',

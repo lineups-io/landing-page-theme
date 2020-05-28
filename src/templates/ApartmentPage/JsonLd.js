@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 const Place = props => {
   const {
@@ -34,8 +34,8 @@ const Place = props => {
       '@context': 'http://schema.org',
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: [o.Day],
-      opens: moment(o.OpenTime, 'h:mm A').format('HH:mm'),
-      closes: moment(o.CloseTime, 'h:mm A').format('HH:mm'),
+      opens: dayjs(o.OpenTime, 'h:mm A').format('HH:mm'),
+      closes: dayjs(o.CloseTime, 'h:mm A').format('HH:mm'),
     })),
     sameAs: props.social.map(s => s.url),
     hasMap: `https://www.google.com/maps?q=place_id:${ props.googlePlaceId }`,
