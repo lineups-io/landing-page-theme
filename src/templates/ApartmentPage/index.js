@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import track from 'react-tracking'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
@@ -175,4 +174,4 @@ export const query = graphql`
   }
 `
 
-export default track(props => ({ apartment: props.data.lineups.apartment.name }))(App)
+export default App
