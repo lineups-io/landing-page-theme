@@ -35,22 +35,6 @@ export default ({ data, location }) => {
     return price < acc ? price : acc
   }, Number.MAX_VALUE)
 
-  const context = {
-    ...location,
-    title,
-    description,
-    noindex,
-    breadcrumb,
-    bestPrice: bestPrice === Number.MAX_VALUE ? '' : numeral(bestPrice).format('$ 0,0'),
-    apartments: data.lineups.page.apartments.items,
-    termGroup: termGroup && termGroup.name,
-    termGroupCategory: termGroup && termGroup.category,
-    market: market && market.title,
-    submarket: submarket && submarket.title,
-    state: market && market.state.name,
-    site: data.lineups.site,
-  }
-
   const apartments = data.lineups.page.apartments.items.map(apartment => {
     return {
       ...apartment,
@@ -61,14 +45,14 @@ export default ({ data, location }) => {
   })
 
   return <>
-    <Helmet title={context.title}>
+    <Helmet title={title}>
       {[
-        { name: 'description', content: context.description },
-        { name: 'best-price', content: context.bestPrice },
-        { name: 'term-group', content: context.termGroup },
-        { name: 'term-group-category', content: context.termGroupCategory },
-        { name: 'market', content: context.market },
-        { name: 'submarket', content: context.submarket },
+        { name: 'description', content: description },
+        { name: 'best-price', content: bestPrice === Number.MAX_VALUE ? '' : numeral(bestPrice).format('$ 0,0') },
+        { name: 'term-group', content: termGroup && termGroup.name },
+        { name: 'term-group-category', content: termGroup && termGroup.category },
+        { name: 'market', content: market && market.title },
+        { name: 'submarket', content: submarket && submarket.title },
         { name: 'robots', content: noindex ? 'noindex,nofollow' : 'index' },
       ].map((props, i) => <meta key={i} {...props} />)}
       <script type='application/ld+json'>
