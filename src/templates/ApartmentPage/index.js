@@ -14,7 +14,7 @@ const App = ({ data, location }) => {
 
   return (
     <>
-        <Helmet title={seo ? seo.title : apartment.name}>
+        <Helmet title={title}>
           <meta name='description' content={seo ? seo.description : ''} />
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>

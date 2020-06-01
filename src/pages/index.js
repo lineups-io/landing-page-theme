@@ -13,7 +13,7 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title='Texas Apartments for Rent' />
+      <Helmet title={title} />
       <Layout trackingData={trackingData} {...site}>
           <Home />
       </Layout>

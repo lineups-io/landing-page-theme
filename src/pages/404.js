@@ -27,7 +27,7 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title='Page Not Found' />
+      <Helmet title={title} />
       <Layout trackingData={trackingData} {...site}>
         <Placeholder>
           <Heading>404</Heading>

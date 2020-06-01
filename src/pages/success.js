@@ -19,7 +19,7 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title='Contact Form Received' />
+      <Helmet title={title} />
       <Layout trackingData={trackingData} {...site}>
         <Placeholder>
           Thanks, we’ll be in touch soon!
