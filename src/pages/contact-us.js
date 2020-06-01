@@ -6,12 +6,15 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
 import ContactForm from '../components/ContactForm'
 
-const Page = props => {
-  const { site, apartments } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site, apartments } = data.lineups
+
+  const title = 'Contact Us'
+  const trackingData = { title, page: location.pathname }
 
   return <>
       <Helmet title='Contact Us' />
-      <Layout {...site}>
+      <Layout trackingData={trackingData} {...site}>
         <ContactForm apartments={apartments.items} />
       </Layout>
   </>

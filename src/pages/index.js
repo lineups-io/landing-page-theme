@@ -6,12 +6,15 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
 import Home from '../components/Home'
 
-const Page = props => {
-  const { site } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site } = data.lineups
+
+  const title = 'Texas Apartments for Rent'
+  const trackingData = { title, page: location.pathname }
 
   return <>
       <Helmet title='Texas Apartments for Rent' />
-      <Layout {...site}>
+      <Layout trackingData={trackingData} {...site}>
           <Home />
       </Layout>
   </>

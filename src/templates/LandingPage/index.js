@@ -14,6 +14,7 @@ export default ({ data, location }) => {
     termGroup,
     breadcrumb,
   } = data.lineups.page
+  const trackingData = { title, page: location.pathname }
 
   const { market, submarket } = breadcrumb || {}
 
@@ -59,7 +60,7 @@ export default ({ data, location }) => {
         {JSON.stringify(getSchemaOrgJSONLD(breadcrumb, apartments))}
       </script>
     </Helmet>
-    <Layout {...data.lineups.site} {...data.lineups.page} bestPrice={bestPrice} />
+    <Layout trackingData={trackingData} {...data.lineups.site} {...data.lineups.page} bestPrice={bestPrice} />
   </>
 }
 
