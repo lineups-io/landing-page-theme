@@ -37,13 +37,16 @@ const cards = [
   },
 ]
 
-const Page = props => {
-  const { lineups, ...images } = props.data
+const Page = ({ data, location }) => {
+  const { lineups, ...images } = data
   const { site, apartments } = lineups
+
+  const title = 'Rockstar Online Application'
+  const trackingData = { title, page: location.pathname }
 
   return <>
       <Helmet title='Rockstar Online Application' />
-      <Layout {...site}>
+      <Layout trackingData={trackingData} {...site}>
         <ApartmentPicker
           h1='Welcome Future Neighbors.'
           cards={cards}

@@ -20,12 +20,15 @@ const Placeholder = styled.div`
   }
 `
 
-const Page = props => {
-  const { site } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site } = data.lineups
+
+  const title = 'Page Not Found'
+  const trackingData = { title, page: location.pathname }
 
   return <>
       <Helmet title='Page Not Found' />
-      <Layout {...site}>
+      <Layout trackingData={trackingData} {...site}>
         <Placeholder>
           <Heading>404</Heading>
           <p>Page Not Found</p>

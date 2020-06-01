@@ -5,9 +5,12 @@ import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
 import JsonLd from './JsonLd'
 
-function App (props) {
-  const { apartment, site } = props.data.lineups
+const App = ({ data, location }) => {
+  const { apartment, site } = data.lineups
   const { seo = {} } = apartment
+
+  const title = seo ? seo.title : apartment.name
+  const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
   return (
     <>
@@ -15,7 +18,7 @@ function App (props) {
           <meta name='description' content={seo ? seo.description : ''} />
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
-        <Layout {...site} apartment={apartment} />
+        <Layout trackingData={trackingData} {...site} apartment={apartment} />
     </>
   )
 }

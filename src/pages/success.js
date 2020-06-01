@@ -12,12 +12,15 @@ const Placeholder = styled.div`
   min-height: 500px;
 `
 
-const Page = props => {
-  const { site } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site } = data.lineups
+
+  const title = 'Contact Form Received'
+  const trackingData = { title, page: location.pathname }
 
   return <>
       <Helmet title='Contact Form Received' />
-      <Layout {...site}>
+      <Layout trackingData={trackingData} {...site}>
         <Placeholder>
           Thanks, we’ll be in touch soon!
         </Placeholder>

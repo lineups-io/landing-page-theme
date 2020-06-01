@@ -10,6 +10,8 @@ const Page = ({ data, location }) => {
     site: data.lineups.site,
     title: 'Search',
   }
+  const title = 'Search'
+  const trackingData = { title, page: location.pathname }
 
   return <>
     <Helmet title={context.title}>
@@ -17,7 +19,7 @@ const Page = ({ data, location }) => {
         { name: 'description', content: 'Find a Home' },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
-    <Layout {...data.lineups.site} markets={data.lineups.markets} />
+    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
   </>
 }
 

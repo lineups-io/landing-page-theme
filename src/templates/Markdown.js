@@ -12,10 +12,12 @@ const Page = ({ data, location }) => {
     site: data.lineups.site,
     title: md.frontmatter.title,
   }
+  const title = md.frontmatter.title
+  const trackingData = { title, page: location.pathname }
 
   return <>
     <Helmet title={context.title} />
-    <Layout {...data.lineups.site} source={md.rawMarkdownBody} />
+    <Layout trackingData={trackingData} {...data.lineups.site} source={md.rawMarkdownBody} />
   </>
 }
 

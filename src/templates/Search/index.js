@@ -11,6 +11,8 @@ export default ({ data, navigate, location }) => {
     noindex: true,
     site: data.lineups.site,
   }
+  const title = 'Search'
+  const trackingData = { title, page: location.pathname }
 
   return <>
     <Helmet title={context.title}>
@@ -18,7 +20,7 @@ export default ({ data, navigate, location }) => {
         { name: 'robots', content: 'noindex,nofollow' },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
-    <Layout {...data.lineups.site} markets={data.lineups.markets} />
+    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
   </>
 }
 
