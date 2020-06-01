@@ -4,18 +4,12 @@ import { graphql } from 'gatsby'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
-export default ({ data, navigate, location }) => {
-  const context = {
-    ...location,
-    title: 'Search',
-    noindex: true,
-    site: data.lineups.site,
-  }
+export default ({ data, location }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
   return <>
-    <Helmet title={context.title}>
+    <Helmet title={title}>
       {[
         { name: 'robots', content: 'noindex,nofollow' },
       ].map((props, i) => <meta key={i} {...props} />)}

@@ -7,16 +7,11 @@ import Layout from 'gatsby-theme-atomic-design/src/templates/Markdown'
 const Page = ({ data, location }) => {
   const { md } = data
 
-  const context = {
-    ...location,
-    site: data.lineups.site,
-    title: md.frontmatter.title,
-  }
   const title = md.frontmatter.title
   const trackingData = { title, page: location.pathname }
 
   return <>
-    <Helmet title={context.title} />
+    <Helmet title={title} />
     <Layout trackingData={trackingData} {...data.lineups.site} source={md.rawMarkdownBody} />
   </>
 }

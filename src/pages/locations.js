@@ -5,16 +5,11 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Locations'
 
 const Page = ({ data, location }) => {
-  const context = {
-    ...location,
-    site: data.lineups.site,
-    title: 'Search',
-  }
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
   return <>
-    <Helmet title={context.title}>
+    <Helmet title={title}>
       {[
         { name: 'description', content: 'Find a Home' },
       ].map((props, i) => <meta key={i} {...props} />)}

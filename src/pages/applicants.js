@@ -45,7 +45,7 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title='Rockstar Online Application' />
+      <Helmet title={title} />
       <Layout trackingData={trackingData} {...site}>
         <ApartmentPicker
           h1='Welcome Future Neighbors.'
