@@ -51,8 +51,8 @@ export default ({ apartments }) => {
       </Row>
       <Row>
         <Form action='/success/' name='contact' method='POST'>
-          <input type='hidden' name='form-name' value='contact' />
-          <input type='hidden' name='bot-field' />
+          <Form.Input type='hidden' name='form-name' value='contact' />
+          <Form.Input type='hidden' name='bot-field' />
           <Form.Header>General Feedback</Form.Header>
           <Row>
             <Form.Col>
