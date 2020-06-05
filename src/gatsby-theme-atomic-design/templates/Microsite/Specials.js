@@ -28,7 +28,6 @@ const SpecialsBanner = styled(Background).attrs({
     color: ${ props => props.theme.colors.secondary };
     text-transform: uppercase;
     font-weight: 600;
-    margin: 0;
   }
 
   ${ ListItem } {
@@ -40,6 +39,12 @@ const SpecialsBanner = styled(Background).attrs({
     font-size: 1.1em;
     font-weight: 700;
     margin: 0;
+  }
+
+  @media (max-width: 767.9px) {
+    ${ Container } > ${ Row } > ${ Col } {
+      flex: 1 1 100%;
+    }
   }
 `
 
