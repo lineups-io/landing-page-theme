@@ -45,7 +45,7 @@ export const Description = styled.h2`
 `
 
 export const CardText = styled.p`
-  flex: 1;
+  flex: 1 1 auto;
   font-size: 0.9em;
   color: ${ props => props.theme.colors.gray700 };
 `

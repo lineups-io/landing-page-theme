@@ -20,7 +20,7 @@ const SpecialsBanner = styled(Background).attrs({
   type: 'tertiary',
 })`
   ${ Col }:first-child {
-    flex: 0;
+    flex: 0 0 auto;
   }
 
   ${ Col }:first-child ${ Heading } {
