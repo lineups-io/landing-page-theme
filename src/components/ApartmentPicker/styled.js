@@ -22,7 +22,7 @@ export const CardContainer = styled(Col)`
   margin: 0;
 
   @media (min-width: 768px) {
-    width: 33.33%;
+    max-width: 33.33%;
     flex: 0 0 33.33%;
     padding: ${ props => props.theme.gutter * 2 }px ${ props => props.theme.gutter }px;
   }
