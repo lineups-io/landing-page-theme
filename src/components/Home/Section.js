@@ -97,6 +97,7 @@ Section.Text = styled.p`
   font-size: 1.4em;
   line-height: 1.6em;
   font-weight: 200;
+  width: 100%;
 `
 
 Section.Link = styled(Link)`
