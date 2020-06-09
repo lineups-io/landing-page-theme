@@ -88,7 +88,7 @@ Section.Body = styled(Col)`
   text-align: left;
 
   @media (min-width: 576px) {
-    flex: 1 1 auto;
+    flex: 1;
   }
 `
 

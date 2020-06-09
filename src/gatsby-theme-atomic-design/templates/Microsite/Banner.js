@@ -32,7 +32,7 @@ const CustomBanner = styled(Background)`
   }
 
   ${ Description } {
-    flex: 1 1 auto;
+    flex: 1;
   }
 
   @media (min-width: 768px) {
