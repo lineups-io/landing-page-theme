@@ -15,7 +15,7 @@ export default ({ selfGuidedTourUrl }) => {
 
   return <Footer>
     <Button type='secondary' invert onClick={multiContact.contact}>Contact Us</Button>
-    <ButtonDropdown type='secondary' selected='Select a Tour Today'>
+    <ButtonDropdown type='secondary' selected='Select a Tour Today' direction='up'>
       <MenuItem>
         <Button onClick={multiContact.scheduleTour}>
           <Heading as='div'>Onsite Tour</Heading>
