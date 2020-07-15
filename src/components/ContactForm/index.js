@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import GatsbyImage from 'gatsby-image/withIEPolyfill'
 
 import Form from './Form'
-import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 
 import {
   Page,
@@ -21,6 +22,7 @@ const feedbackTypes = [
   'Other',
 ]
 
+// FIXME: jsx-a11y warnings - add label from hidden input fields
 export default ({ apartments }) => {
   const { background } = useStaticQuery(graphql`
     query getContactFormData {
@@ -49,8 +51,8 @@ export default ({ apartments }) => {
       </Row>
       <Row>
         <Form action='/success/' name='contact' method='POST'>
-          <input type='hidden' name='form-name' value='contact' />
-          <input type='hidden' name='bot-field' />
+          <Form.Input type='hidden' name='form-name' value='contact' />
+          <Form.Input type='hidden' name='bot-field' />
           <Form.Header>General Feedback</Form.Header>
           <Row>
             <Form.Col>

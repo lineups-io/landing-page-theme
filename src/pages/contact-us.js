@@ -1,24 +1,23 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import ThemeProvider from 'gatsby-theme-core/src/components/Theme'
-import Layout from 'gatsby-theme-core/src/components/Layout'
+import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
-import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
 import ContactForm from '../components/ContactForm'
 
-const Page = props => {
-  const { site, apartments } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site, apartments } = data.lineups
 
-  return <PageContext.Provider value={{ site }}>
-    <ThemeProvider>
-      <Helmet title='Contact Us' />
-      <Layout>
+  const title = 'Contact Us'
+  const trackingData = { title, page: location.pathname }
+
+  return <>
+      <Helmet title={title} />
+      <Layout trackingData={trackingData} {...site}>
         <ContactForm apartments={apartments.items} />
       </Layout>
-    </ThemeProvider>
-  </PageContext.Provider>
+  </>
 }
 
 export const query = graphql`

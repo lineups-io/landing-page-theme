@@ -1,13 +1,20 @@
 import styled from 'styled-components'
 
-import Link from 'gatsby-theme-core/src/components/Link'
-import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
+import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 
 const Section = styled.div`
   position: relative;
   background-color: ${ props => props.theme.colors.white };
   color: ${ props => props.theme.colors.black };
   font-size: .8em;
+
+  @media (max-width: 767.9px) {
+    &:not(#links) ${ Row } {
+      flex-direction: column;
+    }
+  }
 
   a, button {
     border-color: ${ props => props.theme.colors.black };
@@ -54,7 +61,7 @@ Section.Header = styled.h2`
     display: block;
   }
   span:first-child {
-    color: ${ props => props.theme.colors.primary };
+    color: ${ props => props.theme.colors.secondary };
   }
 
   &::after {
@@ -63,7 +70,7 @@ Section.Header = styled.h2`
     content: ' ';
     display: ${ props => props.noBorder ? 'none' : 'block' };
     margin-top: 15px;
-    background-color: ${ props => props.theme.colors.orange };
+    background-color: ${ props => props.theme.colors.tertiary };
   }
 `
 
@@ -74,7 +81,7 @@ Section.Subheader = styled.h3`
   line-height: 1.5em;
   text-transform: uppercase;
   margin-bottom: 25px;
-  color: ${ props => props.theme.colors.primary };
+  color: ${ props => props.theme.colors.secondary };
 `
 
 Section.Body = styled(Col)`
@@ -90,15 +97,17 @@ Section.Text = styled.p`
   font-size: 1.4em;
   line-height: 1.6em;
   font-weight: 200;
+  width: 100%;
 `
 
 Section.Link = styled(Link)`
   display: inline-block;
   margin-top: 30px;
-  padding: 20px 30px;
+  padding: 20px;
   border-width: 1px;
   border-style: solid;
   border: 1px solid;
+  border-radius: 0;
   transition: background-color 442ms ease;
   line-height: 1em;
   font-size: 1.1em;

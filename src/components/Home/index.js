@@ -1,15 +1,14 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import GatsbyImage from 'gatsby-image/withIEPolyfill'
-import {
-  faChevronRight,
-} from '@fortawesome/pro-light-svg-icons'
+import { faChevronRight } from './faChevronRight'
 
 import Hero from './Hero'
 import Links from './Links'
-import { Container, Row } from 'gatsby-theme-core/src/components/Layout/styled'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import Section from './Section'
-import Icon from 'gatsby-theme-core/src/components/Icon'
 
 export default () => {
   const { lobby, kitchen } = useStaticQuery(graphql`
@@ -114,7 +113,6 @@ export default () => {
           <Section.Body>
             <Section.Subheader>Award-Winning Property Management #RockstarPride</Section.Subheader>
             <Section.Text>
-              <p>
               At Rockstar Capital, we strive to do our best, and
               next time, do it better. That’s why we are continuously working
               with best-in-class property management professionals who truly
@@ -124,9 +122,8 @@ export default () => {
               being named #15 in the Fast Top 100 fastest growing companies
               with the Houston Business Journal. These numerous industry
               awards reflect our high level of expertise and service.
-              </p>
-
-              <p>
+            </Section.Text>
+            <Section.Text>
               We’re proud that our genuine care and expert knowledge shines through
               to all aspects of our properties. Those who work at Rockstar
               Capital, our very own Rockstars, are always giving back. We do
@@ -136,7 +133,6 @@ export default () => {
               foundation of our shared history, and through every resident
               interaction, no matter how small. This is how we show our
               #RockstarPride.
-              </p>
             </Section.Text>
           </Section.Body>
         </Row>

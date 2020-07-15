@@ -1,13 +1,11 @@
 import React from 'react'
-import {
-  faMoneyBill,
-  faTools,
-  faFileAlt,
-} from '@fortawesome/pro-light-svg-icons'
+import { faMoneyBill } from './faMoneyBill'
+import { faTools } from './faTools'
+import { faFileAlt } from './faFileAlt'
 
 import Section from '../Section'
-import { Container } from 'gatsby-theme-core/src/components/Layout/styled'
-import Icon from 'gatsby-theme-core/src/components/Icon'
+import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import { Links, IconLink } from './styled'
 
 export default () =>
