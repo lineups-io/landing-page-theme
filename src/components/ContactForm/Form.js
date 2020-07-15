@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Col } from 'gatsby-theme-core/src/components/Layout/styled'
+import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
 
 const Form = styled(Col).attrs({
   'as': 'form',
@@ -46,13 +46,14 @@ Form.Submit = styled.button`
 `
 
 Form.InputGroup = styled.div`
+  width: 100%;
   padding-bottom: ${ props => props.theme.gutter * 2 / 3 }px;
 `
 
 Form.Label = styled.label`
     width: 100%;
     display: block;
-    font-color: ${ props => props.theme.colors.gray['700'] };
+    font-color: ${ props => props.theme.colors.gray700 };
     font-size: .9em;
     line-height: 1.5em;
     padding-bottom: ${ props => props.theme.gutter * 1 / 3 }px;
@@ -60,8 +61,8 @@ Form.Label = styled.label`
 
 Form.Input = styled(Form.Label).attrs({ as: 'input' })`
     height: 32px;
-    background-color: ${ props => props.theme.colors.gray['200'] };
-    border: 1px solid ${ props => props.theme.colors.gray['300'] };
+    background-color: ${ props => props.theme.colors.gray200 };
+    border: 1px solid ${ props => props.theme.colors.gray300 };
     border-radius: 5px;
     padding: 5px;
 `

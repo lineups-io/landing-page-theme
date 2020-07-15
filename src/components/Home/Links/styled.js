@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { Row } from 'gatsby-theme-core/src/components/Layout/styled'
-import Link from 'gatsby-theme-core/src/components/Link'
+import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 
 export const Links = styled(Row)`
   justify-content: center;

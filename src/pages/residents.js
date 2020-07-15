@@ -1,10 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
-import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
-import ThemeProvider from 'gatsby-theme-core/src/components/Theme'
-import Layout from 'gatsby-theme-core/src/components/Layout'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
+import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 
 import ApartmentPicker from '../components/ApartmentPicker'
 
@@ -43,14 +41,16 @@ const cards = [
   },
 ]
 
-const Page = props => {
-  const { lineups, ...images } = props.data
+const Page = ({ data, location }) => {
+  const { lineups, ...images } = data
   const { site, apartments } = lineups
 
-  return <PageContext.Provider value={{ site }}>
-    <ThemeProvider>
-      <Helmet title='Rockstar Resident Portal - Pay Rent, Submit Service Request & More' />
-      <Layout>
+  const title = 'Rockstar Resident Portal - Pay Rent, Submit Service Request & More'
+  const trackingData = { title, page: location.pathname }
+
+  return <>
+      <Helmet title={title} />
+      <Layout trackingData={trackingData} {...site}>
         <ApartmentPicker
           h1='Welcome Neighbors.'
           cards={cards}
@@ -58,8 +58,7 @@ const Page = props => {
           {...images}
         />
       </Layout>
-    </ThemeProvider>
-  </PageContext.Provider>
+  </>
 }
 
 export const query = graphql`

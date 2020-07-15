@@ -1,10 +1,24 @@
 const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
+const queries = require('./gatsby-algolia.js')
+
 console.log('[landing-page-site] ' + activeEnv)
 
 require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
+
+const algolia = process.env.ALGOLIA_ADMIN_KEY ? [
+  {
+    resolve: 'gatsby-plugin-algolia',
+    options: {
+      appId: process.env.GATSBY_ALGOLIA_APP_ID,
+      apiKey: process.env.ALGOLIA_ADMIN_KEY,
+      queries,
+      chunkSize: 10000, // default: 1000
+    },
+  },
+] : []
 
 module.exports = {
   siteMetadata: {
@@ -19,8 +33,6 @@ module.exports = {
         path: `${ __dirname }/src/images`,
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -80,11 +92,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
-    'gatsby-plugin-react-svg',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-react-helmet',
-    'gatsby-theme-core',
-    'gatsby-theme-apartment-page',
-    'gatsby-theme-landing-page',
+    'gatsby-theme-atomic-design',
+    ...algolia,
   ]
 }

@@ -2,11 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
-import ThemeProvider from 'gatsby-theme-core/src/components/Theme'
-import Layout from 'gatsby-theme-core/src/components/Layout'
-
-import Helmet from 'gatsby-theme-core/src/components/Helmet'
-import { PageContext } from 'gatsby-theme-core/src/components/PageContext'
+import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
+import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
 const Placeholder = styled.div`
   text-align: center;
@@ -15,19 +12,20 @@ const Placeholder = styled.div`
   min-height: 500px;
 `
 
-const Page = props => {
-  const { site } = props.data.lineups
+const Page = ({ data, location }) => {
+  const { site } = data.lineups
 
-  return <PageContext.Provider value={{ site }}>
-    <ThemeProvider>
-      <Helmet title='Contact Form Received' />
-      <Layout>
+  const title = 'Contact Form Received'
+  const trackingData = { title, page: location.pathname }
+
+  return <>
+      <Helmet title={title} />
+      <Layout trackingData={trackingData} {...site}>
         <Placeholder>
           Thanks, we’ll be in touch soon!
         </Placeholder>
       </Layout>
-    </ThemeProvider>
-  </PageContext.Provider>
+  </>
 }
 
 export const query = graphql`

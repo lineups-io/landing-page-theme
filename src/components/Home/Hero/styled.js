@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Link from 'gatsby-theme-core/src/components/Link'
+import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 
 const Hero = styled.div`
   background-color: rgba(0, 0, 0, .6);
@@ -24,7 +24,7 @@ Hero.Header = styled.h1`
   margin-top: 0px;
   padding-top: 17px;
   padding-bottom: 9px;
-  color: ${ props => props.theme.colors.orange };
+  color: ${ props => props.theme.colors.tertiary };
   font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
@@ -38,13 +38,12 @@ Hero.Header = styled.h1`
       margin-bottom: 6px;
       content: ' ';
       display: inline-block;
-      background-color: ${ props => props.theme.colors.orange };
+      background-color: ${ props => props.theme.colors.tertiary };
     }
   }
 `
 
 Hero.Subheader = styled.h3`
-  display: inline;
   font-family: ${ props => props.theme.fonts.header };
   color: #fff !important;
   font-size: 1.8em;
@@ -73,7 +72,7 @@ Hero.Link = styled(Link)`
   }
 
   &[href]:hover {
-    color: ${ props => props.theme.colors.orange };
+    color: ${ props => props.theme.colors.tertiary };
     text-decoration: none;
   }
 
@@ -81,7 +80,7 @@ Hero.Link = styled(Link)`
     content: "";
     width: 0px;
     height: 3px;
-    background-color: ${ props => props.theme.colors.orange };
+    background-color: ${ props => props.theme.colors.tertiary };
     position: absolute;
     z-index: 2;
     left: 0;
