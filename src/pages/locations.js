@@ -10,7 +10,7 @@ const Page = ({ data, location }) => {
 
   return <>
     <Helmet title={title}>
-      <meta name='description' content={'Find a Home'} />
+      <meta name='description' content='Find a Home' />
     </Helmet>
     <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
   </>

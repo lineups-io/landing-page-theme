@@ -45,11 +45,17 @@ const Page = ({ data, location }) => {
   const { lineups, ...images } = data
   const { site, apartments } = lineups
 
-  const title = 'Rockstar Resident Portal - Pay Rent, Submit Service Request & More'
+  const title = 'Resident Portal'
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name='description' content={`
+          List of resident portal links to all SRG apartment communities.
+          Our resident portals make it easy to pay rent, submit service
+          requests and more. Life made simple starts at SRGLiving.com.
+        `} />
+      </Helmet>
       <Layout trackingData={trackingData} {...site}>
         <ApartmentPicker
           h1='Welcome Neighbors.'

@@ -9,11 +9,17 @@ import Home from '../components/Home'
 const Page = ({ data, location }) => {
   const { site } = data.lineups
 
-  const title = 'Texas Apartments for Rent'
+  const title = 'Home'
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name='description' content={`
+          Find your new apartment home at SRG Residential.
+          Pet-friendly, studio, attached garages, and more. ' +
+          Life made simple starts at SRGLiving.com.
+        `} />
+      </Helmet>
       <Layout trackingData={trackingData} {...site}>
           <Home />
       </Layout>

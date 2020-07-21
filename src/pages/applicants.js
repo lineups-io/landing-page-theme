@@ -41,11 +41,17 @@ const Page = ({ data, location }) => {
   const { lineups, ...images } = data
   const { site, apartments } = lineups
 
-  const title = 'Rockstar Online Application'
+  const title = 'Online Application'
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name='description' content={`
+          List of online application links to all SRG apartment communities.
+          Start an online application or pick up where you left off.
+          Life made simple starts at SRGLiving.com.
+        `} />
+      </Helmet>
       <Layout trackingData={trackingData} {...site}>
         <ApartmentPicker
           h1='Welcome Future Neighbors.'

@@ -13,7 +13,12 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name='description' content={`
+          Questions, comments, feedback ... we want to hear from our
+          residents and future residents.
+        `} />
+      </Helmet>
       <Layout trackingData={trackingData} {...site}>
         <ContactForm apartments={apartments.items} />
       </Layout>
