@@ -7,11 +7,11 @@ const Form = styled(Col).attrs({
   'data-netlify': true,
   'netlify-honeypot': 'bot-field',
 })`
-  background-color: ${ props => props.theme.colors.white };
   width: 100%;
   margin: 0 ${ props => props.theme.gutter * 2 }px;
 
   @media (min-width: 768px) {
+    background-color: ${ props => props.theme.colors.white };
     box-shadow: 0px 0px 2px 2px rgba(39, 40, 59, 0.2);
     padding:
     ${ props => props.theme.gutter * 2 }px
