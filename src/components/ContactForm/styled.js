@@ -28,11 +28,11 @@ export const PageHeader = styled(Col)`
   ${ props => props.theme.gutter * 2 }px
   ${ props => props.theme.gutter }px;
   margin: ${ props => props.theme.gutter * -1 }px 0;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: none;
 
   @media (min-width: 768px) {
     background-color: transparent;
-    color: ${ props => props.theme.colors.white };
+    color: ${ props => props.theme.colors.black };
     padding:
     ${ props => props.theme.gutter * 2 }px
     ${ props => props.theme.gutter * 5 }px;
