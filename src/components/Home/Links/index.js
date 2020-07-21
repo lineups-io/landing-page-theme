@@ -17,15 +17,15 @@ export default () =>
       </Section.Header>
       <Links>
         <IconLink href='residents'>
-          <Icon icon={faMoneyBill} size='2x' />
+          <Icon icon={faMoneyBill} size='3x' />
           Pay Rent Online
         </IconLink>
         <IconLink href='residents'>
-          <Icon icon={faTools} size='2x' />
+          <Icon icon={faTools} size='3x' />
           Schedule Maintenance
         </IconLink>
         <IconLink href='residents'>
-          <Icon icon={faFileAlt} size='2x' />
+          <Icon icon={faFileAlt} size='3x' />
           Renew Lease
         </IconLink>
       </Links>
