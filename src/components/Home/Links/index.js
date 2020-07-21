@@ -13,7 +13,7 @@ export default () =>
     <Container>
       <Section.Subheader>Welcome Home</Section.Subheader>
       <Section.Header as='h1' noBorder>
-        Rockstar living with all the online conveniences you expect.
+        Hassle free living with all the online conveniences you expect.
       </Section.Header>
       <Links>
         <IconLink href='residents'>

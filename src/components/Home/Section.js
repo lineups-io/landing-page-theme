@@ -1,33 +1,42 @@
 import styled from 'styled-components'
+import { lighten } from 'polished'
 
 import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 import Col from 'gatsby-theme-atomic-design/src/atoms/Col'
-import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 
 const Section = styled.div`
   position: relative;
-  background-color: ${ props => props.theme.colors.white };
-  color: ${ props => props.theme.colors.black };
+  background-color: ${ props =>
+    props.bg || (props.dark
+      ? props.theme.colors.gray700
+      : props.theme.colors.white
+    ) };
+  color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
   font-size: .8em;
 
-  @media (max-width: 767.9px) {
-    &:not(#links) ${ Row } {
-      flex-direction: column;
-    }
-  }
-
   a, button {
-    border-color: ${ props => props.theme.colors.black };
-    color: ${ props => props.theme.colors.black };
+    border-color:
+      ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+    color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
   }
 
   a:hover, button:hover {
-    color: ${ props => props.theme.colors.black };
+    color: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
     text-decoration: none;
   }
 
   svg * {
-    fill: ${ props => props.theme.colors.black };
+    fill: ${ props => props.theme.colors[props.dark ? 'white' : 'black'] };
+  }
+
+  h2::after {
+    background-color:
+    ${ props => lighten(props.dark ? 0.2 : 0, props.theme.colors.primary) };
+  }
+
+  h3 {
+    color:
+    ${ props => lighten(props.dark ? 0.2 : 0, props.theme.colors.primary) };
   }
 
   text-align: center;
@@ -39,7 +48,6 @@ const Section = styled.div`
     padding-top: ${ props => props.noPadding ? 0 : 60 }px;
     padding-bottom: ${ props => props.noPadding ? 0 : 60 }px;
   }
-
 `
 
 Section.Aside = styled(Col)`
@@ -52,36 +60,27 @@ Section.Aside = styled(Col)`
 `
 
 Section.Header = styled.h2`
-  font-family: ${ props => props.theme.fonts.header };
+  font-family: 'Gilda Display', serif;
   font-size: 2em;
   line-height: 1.25em;
-  font-weight: 600;
-
-  span {
-    display: block;
-  }
-  span:first-child {
-    color: ${ props => props.theme.colors.secondary };
-  }
+  font-weight: 400;
 
   &::after {
-    width: 48px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     content: ' ';
     display: ${ props => props.noBorder ? 'none' : 'block' };
     margin-top: 15px;
-    background-color: ${ props => props.theme.colors.tertiary };
   }
 `
 
 Section.Subheader = styled.h3`
-  font-family: ${ props => props.theme.fonts.header };
+  font-family: 'Avenir', sans-serif;
   font-weight: 600;
   font-size: 1em;
   line-height: 1.5em;
   text-transform: uppercase;
   margin-bottom: 25px;
-  color: ${ props => props.theme.colors.secondary };
 `
 
 Section.Body = styled(Col)`
@@ -93,36 +92,25 @@ Section.Body = styled(Col)`
 `
 
 Section.Text = styled.p`
-  font-family: ${ props => props.theme.fonts.body };
+  font-family: 'Gilda Display', serif;
   font-size: 1.4em;
   line-height: 1.6em;
   font-weight: 200;
-  width: 100%;
 `
 
 Section.Link = styled(Link)`
   display: inline-block;
   margin-top: 30px;
-  padding: 20px;
+  padding: 20px 30px;
   border-width: 1px;
   border-style: solid;
   border: 1px solid;
-  border-radius: 0;
   transition: background-color 442ms ease;
   line-height: 1em;
   font-size: 1.1em;
 
   > svg {
     margin-left: 25px;
-  }
-
-  &[href]:hover {
-    text-decoration: none;
-    background-color: ${ props => props.theme.colors.secondary };
-    color: ${ props => props.theme.colors.white };
-  }
-  &[href]:hover > svg * {
-    fill: ${ props => props.theme.colors.white };
   }
 `
 

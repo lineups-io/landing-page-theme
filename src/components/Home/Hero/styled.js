@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { lighten } from 'polished'
 
 import Link from 'gatsby-theme-atomic-design/src/atoms/Link'
 
@@ -24,7 +25,7 @@ Hero.Header = styled.h1`
   margin-top: 0px;
   padding-top: 17px;
   padding-bottom: 9px;
-  color: ${ props => props.theme.colors.tertiary };
+  color: ${ props => lighten(0.2, props.theme.colors.primary) };
   font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
@@ -38,13 +39,14 @@ Hero.Header = styled.h1`
       margin-bottom: 6px;
       content: ' ';
       display: inline-block;
-      background-color: ${ props => props.theme.colors.tertiary };
+      background-color: ${ props => lighten(0.2, props.theme.colors.primary) };
     }
   }
 `
 
 Hero.Subheader = styled.h3`
-  font-family: ${ props => props.theme.fonts.header };
+  display: inline;
+  font-family: 'Gilda Display', serif;
   color: #fff !important;
   font-size: 1.8em;
   line-height: 44px;
@@ -58,42 +60,17 @@ Hero.Link = styled(Link)`
   margin-top: 33px;
   font-size: .9em;
   font-weight: 400;
-  display: inline-block;
-  position: relative;
-  padding: 5px 0;
+  display: block;
   color: #fff;
+  padding: 0;
 
   @media (min-width: 576px) {
     margin-left: 39px;
   }
 
-  &[href] {
+  &:hover {
     color: #fff;
-  }
-
-  &[href]:hover {
-    color: ${ props => props.theme.colors.tertiary };
     text-decoration: none;
-  }
-
-  &[href]::before {
-    content: "";
-    width: 0px;
-    height: 3px;
-    background-color: ${ props => props.theme.colors.tertiary };
-    position: absolute;
-    z-index: 2;
-    left: 0;
-    bottom: -2px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out 0s;
-  }
-
-  &:hover::before {
-    opacity: 1;
-    visibility: visible;
-    width: 100%;
   }
 
   > svg {
