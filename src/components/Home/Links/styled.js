@@ -20,6 +20,10 @@ export const IconLink = styled(Link)`
     margin-bottom: 15px;
   }
 
+  svg * {
+    fill: ${ props => props.theme.colors.primary };
+  }
+
   @media (min-width: 768px) {
     width: auto;
   }
