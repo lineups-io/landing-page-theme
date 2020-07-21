@@ -26,9 +26,11 @@ Form.Header = styled.h3`
 `
 
 Form.Col = styled(Col)`
+  flex: 1 1 100%;
   width: 100%;
 
   @media (min-width: 768px) {
+    flex: 0 0 50%;
     width: 50%;
   }
 `
