@@ -21,7 +21,7 @@ const Page = ({ data, location }) => {
         `} />
       </Helmet>
       <Layout trackingData={trackingData} {...site}>
-          <Home />
+          <Home markets={data.lineups.markets.items.filter(m => !m.submarket)} />
       </Layout>
   </>
 }
@@ -32,6 +32,16 @@ export const query = graphql`
       site: getAccountById(id: $account) {
           ...NavFields
           ...FooterFields
+      }
+      markets: findMarkets(filter: { account: $account }) {
+        count
+        items {
+          title: market
+          submarket
+          marketPage {
+            slug
+          }
+        }
       }
     }
   }
