@@ -15,9 +15,11 @@ const Banner = styled.div`
   @media (min-width: 768px) {
     ${ Col } {
       flex: 1;
+      align-items: flex-end;
     }
     ${ Col }:first-child {
       flex: 3;
+      align-items: center;
     }
   }
 `
