@@ -8,32 +8,29 @@ import ApartmentPicker from '../components/ApartmentPicker'
 
 const cards = [
   {
+    title: 'Renters Insurance',
+    image: 'insurance',
+    body: `
+      Protect yourself and your belongings by enrolling
+      in a renter's insurance policy.
+    `,
+    link: {
+      href: 'https://www.insureyourstuff.com/quote/quoteStep2.aspx?cid=109',
+      children: 'Learn More',
+    },
+  },
+  {
     title: 'Resident Portal',
     image: 'portal',
     body: `
       Schedule rent payments, submit maintenance requests,
       renew your lease, and more.
-      Use the form above to log into your resident portal!
     `,
-  },
-  {
-    title: 'Stay Connected With Rockstar Capital',
-    image: 'rockstarCares',
-    body: `
-      Follow us on your favorite social media
-      platform for daily content where you can
-      join Rockstar Capital’s journey to the top!
-      For an even closer look, check out our Youtube channel!
-    `,
-    link: {
-      href: 'https://www.youtube.com/playlist?list=PL7EjgErrsszXApWfPF0wALV76cs0kWq8C',
-      children: 'Learn More',
-    },
   },
   {
     title: 'Feedback',
     image: 'feedback',
-    body:  'Any questions, comments, or concerns? We want to hear it! The Rockstar Team is standing by 24/7 to help assist you!',
+    body: 'Question, comment ... we want to know.',
     link: {
       href: 'contact-us',
       children: 'Tell Us Here',
@@ -82,7 +79,7 @@ export const query = graphql`
         }
       }
     }
-    rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
+    insurance: file(relativePath: { eq: "residents/insurance.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 850 maxHeight: 500) {
           ...GatsbyImageSharpFluid
