@@ -10,9 +10,7 @@ const Page = ({ data, location }) => {
 
   return <>
     <Helmet title={title}>
-      {[
-        { name: 'description', content: 'Find a Home' },
-      ].map((props, i) => <meta key={i} {...props} />)}
+      <meta name='description' content={'Find a Home'} />
     </Helmet>
     <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
   </>
