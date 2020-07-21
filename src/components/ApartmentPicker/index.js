@@ -57,7 +57,7 @@ const ApartmentPicker = ({ cards, h1, apartments = [], ...images }) => {
             <CardText>{card.body}</CardText>
             <CardButtonGroup>
               {card.link
-                ? <Button type='secondary' {...card.link} />
+                ? <Button as={Link} type='secondary' {...card.link} />
                 : null}
             </CardButtonGroup>
           </CardBody>
