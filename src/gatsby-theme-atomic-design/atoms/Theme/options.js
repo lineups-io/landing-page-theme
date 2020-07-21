@@ -1,4 +1,4 @@
-import typography from './typography.js'
+import typography from '../Typography/options'
 
 const { headerFontFamily, bodyFontFamily } = typography
 
