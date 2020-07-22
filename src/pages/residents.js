@@ -2,9 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 
-import ApartmentPicker from '../components/ApartmentPicker'
+import ApartmentPicker from 'gatsby-theme-atomic-design/src/templates/ApartmentPicker'
 
 const cards = [
   {
@@ -50,14 +49,14 @@ const Page = ({ data, location }) => {
 
   return <>
       <Helmet title={title} />
-      <Layout trackingData={trackingData} {...site}>
-        <ApartmentPicker
-          h1='Welcome Neighbors.'
-          cards={cards}
-          apartments={apartments.items}
-          {...images}
-        />
-      </Layout>
+      <ApartmentPicker
+        trackingData={trackingData}
+        site={site}
+        h1='Welcome Neighbors.'
+        cards={cards}
+        apartments={apartments.items}
+        {...images}
+      />
   </>
 }
 
