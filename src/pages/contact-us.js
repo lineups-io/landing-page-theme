@@ -1,10 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
-import ContactForm from '../components/ContactForm'
+import ContactForm from 'gatsby-theme-atomic-design/src/templates/ContactForm'
+
+const feedbackTypes = [
+  'I have a question/comment about a community',
+  'I have a question/comment for Sares-Regis',
+  'I\'m interested in becoming a vendor',
+  'I\'m a resident with a question',
+  'Other',
+]
 
 const Page = ({ data, location }) => {
   const { site, apartments } = data.lineups
@@ -19,9 +26,13 @@ const Page = ({ data, location }) => {
           residents and future residents.
         `} />
       </Helmet>
-      <Layout trackingData={trackingData} {...site}>
-        <ContactForm apartments={apartments.items} />
-      </Layout>
+      <ContactForm
+        trackingData={trackingData}
+        site={site}
+        apartments={apartments.items}
+        background={data.background}
+        feedbackTypes={feedbackTypes}
+      />
   </>
 }
 
@@ -36,6 +47,13 @@ export const query = graphql`
         count
         items {
           name
+        }
+      }
+    }
+    background: file(relativePath: { eq: "contact-us/background.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1600 cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
