@@ -3,4 +3,4 @@
 #https://www.oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/?redirected=oaktreekingsville 301!
 
 # Redirect default Netlify subdomain to primary domain
-https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
+https://headway.netlify.app/* https://headway.apartments/:splat 301!
