@@ -10,7 +10,7 @@ import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 export default () => {
   const data = useStaticQuery(graphql`
     query getHeroData {
-      hero: file(relativePath: { eq: "index/pool.jpg" }) {
+      hero: file(relativePath: { eq: "index/hero.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2000 maxHeight: 800 cropFocus: CENTER) {
             ...GatsbyImageSharpFluid
