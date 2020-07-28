@@ -7,7 +7,7 @@ import ContactForm from 'gatsby-theme-atomic-design/src/templates/ContactForm'
 
 const feedbackTypes = [
   'I have a question/comment about a community',
-  'I have a question/comment for Rockstar',
+  'I have a question/comment for Headway',
   'I\'m interested in becoming a vendor',
   'I\'m a resident with a question',
   'Other',
