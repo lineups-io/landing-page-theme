@@ -40,7 +40,7 @@ module.exports = {
         short_name: process.env.TITLE,
         start_url: '/',
         background_color: '#FFFFFF',
-        theme_color: '#E51F3B',
+        theme_color: '#ca3022',
         display: 'minimal-ui',
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
