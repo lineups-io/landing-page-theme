@@ -42,6 +42,7 @@ export const query = graphql`
         count
         items {
           name
+          email
         }
       }
     }
