@@ -150,8 +150,7 @@ export const query = graphql`
           }
           amenities {
             type
-            title
-            description
+            title: description
             isFeatured
             isPublished
             icon: fontAwesome
