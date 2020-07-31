@@ -16,23 +16,9 @@ const cards = [
     `,
   },
   {
-    title: 'Stay Connected With Rockstar Capital',
-    image: 'rockstarCares',
-    body: `
-      Follow us on your favorite social media
-      platform for daily content where you can
-      join Rockstar Capital’s journey to the top!
-      For an even closer look, check out our Youtube channel!
-    `,
-    link: {
-      href: 'https://www.youtube.com/playlist?list=PL7EjgErrsszXApWfPF0wALV76cs0kWq8C',
-      children: 'Learn More',
-    },
-  },
-  {
     title: 'Feedback',
     image: 'feedback',
-    body:  'Any questions, comments, or concerns? We want to hear it! The Rockstar Team is standing by 24/7 to help assist you!',
+    body:  'Any questions, comments, or concerns? We want to hear it!',
     link: {
       href: 'contact-us',
       children: 'Tell Us Here',
@@ -44,7 +30,7 @@ const Page = ({ data, location }) => {
   const { lineups, ...images } = data
   const { site, apartments } = lineups
 
-  const title = 'Rockstar Resident Portal - Pay Rent, Submit Service Request & More'
+  const title = 'Resident Portal - Pay Rent, Submit Service Request & More'
   const trackingData = { title, page: location.pathname }
 
   return <>
@@ -72,13 +58,6 @@ export const query = graphql`
         items {
           name
           url: residentPortalUrl
-        }
-      }
-    }
-    rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
         }
       }
     }
