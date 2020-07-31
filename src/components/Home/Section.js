@@ -52,6 +52,7 @@ const Section = styled.div`
 
 Section.Aside = styled(Col)`
   text-align: left;
+  flex: 1 1 100%;
 
   @media (min-width: 576px) {
     flex: 0 0 280px;
@@ -85,6 +86,7 @@ Section.Subheader = styled.h3`
 
 Section.Body = styled(Col)`
   text-align: left;
+  flex: 1 1 100%;
 
   @media (min-width: 576px) {
     flex: 1;
