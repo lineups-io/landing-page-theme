@@ -53,7 +53,6 @@ const fragments = `
       }
     }
     externalData {
-      updatedAt
       propertyAverageRating {
         AllTime
       }
@@ -132,7 +131,6 @@ const transformer = ({ data }) => {
     apartment.state = []
     apartment.market = []
     apartment.submarket = []
-    apartment.modified = externalData && externalData.updatedAt
     apartment.externalData = {
       propertyAverageRating: externalData && externalData.propertyAverageRating,
     }
@@ -227,7 +225,6 @@ const queries = [
     `,
     transformer,
     indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-    enablePartialUpdates: true,
     settings: {
       attributesForFaceting: [
         'state',
