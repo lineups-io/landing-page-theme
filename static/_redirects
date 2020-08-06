@@ -1,1 +1,34 @@
-/ /locations
+# Redirect domain aliases to primary domain
+https://oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/?redirected=oaktreekingsville 301!
+https://www.oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/?redirected=oaktreekingsville 301!
+https://thecoveingleside.com/* https://rockstar.apartments/ingleside-tx/the-cove/?redirected=thecoveingleside 301!
+https://www.thecoveingleside.com/* https://rockstar.apartments/ingleside-tx/the-cove/?redirected=thecoveingleside 301!
+https://steeplechaseaptsliving.com/* https://rockstar.apartments/alvin-tx/steeplechase/?redirected=steeplechaseaptsliving 301!
+https://www.steeplechaseaptsliving.com/* https://rockstar.apartments/alvin-tx/steeplechase/?redirected=steeplechaseaptsliving 301!
+https://apartmentsbellaire.com/* https://rockstar.apartments/bellaire-tx-apartments-for-rent/?redirected=apartmentsbellaire 301!
+https://www.apartmentsbellaire.com/* https://rockstar.apartments/bellaire-tx-apartments-for-rent/?redirected=apartmentsbellaire 301!
+https://apartmentshumble.com/* https://rockstar.apartments/houston-humble-apartments-for-rent/?redirected=apartmentshumble 301!
+https://www.apartmentshumble.com/* https://rockstar.apartments/houston-humble-apartments-for-rent/?redirected=apartmentshumble 301!
+https://apartmentsinhumble.com/* https://rockstar.apartments/houston-humble-apartments-for-rent/?redirected=apartmentsinhumble 301!
+https://www.apartmentsinhumble.com/* https://rockstar.apartments/houston-humble-apartments-for-rent/?redirected=apartmentsinhumble 301!
+https://apartmentsinrosenberg.com/* https://rockstar.apartments/rosenberg-tx-apartments-for-rent/?redirected=apartmentsinrosenberg 301!
+https://www.apartmentsinrosenberg.com/* https://rockstar.apartments/rosenberg-tx-apartments-for-rent/?redirected=apartmentsinrosenberg 301!
+https://apartmentsmeyerland.com/* https://rockstar.apartments/bellaire-tx-apartments-for-rent/?redirected=apartmentsmeyerland 301!
+https://www.apartmentsmeyerland.com/* https://rockstar.apartments/bellaire-tx-apartments-for-rent/?redirected=apartmentsmeyerland 301!
+https://apartmentsrosenberg.com/* https://rockstar.apartments/rosenberg-tx-apartments-for-rent/?redirected=apartmentsrosenberg 301!
+https://www.apartmentsrosenberg.com/* https://rockstar.apartments/rosenberg-tx-apartments-for-rent/?redirected=apartmentsrosenberg 301!
+https://cedarridgebaytown.com/* https://rockstar.apartments/baytown-tx/cedar-ridge/?redirected=cedarridgebaytown 301!
+https://www.cedarridgebaytown.com/* https://rockstar.apartments/baytown-tx/cedar-ridge/?redirected=cedarridgebaytown 301!
+https://deerbrookforestapts.com/* https://rockstar.apartments/humble-tx/deerbrook-forest/?redirected=deerbrookforestapts 301!
+https://www.deerbrookforestapts.com/* https://rockstar.apartments/humble-tx/deerbrook-forest/?redirected=deerbrookforestapts 301!
+https://greenmeadowshouston.com/* https://rockstar.apartments/houston-tx/green-meadows/?redirected=greenmeadowshouston 301!
+https://www.greenmeadowshouston.com/* https://rockstar.apartments/houston-tx/green-meadows/?redirected=greenmeadowshouston 301!
+https://mapletrailapts.com/* https://rockstar.apartments/pasadena-tx/maple-trail/?redirected=mapletrailapts 301!
+https://www.mapletrailapts.com/* https://rockstar.apartments/pasadena-tx/maple-trail/?redirected=mapletrailapts 301!
+https://parksidehumble.com/* https://rockstar.apartments/humble-tx/parkside-apartments/?redirected=parksidehumble 301!
+https://www.parksidehumble.com/* https://rockstar.apartments/humble-tx/parkside-apartments/?redirected=parksidehumble 301!
+https://reserveongarth.com/* https://rockstar.apartments/baytown-tx/reserve-on-garth-rd/?redirected=reserveongarth 301!
+https://www.reserveongarth.com/* https://rockstar.apartments/baytown-tx/reserve-on-garth-rd/?redirected=reserveongarth 301!
+
+# Redirect default Netlify subdomain to primary domain
+https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
