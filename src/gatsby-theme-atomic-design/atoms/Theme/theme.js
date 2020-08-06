@@ -10,6 +10,7 @@ export default {
     primary: colors.white,
     secondary: colors.white,
     tertiary: colors.black,
+    gold: colors.black,
     gray50: colors.black,
     gray100: colors.black,
     gray200: colors.black,

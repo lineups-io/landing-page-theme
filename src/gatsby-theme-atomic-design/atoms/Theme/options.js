@@ -8,6 +8,7 @@ export const colors = {
   primary: '#00454d',
   secondary: '#00454d',
   tertiary: '#97A3AE',
+  gold: '#c4b000',
   gray50: '#FAFAFA',
   gray100: '#F5F5F5',
   gray200: '#EEEEEE',
