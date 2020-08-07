@@ -8,8 +8,8 @@ const CustomSection = styled(Section)`
   }
 
   h4 {
-    color: ${ props => props.theme.colors.tertiary };
-    font-weight: 500;
+    color: ${ props => props.theme.colors.primary };
+    font-weight: 700;
   }
 `
 
