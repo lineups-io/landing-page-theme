@@ -3,11 +3,19 @@ import styled from 'styled-components'
 import Link from 'gatsby-theme-atomic-design/src/atoms/Nav/Link'
 
 const CustomLink = styled(Link)`
-  color: ${props => props.theme.fontColorWithBackground.white};
-  font-size: 1.2em;
+  color: ${props => props.theme.fontColorWithBackground.black};
+  padding: 0 ${ props => props.theme.gutter }px;
+  font-size: .9em;
   letter-spacing: 1px;
-  font-weight: 500;
-  text-transform: none;
+  font-weight: 700;
+
+  &:hover {
+    color: ${props => props.theme.fontColorWithBackground.black};
+  }
+
+  &::before {
+    background-color: ${props => props.theme.fontColorWithBackground.black};
+  }
 `
 
 export default CustomLink
