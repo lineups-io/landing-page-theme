@@ -12,10 +12,6 @@ const items = [
     label: 'Photos',
   },
   {
-    id: 'floor-plan',
-    label: 'Floor Plans',
-  },
-  {
     id: 'neighborhood',
     label: 'Neighborhood',
   },
