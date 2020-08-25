@@ -35,8 +35,7 @@ export default ({ selfGuidedTourUrl }) => {
         </Link>
       </MenuItem>
     </ButtonDropdown>
-    <p>On-site tours will be scheduled in advanced.</p>
-    <p>A leasing professional will help determine what option is best for you.</p>
+    <p>Scheduling a tour in advance is preferred, but our doors are open for walk-in tours.</p>
     <p>Visit our <Link href='https://www.rockstar-capital.com/covid19'>COVID-19 updates page</Link> for more info.</p>
   </Footer>
 }
