@@ -120,6 +120,10 @@ export const query = graphql`
           vendor
           id
         }
+        realPage {
+          siteId
+          wid
+        }
         floorplanVirtualTours {
           name
           summary
