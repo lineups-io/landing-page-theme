@@ -2,7 +2,7 @@
 exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
   const { createPage } = actions
   if (internal.type === 'LineupsApartment') {
-    const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id } = node
+    const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id, realPage, floorPlanUrl } = node
     if (enabledFeatures.indexOf('microsite') > -1) {
       console.log('[gatsby-theme-apartment-page] creating page', path)
       createPage({
@@ -11,6 +11,17 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
         context: {
           id,
           account: process.env.ACCOUNT,
+        },
+      })
+    }
+    if (realPage) {
+      console.log('[gatsby-theme-apartment-page] creating realpage floorplan page', floorPlanUrl)
+      createPage({
+        path: floorPlanUrl,
+        component: require.resolve('./src/templates/RealPageOnlineLeasing.js'),
+        context: {
+          account: process.env.ACCOUNT,
+          ...realPage,
         },
       })
     }
