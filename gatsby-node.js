@@ -14,7 +14,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
         },
       })
     }
-    if (realPage) {
+    if (realPage && realPage.siteId && floorPlanUrl) {
       console.log('[gatsby-theme-apartment-page] creating realpage floorplan page', floorPlanUrl)
       createPage({
         path: floorPlanUrl,
