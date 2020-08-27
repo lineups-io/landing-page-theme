@@ -10,12 +10,14 @@ import { useMultiContact } from 'gatsby-theme-atomic-design/src/atoms/MultiConta
 
 import ButtonDropdown from 'gatsby-theme-atomic-design/src/molecules/Dropdown/ButtonDropdown'
 
-export default ({ selfGuidedTourUrl }) => {
+export default ({ selfGuidedTourUrl, realPage, floorPlanUrl }) => {
   const multiContact = useMultiContact()
 
+  const showCheckAvailability = !!(realPage && realPage.siteId && floorPlanUrl)
+
   return <Footer>
-    <Button type='secondary' invert onClick={multiContact.contact}>Contact Us</Button>
-    <ButtonDropdown type='secondary' selected='Select a Tour Today' direction='up'>
+    {multiContact.contact && !showCheckAvailability ? <Button type='secondary' invert onClick={multiContact.contact}>Contact Us</Button> : null}
+    <ButtonDropdown type='secondary' invert={showCheckAvailability} selected='Select a Tour Today' direction='up'>
       {multiContact.scheduleTour ? <MenuItem>
         <Button onClick={multiContact.scheduleTour}>
           <Heading as='div'>Onsite Tour</Heading>
@@ -35,6 +37,7 @@ export default ({ selfGuidedTourUrl }) => {
         </Link>
       </MenuItem>
     </ButtonDropdown>
+    {showCheckAvailability ? <Button as={Link} type='secondary' href={floorPlanUrl}>Check Availability</Button> : null}
     <p>Scheduling a tour in advance is preferred, but our doors are open for walk-in tours.</p>
     <p>Visit our <Link href='https://www.rockstar-capital.com/covid19'>COVID-19 updates page</Link> for more info.</p>
   </Footer>
