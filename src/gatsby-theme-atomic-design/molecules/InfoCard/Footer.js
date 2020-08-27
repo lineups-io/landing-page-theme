@@ -16,12 +16,12 @@ export default ({ selfGuidedTourUrl }) => {
   return <Footer>
     <Button type='secondary' invert onClick={multiContact.contact}>Contact Us</Button>
     <ButtonDropdown type='secondary' selected='Select a Tour Today' direction='up'>
-      <MenuItem>
+      {multiContact.scheduleTour ? <MenuItem>
         <Button onClick={multiContact.scheduleTour}>
           <Heading as='div'>Onsite Tour</Heading>
           <p>Schedule a personal tour with one of our leasing professionals.</p>
         </Button>
-      </MenuItem>
+      </MenuItem> : null}
       {selfGuidedTourUrl ? <MenuItem>
         <Link href={selfGuidedTourUrl}>
           <Heading as='div'>Self-Guided Tours</Heading>
