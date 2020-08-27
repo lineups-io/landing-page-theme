@@ -120,6 +120,7 @@ export const query = graphql`
           vendor
           id
         }
+        floorPlanUrl
         realPage {
           siteId
           wid
