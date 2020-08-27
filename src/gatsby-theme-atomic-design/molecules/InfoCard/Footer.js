@@ -17,7 +17,7 @@ export default ({ selfGuidedTourUrl, realPage, floorPlanUrl }) => {
 
   return <Footer>
     {multiContact.contact && !showCheckAvailability ? <Button type='secondary' invert onClick={multiContact.contact}>Contact Us</Button> : null}
-    <ButtonDropdown type='secondary' invert={showCheckAvailability} selected='Select a Tour Today' direction='up'>
+    <ButtonDropdown type='secondary' invert={showCheckAvailability} selected='Select a Tour Today' direction='up' outline={false}>
       {multiContact.scheduleTour ? <MenuItem>
         <Button onClick={multiContact.scheduleTour}>
           <Heading as='div'>Onsite Tour</Heading>
