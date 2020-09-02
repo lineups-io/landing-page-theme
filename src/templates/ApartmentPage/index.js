@@ -40,6 +40,7 @@ export const query = graphql`
         marketingWebsiteUrl
         logo {
           src: url
+          alt
         }
         primaryMarket {
           market
@@ -80,18 +81,22 @@ export const query = graphql`
         awardsPhoto {
           mediaType
           src: url
+          alt
         }
         defaultPhoto {
           mediaType
           src: url
+          alt
         }
         mediaGallery {
           mediaType
           src: url
+          alt
         }
         playlist {
           mediaType
           src: url
+          alt
         }
         seo {
           title
