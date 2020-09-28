@@ -62,5 +62,12 @@ exports.createPages = ({ actions }) => {
         account: process.env.ACCOUNT,
       },
     })
+    createPage({
+      path: '/availability',
+      component: require.resolve('./src/templates/Search/v1.js'),
+      context: {
+        account: process.env.ACCOUNT,
+      },
+    })
   }
 }
