@@ -1,6 +1,6 @@
 export default {
-  headerFontFamily: ['utopia-std', 'serif'],
-  bodyFontFamily: ['proxima-nova', 'sans-serif'],
+  headerFontFamily: ['Playfair Display', 'serif'],
+  bodyFontFamily: ['Open Sans', 'sans-serif'],
   bodyWeight: 500,
   scaleRatio: 2.5,
   overrideThemeStyles: function overrideThemeStyles(vr, options, styles) {
