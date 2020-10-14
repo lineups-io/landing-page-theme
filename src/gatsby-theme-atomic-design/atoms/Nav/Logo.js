@@ -4,7 +4,7 @@ import Logo from 'gatsby-theme-atomic-design/src/atoms/Nav/Logo'
 
 const CustomLogo = styled(Logo)`
   margin: 0;
-  width: 128px;
+  width: 104px;
   height: 35px;
 `
 
