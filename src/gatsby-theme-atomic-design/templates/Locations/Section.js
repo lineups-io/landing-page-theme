@@ -10,7 +10,7 @@ const CustomSection = styled(Section)`
   }
 
   h4 {
-    color: ${ props => props.theme.colors.primary };
+    color: ${ props => props.theme.colors.gray600 };
     font-weight: 500;
   }
 `
