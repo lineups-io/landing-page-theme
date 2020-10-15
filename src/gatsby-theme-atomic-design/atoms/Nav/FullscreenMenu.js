@@ -14,7 +14,7 @@ const CustomFullscreenMenu = styled(FullscreenMenu).attrs({
   }
 
   ${ Link } {
-    color: ${ props => props.theme.colors.white };
+    color: ${ props => props.theme.fontColorWithBackground.secondary };
     font-family: utopia-std, serif;
     font-size: 2.5em;
     font-weight: 500;
@@ -25,11 +25,7 @@ const CustomFullscreenMenu = styled(FullscreenMenu).attrs({
   ${ Link }:hover,
   ${ Link }.active,
   .active ${ Link } {
-    color: ${props => props.theme.colors.primary};
-  }
-
-  ${ Link }::before {
-    display: none;
+    color: ${props => props.theme.fontColorWithBackground.secondary};
   }
 `
 
