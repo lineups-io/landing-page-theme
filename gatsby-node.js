@@ -56,7 +56,7 @@ exports.createPages = ({ actions }) => {
   const { createPage } = actions
   if (process.env.ALGOLIA_ADMIN_KEY) {
     createPage({
-      path: '/search',
+      path: '/search/',
       component: require.resolve('./src/templates/Search/index.js'),
       context: {
         account: process.env.ACCOUNT,
