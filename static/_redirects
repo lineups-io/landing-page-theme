@@ -1,6 +1,2 @@
-# Redirect domain aliases to primary domain
-#https://oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/?redirected=oaktreekingsville 301!
-#https://www.oaktreekingsville.com/* https://rockstar.apartments/kingsville-tx/oak-tree-apartments/?redirected=oaktreekingsville 301!
-
 # Redirect default Netlify subdomain to primary domain
 https://headway.netlify.app/* https://headway.apartments/:splat 301!
