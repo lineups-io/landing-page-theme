@@ -1,4 +1,5 @@
 # Redirect default Netlify subdomain to primary domain
 http://avantiresidential.netlify.com/* http://live.avantiresidential.com/:splat 301!
+http://avantiresidential.netlify.app/* http://live.avantiresidential.com/:splat 301!
 
-/ /locations
+/ /locations/
