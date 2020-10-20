@@ -1,4 +1,5 @@
 # Redirect default Netlify subdomain to primary domain
 https://socialstudentspaces.netlify.com/* https://rentals.thesocialstudentspaces.com/:splat 301!
+https://socialstudentspaces.netlify.app/* https://rentals.thesocialstudentspaces.com/:splat 301!
 
-/ /locations
+/ /locations/
