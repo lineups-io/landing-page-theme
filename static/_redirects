@@ -32,3 +32,4 @@ https://www.reserveongarth.com/* https://rockstar.apartments/baytown-tx/reserve-
 
 # Redirect default Netlify subdomain to primary domain
 https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
+https://rockstarliving.netlify.app/* https://rockstar.apartments/:splat 301!
