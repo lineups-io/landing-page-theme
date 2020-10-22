@@ -15,7 +15,7 @@ const CustomFullscreenMenu = styled(FullscreenMenu).attrs({
 
   ${ Link } {
     color: ${ props => props.theme.colors.white };
-    font-family: utopia-std, serif;
+    font-family: ${ props => props.theme.fonts.bodyFontFamily };
     font-size: 2.5em;
     font-weight: 500;
     line-height: 1em;
