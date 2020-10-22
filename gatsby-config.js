@@ -8,18 +8,6 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
-const algolia = process.env.ALGOLIA_ADMIN_KEY ? [
-  {
-    resolve: 'gatsby-plugin-algolia',
-    options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID,
-      apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      queries,
-      chunkSize: 10000, // default: 1000
-    },
-  },
-] : []
-
 module.exports = {
   siteMetadata: {
     title: process.env.TITLE,
@@ -93,6 +81,14 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
-    ...algolia,
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
   ]
 }
