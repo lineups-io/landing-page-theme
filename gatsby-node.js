@@ -52,15 +52,17 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
 }
 
 exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions
-  deletePage(page)
-  createPage({
-    ...page,
-    context: {
-      ...page.context,
-      account: process.env.ACCOUNT,
-    },
-  })
+  if (!page.context.account) {
+    const { createPage, deletePage } = actions
+    deletePage(page)
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+        account: process.env.ACCOUNT,
+      },
+    })
+  }
 }
 
 exports.createPages = ({ actions }) => {
