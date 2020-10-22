@@ -2,7 +2,7 @@ const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development
 
 const queries = require('./gatsby-algolia.js')
 
-console.log('[landing-page-site] ' + activeEnv)
+console.log('[site] NODE_ENV=' + activeEnv)
 
 require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
