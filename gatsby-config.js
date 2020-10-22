@@ -67,6 +67,17 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Admin',
+        fieldName: 'admin',
+        url: process.env.ADMIN_GRAPHQL_URI,
+        headers: {
+          Authorization: `Bearer ${ process.env.ADMIN_GRAPHQL_KEY }`,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-landing-pages',
       options: {
         account: process.env.ACCOUNT,
