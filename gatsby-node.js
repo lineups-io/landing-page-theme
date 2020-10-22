@@ -4,7 +4,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
   if (internal.type === 'LineupsApartment') {
     const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id, realPage, floorPlanUrl } = node
     if (enabledFeatures.indexOf('microsite') > -1) {
-      console.log('[gatsby-theme-apartment-page] creating page', path)
+      console.log('[site] creating apartment page', path)
       createPage({
         path,
         component: require.resolve('./src/templates/ApartmentPage/index.js'),
@@ -15,7 +15,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
       })
     }
     if (realPage && realPage.siteId && floorPlanUrl) {
-      console.log('[gatsby-theme-apartment-page] creating realpage floorplan page', floorPlanUrl)
+      console.log('[site] creating realpage floorplan page', floorPlanUrl)
       createPage({
         path: floorPlanUrl,
         component: require.resolve('./src/templates/RealPageOnlineLeasing.js'),
@@ -28,7 +28,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
   } else if (internal.type === 'LineupsPage') {
     const { noindex, slug, id, lineupsId: page } = node
     const path = `/${ noindex ? 'noindex/' : '' }${ slug }/`
-    console.log('[gatsby-theme-landing-page] creating page', path)
+    console.log('[site] creating landing page', path)
     createPage({
       path,
       component: require.resolve('./src/templates/LandingPage/index.js'),
@@ -40,7 +40,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
     })
   } else if (internal.type === 'MarkdownRemark') {
     const { frontmatter: { path } } = node
-    console.log('[gatsby-theme-landing-page] creating page', path)
+    console.log('[site] creating markdown page', path)
     createPage({
       path,
       component: require.resolve('./src/templates/Markdown.js'),
