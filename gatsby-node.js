@@ -65,6 +65,47 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 }
 
-exports.createPages = ({ actions }) => {
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
+
+  const query = `
+    query getWidgets($account: String) {
+      admin {
+        apartments (input: { filter: { status: { _eq: "published" }, account: { _eq: $account } } }) {
+          results {
+            widgets(status: "published") {
+                id: _id
+                title
+            }
+          }
+          totalCount
+        }
+      }
+    }
+  `
+
+  return graphql(query, { account: process.env.ACCOUNT }).then(result => {
+    const { results = [] } = result.data.admin.apartments
+
+    const widgets = []
+    results.forEach(apartment => {
+      (apartment.widgets || []).forEach(widget => widgets.push(widget))
+    })
+
+    return widgets.reduce(
+      (acc, widget) => acc.then(() => {
+        const path = `/widgets/${ widget.id }`
+        console.log('[site] creating widget page', path, widget.title)
+        return createPage({
+          path,
+          component: require.resolve('./src/templates/WidgetPage/index.js'),
+          context: {
+            id: widget.id,
+            account: process.env.ACCOUNT,
+          },
+        })
+      }),
+      Promise.resolve()
+    )
+  })
 }
