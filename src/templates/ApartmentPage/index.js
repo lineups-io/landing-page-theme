@@ -25,11 +25,6 @@ const App = ({ data, location }) => {
 
 export const query = graphql`
   query getApartmentPage($id: ID! $account: ID!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     lineups {
       site: getAccountById(id: $account) {
           ...NavFields
