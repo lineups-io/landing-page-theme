@@ -1,46 +1,29 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
+import { HashRouter, Switch } from 'react-router-dom'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
-import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
+
+import Container from './Container'
+import Routes from './Routes'
 
 import './index.css'
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-`
 
 export default ({ data }) => {
   console.log('WidgetsPage', data.admin.widget)
   const {
     styles,
     slides,
-    info,
+    // info,
   } = data.admin.widget
 
-  return <Theme>
+  return <Theme theme={styles}>
     <Container>
-      <VideoPlayer
-        onBeginTour={() => console.log('onBeginTour')}
-        onScheduleTour={() => console.log('onScheduleTour')}
-        poster={slides.intro.poster}
-        sources={[
-          {
-            src: slides.intro.video,
-            type: `video/${ slides.intro.video.split('.').splice(-1) }`,
-          }
-        ]}
-        tracks={[
-          {
-            kind: 'captions',
-            srcLang: 'en',
-            label: 'English',
-            src: slides.intro.closedCaptions,
-          }
-        ]}
-      />
+      <HashRouter>
+        <Switch>
+          <Routes {...slides} />
+        </Switch>
+      </HashRouter>
     </Container>
   </Theme>
 }
