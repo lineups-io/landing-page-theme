@@ -100,24 +100,24 @@ export const query = graphql`
     bedrooms {
       status
       question
-      minCount
-      maxCount
+      minChoices: minCount
+      maxChoices: maxCount
       columns
       options
     }
     moveInDate {
       status
       question
-      minCount
-      maxCount
+      minChoices: minCount
+      maxChoices: maxCount
       columns
       options
     }
     floorplanAmenities {
       status
       question
-      minCount
-      maxCount
+      minChoices: minCount
+      maxChoices: maxCount
       columns
       options
     }
@@ -130,8 +130,8 @@ export const query = graphql`
     communityAmenities {
       status
       question
-      minCount
-      maxCount
+      minChoices: minCount
+      maxChoices: maxCount
       columns
       options
     }
@@ -144,8 +144,8 @@ export const query = graphql`
     neighborhoodFeatures {
       status
       question
-      minCount
-      maxCount
+      minChoices: minCount
+      maxChoices: maxCount
       columns
       options
     }
