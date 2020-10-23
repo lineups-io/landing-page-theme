@@ -15,7 +15,7 @@ import useAutosuggest from './useAutosuggest.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
-import lottie from './lottie.json'
+import loading from './loading.json'
 import confirmation from './confirmation.json'
 
 const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, neighborhoodFeatures, contactUs }) => {
@@ -93,7 +93,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     {
       path: '/loading',
       component: Spinner,
-      lottie,
+      lottie: loading,
       title: 'Give us a moment while we customize a tour for you!',
       onComplete: () => navigate('/schedule-tour'),
     },
