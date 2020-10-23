@@ -118,7 +118,6 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
       component: ContactUs,
       // FIXME: contactUs.emailTo should be required
       to: contactUs.emailTo || 'lucas@lineups.io',
-      // TODO: load values from cookies
       from: store.user ? store.user.email : '',
       question: 'Have a question we have an answer?',
       onSubmit: data => navigate('/contact-us-confirmation', data),
