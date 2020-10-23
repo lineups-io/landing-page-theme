@@ -9,6 +9,7 @@ import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
 
+import useLocalStorage from './useLocalStorage.js'
 import useNavigate from './useNavigate.js'
 import useAutosuggest from './useAutosuggest.js'
 import NavLeft from './NavLeft'
@@ -17,7 +18,21 @@ import NavRight from './NavRight'
 import lottie from './lottie.json'
 
 const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, contactUs }) => {
-  const navigate = useNavigate()
+  const [store, setStore] = useLocalStorage('store', { user: {} })
+  const updateStore = (location, data = {}) => {
+    const key = location.pathname.replace(/^\//, '') || 'index'
+    setStore({
+      ...store,
+      user: {
+        name: data.name || store.user.name,
+        email: data.email || store.user.email,
+        phone: data.phone || store.user.phone,
+      },
+      [key]: data,
+    })
+  }
+
+  const navigate = useNavigate(updateStore)
   const floorplanAutosuggest = useAutosuggest()
   const communityAutosuggest = useAutosuggest()
 
@@ -68,10 +83,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     {
       path: '/guest-card',
       component: GuestCard,
-      // TODO: load values from cookies
-      name: '',
-      email: '',
-      phone: '',
+      ...store.user,
       title: 'To help us personalize the experience, tell us a little about you',
       onSubmit: data => navigate('/loading', data),
       privacyPolicyUrl: '//google.com',
@@ -86,9 +98,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     {
       path: '/schedule-tour',
       component: ScheduleTour,
-      // TODO: load values from cookies
-      email: '',
-      phone: '',
+      ...store.user,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
     },
     {
@@ -108,7 +118,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
       // FIXME: contactUs.emailTo should be required
       to: contactUs.emailTo || 'lucas@lineups.io',
       // TODO: load values from cookies
-      from : '',
+      from: store.user ? store.user.email : '',
       question: 'Have a question we have an answer?',
       onSubmit: data => navigate('/contact-us-confirmation', data),
     },

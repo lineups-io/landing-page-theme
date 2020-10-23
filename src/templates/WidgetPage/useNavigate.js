@@ -1,18 +1,15 @@
-import {
-  useHistory,
-  //useLocation,
-} from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
-const useNavigate = () => {
+const useNavigate = cb => {
   const history = useHistory()
-  //const location = useLocation()
+  const location = useLocation()
 
   return (to, data) => {
     if (to === -1) {
       history.goBack()
     } else {
       history.push(to)
-      // TODO: save data
+      cb(location, data)
     }
   }
 }
