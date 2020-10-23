@@ -17,7 +17,7 @@ import NavRight from './NavRight'
 
 import lottie from './lottie.json'
 
-const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, contactUs }) => {
+const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, neighborhoodFeatures, contactUs }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (location, data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
@@ -76,10 +76,11 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
       onAutocomplete: console.debug,
     },
     {
-      ...transform('/community-amenities', communityAmenities, '/guest-card'),
+      ...transform('/community-amenities', communityAmenities, '/neighborhood-features'),
       autoSuggest: communityAutosuggest,
       onAutocomplete: console.debug,
     },
+    transform('/neighborhood-features', neighborhoodFeatures, '/guest-card'),
     {
       path: '/guest-card',
       component: GuestCard,
