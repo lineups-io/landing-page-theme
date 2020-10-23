@@ -16,6 +16,7 @@ import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
 import lottie from './lottie.json'
+import confirmation from './confirmation.json'
 
 const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, neighborhoodFeatures, contactUs }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
@@ -105,7 +106,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     {
       path: '/schedule-tour-confirmation',
       component: Confirmation,
-      lottie,
+      lottie: confirmation,
       title: 'Thank you for scheduling a tour!',
       subtitle: 'Looking forward to meeting you.',
       onStartOver: () => navigate('/'),
@@ -125,7 +126,7 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     {
       path: '/contact-us-confirmation',
       component: Confirmation,
-      lottie,
+      lottie: confirmation,
       title: 'Thank you !!! Someone will be in touch soon.',
       onStartOver: () => navigate('/'),
       onCall: () => console.log('onCall'),
