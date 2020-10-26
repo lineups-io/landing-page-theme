@@ -25,7 +25,8 @@ const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmen
     setStore({
       ...store,
       user: {
-        name: data.name || store.user.name,
+        firstName: data.firstName || store.user.firstName,
+        lastName: data.lastName || store.user.lastName,
         email: data.email || store.user.email,
         phone: data.phone || store.user.phone,
       },
