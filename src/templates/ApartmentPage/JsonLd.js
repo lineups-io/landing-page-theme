@@ -30,7 +30,7 @@ const Place = props => {
       ...props.coordinates,
     },
     image: [props.defaultPhoto.src],
-    openingHoursSpecification: props.externalData.officeHours.map(o => ({
+    openingHoursSpecification: props.officeHours.map(o => ({
       '@context': 'http://schema.org',
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: [o.Day],

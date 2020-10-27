@@ -150,30 +150,27 @@ export const query = graphql`
           }
           src: url
         }
-        externalData {
-          shortDescription
-          longDescription
-          officeHours {
-            Day: day
-            OpenTime: openTime
-            CloseTime: closeTime
-          }
-          amenities {
-            type
-            title
-            description
-            isFeatured
+        longDescription
+        officeHours: businessHours {
+          Day: day
+          OpenTime: openTime
+          CloseTime: closeTime
+        }
+        amenities {
+          type
+          title
+          description
+          isFeatured
             isPublished
-            icon: fontAwesome
-          }
-          specials {
-            isActive
-            title
-            description
-            footer
-            startDate
-            endDate
-          }
+          icon: fontAwesome
+        }
+        specials {
+          isActive
+          title
+          description
+          footer
+          startDate
+          endDate
         }
         nearbyCommunities: nearby(limit: 3) {
           ...ApartmentFields
