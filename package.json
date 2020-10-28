@@ -22,7 +22,7 @@
   "dependencies": {
     "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
-    "gatsby": "2.24.8",
+    "gatsby": "^2.22.9",
     "gatsby-image": "^2.2.43",
     "gatsby-plugin-algolia": "^0.7.0",
     "gatsby-plugin-google-tagmanager": "^2.3.3",
