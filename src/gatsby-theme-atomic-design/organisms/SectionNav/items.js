@@ -5,7 +5,7 @@ const items = [
   },
   {
     id: 'amenities',
-    label: 'Amenities',
+    label: 'Amenities & Virtual Tours',
   },
   {
     id: 'photos',
