@@ -150,24 +150,28 @@ export const query = graphql`
           }
           src: url
         }
-        externalData {
-          floorplans {
+        floorplans {
+          id
+          floorplan: name
+          bedrooms
+          bathrooms
+          squareFeet {
+            min
+          }
+          floorPlanAvailabilityUrl
+          units {
             id
-            floorplan: name
-            bedrooms
-            bathrooms
-            squareFeet {
+            effectiveRent {
               min
             }
-            floorPlanAvailabilityUrl
-            units {
-              id
-              effectiveRent {
-                min
-              }
-              dateAvailable
-              unitAvailabilityUrl
-            }
+            dateAvailable
+            unitAvailabilityUrl
+          }
+          images: media {
+            src: url
+            alt
+            title
+            tags
           }
         }
         longDescription
