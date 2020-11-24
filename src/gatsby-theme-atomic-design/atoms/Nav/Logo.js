@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import logoUrl from './logo.png'
+import logoUrl from './logo.jpg'
 
 const Logo = styled.img.attrs({
   src: logoUrl,
