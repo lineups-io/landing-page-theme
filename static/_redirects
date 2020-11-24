@@ -29,6 +29,8 @@ https://parksidehumble.com/* https://rockstar.apartments/humble-tx/parkside-apar
 https://www.parksidehumble.com/* https://rockstar.apartments/humble-tx/parkside-apartments/?redirected=parksidehumble 301!
 https://reserveongarth.com/* https://rockstar.apartments/baytown-tx/reserve-on-garth-rd/?redirected=reserveongarth 301!
 https://www.reserveongarth.com/* https://rockstar.apartments/baytown-tx/reserve-on-garth-rd/?redirected=reserveongarth 301!
+https://citycrossingapartments.com/* https://rockstar.apartments/houston-tx/city-crossing/?redirected=citycrossingapartments 301!
+https://www.citycrossingapartments.com/* https://rockstar.apartments/houston-tx/city-crossing/?redirected=citycrossingapartments 301!
 
 # Redirect default Netlify subdomain to primary domain
 https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
