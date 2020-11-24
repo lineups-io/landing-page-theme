@@ -150,6 +150,30 @@ export const query = graphql`
           }
           src: url
         }
+        floorplans {
+          id
+          floorplan: name
+          bedrooms
+          bathrooms
+          squareFeet {
+            min
+          }
+          floorPlanAvailabilityUrl
+          units {
+            id
+            effectiveRent {
+              min
+            }
+            dateAvailable
+            unitAvailabilityUrl
+          }
+          images: media {
+            src: url
+            alt
+            title
+            tags
+          }
+        }
         longDescription
         officeHours: businessHours {
           Day: day

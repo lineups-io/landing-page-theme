@@ -17,7 +17,7 @@ const Section = styled.div`
   }
 
   a, button {
-    border-color: ${ props => props.theme.colors.black };
+    border: 0;
     color: ${ props => props.theme.colors.black };
   }
 
@@ -59,9 +59,7 @@ Section.Header = styled.h2`
 
   span {
     display: block;
-  }
-  span:first-child {
-    color: ${ props => props.theme.colors.secondary };
+    color: ${ props => props.theme.colors.primary };
   }
 
   &::after {
@@ -81,7 +79,7 @@ Section.Subheader = styled.h3`
   line-height: 1.5em;
   text-transform: uppercase;
   margin-bottom: 25px;
-  color: ${ props => props.theme.colors.secondary };
+  color: ${ props => props.theme.colors.primary };
 `
 
 Section.Body = styled(Col)`
@@ -111,9 +109,15 @@ Section.Link = styled(Link)`
   transition: background-color 442ms ease;
   line-height: 1em;
   font-size: 1.1em;
+  background-color: ${ props => props.theme.colors.primary };
+  color: ${ props => props.theme.colors.white } !important;
 
   > svg {
     margin-left: 25px;
+  }
+
+  > svg * {
+    fill: ${ props => props.theme.colors.white };
   }
 
   &[href]:hover {
