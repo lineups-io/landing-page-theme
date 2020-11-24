@@ -8,6 +8,7 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import { toQueryString } from 'gatsby-theme-atomic-design/src/helpers'
 
 const Container = styled.div`
+  min-height: 969px;
 `
 
 const Page = ({ pageContext, data, location }) => {
