@@ -1,19 +1,12 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image/withIEPolyfill'
+import styled from 'styled-components'
 
-export default () => {
-  const { logo } = useStaticQuery(graphql`
-    query getNavLogo {
-      logo: file(relativePath: { eq: "logo_colored.png" }) {
-        childImageSharp {
-          fixed(width: 150 height: 44 cropFocus: CENTER) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
-  return <GatsbyImage fixed={logo.childImageSharp.fixed} />
-}
+const Logo = styled(Icon).attrs({
+  icon: 'HeaderLogo',
+})`
+  height: 64px;
+  width: 106px;
+`
+
+export default Logo
