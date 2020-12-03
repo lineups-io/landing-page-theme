@@ -8,14 +8,7 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import { toQueryString } from 'gatsby-theme-atomic-design/src/helpers'
 
 const Container = styled.div`
-  @media screen and (max-width: 480px) {
-    width:100%;
-
-    body {
-      padding:0;
-      margin:0;
-    }
-  }
+  min-height: 969px;
 `
 
 const Page = ({ pageContext, data, location }) => {
