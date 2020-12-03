@@ -27,7 +27,6 @@ export default ({ data }) => {
   </Theme>
 }
 
-
 export const query = graphql`
   query getWidgetPageData($id: String! $account: ID!) {
     lineups {
