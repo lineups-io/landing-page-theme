@@ -14,7 +14,7 @@ export default ({ data }) => {
   const {
     styles,
     slides,
-    // info,
+    info,
   } = data.admin.widget
 
   return <Theme theme={styles}>
@@ -61,6 +61,9 @@ export const query = graphql`
     status
     title
     description
+    apartment {
+      prospectPhoneNumber
+    }
   }
 
   fragment WidgetSlidesFragment on Admin_Widget {

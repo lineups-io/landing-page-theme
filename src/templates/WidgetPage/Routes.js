@@ -18,7 +18,10 @@ import NavRight from './NavRight'
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
+const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
+
 const Routes = ({
+  info,
   intro,
   bedrooms,
   moveInDate,
@@ -55,6 +58,8 @@ const Routes = ({
     options: options.filter(option => option.active),
     onSubmit: data => navigate(next, data),
   }) : undefined
+
+  const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
   const routes = [
     {
@@ -119,7 +124,7 @@ const Routes = ({
       title: 'Thank you for scheduling a tour!',
       subtitle: 'Looking forward to meeting you.',
       onStartOver: () => navigate('/'),
-      onCall: () => console.log('onCall'),
+      onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
     },
@@ -138,7 +143,7 @@ const Routes = ({
       lottie: confirmation,
       title: 'Thank you !!! Someone will be in touch soon.',
       onStartOver: () => navigate('/'),
-      onCall: () => console.log('onCall'),
+      onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
     },
