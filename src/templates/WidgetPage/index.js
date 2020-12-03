@@ -10,7 +10,6 @@ import Routes from './Routes'
 import './index.css'
 
 export default ({ data }) => {
-  console.log('WidgetsPage', data.admin.widget)
   const {
     styles,
     slides,
