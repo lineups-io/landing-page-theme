@@ -18,7 +18,15 @@ import NavRight from './NavRight'
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
-const Routes = ({ intro, bedrooms, moveInDate, floorplanAmenities, communityAmenities, neighborhoodFeatures, contactUs }) => {
+const Routes = ({
+  intro,
+  bedrooms,
+  moveInDate,
+  floorplanAmenities,
+  communityAmenities,
+  neighborhoodFeatures,
+  contactUs,
+}) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (location, data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
