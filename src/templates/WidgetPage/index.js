@@ -20,7 +20,7 @@ export default ({ data }) => {
     <Container>
       <HashRouter>
         <Switch>
-          <Routes {...slides} />
+          <Routes {...slides} info={info} />
         </Switch>
       </HashRouter>
     </Container>
