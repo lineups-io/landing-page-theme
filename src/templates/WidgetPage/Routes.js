@@ -8,6 +8,7 @@ import Spinner from 'gatsby-theme-atomic-design/src/templates/Spinner'
 import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
+import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
 
 import useLocalStorage from './useLocalStorage.js'
 import useNavigate from './useNavigate.js'
@@ -59,6 +60,8 @@ const Routes = ({
     onSubmit: data => navigate(next, data),
   }) : undefined
 
+  // TODO : write function
+  const action = str => () => console.debug(str)
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
   const routes = [
@@ -110,7 +113,33 @@ const Routes = ({
       component: Spinner,
       lottie: loading,
       title: 'Give us a moment while we customize a tour for you!',
-      onComplete: () => navigate('/schedule-tour'),
+      onComplete: () => navigate('/community-tour'),
+    },
+    {
+      path: '/community-tour',
+      component: Story,
+
+      stories: [],
+      onCheckAvailibility: action('onCheckAvailibility'),
+      onCall,
+      onContactUs: () => navigate('/contact-us'),
+      onScheduleTour: () => navigate('/schedule-tour'),
+      onStoryStart: action('onStoryStart'),
+      onStoryEnd: action('onStoryEnd'),
+      onAllStoriesEnd: action('onAllStoriesEnd'),
+    },
+    {
+      path: '/floorplan-tour',
+      component: Story,
+
+      stories: [],
+      onCheckAvailibility: action('onCheckAvailibility'),
+      onCall,
+      onContactUs: () => navigate('/contact-us'),
+      onScheduleTour: () => navigate('/schedule-tour'),
+      onStoryStart: action('onStoryStart'),
+      onStoryEnd: action('onStoryEnd'),
+      onAllStoriesEnd: action('onAllStoriesEnd'),
     },
     {
       path: '/schedule-tour',
