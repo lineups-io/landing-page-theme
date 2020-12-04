@@ -103,6 +103,7 @@ const Routes = ({
       title: 'To help us personalize the experience, tell us a little about you',
       onSubmit: data => navigate('/loading', data),
       privacyPolicyUrl: '//google.com',
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
       path: '/loading',
@@ -116,6 +117,7 @@ const Routes = ({
       component: ScheduleTour,
       ...store.user,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
       path: '/schedule-tour-confirmation',
@@ -136,6 +138,7 @@ const Routes = ({
       from: store.user ? store.user.email : '',
       question: 'Have a question we have an answer?',
       onSubmit: data => navigate('/contact-us-confirmation', data),
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
       path: '/contact-us-confirmation',
