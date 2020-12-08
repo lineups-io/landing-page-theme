@@ -4,7 +4,6 @@ import { HashRouter, Switch } from 'react-router-dom'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
 
-import Container from './Container'
 import Routes from './Routes'
 
 import './index.css'
@@ -17,13 +16,11 @@ export default ({ data }) => {
   } = data.admin.widget
 
   return <Theme theme={styles}>
-    <Container>
       <HashRouter>
         <Switch>
           <Routes {...slides} info={info} />
         </Switch>
       </HashRouter>
-    </Container>
   </Theme>
 }
 
