@@ -12,7 +12,6 @@ import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
 
 import useLocalStorage from './useLocalStorage.js'
 import useNavigate from './useNavigate.js'
-import useAutosuggest from './useAutosuggest.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
@@ -47,8 +46,6 @@ const Routes = ({
   }
 
   const navigate = useNavigate(updateStore)
-  const floorplanAutosuggest = useAutosuggest()
-  const communityAutosuggest = useAutosuggest()
 
   const transform = (path, { options, ...obj }, next) => obj.status !== 'hidden' ? ({
     path,
@@ -88,16 +85,8 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/move-in'),
     transform('/move-in', moveInDate, '/floorplan-amenities'),
-    {
-      ...transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-      autoSuggest: floorplanAutosuggest,
-      onAutocomplete: console.debug,
-    },
-    {
-      ...transform('/community-amenities', communityAmenities, '/neighborhood-features'),
-      autoSuggest: communityAutosuggest,
-      onAutocomplete: console.debug,
-    },
+    transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
+    transform('/community-amenities', communityAmenities, '/neighborhood-features'),
     transform('/neighborhood-features', neighborhoodFeatures, '/guest-card'),
     {
       path: '/guest-card',
