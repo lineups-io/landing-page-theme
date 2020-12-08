@@ -112,18 +112,6 @@ const Routes = ({
       path: '/community-tour',
       component: Story,
 
-      stories: [],
-      onCheckAvailibility: action('onCheckAvailibility'),
-      onCall,
-      onContactUs: () => navigate('/contact-us'),
-      onScheduleTour: () => navigate('/schedule-tour'),
-      onStoryStart: action('onStoryStart'),
-      onStoryEnd: action('onStoryEnd'),
-      onAllStoriesEnd: action('onAllStoriesEnd'),
-    },
-    {
-      path: '/floorplan-tour',
-      component: Story,
 
       stories: [],
       onCheckAvailibility: action('onCheckAvailibility'),
