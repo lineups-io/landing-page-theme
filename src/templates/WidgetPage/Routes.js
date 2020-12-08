@@ -106,10 +106,10 @@ const Routes = ({
       component: Spinner,
       lottie: loading,
       title: 'Give us a moment while we customize a tour for you!',
-      onComplete: () => navigate('/community-tour'),
+      onComplete: () => navigate('/story'),
     },
     {
-      path: '/community-tour',
+      path: '/story',
       component: Story,
 
 
