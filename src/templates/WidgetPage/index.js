@@ -59,6 +59,7 @@ export const query = graphql`
     status
     title
     description
+    privacyPolicyUrl
     apartment {
       prospectPhoneNumber
     }
