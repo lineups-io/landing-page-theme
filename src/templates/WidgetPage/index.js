@@ -83,15 +83,6 @@ export const query = graphql`
       emailCc
       floorplansWebsiteUrl
     }
-    communicationPreferences {
-      question
-      options
-    }
-    checkpoints {
-      checkpoint1
-      checkpoint2
-      checkpoint3
-    }
     intro {
       status
       question
