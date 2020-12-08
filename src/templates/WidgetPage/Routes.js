@@ -98,7 +98,7 @@ const Routes = ({
       ...store.user,
       title: 'To help us personalize the experience, tell us a little about you',
       onSubmit: data => navigate('/loading', data),
-      privacyPolicyUrl: '//google.com',
+      privacyPolicyUrl: info.privacyPolicyUrl,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
@@ -159,6 +159,7 @@ const Routes = ({
       to: contactUs.emailTo || 'lucas@lineups.io',
       from: store.user ? store.user.email : '',
       question: 'Have a question we have an answer?',
+      privacyPolicyUrl: info.privacyPolicyUrl,
       onSubmit: data => navigate('/contact-us-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
