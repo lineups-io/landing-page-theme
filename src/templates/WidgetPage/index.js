@@ -106,14 +106,6 @@ export const query = graphql`
       columns
       options
     }
-    moveInDate {
-      status
-      question
-      minChoices: minCount
-      maxChoices: maxCount
-      columns
-      options
-    }
     floorplanAmenities {
       status
       question

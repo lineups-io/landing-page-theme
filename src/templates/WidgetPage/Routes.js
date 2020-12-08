@@ -9,6 +9,7 @@ import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
 import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
+import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 
 import useLocalStorage from './useLocalStorage.js'
 import useNavigate from './useNavigate.js'
@@ -24,7 +25,6 @@ const Routes = ({
   info,
   intro,
   bedrooms,
-  moveInDate,
   floorplanAmenities,
   communityAmenities,
   neighborhoodFeatures,
@@ -83,7 +83,12 @@ const Routes = ({
       onBeginTour: () => navigate('/bedrooms'),
     },
     transform('/bedrooms', bedrooms, '/move-in'),
-    transform('/move-in', moveInDate, '/floorplan-amenities'),
+    {
+      path: '/move-in',
+      component: InfiniteCalendar,
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      onSubmit: date => navigate('/floorplan-amenities', date),
+    },
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
     transform('/community-amenities', communityAmenities, '/neighborhood-features'),
     transform('/neighborhood-features', neighborhoodFeatures, '/guest-card'),
