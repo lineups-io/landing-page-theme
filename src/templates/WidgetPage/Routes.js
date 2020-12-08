@@ -81,7 +81,6 @@ const Routes = ({
          }
       ],
       onBeginTour: () => navigate('/bedrooms'),
-      onScheduleTour: () => navigate('/schedule-tour'),
     },
     transform('/bedrooms', bedrooms, '/move-in'),
     transform('/move-in', moveInDate, '/floorplan-amenities'),
