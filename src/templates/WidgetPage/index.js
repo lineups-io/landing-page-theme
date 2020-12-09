@@ -17,11 +17,11 @@ export default ({ data }) => {
 
   // TODO: update components to use styles
   return <Theme theme={styles}>
-      <HashRouter>
-        <Switch>
-          <Routes {...slides} info={info} />
-        </Switch>
-      </HashRouter>
+    <HashRouter>
+      <Switch>
+        <Routes {...slides} info={info} />
+      </Switch>
+    </HashRouter>
   </Theme>
 }
 
@@ -60,6 +60,9 @@ export const query = graphql`
     privacyPolicyUrl
     apartment {
       prospectPhoneNumber
+    }
+    account {
+      theme
     }
   }
 
@@ -104,12 +107,6 @@ export const query = graphql`
       columns
       options
     }
-    floorplanStories {
-      amenity
-      heading
-      subHeading
-      mediaIds
-    }
     communityAmenities {
       status
       question
@@ -118,11 +115,8 @@ export const query = graphql`
       columns
       options
     }
-    communityStories {
-      amenity
-      heading
-      subHeading
-      mediaIds
+    story {
+      data
     }
     neighborhoodFeatures {
       status
