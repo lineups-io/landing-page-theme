@@ -15,6 +15,7 @@ export default ({ data }) => {
     info,
   } = data.admin.widget
 
+  // TODO: update components to use styles
   return <Theme theme={styles}>
       <HashRouter>
         <Switch>
