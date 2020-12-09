@@ -27,6 +27,7 @@ const Routes = ({
   bedrooms,
   floorplanAmenities,
   communityAmenities,
+  story,
   neighborhoodFeatures,
   contactUs,
 }) => {
@@ -112,6 +113,8 @@ const Routes = ({
       path: '/story',
       component: Story,
 
+      theme: info.account.theme,
+      data: story.data,
 
       stories: [],
       onCheckAvailibility: action('onCheckAvailibility'),
