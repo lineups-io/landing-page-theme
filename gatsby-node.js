@@ -11,6 +11,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
         context: {
           id,
           account: process.env.ACCOUNT,
+          publicId: id,
         },
       })
     }
