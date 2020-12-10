@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 const useLocalStorage = (key, initialValue) => {
-  const namespacedKey = `${window.location.hostname}:${key}`
+  const ns = typeof window === 'undefined' ? 'server' : window.location.hostname
+  const namespacedKey = `${ns}:${key}`
 
   // State to store our value
   // Pass initial state function to useState so logic is only executed once

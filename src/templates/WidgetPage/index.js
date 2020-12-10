@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { HashRouter, Switch } from 'react-router-dom'
+import { StaticRouter, HashRouter, Switch } from 'react-router-dom'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
 
@@ -8,20 +8,22 @@ import Routes from './Routes'
 
 import './index.css'
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const {
     styles,
     slides,
     info,
   } = data.admin.widget
 
+  const Router = typeof window === 'undefined' ? StaticRouter : HashRouter
+
   // TODO: update components to use styles
   return <Theme theme={styles}>
-    <HashRouter>
+    <Router location={location}>
       <Switch>
         <Routes {...slides} info={info} />
       </Switch>
-    </HashRouter>
+    </Router>
   </Theme>
 }
 
