@@ -53,6 +53,11 @@ module.exports = {
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
         ],
+        headers: {
+          '/widgets/*': [
+            'X-Frame-Options: SAMEORIGIN',
+          ],
+        },
       },
     },
     {
