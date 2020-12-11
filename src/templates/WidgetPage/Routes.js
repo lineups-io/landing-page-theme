@@ -94,6 +94,13 @@ const Routes = ({
     transform('/community-amenities', communityAmenities, '/neighborhood-features'),
     transform('/neighborhood-features', neighborhoodFeatures, '/loading'),
     {
+      path: '/loading',
+      component: Spinner,
+      lottie: loading,
+      title: 'Give us a moment while we customize a tour for you!',
+      onComplete: () => navigate('/guest-card'),
+    },
+    {
       path: '/guest-card',
       component: GuestCard,
       ...store.user,
@@ -101,13 +108,6 @@ const Routes = ({
       onSubmit: data => navigate('/story', data),
       privacyPolicyUrl: info.privacyPolicyUrl,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
-    },
-    {
-      path: '/loading',
-      component: Spinner,
-      lottie: loading,
-      title: 'Give us a moment while we customize a tour for you!',
-      onComplete: () => navigate('/guest-card'),
     },
     {
       path: '/story',
