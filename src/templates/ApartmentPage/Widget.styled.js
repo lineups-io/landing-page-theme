@@ -64,18 +64,18 @@ export const Iframe = styled.div`
   }
 
   iframe {
-  background-color: #fff;
-  margin: 0;
-  border: 0;
+    background-color: #fff;
+    margin: 0;
+    border: 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 
-  @media (min-width: 768px) {
-    border-radius: 12px;
-  }
+    @media (min-width: 768px) {
+      border-radius: 12px;
+    }
   }
 
   @media (min-width: 768px) {
