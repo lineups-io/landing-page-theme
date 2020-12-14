@@ -68,8 +68,14 @@ export const Wrapper = styled.div`
   left: 0;
   z-index: 1030;
 
+  background-color: ${ props => props.open ? 'rgba(0, 0, 0, 0.8)' : 'transparent' };
+  width: ${ props => props.open ? '100%' : undefined };
+  height: ${ props => props.open ? '100%' : undefined };
+  display: flex;
+  align-items: center;
+
   @media (min-width: 768px) {
-    z-index: 1010;
+    align-items: flex-end;
   }
 
   ${ Bubble } {
