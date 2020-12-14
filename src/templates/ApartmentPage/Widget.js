@@ -47,7 +47,7 @@ const Widget = ({ _id, title, intro }) => {
     <Bubble onClick={toggleOpen}>
       <span>{bubble.text}</span>
       {bubble.sources.length > 0
-        ? <video autoPlay muted loop poster={bubble.poster} preload='auto' tabIndex='-1'>
+        ? <video autoPlay muted loop poster={bubble.poster} tabIndex='-1'>
             {bubble.sources.map((source, i) => <source key={i} {...source} />)}
         </video>
         : null}
