@@ -4,7 +4,7 @@ export const Close = styled.button`
   width: 25px;
   height: 25px;
   border: 0;
-  border-radius: 50% 50%;
+  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   position: absolute;
@@ -18,7 +18,7 @@ export const Bubble = styled.button`
   width: 128px;
   height: 128px;
   border: 5px solid #192c51;
-  border-radius: 50% 50%;
+  border-radius: 50%;
   background-color: transparent;
   padding: 0;
   color: #fff;
