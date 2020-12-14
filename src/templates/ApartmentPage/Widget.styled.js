@@ -18,7 +18,8 @@ export const Bubble = styled.button`
   height: 128px;
   border: 5px solid #192c51;
   border-radius: 50% 50%;
-  background-color: #192c51;
+  background-color: transparent;
+  padding: 0;
   color: #fff;
   cursor: pointer;
   position: relative;
