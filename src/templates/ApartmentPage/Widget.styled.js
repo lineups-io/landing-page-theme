@@ -58,7 +58,10 @@ export const Iframe = styled.iframe`
 
   @media (min-width: 768px) {
     border-radius: 12px;
-    margin: ${ props => props.open ? 0 : 20 }px;
+  }
+
+  @media (min-width: 768px) {
+    margin: 20px;
   }
 `
 
