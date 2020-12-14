@@ -54,9 +54,6 @@ export const Iframe = styled.iframe`
   border: 1px solid #ccc;
   margin: 0;
   border: 0;
-  transition:
-    max-width 0.4s ease-in-out,
-    max-height 0.4s ease-in-out;
 
   @media (min-width: 768px) {
     border-radius: 12px;
