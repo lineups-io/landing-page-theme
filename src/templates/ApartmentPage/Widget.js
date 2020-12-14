@@ -29,7 +29,6 @@ const Widget = ({ _id, title, intro }) => {
   }
 
   const iframe = {
-    title,
     src: `/widgets/${ _id }`,
     onLoad: () => setLoaded(true),
   }
@@ -54,7 +53,7 @@ const Widget = ({ _id, title, intro }) => {
     </Bubble>
     {loaded || open ? <Iframe>
       <Close onClick={toggleOpen}>&times;</Close>
-      <iframe {...iframe} />
+      <iframe title={title} {...iframe} />
     </Iframe> : null}
   </Wrapper>
 }
