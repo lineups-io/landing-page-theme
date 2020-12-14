@@ -11,6 +11,7 @@ export const Close = styled.button`
   top: 12.5px;
   right: 12.5px;
   cursor: pointer;
+  z-index: 2;
 `
 
 export const Bubble = styled.button`
@@ -49,15 +50,32 @@ export const Bubble = styled.button`
   }
 `
 
-export const Iframe = styled.iframe`
+export const Iframe = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 425px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: 177.78%;
+  }
+
+  iframe {
   background-color: #fff;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid #ccc;
   margin: 0;
   border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
   @media (min-width: 768px) {
     border-radius: 12px;
+  }
   }
 
   @media (min-width: 768px) {
@@ -85,12 +103,7 @@ export const Wrapper = styled.div`
     display: ${ props => props.open ? 'none' : 'block' };
   }
 
-  ${ Close }, ${ Iframe } {
-    display: ${ props => props.open ? 'block' : 'none' };
-  }
-
   ${ Iframe } {
-    max-width: ${ props => props.open ? '425px' : 0 };
-    max-height: ${ props => props.open ? `${ 425 * 1.7778 }px` : 0 };
+    display: ${ props => props.open ? 'block' : 'none' };
   }
 `
