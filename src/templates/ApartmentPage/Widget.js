@@ -11,6 +11,23 @@ const Widget = ({ _id, title, intro }) => {
   const [open, setOpen] = useState(false)
   const [loaded, setLoaded] = useState(false)
 
+  const toggleOpen = () => {
+    // When the modal is hidden...
+    if (open) {
+      const scrollY = document.body.style.top
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.position = ''
+      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+    } else {
+      document.body.style.top = `-${window.scrollY}px`
+      document.body.style.width = '100%'
+      document.body.style.position = 'fixed'
+    }
+
+    setOpen(!open)
+  }
+
   const iframe = {
     title,
     src: `/widgets/${ _id }`,
@@ -27,7 +44,7 @@ const Widget = ({ _id, title, intro }) => {
   }
 
   return <Wrapper open={open}>
-    <Bubble onClick={() => setOpen(true)}>
+    <Bubble onClick={toggleOpen}>
       <span>{bubble.text}</span>
       {bubble.sources.length > 0
         ? <video autoPlay muted loop poster={bubble.poster} preload='auto' tabIndex='-1'>
@@ -36,7 +53,7 @@ const Widget = ({ _id, title, intro }) => {
         : null}
     </Bubble>
     {loaded || open ? <Iframe>
-      <Close onClick={() => setOpen(false)}>&times;</Close>
+      <Close onClick={toggleOpen}>&times;</Close>
       <iframe {...iframe} />
     </Iframe> : null}
   </Wrapper>
