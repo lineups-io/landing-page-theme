@@ -23,6 +23,7 @@ export const Bubble = styled.button`
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  margin: 20px;
 
   span {
     background-color: rgba(0, 0, 0, 0.2);
@@ -72,7 +73,6 @@ export const Wrapper = styled.div`
   }
 
   ${ Bubble } {
-    margin: ${ props => props.open ? 0 : 20 }px;
     display: ${ props => props.open ? 'none' : 'block' };
   }
 
