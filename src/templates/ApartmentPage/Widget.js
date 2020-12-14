@@ -9,10 +9,12 @@ import {
 
 const Widget = ({ _id, title, intro }) => {
   const [open, setOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
   const iframe = {
     title,
     src: `/widgets/${ _id }`,
+    onLoad: () => setLoaded(true),
   }
 
   // TODO: set bubble text and bg color from widget styles
@@ -33,10 +35,10 @@ const Widget = ({ _id, title, intro }) => {
         </video>
         : null}
     </Bubble>
-    <Iframe>
-    <Close onClick={() => setOpen(false)}>&times;</Close>
+    {loaded || open ? <Iframe>
+      <Close onClick={() => setOpen(false)}>&times;</Close>
       <iframe {...iframe} />
-    </Iframe>
+    </Iframe> : null}
   </Wrapper>
 }
 
