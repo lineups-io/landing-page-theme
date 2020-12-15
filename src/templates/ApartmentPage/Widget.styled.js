@@ -77,6 +77,7 @@ export const Iframe = styled.div`
 
   @media (min-width: 768px) {
     margin: 20px;
+    max-width: 375px;
     border-radius: 12px;
     overflow: hidden;
   }
