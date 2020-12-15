@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
 export const Close = styled.button`
   width: 25px;
@@ -106,4 +108,25 @@ export const Wrapper = styled.div`
   ${ Iframe } {
     display: ${ props => props.open ? 'block' : 'none' };
   }
+`
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`
+
+export const Spinner = styled(Icon).attrs({
+  icon: 'Spinner',
+  size: '2x',
+})`
+  color: #000;
+  position: absolute;
+  top: calc(50% - 16px);
+  left: calc(50% - 16px);
+
+  animation: ${ rotate } 2s infinite;
 `

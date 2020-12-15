@@ -5,6 +5,7 @@ import {
   Bubble,
   Close,
   Iframe,
+  Spinner,
 } from './Widget.styled'
 
 const Widget = ({ _id, title, intro }) => {
@@ -59,6 +60,7 @@ const Widget = ({ _id, title, intro }) => {
     </Bubble>
     {loaded || open ? <Iframe>
       <Close onClick={toggleOpen}>&times;</Close>
+      {!loaded ? <Spinner /> : null}
       <iframe ref={ref} title={title} {...iframe} />
     </Iframe> : null}
   </Wrapper>
