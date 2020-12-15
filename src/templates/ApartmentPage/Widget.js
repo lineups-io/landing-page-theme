@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import {
   Wrapper,
@@ -10,8 +10,10 @@ import {
 const Widget = ({ _id, title, intro }) => {
   const [open, setOpen] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const ref = useRef()
 
   const toggleOpen = () => {
+    const { contentWindow } = ref.current || {}
     // When the modal is hidden...
     if (open) {
       const scrollY = document.body.style.top
@@ -19,10 +21,14 @@ const Widget = ({ _id, title, intro }) => {
       document.body.style.width = ''
       document.body.style.position = ''
       window.scrollTo(0, parseInt(scrollY || '0') * -1)
+
+      if (contentWindow) contentWindow.postMessage('close')
     } else {
       document.body.style.top = `-${window.scrollY}px`
       document.body.style.width = '100%'
       document.body.style.position = 'fixed'
+
+      if (contentWindow) contentWindow.postMessage('open')
     }
 
     setOpen(!open)
@@ -53,7 +59,7 @@ const Widget = ({ _id, title, intro }) => {
     </Bubble>
     {loaded || open ? <Iframe>
       <Close onClick={toggleOpen}>&times;</Close>
-      <iframe title={title} {...iframe} />
+      <iframe ref={ref} title={title} {...iframe} />
     </Iframe> : null}
   </Wrapper>
 }
