@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
@@ -21,7 +21,7 @@ const Page = ({ pageContext, data, location }) => {
     'ContainerId': 'OllrDiv',
     'siteId': pageContext.siteId,
     'SearchUrl': location.pathname,
-    'MoveInDate': moment().format('MM/DD/YYYY'),
+    'MoveInDate': dayjs().format('MM/DD/YYYY'),
     'OLL-source-attribution': 'Website',
   }
 
