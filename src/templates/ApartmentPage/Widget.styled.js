@@ -55,6 +55,7 @@ export const Iframe = styled.div`
   position: relative;
   width: 100%;
   max-width: 425px;
+  background-color: #fff;
 
   &::before {
     content: '';
@@ -65,7 +66,6 @@ export const Iframe = styled.div`
   }
 
   iframe {
-    background-color: #fff;
     margin: 0;
     border: 0;
     position: absolute;
