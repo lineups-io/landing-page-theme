@@ -73,14 +73,12 @@ export const Iframe = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-
-    @media (min-width: 768px) {
-      border-radius: 12px;
-    }
   }
 
   @media (min-width: 768px) {
     margin: 20px;
+    border-radius: 12px;
+    overflow: hidden;
   }
 `
 
