@@ -10,11 +10,11 @@ const CustomLink = styled(Link)`
   font-weight: 700;
 
   &:hover {
-    color: ${props => props.theme.fontColorWithBackground.black};
+    color: ${props => props.theme.colors.tertiary};
   }
 
   &::before {
-    background-color: ${props => props.theme.fontColorWithBackground.black};
+    background-color: ${props => props.theme.colors.tertiary};
   }
 `
 
