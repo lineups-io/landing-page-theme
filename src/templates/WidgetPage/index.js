@@ -62,6 +62,31 @@ export const query = graphql`
     privacyPolicyUrl
     apartment {
       prospectPhoneNumber
+      floorPlanUrl
+      floorplans {
+        id
+        floorplan: name
+        bedrooms
+        bathrooms
+        squareFeet {
+          min
+        }
+        floorPlanAvailabilityUrl
+        units {
+          id
+          effectiveRent {
+            min
+          }
+          dateAvailable
+          unitAvailabilityUrl
+        }
+        images: media {
+          src: url
+          alt
+          title
+          tags
+        }
+      }
     }
     account {
       theme
