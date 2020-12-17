@@ -116,7 +116,6 @@ const Routes = ({
       theme: info.account.theme,
       data: story.data,
 
-      stories: [],
       onCheckAvailibility: action('onCheckAvailibility'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
