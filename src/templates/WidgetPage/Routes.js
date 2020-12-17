@@ -15,6 +15,7 @@ import useLocalStorage from './useLocalStorage.js'
 import useNavigate from './useNavigate.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
+import CheckAvailability from './CheckAvailability'
 
 import loading from './loading.json'
 import confirmation from './confirmation.json'
@@ -116,13 +117,22 @@ const Routes = ({
       theme: info.account.theme,
       data: story.data,
 
-      onCheckAvailibility: action('onCheckAvailibility'),
+      onCheckAvailibility: () => navigate('/check-availability'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
       onStoryStart: action('onStoryStart'),
       onStoryEnd: action('onStoryEnd'),
       onAllStoriesEnd: action('onAllStoriesEnd'),
+    },
+    {
+      path: '/check-availability',
+      component: CheckAvailability,
+      floorplans: info.apartment.floorplans.map(fp => ({
+        ...fp,
+        floorplanAvailabilityUrl: fp.floorplanAvailabilityUrl || info.apartment.floorPlanUrl,
+      })),
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
       path: '/schedule-tour',
