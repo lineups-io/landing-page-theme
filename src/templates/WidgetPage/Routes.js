@@ -59,8 +59,6 @@ const Routes = ({
     onSubmit: data => navigate(next, data),
   }) : undefined
 
-  // TODO : write function
-  const action = str => () => console.debug(str)
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
   const routes = [
@@ -121,9 +119,6 @@ const Routes = ({
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
-      onStoryStart: action('onStoryStart'),
-      onStoryEnd: action('onStoryEnd'),
-      onAllStoriesEnd: action('onAllStoriesEnd'),
     },
     {
       path: '/check-availability',
