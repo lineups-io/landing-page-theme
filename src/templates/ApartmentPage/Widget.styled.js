@@ -58,6 +58,7 @@ export const Iframe = styled.div`
   position: relative;
   width: 100%;
   max-width: 425px;
+  max-height: 100%;
   background-color: #fff;
 
   &::before {
