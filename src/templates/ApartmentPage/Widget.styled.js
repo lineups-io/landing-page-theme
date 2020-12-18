@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
 export const Close = styled.button`
+  padding: 0;
   width: 25px;
   height: 25px;
   border: 0;
