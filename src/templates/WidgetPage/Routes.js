@@ -35,14 +35,15 @@ const Routes = ({
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (location, data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
+    const user = {
+      firstName: data.firstName || store.user.firstName,
+      lastName: data.lastName || store.user.lastName,
+      email: data.email || store.user.email,
+      phone: data.phone || store.user.phone,
+    }
     setStore({
       ...store,
-      user: {
-        firstName: data.firstName || store.user.firstName,
-        lastName: data.lastName || store.user.lastName,
-        email: data.email || store.user.email,
-        phone: data.phone || store.user.phone,
-      },
+      user,
       [key]: data,
     })
   }
