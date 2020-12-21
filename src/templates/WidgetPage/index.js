@@ -113,7 +113,7 @@ export const query = graphql`
     }
     intro {
       status
-      question
+      heading
       poster
       video
       closedCaptions
