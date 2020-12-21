@@ -42,9 +42,6 @@ export const query = graphql`
         info: result {
           ...WidgetDefaultFragment
         }
-        styles: result {
-          ...WidgetStylesFragment
-        }
         slides: result {
           ...WidgetSlidesFragment
         }
@@ -152,45 +149,6 @@ export const query = graphql`
       maxChoices: maxCount
       columns
       options
-    }
-  }
-
-  fragment WidgetStylesFragment on Admin_Widget {
-    default {
-      backgroundColor
-      borderColor
-      color
-    }
-    fab {
-      backgroundColor
-      borderColor
-      color
-      fontSize
-    }
-    primary {
-      backgroundColor
-      borderColor
-      color
-    }
-    secondary {
-      backgroundColor
-      borderColor
-      color
-    }
-    selected {
-      backgroundColor
-      borderColor
-      color
-    }
-    unselected {
-      backgroundColor
-      borderColor
-      color
-    }
-    disabled {
-      backgroundColor
-      borderColor
-      color
     }
   }
 `
