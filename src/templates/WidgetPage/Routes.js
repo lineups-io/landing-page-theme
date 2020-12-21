@@ -20,6 +20,8 @@ import NavRight from './NavRight'
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
+import ID from './id.js'
+
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
 const Routes = ({
@@ -36,6 +38,7 @@ const Routes = ({
   const updateStore = (location, data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
     const user = {
+      id: store.user.id || ID(),
       firstName: data.firstName || store.user.firstName,
       lastName: data.lastName || store.user.lastName,
       email: data.email || store.user.email,
