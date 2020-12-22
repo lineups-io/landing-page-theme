@@ -58,6 +58,8 @@ export const query = graphql`
     description
     privacyPolicyUrl
     apartment {
+      _id
+      name
       prospectPhoneNumber
       floorPlanUrl
       floorplans {

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import dayjs from 'dayjs'
+import { camelCase } from 'lodash'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -24,6 +26,12 @@ import ID from './id.js'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
+const callFunction = data =>
+  fetch('/.netlify/functions/realpage-ilm-update-lead', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  })
+
 const Routes = ({
   info,
   intro,
@@ -44,6 +52,34 @@ const Routes = ({
       email: data.email || store.user.email,
       phone: data.phone || store.user.phone,
     }
+
+    if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
+      const { emailTo, emailCc } = props[camelCase(key)]
+
+      let notes
+
+      if (key === 'schedule-tour') {
+        const { day, time } = data
+        notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
+      } else if (key === 'contact-us') {
+        const { question } = data
+        notes = `${ user.firstName } asked this question: ${ question }`
+      }
+
+      callFunction({
+        ...store,
+        user,
+        emailTo,
+        emailCc,
+        notes,
+        apartment: {
+          _id: info.apartment._id,
+          name: info.apartment.name,
+        },
+        [key]: data,
+      })
+    }
+
     setStore({
       ...store,
       user,
