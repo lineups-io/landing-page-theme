@@ -32,7 +32,7 @@ const Routes = ({
   communityAmenities,
   story,
   neighborhoodFeatures,
-  contactUs,
+  ...props
 }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (location, data = {}) => {
@@ -155,7 +155,7 @@ const Routes = ({
       path: '/contact-us',
       component: ContactUs,
       // FIXME: contactUs.emailTo should be required
-      to: contactUs.emailTo || 'lucas@lineups.io',
+      to: props.contactUs.emailTo || 'hi@lineups.io',
       from: store.user ? store.user.email : '',
       question: 'Have a question we have an answer?',
       privacyPolicyUrl: info.privacyPolicyUrl,
