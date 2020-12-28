@@ -146,7 +146,6 @@ const Routes = ({
       title: 'To help us personalize the experience, tell us a little about you',
       onSubmit: data => navigate('/story', data),
       privacyPolicyUrl: info.privacyPolicyUrl,
-      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     },
     {
       path: '/story',
