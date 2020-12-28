@@ -85,12 +85,12 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-    setStore({
-      ...store,
-      user,
-      [key]: data,
-    })
-  }
+      setStore({
+        ...store,
+        user,
+        [key]: data,
+      })
+    }
   }
 
   const navigate = useNavigate(updateStore)
@@ -134,6 +134,7 @@ const Routes = ({
       component: InfiniteCalendar,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       onSubmit: date => navigate('/floorplan-amenities', date),
+      lastDate: store['move-in'] && dayjs(store['move-in']).toDate(),
     },
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
     transform('/community-amenities', communityAmenities, '/neighborhood-features'),
