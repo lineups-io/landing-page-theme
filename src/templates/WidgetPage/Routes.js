@@ -78,13 +78,19 @@ const Routes = ({
         },
         [key]: data,
       })
-    }
 
+      setStore({
+        ...store,
+        user,
+        [key]: undefined,
+      })
+    } else {
     setStore({
       ...store,
       user,
       [key]: data,
     })
+  }
   }
 
   const navigate = useNavigate(updateStore)
