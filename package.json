@@ -20,6 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@sendgrid/client": "^7.4.0",
     "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.9",
@@ -34,13 +35,14 @@
     "gatsby-plugin-sitemap": "^2.4.3",
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-source-graphql": "^2.5.2",
-    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.1.0",
-    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v2.19.12",
+    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.1.1",
+    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v2.21.13",
     "gatsby-transformer-remark": "^2.8.13",
     "gatsby-transformer-sharp": "^2.5.3",
     "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.4.2",
     "styled-components": "^5.1.0"
   }

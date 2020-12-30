@@ -4,10 +4,13 @@ import { graphql } from 'gatsby'
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
 import JsonLd from './JsonLd'
+import Widget from './Widget'
 
 const App = ({ data, location }) => {
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
+  // FIXME: using first published widget which will not work if we have multiple
+  const [widget] = data.admin.apartment.result.widgets.filter(w => w.status === 'published')
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
@@ -19,15 +22,26 @@ const App = ({ data, location }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} />
+        {widget ? <Widget {...widget} /> : null}
     </>
   )
 }
 
 export const query = graphql`
-  query getApartmentPage($id: ID! $account: ID!) {
-    site {
-      siteMetadata {
-        title
+  query getApartmentPage($id: ID! $account: ID! $publicId: String) {
+    admin {
+      apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
+        result {
+          widgets {
+            _id
+            title
+            status
+            intro {
+              poster
+              video
+            }
+          }
+        }
       }
     }
     lineups {

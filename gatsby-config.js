@@ -2,23 +2,11 @@ const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development
 
 const queries = require('./gatsby-algolia.js')
 
-console.log('[landing-page-site] ' + activeEnv)
+console.log('[site] NODE_ENV=' + activeEnv)
 
 require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
-
-const algolia = process.env.ALGOLIA_ADMIN_KEY ? [
-  {
-    resolve: 'gatsby-plugin-algolia',
-    options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID,
-      apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      queries,
-      chunkSize: 10000, // default: 1000
-    },
-  },
-] : []
 
 module.exports = {
   siteMetadata: {
@@ -65,6 +53,11 @@ module.exports = {
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
         ],
+        headers: {
+          '/widgets/*': [
+            'X-Frame-Options: SAMEORIGIN',
+          ],
+        },
       },
     },
     {
@@ -75,6 +68,17 @@ module.exports = {
         url: process.env.GRAPHQL_API_URI,
         headers: {
           Authorization: `Bearer ${ process.env.GRAPHQL_API_KEY }`,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Admin',
+        fieldName: 'admin',
+        url: process.env.ADMIN_GRAPHQL_URI,
+        headers: {
+          Authorization: `Bearer ${ process.env.ADMIN_GRAPHQL_KEY }`,
         },
       },
     },
@@ -93,6 +97,14 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
-    ...algolia,
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
   ]
 }

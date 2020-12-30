@@ -4,18 +4,19 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
   if (internal.type === 'LineupsApartment') {
     const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id, realPage, floorPlanUrl } = node
     if (enabledFeatures.indexOf('microsite') > -1) {
-      console.log('[gatsby-theme-apartment-page] creating page', path)
+      console.log('[site] creating apartment page', path)
       createPage({
         path,
         component: require.resolve('./src/templates/ApartmentPage/index.js'),
         context: {
           id,
           account: process.env.ACCOUNT,
+          publicId: id,
         },
       })
     }
     if (realPage && realPage.siteId && floorPlanUrl) {
-      console.log('[gatsby-theme-apartment-page] creating realpage floorplan page', floorPlanUrl)
+      console.log('[site] creating realpage floorplan page', floorPlanUrl)
       createPage({
         path: floorPlanUrl,
         component: require.resolve('./src/templates/RealPageOnlineLeasing.js'),
@@ -28,7 +29,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
   } else if (internal.type === 'LineupsPage') {
     const { noindex, slug, id, lineupsId: page } = node
     const path = `/${ noindex ? 'noindex/' : '' }${ slug }/`
-    console.log('[gatsby-theme-landing-page] creating page', path)
+    console.log('[site] creating landing page', path)
     createPage({
       path,
       component: require.resolve('./src/templates/LandingPage/index.js'),
@@ -40,7 +41,7 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
     })
   } else if (internal.type === 'MarkdownRemark') {
     const { frontmatter: { path } } = node
-    console.log('[gatsby-theme-landing-page] creating page', path)
+    console.log('[site] creating markdown page', path)
     createPage({
       path,
       component: require.resolve('./src/templates/Markdown.js'),
@@ -52,26 +53,60 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
 }
 
 exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions
-  deletePage(page)
-  createPage({
-    ...page,
-    context: {
-      ...page.context,
-      account: process.env.ACCOUNT,
-    },
-  })
-}
-
-exports.createPages = ({ actions }) => {
-  const { createPage } = actions
-  if (process.env.ALGOLIA_ADMIN_KEY) {
+  if (!page.context.account) {
+    const { createPage, deletePage } = actions
+    deletePage(page)
     createPage({
-      path: '/search',
-      component: require.resolve('./src/templates/Search/index.js'),
+      ...page,
       context: {
+        ...page.context,
         account: process.env.ACCOUNT,
       },
     })
   }
+}
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const query = `
+    query getWidgets($account: String) {
+      admin {
+        apartments (input: { filter: { status: { _eq: "published" }, account: { _eq: $account } } }) {
+          results {
+            widgets(status: "published") {
+                id: _id
+                title
+            }
+          }
+          totalCount
+        }
+      }
+    }
+  `
+
+  return graphql(query, { account: process.env.ACCOUNT }).then(result => {
+    const { results = [] } = result.data.admin.apartments
+
+    const widgets = []
+    results.forEach(apartment => {
+      (apartment.widgets || []).forEach(widget => widgets.push(widget))
+    })
+
+    return widgets.reduce(
+      (acc, widget) => acc.then(() => {
+        const path = `/widgets/${ widget.id }`
+        console.log('[site] creating widget page', path, widget.title)
+        return createPage({
+          path,
+          component: require.resolve('./src/templates/WidgetPage/index.js'),
+          context: {
+            id: widget.id,
+            account: process.env.ACCOUNT,
+          },
+        })
+      }),
+      Promise.resolve()
+    )
+  })
 }
