@@ -175,6 +175,10 @@ const Routes = ({
         floorplanAvailabilityUrl: fp.floorplanAvailabilityUrl || info.apartment.floorPlanUrl,
       })),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      onCall,
+      onContactUs: () => navigate('/contact-us'),
+      onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
       path: '/schedule-tour',
