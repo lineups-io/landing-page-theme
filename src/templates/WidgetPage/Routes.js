@@ -181,6 +181,7 @@ const Routes = ({
       ...store.user,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      privacyPolicyUrl: info.privacyPolicyUrl,
     },
     {
       path: '/schedule-tour-confirmation',
