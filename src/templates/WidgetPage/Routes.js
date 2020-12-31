@@ -194,6 +194,7 @@ const Routes = ({
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
       path: '/contact-us',
@@ -215,6 +216,7 @@ const Routes = ({
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
   ]
 
