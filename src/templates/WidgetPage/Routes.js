@@ -32,6 +32,13 @@ const callFunction = data =>
     body: JSON.stringify(data),
   })
 
+const getBedroomsFilter = (data = []) => {
+  const [bedrooms] = data
+
+  if (!bedrooms) return
+  else return bedrooms === 'Studio' ? 0 : Number.parseInt(bedrooms)
+}
+
 const Routes = ({
   info,
   intro,
@@ -174,7 +181,7 @@ const Routes = ({
         ...fp,
         floorplanAvailabilityUrl: fp.floorplanAvailabilityUrl || info.apartment.floorPlanUrl,
       })),
-      selectedBedroomsFilter: store.bedrooms[0] === 'Studio' ? 0 : (store.bedrooms[0] && Number.parseInt(store.bedrooms[0])),
+      selectedBedroomsFilter: getBedroomsFilter(store.bedrooms),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       onCall,
       onContactUs: () => navigate('/contact-us'),
