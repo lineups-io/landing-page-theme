@@ -32,6 +32,13 @@ const callFunction = data =>
     body: JSON.stringify(data),
   })
 
+const getBedroomsFilter = (data = []) => {
+  const [bedrooms] = data
+
+  if (!bedrooms) return
+  else return bedrooms === 'Studio' ? 0 : Number.parseInt(bedrooms)
+}
+
 const Routes = ({
   info,
   intro,
@@ -127,6 +134,7 @@ const Routes = ({
          }
       ],
       onBeginTour: () => navigate('/bedrooms'),
+      onScheduleTour: () => navigate('/schedule-tour'),
     },
     transform('/bedrooms', bedrooms, '/move-in'),
     {
@@ -173,7 +181,12 @@ const Routes = ({
         ...fp,
         floorplanAvailabilityUrl: fp.floorplanAvailabilityUrl || info.apartment.floorPlanUrl,
       })),
+      selectedBedroomsFilter: getBedroomsFilter(store.bedrooms),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      onCall,
+      onContactUs: () => navigate('/contact-us'),
+      onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
       path: '/schedule-tour',
@@ -181,17 +194,19 @@ const Routes = ({
       ...store.user,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      privacyPolicyUrl: info.privacyPolicyUrl,
     },
     {
       path: '/schedule-tour-confirmation',
       component: Confirmation,
       lottie: confirmation,
-      title: 'Thank you for scheduling a tour!',
-      subtitle: 'Looking forward to meeting you.',
+      title: 'Thank you for scheduling your preferred tour time with us.',
+      subtitle: 'A Rockstar team member will be in touch to confirm your visit.',
       onStartOver: () => navigate('/'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
       path: '/contact-us',
@@ -213,6 +228,7 @@ const Routes = ({
       onCall,
       onContactUs: () => navigate('/contact-us'),
       onScheduleTour: () => navigate('/schedule-tour'),
+      onCheckAvailibility: () => navigate('/check-availability'),
     },
   ]
 
