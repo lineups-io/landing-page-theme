@@ -109,7 +109,10 @@ const Routes = ({
     NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
     NavRight: () => obj.status === 'optional' && next ? <NavRight onClick={() => navigate(next)} /> : null,
     options: options.filter(option => option.active),
-    onSubmit: data => navigate(next, options.filter(option => data.indexOf(option.value) > -1).map(option => option.label)),
+    onSubmit: data => {
+      const selected = options.filter(option => data.indexOf(option.value) > -1)
+      navigate(next, selected.map(option => option.label))
+    },
   }) : undefined
 
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
