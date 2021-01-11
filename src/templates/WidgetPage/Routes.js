@@ -47,10 +47,11 @@ const Routes = ({
   communityAmenities,
   story,
   neighborhoodFeatures,
+  location,
   ...props
 }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
-  const updateStore = (location, data = {}) => {
+  const updateStore = (data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
     const user = {
       id: store.user.id || ID(),
