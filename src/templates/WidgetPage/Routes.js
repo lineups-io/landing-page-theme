@@ -102,18 +102,20 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, { options, ...obj }, next) => obj.status !== 'hidden' ? ({
-    path,
-    component: MultipleChoiceQuestion,
-    ...obj,
-    NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
-    NavRight: () => obj.status === 'optional' && next ? <NavRight onClick={() => navigate(next)} /> : null,
-    options: options.filter(option => option.active),
-    onSubmit: data => {
-      const selected = options.filter(option => data.indexOf(option.value) > -1)
-      navigate(next, selected.map(option => option.label))
-    },
-  }) : undefined
+  const transform = (path, { options, ...obj }, next) => {
+    return obj.status !== 'hidden' ? ({
+      path,
+      component: MultipleChoiceQuestion,
+      ...obj,
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      NavRight: () => obj.status === 'optional' && next ? <NavRight onClick={() => navigate(next)} /> : null,
+      options: options.filter(option => option.active),
+      onSubmit: data => {
+        const selected = options.filter(option => data.indexOf(option.value) > -1)
+        navigate(next, selected.map(option => option.label))
+      },
+    }) : undefined
+  }
 
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
