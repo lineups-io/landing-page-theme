@@ -140,6 +140,7 @@ const Routes = ({
         const selected = options.filter(option => data.indexOf(option.value) > -1)
         const items = selected.map(mapToItem)
         window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({ ecommerce: { items: undefined } })
         window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
         navigate(next, selected.map(option => option.label))
       },
