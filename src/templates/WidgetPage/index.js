@@ -88,6 +88,7 @@ export const query = graphql`
       }
     }
     account {
+      name
       theme
     }
   }

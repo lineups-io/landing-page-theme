@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
-import { camelCase } from 'lodash'
+import { camelCase, startCase } from 'lodash'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -50,6 +50,17 @@ const Routes = ({
   location,
   ...props
 }) => {
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || []
+    const title = location.pathname.replace(/^\//, '') || 'home'
+    window.dataLayer.push({
+      event: 'page_view',
+      page_location: window.location.href,
+      page_title: `${ info.apartment.name } - ${ startCase(title) }`,
+      account: info.account.name,
+    })
+  }, [location])
+
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
@@ -105,6 +116,12 @@ const Routes = ({
 
   const transform = (path, obj, next) => {
     const options = obj.options.filter(option => option.active)
+    const mapToItem = option => ({
+      item_name: option.label,
+      item_category: path.replace(/^\//, ''),
+      item_brand: info.apartment.name,
+      affiliation: info.account.name,
+    })
     return obj.status !== 'hidden' ? ({
       path,
       component: MultipleChoiceQuestion,
@@ -112,8 +129,17 @@ const Routes = ({
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       NavRight: () => obj.status === 'optional' && next ? <NavRight onClick={() => navigate(next)} /> : null,
       options,
+      onMount: () => {
+        const items = options.map(mapToItem)
+        window.dataLayer = window.dataLayer || []
+        // added 1ms timeout to fire page_view first
+        setTimeout(() => window.dataLayer.push({ event: 'view_item', items }), 1)
+      },
       onSubmit: data => {
         const selected = options.filter(option => data.indexOf(option.value) > -1)
+        const items = selected.map(mapToItem)
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({ event: 'add_to_wishlist', items })
         navigate(next, selected.map(option => option.label))
       },
     }) : undefined
