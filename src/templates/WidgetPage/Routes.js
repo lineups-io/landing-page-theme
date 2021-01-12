@@ -58,6 +58,7 @@ const Routes = ({
       page_location: window.location.href,
       page_title: `${ info.apartment.name } - ${ startCase(title) }`,
       account: info.account.name,
+      apartment: info.apartment.name,
     })
   }, [location])
 
