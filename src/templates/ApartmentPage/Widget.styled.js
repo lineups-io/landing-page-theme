@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { motion } from 'framer-motion'
 
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
@@ -52,6 +53,11 @@ export const Bubble = styled.button`
     object-fit: cover;
     object-position: 50% 50%;
   }
+
+  transition: transform .5s ease-in-out;
+  &:hover {
+    transform: scale(1.05, 1.05);
+  }
 `
 
 export const Iframe = styled.div`
@@ -87,7 +93,13 @@ export const Iframe = styled.div`
   }
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div).attrs({
+  animate: {
+    scale: [0, 1.1, 1],
+    y: ['100%', '0%', '0%'],
+  },
+  transition: { duration: 1.2 },
+})`
   position: fixed;
   bottom: 0;
   left: 0;
