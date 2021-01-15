@@ -214,7 +214,7 @@ const Routes = ({
       component: CheckAvailability,
       floorplans: info.apartment.floorplans.map(fp => ({
         ...fp,
-        floorplanAvailabilityUrl: fp.floorplanAvailabilityUrl || info.apartment.floorPlanUrl,
+        floorplanAvailabilityUrl: undefined,
       })),
       selectedBedroomsFilter: getBedroomsFilter(store.bedrooms),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
