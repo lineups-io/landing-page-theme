@@ -98,7 +98,7 @@ export const Wrapper = styled(motion.div).attrs({
     scale: [0, 1.1, 1],
     y: ['100%', '0%', '0%'],
   },
-  transition: { duration: 1.2 },
+  transition: { duration: 1.2, delay: 1 },
 })`
   position: fixed;
   bottom: 0;
