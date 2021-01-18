@@ -54,7 +54,7 @@ export const Bubble = styled.button`
     object-position: 50% 50%;
   }
 
-  transition: transform .5s ease-in-out;
+  transition: transform .2s ease-in-out;
   &:hover {
     transform: scale(1.05, 1.05);
   }
