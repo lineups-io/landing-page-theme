@@ -79,7 +79,7 @@ exports.handler = async function(event, context) {
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
     template_id,
-    content: [{ type: 'text/plain', value: 'You should not see this' }],
+    content: [{ type: 'text/html', value: 'You should not see this' }],
   }
 
   const request = {
