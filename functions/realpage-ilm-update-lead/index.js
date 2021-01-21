@@ -11,7 +11,6 @@ exports.handler = async function(event, context) {
 
   const {
     emailTo,
-    emailCc,
     user: {
       firstName: first_name,
       lastName: last_name,
@@ -69,12 +68,11 @@ exports.handler = async function(event, context) {
   }
 
   const to = emailTo.split(',').map(email => ({ email }))
-  const cc = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
 
   // TODO: make from email an environment variable
   const body = {
     from: { email: 'hi@lineups.io' },
-    personalizations: [{ to, cc, dynamic_template_data }],
+    personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
     template_id,
     content: [{ type: 'text/plain', value: 'You should not see this' }],
