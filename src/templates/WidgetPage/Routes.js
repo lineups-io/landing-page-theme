@@ -90,6 +90,10 @@ const Routes = ({
       } else if (key === 'contact-us') {
         const { question } = data
         request.notes = `${ user.firstName } asked this question: ${ question }`
+        fetch('/.netlify/functions/send-contact-alert', {
+          method: 'POST',
+          body: JSON.stringify(request),
+        })
       } else if (key === 'guest-card') {
         fetch('/.netlify/functions/send-guest-card-alert', {
           method: 'POST',
