@@ -68,37 +68,36 @@ const Routes = ({
     if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
       const { emailTo, emailCc } = props[camelCase(key)]
 
-      let notes
-
-      if (key === 'schedule-tour') {
-        const { day, time } = data
-        notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
-        fetch('/.netlify/functions/send-tour-request-alert', {
-          method: 'POST',
-          body: JSON.stringify(data),
-        })
-      } else if (key === 'contact-us') {
-        const { question } = data
-        notes = `${ user.firstName } asked this question: ${ question }`
-      } else if (key === 'guest-card') {
-        fetch('/.netlify/functions/send-guest-card-alert', {
-          method: 'POST',
-          body: JSON.stringify(data),
-        })
-      }
-
-      callFunction({
+      const request = {
         ...store,
         user,
         emailTo,
         emailCc,
-        notes,
         apartment: {
           _id: info.apartment._id,
           name: info.apartment.name,
         },
         [key]: data,
-      })
+      }
+
+      if (key === 'schedule-tour') {
+        const { day, time } = data
+        request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
+        fetch('/.netlify/functions/send-tour-request-alert', {
+          method: 'POST',
+          body: JSON.stringify(request),
+        })
+      } else if (key === 'contact-us') {
+        const { question } = data
+        request.notes = `${ user.firstName } asked this question: ${ question }`
+      } else if (key === 'guest-card') {
+        fetch('/.netlify/functions/send-guest-card-alert', {
+          method: 'POST',
+          body: JSON.stringify(request),
+        })
+      }
+
+      callFunction(request)
 
       setStore({
         ...store,
