@@ -73,9 +73,18 @@ const Routes = ({
       if (key === 'schedule-tour') {
         const { day, time } = data
         notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
+        fetch('/.netlify/functions/send-tour-request-alert', {
+          method: 'POST',
+          body: JSON.stringify(data),
+        })
       } else if (key === 'contact-us') {
         const { question } = data
         notes = `${ user.firstName } asked this question: ${ question }`
+      } else if (key === 'guest-card') {
+        fetch('/.netlify/functions/send-guest-card-alert', {
+          method: 'POST',
+          body: JSON.stringify(data),
+        })
       }
 
       callFunction({
