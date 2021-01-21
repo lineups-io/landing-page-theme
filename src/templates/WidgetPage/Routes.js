@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { camelCase, startCase } from 'lodash'
+import crypto from 'crypto'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -54,12 +55,14 @@ const Routes = ({
   const updateStore = (data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
     const email = data.email || store.user.email
+    const emailHash = email && crypto.createHash('sha1').update(email).digest('base64')
     const user = {
       id: store.user.id || ID(),
       firstName: data.firstName || store.user.firstName,
       lastName: data.lastName || store.user.lastName,
       email,
       phone: data.phone || store.user.phone,
+      emailHash,
     }
 
     if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
@@ -105,12 +108,15 @@ const Routes = ({
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
     const title = location.pathname.replace(/^\//, '') || 'home'
+    const { user } = store
     window.dataLayer.push({
       event: 'page_view',
       page_location: window.location.href,
       page_title: `${ info.apartment.name } - ${ startCase(title) }`,
       account: info.account.name,
       apartment: info.apartment.name,
+      user_id: user && user.id,
+      user_email_hash: user && user.emailHash,
     })
   }, [location])
 
