@@ -50,18 +50,6 @@ const Routes = ({
   location,
   ...props
 }) => {
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || []
-    const title = location.pathname.replace(/^\//, '') || 'home'
-    window.dataLayer.push({
-      event: 'page_view',
-      page_location: window.location.href,
-      page_title: `${ info.apartment.name } - ${ startCase(title) }`,
-      account: info.account.name,
-      apartment: info.apartment.name,
-    })
-  }, [location])
-
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
@@ -112,6 +100,18 @@ const Routes = ({
       })
     }
   }
+
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || []
+    const title = location.pathname.replace(/^\//, '') || 'home'
+    window.dataLayer.push({
+      event: 'page_view',
+      page_location: window.location.href,
+      page_title: `${ info.apartment.name } - ${ startCase(title) }`,
+      account: info.account.name,
+      apartment: info.apartment.name,
+    })
+  }, [location])
 
   const navigate = useNavigate(updateStore)
 
