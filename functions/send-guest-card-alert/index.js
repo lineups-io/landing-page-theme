@@ -65,6 +65,7 @@ exports.handler = async function(event, context) {
     tour_start_time,
     tour_end_time,
     comments: comments.join('\n\n'),
+    question,
     floorplan: { options: floorplanAmenities.map(name => ({ name })) },
     community: { options: communityAmenities.map(name => ({ name })) },
   }
