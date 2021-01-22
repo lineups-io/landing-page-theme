@@ -200,6 +200,7 @@ export const query = graphql`
           description
           isFeatured
           isPublished
+          isOptional
           icon: fontAwesome
         }
         specials {
