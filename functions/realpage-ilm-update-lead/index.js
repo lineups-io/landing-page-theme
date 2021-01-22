@@ -37,12 +37,15 @@ exports.handler = async function(event, context) {
 
   const [desired_bedrooms] = bedrooms || []
 
-  const comments = [
-    `${first_name} is looking for a ${desired_bedrooms} around ${dayjs(desired_move_in).format('MM/DD/YYYY')}`,
-    `FLOORPLAN AMENITIES: ${ floorplanAmenities.join(', ') }`,
-    `COMMUNITY AMENITIES: ${ communityAmenities.join(', ') }`,
-    `NEIGHBORHOOD ACTIVITIES: ${ neighborhoodFeatures.join(', ') }`,
-  ]
+  const comments = []
+  if (desired_bedrooms && desired_move_in)
+    comments.push(`${first_name} is looking for a ${desired_bedrooms} around ${dayjs(desired_move_in).format('MM/DD/YYYY')}`)
+  if (floorplanAmenities)
+    comments.push(`FLOORPLAN AMENITIES: ${ floorplanAmenities.join(', ') }`)
+  if (communityAmenities)
+    comments.push(`COMMUNITY AMENITIES: ${ communityAmenities.join(', ') }`)
+  if (neighborhoodFeatures)
+    comments.push(`NEIGHBORHOOD ACTIVITIES: ${ neighborhoodFeatures.join(', ') }`)
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
