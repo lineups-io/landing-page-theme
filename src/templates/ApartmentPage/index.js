@@ -199,7 +199,7 @@ export const query = graphql`
           title
           description
           isFeatured
-            isPublished
+          isPublished
           icon: fontAwesome
         }
         specials {
