@@ -20,6 +20,14 @@ const algolia = process.env.ALGOLIA_ADMIN_KEY ? [
   },
 ] : []
 
+const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+  resolve: 'gatsby-plugin-google-tagmanager',
+  options: {
+    id,
+    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
+  },
+}))
+
 module.exports = {
   siteMetadata: {
     title: process.env.TITLE,
@@ -45,12 +53,7 @@ module.exports = {
         icon: 'src/images/icon.svg', // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        ids: process.env.GOOGLE_TAG_MANAGER_ID.split(','),
-      },
-    },
+    ...gatsbyPluginGoogleTagmanager,
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
