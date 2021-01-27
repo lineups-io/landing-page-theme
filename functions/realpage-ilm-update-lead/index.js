@@ -3,6 +3,12 @@ const client = require('@sendgrid/client')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
 
+const convertToNumber = desired_bedrooms => {
+  if (!desired_bedrooms) return
+
+  return desired_bedrooms === 'Studio' ? 0 : Number.parseInt(desired_bedrooms.replace(/\D/g, ''))
+}
+
 exports.handler = async function(event, context) {
   // Only allow POST
   if (event.httpMethod !== 'POST') {
@@ -62,7 +68,7 @@ exports.handler = async function(event, context) {
     email,
     cell_phone,
     desired_move_in: desired_move_in && dayjs(desired_move_in).format('MM/DD/YYYY'),
-    desired_bedrooms,
+    desired_bedrooms: convertToNumber(desired_bedrooms),
     apartment_tour: tour_date ? 'Apartment Tour' : '',
     tour_date,
     tour_start_time,
