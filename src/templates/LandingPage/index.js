@@ -60,7 +60,7 @@ export default ({ data, location }) => {
         {JSON.stringify(getSchemaOrgJSONLD(breadcrumb, apartments))}
       </script>
     </Helmet>
-    <Layout trackingData={trackingData} {...data.lineups.site} {...data.lineups.page} bestPrice={bestPrice} />
+    <Layout trackingData={trackingData} {...data.lineups.site} {...data.lineups.page} bestPrice={bestPrice} version={1} />
   </>
 }
 

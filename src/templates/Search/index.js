@@ -14,7 +14,7 @@ export default ({ data, location }) => {
         { name: 'robots', content: 'noindex,nofollow' },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
-    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
+    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} version={1} />
   </>
 }
 

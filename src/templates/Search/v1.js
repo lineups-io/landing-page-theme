@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Search/v1'
+import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
 export default ({ data, location }) => {
   const title = 'Search'
@@ -14,7 +14,7 @@ export default ({ data, location }) => {
         { name: 'robots', content: 'noindex,nofollow' },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
-    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
+    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} version={1} />
   </>
 }
 
