@@ -36,7 +36,7 @@ const Widget = ({ _id, title, intro }) => {
   }
 
   const iframe = {
-    src: `/widgets/${ _id }`,
+    src: `/widgets/${ _id.toLowerCase() }/`,
     onLoad: () => setLoaded(true),
   }
 

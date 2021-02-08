@@ -95,7 +95,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     return widgets.reduce(
       (acc, widget) => acc.then(() => {
-        const path = `/widgets/${ widget.id }`
+        const path = `/widgets/${ widget.id.toLowerCase() }/`
         console.log('[site] creating widget page', path, widget.title)
         return createPage({
           path,
