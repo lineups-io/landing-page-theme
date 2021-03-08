@@ -10,7 +10,6 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
         component: require.resolve('./src/templates/ApartmentPage/index.js'),
         context: {
           id,
-          account: process.env.ACCOUNT,
           publicId: id,
         },
       })
@@ -21,7 +20,6 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
         path: floorPlanUrl,
         component: require.resolve('./src/templates/RealPageOnlineLeasing.js'),
         context: {
-          account: process.env.ACCOUNT,
           ...realPage,
         },
       })
@@ -36,7 +34,6 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
       context: {
         id,
         page,
-        account: process.env.ACCOUNT,
       },
     })
   } else if (internal.type === 'MarkdownRemark') {
@@ -45,23 +42,6 @@ exports.onCreateNode = ({ node: { internal, ...node }, actions }) => {
     createPage({
       path,
       component: require.resolve('./src/templates/Markdown.js'),
-      context: {
-        account: process.env.ACCOUNT,
-      },
-    })
-  }
-}
-
-exports.onCreatePage = ({ page, actions }) => {
-  if (!page.context.account) {
-    const { createPage, deletePage } = actions
-    deletePage(page)
-    createPage({
-      ...page,
-      context: {
-        ...page.context,
-        account: process.env.ACCOUNT,
-      },
     })
   }
 }
