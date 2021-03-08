@@ -10,7 +10,7 @@ import Row from 'gatsby-theme-atomic-design/src/atoms/Row'
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import Section from './Section'
 
-export default () => {
+const HomePage = () => {
   const { lobby, kitchen } = useStaticQuery(graphql`
     query getHomePagePhotos {
       lobby: file(relativePath: { eq: "index/lobby.jpg" }) {
@@ -140,3 +140,5 @@ export default () => {
     </Section>
   </>
 }
+
+export default HomePage

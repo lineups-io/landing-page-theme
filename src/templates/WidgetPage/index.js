@@ -8,7 +8,7 @@ import Routes from './Routes'
 
 import './index.css'
 
-export default ({ data, location }) => {
+const WidgetPage = ({ data, location }) => {
   const {
     styles,
     slides,
@@ -150,3 +150,5 @@ export const query = graphql`
     }
   }
 `
+
+export default WidgetPage
