@@ -42,7 +42,7 @@ const Place = props => {
   }
 }
 
-export default props => {
+const JsonLd = props => {
   const { site } = useStaticQuery(graphql`
     query JsonLd {
       site {
@@ -125,3 +125,5 @@ export default props => {
     },
   }
 }
+
+export default JsonLd
