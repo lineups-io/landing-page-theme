@@ -15,6 +15,14 @@ module.exports = {
   },
   'plugins': [
     {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          account: process.env.ACCOUNT,
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
