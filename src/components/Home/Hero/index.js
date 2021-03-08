@@ -7,7 +7,7 @@ import Section from '../Section'
 import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
-export default () => {
+const HeroSection = () => {
   const data = useStaticQuery(graphql`
     query getHeroData {
       hero: file(relativePath: { eq: "index/pool.jpg" }) {
@@ -33,3 +33,5 @@ export default () => {
     </Container>
   </Section>
 }
+
+export default HeroSection

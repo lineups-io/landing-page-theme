@@ -8,7 +8,7 @@ import Container from 'gatsby-theme-atomic-design/src/atoms/Container'
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 import { Links, IconLink } from './styled'
 
-export default () =>
+const LinksSection = () =>
   <Section id='links' layout='center'>
     <Container>
       <Section.Subheader>Welcome Home</Section.Subheader>
@@ -31,3 +31,5 @@ export default () =>
       </Links>
     </Container>
   </Section>
+
+export default LinksSection
