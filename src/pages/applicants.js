@@ -73,23 +73,17 @@ export const query = graphql`
     }
     rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
     portal: file(relativePath: { eq: "residents/portal.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
     feedback: file(relativePath: { eq: "residents/feedback.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
   }
