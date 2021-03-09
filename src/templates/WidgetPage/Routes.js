@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { camelCase, startCase } from 'lodash'
-import crypto from 'crypto'
+import createHash from 'sha.js'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -55,7 +55,7 @@ const Routes = ({
   const updateStore = (data = {}) => {
     const key = location.pathname.replace(/^\//, '') || 'index'
     const email = data.email || store.user.email
-    const emailHash = email && crypto.createHash('sha1').update(email).digest('base64')
+    const emailHash = email && createHash('sha1').update(email).digest('base64')
     const user = {
       id: store.user.id || ID(),
       firstName: data.firstName || store.user.firstName,
