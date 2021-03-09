@@ -286,11 +286,14 @@ const Routes = ({
     },
   ]
 
-  return routes.map(({ component: Component, path, ...props }, i) =>
-    <Route key={i} exact path={path}>
+  return routes.map((route, i) => {
+    if (!route) return null
+
+    const { component: Component, path, ...props } = route
+    return <Route key={i} exact path={path}>
       <Component {...props} />
     </Route>
-  )
+  })
 }
 
 export default Routes
