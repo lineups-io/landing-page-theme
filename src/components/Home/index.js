@@ -61,7 +61,7 @@ const HomePage = () => {
         </Row>
       </Container>
     </Section>
-    <GatsbyImage image={lobby.childImageSharp.gatsbyImageData} style={{ maxHeight: 500 }} />
+    <GatsbyImage alt='Lobby' image={lobby.childImageSharp.gatsbyImageData} style={{ maxHeight: 500 }} />
     <Section id='rockstar-cares'>
       <Container>
         <Row>
@@ -96,7 +96,7 @@ const HomePage = () => {
         </Row>
       </Container>
     </Section>
-    <GatsbyImage image={kitchen.childImageSharp.gatsbyImageData} style={{ maxHeight: 500 }} />
+    <GatsbyImage alt='Kitchen' image={kitchen.childImageSharp.gatsbyImageData} style={{ maxHeight: 500 }} />
     <Section id='rockstar-pride'>
       <Container>
         <Row>
