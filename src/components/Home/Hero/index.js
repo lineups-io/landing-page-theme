@@ -19,7 +19,7 @@ const HeroSection = () => {
   `)
 
   return <Section id='hero' noPadding>
-    <GatsbyImage image={data.hero.childImageSharp.gatsbyImageData} style={{ maxHeight: 800 }} />
+    <GatsbyImage alt='Pool' image={data.hero.childImageSharp.gatsbyImageData} style={{ maxHeight: 800 }} />
     <Container>
       <Hero>
         <Hero.Header>Life Made Simple is:</Hero.Header>
