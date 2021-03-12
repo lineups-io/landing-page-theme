@@ -36,13 +36,13 @@ class Lineups {
 
     const video = createElement('video', {
       playsInline: '',
-      autoPlay: '',
       loop: '',
       poster: intro.poster,
       tabIndex: -1
     })
     video.oncanplay = function(e) {
       e.target.muted = true
+      e.target.play()
     }
 
     const source = createElement('source', {
