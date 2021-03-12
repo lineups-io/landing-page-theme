@@ -53,7 +53,7 @@
 }
 
 .lineups___bubble:hover {
-  transform: scale(1.05) translateY(0%);
+  transform: scale(1.05);
 }
 
 
