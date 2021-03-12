@@ -120,6 +120,4 @@ window.onload = function load() {
     rel: 'stylesheet'
   })
   document.head.appendChild(stylesheet)
-
-  window.Lineups = Lineups
 }
