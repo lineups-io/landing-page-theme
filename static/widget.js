@@ -41,8 +41,8 @@ class Lineups {
       poster: intro.poster,
       tabIndex: -1
     })
-    video.onload = function() {
-      video.muted = true
+    video.oncanplay = function(e) {
+      e.target.muted = true
     }
 
     const source = createElement('source', {
