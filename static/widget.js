@@ -1,6 +1,3 @@
-const origin = window.location.origin
-const css = '/widget.css'
-
 const CLASSNAME = {
   Wrapper: 'lineups___wrapper',
   Bubble: 'lineups___bubble',
@@ -114,6 +111,9 @@ class Lineups {
 }
 
 (function load() {
+  const origin = window.location.origin
+  const css = '/widget.css'
+
   const stylesheet = createElement('link', {
     href: `${origin}${css}`,
     type: 'text/css',
