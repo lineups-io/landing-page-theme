@@ -37,7 +37,6 @@ class Lineups {
     const video = createElement('video', {
       playsInline: '',
       autoPlay: '',
-      muted: '',
       loop: '',
       poster: intro.poster,
       tabIndex: -1
