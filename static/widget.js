@@ -109,15 +109,3 @@ class Lineups {
     if (this.iframe && this.iframe.postMessage) this.iframe.postMessage('close')
   }
 }
-
-(function load() {
-  const origin = window.location.origin
-  const css = '/widget.css'
-
-  const stylesheet = createElement('link', {
-    href: `${origin}${css}`,
-    type: 'text/css',
-    rel: 'stylesheet'
-  })
-  document.head.appendChild(stylesheet)
-})()
