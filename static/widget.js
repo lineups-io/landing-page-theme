@@ -113,11 +113,11 @@ class Lineups {
   }
 }
 
-window.onload = function load() {
+(function load() {
   const stylesheet = createElement('link', {
     href: `${origin}${css}`,
     type: 'text/css',
     rel: 'stylesheet'
   })
   document.head.appendChild(stylesheet)
-}
+})()
