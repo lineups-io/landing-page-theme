@@ -66,8 +66,11 @@ export const Iframe = styled.div`
   max-width: 425px;
   max-height: 100%;
   background-color: #fff;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: 374.9px) {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 
   &::before {
     content: '';
