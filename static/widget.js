@@ -35,10 +35,10 @@ class Lineups {
     span.innerHTML = 'Let\'s Tour'
 
     const video = createElement('video', {
-      playsInline: true,
-      autoPlay: true,
-      muted: true,
-      loop: true,
+      playsInline: '',
+      autoPlay: '',
+      muted: '',
+      loop: '',
       poster: intro.poster,
       tabIndex: -1
     })
