@@ -32,7 +32,6 @@ class Lineups {
     bubble.onclick = this.toggleOpen.bind(this)
 
     const span = createElement('span')
-    span.innerHTML = 'Let\'s Tour'
 
     const video = createElement('video', {
       playsInline: '',
