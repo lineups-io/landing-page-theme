@@ -44,6 +44,10 @@
   align-items: center;
 }
 
+.lineups___bubble span::before {
+  content: "Let's Tour";
+}
+
 .lineups___bubble video {
   width: 100%;
   height: 100%;
