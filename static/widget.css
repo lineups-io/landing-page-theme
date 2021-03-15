@@ -62,7 +62,9 @@
 
 
 .lineups___iframe-container {
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
   max-width: 425px;
   max-height: 100%;
