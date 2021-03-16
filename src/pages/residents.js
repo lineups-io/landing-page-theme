@@ -77,17 +77,17 @@ export const query = graphql`
     }
     rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
     portal: file(relativePath: { eq: "residents/portal.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
     feedback: file(relativePath: { eq: "residents/feedback.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED aspectRatio: 1.7778)
       }
     }
   }
