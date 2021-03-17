@@ -1,9 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { StaticRouter, HashRouter, Switch } from 'react-router-dom'
+import { StaticRouter, HashRouter } from 'react-router-dom'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
 
+import Switch from './AnimatedSwitch'
 import Routes from './Routes'
 
 import './index.css'
@@ -20,7 +21,7 @@ const WidgetPage = ({ data, location }) => {
   // TODO: update components to use styles
   return <Theme theme={styles}>
     <Router location={location}>
-      <Switch>
+      <Switch location={location}>
         <Routes {...slides} info={info} />
       </Switch>
     </Router>
