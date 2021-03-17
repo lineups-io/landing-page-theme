@@ -55,6 +55,7 @@ module.exports = {
         ],
         headers: {
           '/widgets/*': [
+            'X-Frame-Options: SAMEORIGIN',
             `Content-Security-Policy: frame-ancestors 'self' https://microsite-poc.webflow.io https://www.hometourstory.com`,
             'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
             'Link: <https://res.cloudinary.com>; rel=preconnect;',
