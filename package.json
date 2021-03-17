@@ -46,6 +46,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-tracking": "https://github.com/lineups-io/react-tracking.git#v7.4.2",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.0"
   }
 }
