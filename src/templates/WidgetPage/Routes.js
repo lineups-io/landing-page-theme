@@ -53,7 +53,7 @@ const Routes = ({
 }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
   const updateStore = (data = {}) => {
-    const key = location.pathname.replace(/^\//, '') || 'index'
+    const key = location.hash.replace(/^#\//, '') || 'index'
     const email = data.email || store.user.email
     const emailHash = email && crypto.createHash('sha1').update(email).digest('base64')
     const user = {
