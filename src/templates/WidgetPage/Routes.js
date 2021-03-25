@@ -119,7 +119,7 @@ const Routes = ({
 
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
-    const title = location.pathname.replace(/^\//, '') || 'home'
+    const title = location.hash.replace(/^#\//, '') || 'home'
     const { user } = store
     window.dataLayer.push({
       event: 'page_view',
