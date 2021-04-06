@@ -87,6 +87,11 @@ export const query = graphql`
           tags
         }
       }
+      businessHours {
+        day
+        openTime
+        closeTime
+      }
     }
     account {
       name
