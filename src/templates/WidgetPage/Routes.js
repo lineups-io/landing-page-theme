@@ -25,6 +25,8 @@ import confirmation from './confirmation.json'
 
 import ID from './id.js'
 
+import { getDates } from './utils'
+
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
 const callFunction = data =>
@@ -246,6 +248,7 @@ const Routes = ({
       path: '/schedule-tour',
       component: ScheduleTour,
       ...store.user,
+      dates: getDates(info.apartment.businessHours),
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       privacyPolicyUrl: info.privacyPolicyUrl,
