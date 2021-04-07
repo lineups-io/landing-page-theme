@@ -56,7 +56,7 @@ Banner.Link = styled(Link)`
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 3px;
-  background-color: #0085ca;
+  background-color: #007AB8;
   color: #fff;
   font-size: 16px;
   text-align: center;
