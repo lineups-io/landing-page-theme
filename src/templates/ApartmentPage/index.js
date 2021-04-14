@@ -2,9 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
+import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
-import Widget from './Widget'
 
 const App = ({ data, location }) => {
   const { apartment, site } = data.lineups
@@ -22,7 +21,6 @@ const App = ({ data, location }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} />
-        {widget ? <Widget {...widget} /> : null}
     </>
   )
 }
