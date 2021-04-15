@@ -2,12 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
+import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 
 const App = ({ data, location }) => {
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
+  // FIXME: using first published widget which will not work if we have multiple
+  const [widget] = data.admin.apartment.result.widgets.filter(w => w.status === 'published')
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
@@ -24,10 +26,20 @@ const App = ({ data, location }) => {
 }
 
 export const query = graphql`
-  query getApartmentPage($id: ID! $account: ID!) {
-    site {
-      siteMetadata {
-        title
+  query getApartmentPage($id: ID! $account: ID! $publicId: String) {
+    admin {
+      apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
+        result {
+          widgets {
+            _id
+            title
+            status
+            intro {
+              poster
+              video
+            }
+          }
+        }
       }
     }
     lineups {
@@ -40,6 +52,7 @@ export const query = graphql`
         marketingWebsiteUrl
         logo {
           src: url
+          alt
         }
         primaryMarket {
           market
@@ -80,18 +93,22 @@ export const query = graphql`
         awardsPhoto {
           mediaType
           src: url
+          alt
         }
         defaultPhoto {
           mediaType
           src: url
+          alt
         }
         mediaGallery {
           mediaType
           src: url
+          alt
         }
         playlist {
           mediaType
           src: url
+          alt
         }
         seo {
           title
@@ -120,6 +137,7 @@ export const query = graphql`
           vendor
           id
         }
+        floorPlanUrl
         floorplanVirtualTours {
           name
           summary
@@ -139,6 +157,30 @@ export const query = graphql`
             alt
           }
           src: url
+        }
+        floorplans {
+          id
+          floorplan: name
+          bedrooms
+          bathrooms
+          squareFeet {
+            min
+          }
+          floorPlanAvailabilityUrl
+          units {
+            id
+            effectiveRent {
+              min
+            }
+            dateAvailable
+            unitAvailabilityUrl
+          }
+          images: media {
+            src: url
+            alt
+            title
+            tags
+          }
         }
         externalData {
           shortDescription
