@@ -8,8 +8,6 @@ import JsonLd from './JsonLd'
 const App = ({ data, location }) => {
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
-  // FIXME: using first published widget which will not work if we have multiple
-  const [widget] = data.admin.apartment.result.widgets.filter(w => w.status === 'published')
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
