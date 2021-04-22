@@ -33,8 +33,6 @@ exports.handler = async function(event, context) {
     }
   }
 
-  console.debug('entrata-get-appointment-times', JSON.stringify(body))
-
   return request.post(`${uri}/api/v1/properties`, {
     auth: {
       user: user,
