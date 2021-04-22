@@ -33,7 +33,7 @@ const App = ({ data, location }) => {
 
   const props = {
     scheduleTimes,
-    sendLead: form => {
+    sendLead: form =>
       fetch('/.netlify/functions/entrata-send-lead', {
         method: 'POST',
         body: JSON.stringify({
@@ -41,8 +41,7 @@ const App = ({ data, location }) => {
           duration,
           propertyId: apartment.externalDataSource.id,
         }),
-      })
-    },
+      }),
   }
 
   return (
