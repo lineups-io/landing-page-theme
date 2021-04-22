@@ -42,8 +42,17 @@ exports.handler = async function(event, context) {
     },
     json: true,
     body: body
-  }).then(({ response }) => ({
-      statusCode: response.code,
-      body: JSON.stringify(response)
-    }))
+  }).then(({ response }) => {
+    if (response.error) {
+      return {
+        statusCode: response.error.code,
+        body: response.error.message,
+      }
+    } else {
+      return {
+        statusCode: response.code,
+        body: JSON.stringify(response)
+      }
+    }
+  })
 }
