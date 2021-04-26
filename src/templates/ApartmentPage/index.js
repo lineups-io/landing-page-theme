@@ -1,48 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 
-import { getDates } from '../WidgetPage/utils'
+import useEntrata from './useEntrata'
 
 const App = ({ data, location }) => {
-  const [scheduleTimes, setScheduleTimes] = useState([])
-  const [duration, setDuration] = useState(30)
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
-  useEffect(() => {
-    fetch('/.netlify/functions/entrata-get-appointment-times', {
-      method: 'POST',
-      body: JSON.stringify({ propertyId: apartment.externalDataSource.id }),
-    })
-      .then(res => res.json())
-      .then(json => {
-        const appointmentLength = json.result.propertyCalendarSettings.appointmentLength || 30
-        setDuration(appointmentLength)
-
-        const { availableHour = [] } = json.result.propertyCalendarAvailability.availableHours
-        setScheduleTimes(getDates(availableHour, appointmentLength))
-      })
-  }, [])
-
-  const props = {
-    scheduleTimes,
-    onSubmit: form =>
-      fetch('/.netlify/functions/entrata-send-lead', {
-        method: 'POST',
-        body: JSON.stringify({
-          ...form,
-          duration,
-          propertyId: apartment.externalDataSource.id,
-        }),
-      }),
-  }
+  const props = useEntrata(apartment.externalDataSource.id)
 
   return (
     <>
