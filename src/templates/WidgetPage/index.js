@@ -63,6 +63,9 @@ export const query = graphql`
       name
       prospectPhoneNumber
       floorPlanUrl
+      externalDataSource {
+        id
+      }
       floorplans {
         id
         floorplan: name
