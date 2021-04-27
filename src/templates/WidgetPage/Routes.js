@@ -25,15 +25,9 @@ import confirmation from './confirmation.json'
 
 import ID from './id.js'
 
-import { getDates } from './utils'
+import useEntrata from '../ApartmentPage/useEntrata'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
-
-const callFunction = data =>
-  fetch('/.netlify/functions/realpage-ilm-update-lead', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
 
 const getBedroomsFilter = (data = []) => {
   const [bedrooms] = data
@@ -54,6 +48,12 @@ const Routes = ({
   ...props
 }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
+
+  const {
+    scheduleTimes: dates = [],
+    onSubmit: callFunction,
+  } = useEntrata(info.apartment.externalDataSource.id)
+
   const updateStore = (data = {}) => {
     const key = location.hash.replace(/^#\//, '') || 'index'
     const email = data.email || store.user.email
@@ -97,13 +97,28 @@ const Routes = ({
           body: JSON.stringify(request),
         })
       } else if (key === 'guest-card') {
+        request.notes = [
+          'Beds: ' + (request.bedrooms || 'No preference selected'),
+          'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
+        ].join(',')
         fetch('/.netlify/functions/send-guest-card-alert', {
           method: 'POST',
           body: JSON.stringify(request),
         })
       }
 
-      callFunction(request)
+      const tour = {}
+
+      if (key === 'schedule-tour') {
+        tour.day = { value: request['schedule-tour'].day }
+        tour.time = { value: request['schedule-tour'].time }
+      }
+
+      callFunction({
+        ...user,
+        ...tour,
+        notes: request.notes,
+      })
 
       setStore({
         ...store,
@@ -248,7 +263,7 @@ const Routes = ({
       path: '/schedule-tour',
       component: ScheduleTour,
       ...store.user,
-      dates: getDates(info.apartment.businessHours),
+      dates,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       privacyPolicyUrl: info.privacyPolicyUrl,
