@@ -19,7 +19,7 @@ const useEntrata = propertyId => {
         const { availableHour = [] } = json.result.propertyCalendarAvailability.availableHours
         setScheduleTimes(getDates(availableHour, appointmentLength))
       })
-  }, [])
+  }, [propertyId])
 
   return {
     scheduleTimes,
