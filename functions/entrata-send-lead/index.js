@@ -3,6 +3,8 @@ const btoa = require('btoa')
 const dayjs = require('dayjs')
 const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
+const utc = require('dayjs/plugin/utc')
+dayjs.extend(utc)
 
 const {
   ENTRATA_API_URI: uri,
@@ -19,7 +21,7 @@ exports.handler = async function(event, context) {
 
   const form = JSON.parse(event.body)
   const { propertyId } = form
-  const today = dayjs().format('MM/DD/YYYY')
+  const today = dayjs().utc().format('MM/DD/YYYYTHH:mm:ssZZ')
 
   const prospect = {
     leadSource: {
