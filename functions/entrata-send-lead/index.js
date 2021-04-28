@@ -66,6 +66,15 @@ exports.handler = async function(event, context) {
       ]
     }
   } else if (form.question) {
+    prospect.events = {
+      event: [
+        {
+          type: 'Note',
+          date: today,
+          comments: form.question
+        }
+      ]
+    }
   }
 
   const body = {

@@ -91,7 +91,7 @@ const Routes = ({
         })
       } else if (key === 'contact-us') {
         const { question } = data
-        request.notes = `${ user.firstName } asked this question: ${ question }`
+        request.question = `${ user.firstName } asked this question: ${ question }`
         fetch('/.netlify/functions/send-contact-alert', {
           method: 'POST',
           body: JSON.stringify(request),
@@ -124,6 +124,7 @@ const Routes = ({
         ...tour,
         notes: request.notes,
         'move-in': request['move-in'],
+        question: request.question,
       })
 
       setStore({
