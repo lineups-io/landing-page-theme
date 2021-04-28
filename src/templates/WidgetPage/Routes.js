@@ -100,7 +100,7 @@ const Routes = ({
         request.notes = [
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
-        ].join(',')
+        ].join(', ')
         fetch('/.netlify/functions/send-guest-card-alert', {
           method: 'POST',
           body: JSON.stringify(request),
