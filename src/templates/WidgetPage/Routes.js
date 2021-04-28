@@ -114,10 +114,16 @@ const Routes = ({
         tour.time = { value: request['schedule-tour'].time }
       }
 
+      const [bedrooms] = request.bedrooms || []
+      if (bedrooms) {
+        tour.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
+      }
+
       callFunction({
         ...user,
         ...tour,
         notes: request.notes,
+        'move-in': request['move-in'],
       })
 
       setStore({
