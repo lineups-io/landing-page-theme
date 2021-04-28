@@ -51,7 +51,8 @@ exports.handler = async function(event, context) {
   }
 
   if (form.day && form.time) {
-    const timeTo = dayjs(`${today}T${form.time.value}`, 'MM/DD/YYYYThh:mmA').add(form.duration, 'minute')
+    const day = dayjs().format('MM/DD/YYYY')
+    const timeTo = dayjs(`${day}T${form.time.value}`, 'MM/DD/YYYYThh:mmA').add(form.duration, 'minute')
     prospect.events = {
       event: [
         {
