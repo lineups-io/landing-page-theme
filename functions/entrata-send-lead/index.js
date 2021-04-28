@@ -46,6 +46,7 @@ exports.handler = async function(event, context) {
     customerPreferences: {
       desiredMoveInDate: form['move-in'] ? dayjs(form['move-in']).format('MM/DD/YYYY') : '',
       desiredNumBedrooms: form.bedrooms,
+      comment: form.notes,
     },
   }
 
@@ -64,8 +65,7 @@ exports.handler = async function(event, context) {
         }
       ]
     }
-  } else if (form.question || form.notes) {
-    prospect.customerPreferences.comment = form.question || form.notes
+  } else if (form.question) {
   }
 
   const body = {
