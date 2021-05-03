@@ -43,7 +43,6 @@ const Routes = ({
   floorplanAmenities,
   communityAmenities,
   story,
-  neighborhoodFeatures,
   location,
   ...props
 }) => {
@@ -216,8 +215,7 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/neighborhood-features'),
-    transform('/neighborhood-features', neighborhoodFeatures, '/move-in'),
+    transform('/community-amenities', communityAmenities, '/move-in'),
     {
       path: '/move-in',
       component: InfiniteCalendar,
