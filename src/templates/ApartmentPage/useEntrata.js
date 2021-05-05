@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 
 import { getDates } from '../WidgetPage/utils'
 
+const LOCAL_STORAGE_KEY = 'utm_lineups'
+
 const useEntrata = propertyId => {
   const [scheduleTimes, setScheduleTimes] = useState([])
   const [duration, setDuration] = useState(30)
@@ -24,12 +26,18 @@ const useEntrata = propertyId => {
   return {
     scheduleTimes,
     onSubmit: form => {
+      const item = window.localStorage.getItem(LOCAL_STORAGE_KEY)
+
+      const [first, ...rest] = item ? JSON.parse(item) : []
+
       return fetch('/.netlify/functions/entrata-send-lead', {
         method: 'POST',
         body: JSON.stringify({
           ...form,
           duration,
           propertyId,
+          originatingLeadSourceId: first.id,
+          additionalLeadSourceIds: rest.map(l => l.id).join(','),
         }),
       })
     }
