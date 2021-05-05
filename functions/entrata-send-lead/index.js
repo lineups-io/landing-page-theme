@@ -20,7 +20,9 @@ exports.handler = async function(event, context) {
   }
 
   const form = JSON.parse(event.body)
-  const { propertyId } = form
+  const {
+    propertyId,
+  } = form
   const today = dayjs().utc().format('MM/DD/YYYYTHH:mm:ssZZ')
 
   const prospect = {
