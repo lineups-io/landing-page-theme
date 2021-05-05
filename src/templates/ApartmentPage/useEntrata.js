@@ -23,15 +23,16 @@ const useEntrata = propertyId => {
 
   return {
     scheduleTimes,
-    onSubmit: form =>
-      fetch('/.netlify/functions/entrata-send-lead', {
+    onSubmit: form => {
+      return fetch('/.netlify/functions/entrata-send-lead', {
         method: 'POST',
         body: JSON.stringify({
           ...form,
           duration,
           propertyId,
         }),
-      }),
+      })
+    }
   }
 }
 
