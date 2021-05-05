@@ -22,15 +22,15 @@ exports.handler = async function(event, context) {
   const form = JSON.parse(event.body)
   const {
     propertyId,
+    originatingLeadSourceId,
+    additionalLeadSourceIds = '',
   } = form
   const today = dayjs().utc().format('MM/DD/YYYYTHH:mm:ssZZ')
 
   const prospect = {
     leadSource: {
-      // TODO: set lead source
-      originatingLeadSourceId: '64529',
-      // TODO: set additional lead sources
-      //additionalLeadSourceIds: '64529',
+      originatingLeadSourceId,
+      additionalLeadSourceIds,
     },
     createdDate: today,
     customers: {
