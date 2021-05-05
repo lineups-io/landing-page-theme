@@ -74,7 +74,7 @@ export const query = graphql`
         squareFeet {
           min
         }
-        floorPlanAvailabilityUrl
+        floorplanAvailabilityUrl: floorPlanAvailabilityUrl
         units {
           id
           effectiveRent {
