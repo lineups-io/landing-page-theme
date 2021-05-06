@@ -36,7 +36,7 @@ const useEntrata = propertyId => {
           ...form,
           duration,
           propertyId,
-          originatingLeadSourceId: first.id,
+          originatingLeadSourceId: first && first.id,
           additionalLeadSourceIds: rest.map(l => l.id).join(','),
         }),
       })
