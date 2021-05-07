@@ -10,6 +10,7 @@ const Page = ({ data, location }) => {
 
   return <>
     <Helmet title={title}>
+      <meta name='facebook-domain-verification' content='3hmbfefuefj3vtu12uq44cr3kadvv0' />
       {[
         { name: 'description', content: 'Find a Home' },
       ].map((props, i) => <meta key={i} {...props} />)}
