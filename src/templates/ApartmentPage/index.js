@@ -202,6 +202,7 @@ export const query = graphql`
             icon: fontAwesome
           }
           specials {
+            showOnWebsite
             isActive
             title
             description
