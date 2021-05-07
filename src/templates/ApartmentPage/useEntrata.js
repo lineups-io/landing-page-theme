@@ -4,7 +4,7 @@ import { getDates } from '../WidgetPage/utils'
 
 const LOCAL_STORAGE_KEY = 'utm_lineups'
 
-const useEntrata = propertyId => {
+const useEntrata = (propertyId, timezone) => {
   const [scheduleTimes, setScheduleTimes] = useState([])
   const [duration, setDuration] = useState(30)
 
@@ -19,7 +19,7 @@ const useEntrata = propertyId => {
         setDuration(appointmentLength)
 
         const { availableHour = [] } = json.result.propertyCalendarAvailability.availableHours
-        setScheduleTimes(getDates(availableHour, appointmentLength))
+        setScheduleTimes(getDates(availableHour, appointmentLength, timezone))
       })
   }, [propertyId])
 

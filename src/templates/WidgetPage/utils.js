@@ -1,44 +1,34 @@
-import addDate from 'date-fns/add'
-import formatDate from 'date-fns/format'
-import parseDate from 'date-fns/parse'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
-const setTime = (date, time) => {
-  const [, hour, minute] = time.match(/(\d+):(\d+)/i)
-  const d = new Date(date)
-  d.setHours(Number.parseInt(hour) % 24)
-  d.setMinutes(Number.parseInt(minute) % 60)
-  d.setSeconds(0)
-  d.setMilliseconds(0)
+dayjs.extend(utc)
 
-  return d
+const DEFAULT_TIMEZONE = '-0700'
+
+const setTime = (date, time, tz = DEFAULT_TIMEZONE) => {
+  const str = tz.replace(/[^-0-9]/g, '') || '0'
+  const offset = Number.parseInt(str) / 100
+  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_TIMEZONE)}`, 'MM/DD/YYYY HH:mm:ssZZ').utcOffset(offset)
 }
 
-const parseTime = str => str.match(/([0-9]{2}:[0-9]{2}:[0-9]{2})([A-Z]{3})/i)
-
-export const getDates = (businessHours = [], duration = 30) => {
+export const getDates = (businessHours = [], duration = 30, tz) => {
   return businessHours
     .map(hr => {
-      const date = parseDate(hr.date, 'MM/dd/yyyy', new Date())
+      const date = dayjs(hr.date, 'MM/DD/YYYY')
       const times = []
 
-      const [, openTime] = parseTime(hr.startTime)
-      const [, closeTime] = parseTime(hr.endTime)
-      const day = { openTime, closeTime }
+      const close = setTime(hr.date, hr.endTime, tz)
+      let next = setTime(hr.date, hr.startTime, tz)
 
-      if (day) {
-        const close = setTime(date, day.closeTime)
-        let next = setTime(date, day.openTime)
-
-        while (next.valueOf() < close.valueOf()) {
-          const value = formatDate(next, 'hh:mma')
-          times.push({ value, label: value })
-          next = addDate(next, { minutes: duration })
-        }
+      while (next.valueOf() < close.valueOf()) {
+        const value = next.format('hh:mma')
+        times.push({ value, label: value })
+        next = next.add(duration, 'minute')
       }
 
       return {
-        value: date,
-        label: formatDate(date, 'MMM dd - EEEE'),
+        value: date.toDate(),
+        label: date.format('MMM DD - dddd'),
         times,
       }
     })
