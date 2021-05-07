@@ -14,7 +14,7 @@ const App = ({ data, location }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
-  const props = useEntrata(apartment.externalDataSource.id)
+  const props = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
 
   return (
     <>
@@ -188,6 +188,7 @@ export const query = graphql`
         externalData {
           shortDescription
           longDescription
+          timezone
           officeHours {
             Day: day
             OpenTime: openTime
