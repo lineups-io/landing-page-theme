@@ -249,8 +249,6 @@ export const query = graphql`
             title
             description
             footer
-            startDate
-            endDate
           }
         }
         nearbyCommunities: nearby(limit: 3) {
