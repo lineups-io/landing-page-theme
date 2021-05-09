@@ -2,8 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
+import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
+
+import useEntrata from './useEntrata'
 
 const App = ({ data, location }) => {
   const { apartment, site } = data.lineups
@@ -12,22 +14,34 @@ const App = ({ data, location }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
+  const props = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
+
   return (
     <>
         <Helmet title={title}>
           <meta name='description' content={seo ? seo.description : ''} />
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
-        <Layout trackingData={trackingData} {...site} apartment={apartment} />
+        <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
     </>
   )
 }
 
 export const query = graphql`
-  query getApartmentPage($id: ID! $account: ID!) {
-    site {
-      siteMetadata {
-        title
+  query getApartmentPage($id: ID! $account: ID! $publicId: String) {
+    admin {
+      apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
+        result {
+          widgets {
+            _id
+            title
+            status
+            intro {
+              poster
+              video
+            }
+          }
+        }
       }
     }
     lineups {
@@ -40,6 +54,7 @@ export const query = graphql`
         marketingWebsiteUrl
         logo {
           src: url
+          alt
         }
         primaryMarket {
           market
@@ -48,6 +63,7 @@ export const query = graphql`
           }
           marketPage {
             slug
+            ...BreadcrumbFields
           }
         }
         googlePlaceId
@@ -80,18 +96,22 @@ export const query = graphql`
         awardsPhoto {
           mediaType
           src: url
+          alt
         }
         defaultPhoto {
           mediaType
           src: url
+          alt
         }
         mediaGallery {
           mediaType
           src: url
+          alt
         }
         playlist {
           mediaType
           src: url
+          alt
         }
         seo {
           title
@@ -120,6 +140,7 @@ export const query = graphql`
           vendor
           id
         }
+        floorPlanUrl
         floorplanVirtualTours {
           name
           summary
@@ -140,9 +161,34 @@ export const query = graphql`
           }
           src: url
         }
+        floorplans {
+          id
+          floorplan: name
+          bedrooms
+          bathrooms
+          squareFeet {
+            min
+          }
+          floorplanAvailabilityUrl: floorPlanAvailabilityUrl
+          units {
+            id
+            effectiveRent {
+              min
+            }
+            dateAvailable
+            unitAvailabilityUrl
+          }
+          images: media {
+            src: url
+            alt
+            title
+            tags
+          }
+        }
         externalData {
           shortDescription
           longDescription
+          timezone
           officeHours {
             Day: day
             OpenTime: openTime
@@ -157,12 +203,11 @@ export const query = graphql`
             icon: fontAwesome
           }
           specials {
+            showOnWebsite
             isActive
             title
             description
             footer
-            startDate
-            endDate
           }
         }
         nearbyCommunities: nearby(limit: 3) {

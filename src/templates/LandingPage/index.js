@@ -6,7 +6,7 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/LandingPage'
 import { getSchemaOrgJSONLD } from './schema'
 
-export default ({ data, location }) => {
+const LandingPage = ({ data, location }) => {
   const {
     title,
     description,
@@ -90,3 +90,5 @@ export const query = graphql`
     }
   }
 `
+
+export default LandingPage
