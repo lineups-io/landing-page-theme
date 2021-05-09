@@ -51,7 +51,7 @@ const Routes = ({
   const {
     scheduleTimes: dates = [],
     onSubmit: callFunction,
-  } = useEntrata(info.apartment.externalDataSource.id)
+  } = useEntrata(info.apartment.externalDataSource.id, info.apartment.externalData.timezone)
 
   const updateStore = (data = {}) => {
     const key = location.hash.replace(/^#\//, '') || 'index'
