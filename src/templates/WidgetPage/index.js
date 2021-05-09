@@ -66,6 +66,9 @@ export const query = graphql`
       externalDataSource {
         id
       }
+      externalData {
+        timezone
+      }
       floorplans {
         id
         floorplan: name
