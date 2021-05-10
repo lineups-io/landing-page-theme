@@ -14,7 +14,44 @@ const App = ({ data, location }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
-  const props = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
+  const {
+    scheduleTimes,
+    onSubmit,
+  } = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
+
+  const [widget] = data.admin.apartment.result.widgets
+  const props = {
+    scheduleTimes,
+    onSubmit: form => onSubmit(form).then(res => {
+      const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        question
+      } = form
+
+      return widget && widget.contactUs && question ? fetch('/.netlify/functions/send-contact-alert', {
+        method: 'POST',
+        body: JSON.stringify({
+          ...widget.contactUs,
+          apartment: {
+            name: apartment.name,
+          },
+          user: {
+            firstName,
+            lastName,
+            email,
+            phone,
+          },
+          'contact-us': {
+            question,
+          },
+          question: `${ firstName } asked this question: ${ question }`,
+        }),
+      }) : res
+    })
+  }
 
   return (
     <>
@@ -39,6 +76,10 @@ export const query = graphql`
             intro {
               poster
               video
+            }
+            contactUs {
+              emailTo
+              emailCc
             }
           }
         }
