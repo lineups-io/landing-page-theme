@@ -10,6 +10,7 @@ exports.handler = async function(event, context) {
   }
 
   const {
+    source,
     emailCc,
     user: {
       firstName: first_name,
@@ -78,6 +79,7 @@ exports.handler = async function(event, context) {
 
   // TODO: make from email an environment variable
   const body = {
+    source,
     from: { email: 'hi@lineups.io' },
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
