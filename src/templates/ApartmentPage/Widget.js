@@ -17,7 +17,7 @@ const Widget = ({ _id, title, intro }) => {
     const { contentWindow } = ref.current || {}
     // When the modal is hidden...
     if (open) {
-      const scrollY = document.body.style.top
+      const scrollY = document.body.style.top.replace(/px$/, '')
       document.body.style.top = ''
       document.body.style.position = ''
       window.scrollTo(0, parseInt(scrollY || '0') * -1)
