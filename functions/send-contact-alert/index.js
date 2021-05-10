@@ -30,9 +30,9 @@ exports.handler = async function(event, context) {
     ['contact-us']: {
       question,
     } = {},
-    ['floorplan-amenities']: floorplanAmenities,
-    ['community-amenities']: communityAmenities,
-    ['neighborhood-features']: neighborhoodFeatures,
+    ['floorplan-amenities']: floorplanAmenities = [],
+    ['community-amenities']: communityAmenities = [],
+    ['neighborhood-features']: neighborhoodFeatures = [],
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
