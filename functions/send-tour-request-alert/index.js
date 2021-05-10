@@ -49,7 +49,7 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-d560b0cb63984f0688eb1b07f35b97fb'
+  const template_id = 'd-89e5acf560f843789bcaeed6eb7a339b'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).format('hh:mm a') : ''
