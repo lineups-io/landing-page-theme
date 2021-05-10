@@ -13,7 +13,9 @@ const Page = ({ data, location }) => {
   const trackingData = { title, page: location.pathname }
 
   return <>
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name='facebook-domain-verification' content='bq5g4xftictglw22muiefe14l1llyx' />
+      </Helmet>
       <Layout trackingData={trackingData} {...site}>
           <Home />
       </Layout>
