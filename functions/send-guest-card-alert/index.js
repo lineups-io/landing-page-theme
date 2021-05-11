@@ -10,6 +10,7 @@ exports.handler = async function(event, context) {
   }
 
   const {
+    source,
     emailCc,
     user: {
       firstName: first_name,
@@ -30,9 +31,9 @@ exports.handler = async function(event, context) {
     ['contact-us']: {
       question,
     } = {},
-    ['floorplan-amenities']: floorplanAmenities,
-    ['community-amenities']: communityAmenities,
-    ['neighborhood-features']: neighborhoodFeatures,
+    ['floorplan-amenities']: floorplanAmenities = [],
+    ['community-amenities']: communityAmenities = [],
+    ['neighborhood-features']: neighborhoodFeatures = [],
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
@@ -78,6 +79,7 @@ exports.handler = async function(event, context) {
 
   // TODO: make from email an environment variable
   const body = {
+    source,
     from: { email: 'hi@lineups.io' },
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
