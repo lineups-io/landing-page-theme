@@ -28,7 +28,7 @@ const App = ({ data, location }) => {
         lastName,
         email,
         phone,
-        question
+        question,
       } = form
 
       return widget && widget.contactUs && question ? fetch('/.netlify/functions/send-contact-alert', {
