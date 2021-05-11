@@ -31,25 +31,29 @@ const App = ({ data, location }) => {
         question,
       } = form
 
-      return widget && widget.contactUs && question ? fetch('/.netlify/functions/send-contact-alert', {
-        method: 'POST',
-        body: JSON.stringify({
-          ...widget.contactUs,
-          apartment: {
-            name: apartment.name,
-          },
-          user: {
-            firstName,
-            lastName,
-            email,
-            phone,
-          },
-          'contact-us': {
-            question,
-          },
-          question: `${ firstName } asked this question: ${ question }`,
-        }),
-      }) : res
+      if (widget && widget.contactUs && question) {
+        return fetch('/.netlify/functions/send-contact-alert', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...widget.contactUs,
+            apartment: {
+              name: apartment.name,
+            },
+            user: {
+              firstName,
+              lastName,
+              email,
+              phone,
+            },
+            'contact-us': {
+              question,
+            },
+            question: `${ firstName } asked this question: ${ question }`,
+          }),
+        })
+      } else {
+        return res
+      }
     })
   }
 
