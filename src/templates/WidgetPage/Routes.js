@@ -218,14 +218,7 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/move-in'),
-    {
-      path: '/move-in',
-      component: InfiniteCalendar,
-      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
-      onSubmit: date => navigate('/loading', date),
-      lastDate: store['move-in'] && dayjs(store['move-in']).toDate(),
-    },
+    transform('/community-amenities', communityAmenities, '/loading'),
     {
       path: '/loading',
       component: Spinner,
