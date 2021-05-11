@@ -29,9 +29,31 @@ const App = ({ data, location }) => {
         email,
         phone,
         question,
+        day,
+        time,
       } = form
 
-      if (widget && widget.contactUs && question) {
+      if (widget && widget.scheduleTour && day && time) {
+        return fetch('/.netlify/functions/send-tour-request-alert', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...widget.scheduleTour,
+            apartment: {
+              name: apartment.name,
+            },
+            user: {
+              firstName,
+              lastName,
+              email,
+              phone,
+            },
+            'schedule-tour': {
+              day: form.day.value,
+              time: form.time.value,
+            },
+          }),
+        })
+      } else if (widget && widget.contactUs && question) {
         return fetch('/.netlify/functions/send-contact-alert', {
           method: 'POST',
           body: JSON.stringify({
@@ -82,6 +104,10 @@ export const query = graphql`
               video
             }
             contactUs {
+              emailTo
+              emailCc
+            }
+            scheduleTour {
               emailTo
               emailCc
             }
