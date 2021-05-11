@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import createHash from 'sha.js'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
@@ -7,7 +8,7 @@ import JsonLd from './JsonLd'
 
 import useEntrata from './useEntrata'
 
-const App = ({ data, location }) => {
+const App = ({ data, location, pageContext }) => {
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
 
@@ -33,6 +34,18 @@ const App = ({ data, location }) => {
         time,
       } = form
 
+      window.dataLayer = window.dataLayer || []
+      const emailHash = email && createHash('sha1').update(email).digest('base64')
+      window.dataLayer.push({
+        event: 'quickview_lead',
+        account: pageContext.account,
+        apartment: apartment.name,
+        user_email_hash: emailHash,
+        question,
+        tour_requested_day: day && day.value,
+        tour_requested_time: time && time.value,
+      })
+
       if (widget && widget.scheduleTour && day && time) {
         return fetch('/.netlify/functions/send-tour-request-alert', {
           method: 'POST',
@@ -48,8 +61,8 @@ const App = ({ data, location }) => {
               phone,
             },
             'schedule-tour': {
-              day: form.day.value,
-              time: form.time.value,
+              day: day.value,
+              time: time.value,
             },
           }),
         })
