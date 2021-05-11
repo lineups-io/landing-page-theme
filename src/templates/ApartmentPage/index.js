@@ -48,8 +48,8 @@ const App = ({ data, location }) => {
               phone,
             },
             'schedule-tour': {
-              day: form.day.value,
-              time: form.time.value,
+              day: day.value,
+              time: time.value,
             },
           }),
         })
