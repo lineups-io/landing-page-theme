@@ -84,6 +84,7 @@ const Routes = ({
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
+        request.source = 'Apartment Stories'
         fetch('/.netlify/functions/send-tour-request-alert', {
           method: 'POST',
           body: JSON.stringify(request),
@@ -91,6 +92,7 @@ const Routes = ({
       } else if (key === 'contact-us') {
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
+        request.source = 'Apartment Stories'
         fetch('/.netlify/functions/send-contact-alert', {
           method: 'POST',
           body: JSON.stringify(request),
@@ -100,6 +102,7 @@ const Routes = ({
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
+        request.source = 'Apartment Stories'
         fetch('/.netlify/functions/send-guest-card-alert', {
           method: 'POST',
           body: JSON.stringify(request),

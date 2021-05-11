@@ -14,7 +14,70 @@ const App = ({ data, location }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
-  const props = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
+  const {
+    scheduleTimes,
+    onSubmit,
+  } = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
+
+  const [widget] = data.admin.apartment.result.widgets
+  const props = {
+    scheduleTimes,
+    onSubmit: form => onSubmit(form).then(res => {
+      const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        question,
+        day,
+        time,
+      } = form
+
+      if (widget && widget.scheduleTour && day && time) {
+        return fetch('/.netlify/functions/send-tour-request-alert', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...widget.scheduleTour,
+            apartment: {
+              name: apartment.name,
+            },
+            user: {
+              firstName,
+              lastName,
+              email,
+              phone,
+            },
+            'schedule-tour': {
+              day: form.day.value,
+              time: form.time.value,
+            },
+          }),
+        })
+      } else if (widget && widget.contactUs && question) {
+        return fetch('/.netlify/functions/send-contact-alert', {
+          method: 'POST',
+          body: JSON.stringify({
+            ...widget.contactUs,
+            apartment: {
+              name: apartment.name,
+            },
+            user: {
+              firstName,
+              lastName,
+              email,
+              phone,
+            },
+            'contact-us': {
+              question,
+            },
+            question: `${ firstName } asked this question: ${ question }`,
+          }),
+        })
+      } else {
+        return res
+      }
+    })
+  }
 
   return (
     <>
@@ -39,6 +102,14 @@ export const query = graphql`
             intro {
               poster
               video
+            }
+            contactUs {
+              emailTo
+              emailCc
+            }
+            scheduleTour {
+              emailTo
+              emailCc
             }
           }
         }
