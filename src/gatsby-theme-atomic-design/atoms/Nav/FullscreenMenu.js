@@ -25,7 +25,7 @@ const CustomFullscreenMenu = styled(FullscreenMenu).attrs({
   ${ Link }:hover,
   ${ Link }.active,
   .active ${ Link } {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.tertiary};
   }
 
   ${ Link }::before {
