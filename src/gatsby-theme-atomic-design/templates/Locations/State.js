@@ -11,7 +11,7 @@ const CustomState = styled(State)`
     content: " ";
     height: 2px;
     width: 20px;
-    background-color: ${ props => props.theme.colors.primary };
+    background-color: ${ props => props.theme.colors.tertiary };
   }
 `
 
