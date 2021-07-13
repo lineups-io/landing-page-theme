@@ -165,6 +165,7 @@ const Routes = ({
   const navigate = useNavigate(updateStore)
 
   const transform = (path, obj, next, key = 'label') => {
+    if (!obj || !obj.options) return { path, component: null }
     const options = obj.options.filter(option => option.active)
     const mapToItem = option => ({
       item_name: option.label,
@@ -222,7 +223,7 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/move-in'),
+    transform('/community-amenities', communityAmenities, schoolTerms && schoolTerms.options ? '/move-in' : '/loading'),
     transform('/move-in', schoolTerms, '/loading', 'value'),
     {
       path: '/loading',
