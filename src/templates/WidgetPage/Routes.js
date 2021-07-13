@@ -12,7 +12,6 @@ import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
 import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
-import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 import CheckAvailability from 'gatsby-theme-atomic-design/src/templates/CheckAvailability'
 
 import useLocalStorage from './useLocalStorage.js'
