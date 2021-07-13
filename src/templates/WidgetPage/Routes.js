@@ -35,6 +35,8 @@ const getBedroomsFilter = (data = []) => {
   else return bedrooms === 'Studio' ? 0 : Number.parseInt(bedrooms)
 }
 
+const EmptyComponent = () => null
+
 const Routes = ({
   info,
   intro,
@@ -165,7 +167,7 @@ const Routes = ({
   const navigate = useNavigate(updateStore)
 
   const transform = (path, obj, next, key = 'label') => {
-    if (!obj || !obj.options) return { path, component: null }
+    if (!obj || !obj.options) return { path, component: EmptyComponent }
     const options = obj.options.filter(option => option.active)
     const mapToItem = option => ({
       item_name: option.label,
