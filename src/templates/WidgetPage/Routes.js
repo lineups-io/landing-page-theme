@@ -40,6 +40,7 @@ const Routes = ({
   info,
   intro,
   bedrooms,
+  schoolTerms,
   floorplanAmenities,
   communityAmenities,
   story,
@@ -79,6 +80,10 @@ const Routes = ({
           name: info.apartment.name,
         },
         [key]: data,
+      }
+
+      if (request['move-in'] && request['move-in'][0]) {
+        request['move-in'] = request['move-in'][0]
       }
 
       if (key === 'schedule-tour') {
@@ -160,7 +165,7 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next) => {
+  const transform = (path, obj, next, key = 'label') => {
     const options = obj.options.filter(option => option.active)
     const mapToItem = option => ({
       item_name: option.label,
@@ -187,7 +192,7 @@ const Routes = ({
         window.dataLayer = window.dataLayer || []
         window.dataLayer.push({ ecommerce: { items: undefined } })
         window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
-        navigate(next, selected.map(option => option.label))
+        navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
   }
@@ -218,7 +223,8 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/loading'),
+    transform('/community-amenities', communityAmenities, '/move-in'),
+    transform('/move-in', schoolTerms, '/loading', 'value'),
     {
       path: '/loading',
       component: Spinner,

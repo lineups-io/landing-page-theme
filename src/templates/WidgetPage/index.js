@@ -133,6 +133,14 @@ export const query = graphql`
       columns
       options
     }
+    schoolTerms {
+      status
+      question
+      minChoices: minCount
+      maxChoices: maxCount
+      columns
+      options
+    }
     floorplanAmenities {
       status
       question
