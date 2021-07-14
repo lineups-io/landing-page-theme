@@ -12,7 +12,6 @@ import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
 import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
-import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 import CheckAvailability from 'gatsby-theme-atomic-design/src/templates/CheckAvailability'
 
 import useLocalStorage from './useLocalStorage.js'
@@ -36,10 +35,13 @@ const getBedroomsFilter = (data = []) => {
   else return bedrooms === 'Studio' ? 0 : Number.parseInt(bedrooms)
 }
 
+const EmptyComponent = () => null
+
 const Routes = ({
   info,
   intro,
   bedrooms,
+  schoolTerms,
   floorplanAmenities,
   communityAmenities,
   story,
@@ -79,6 +81,10 @@ const Routes = ({
           name: info.apartment.name,
         },
         [key]: data,
+      }
+
+      if (request['move-in'] && request['move-in'][0]) {
+        request['move-in'] = request['move-in'][0]
       }
 
       if (key === 'schedule-tour') {
@@ -160,7 +166,8 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next) => {
+  const transform = (path, obj, next, key = 'label') => {
+    if (!obj || !obj.options) return { path, component: EmptyComponent }
     const options = obj.options.filter(option => option.active)
     const mapToItem = option => ({
       item_name: option.label,
@@ -187,7 +194,7 @@ const Routes = ({
         window.dataLayer = window.dataLayer || []
         window.dataLayer.push({ ecommerce: { items: undefined } })
         window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
-        navigate(next, selected.map(option => option.label))
+        navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
   }
@@ -218,7 +225,8 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/loading'),
+    transform('/community-amenities', communityAmenities, schoolTerms && schoolTerms.options ? '/move-in' : '/loading'),
+    transform('/move-in', schoolTerms, '/loading', 'value'),
     {
       path: '/loading',
       component: Spinner,
