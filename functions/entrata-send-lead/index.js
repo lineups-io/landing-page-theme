@@ -107,9 +107,15 @@ exports.handler = async function(event, context) {
     },
     json: true,
     body: body
-  }).then(({ response }) => ({
+  }).then(({ response }) => {
+    if (response.code !== 200) {
+      console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
+    }
+
+    return {
       statusCode: response.code,
       body: JSON.stringify(response)
-    }))
+    }
+  })
 }
 
