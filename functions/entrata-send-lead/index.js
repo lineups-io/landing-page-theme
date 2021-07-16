@@ -25,7 +25,7 @@ exports.handler = async function(event, context) {
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
   } = form
-  const today = dayjs().utc().format('MM/DD/YYYYTHH:mm:ss')
+  const today = dayjs().utc().startOf('minute').format('MM/DD/YYYYTHH:mm:ss')
 
   const prospect = {
     leadSource: {
