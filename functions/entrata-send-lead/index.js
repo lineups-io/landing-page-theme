@@ -5,6 +5,8 @@ const customParseFormat = require('dayjs/plugin/customParseFormat')
 dayjs.extend(customParseFormat)
 const utc = require('dayjs/plugin/utc')
 dayjs.extend(utc)
+var timezone = require('dayjs/plugin/timezone')
+dayjs.extend(timezone)
 
 const {
   ENTRATA_API_URI: uri,
@@ -25,7 +27,7 @@ exports.handler = async function(event, context) {
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
   } = form
-  const today = dayjs().utc().startOf('minute').format('MM/DD/YYYYTHH:mm:ss')
+  const today = dayjs().utc().tz('US/Mountain').format('MM/DD/YYYYTHH:mm:ss')
 
   const prospect = {
     leadSource: {
