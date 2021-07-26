@@ -35,6 +35,20 @@ const Container = styled.div`
   .fade-enter-done {
     opacity: 1;
   }
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${props => props.theme.colors.gray900};
+
+    > div:first-child {
+      max-width: 375px;
+      max-height: 667px;
+      position: relative;
+      background-color: ${props => props.theme.colors.white};
+    }
+  }
 `
 
 const AnimatedSwitch = ({ location, children }) =>
