@@ -47,6 +47,7 @@ const Container = styled.div`
       max-height: 667px;
       position: relative;
       background-color: ${props => props.theme.colors.white};
+      overflow: auto;
     }
   }
 `
