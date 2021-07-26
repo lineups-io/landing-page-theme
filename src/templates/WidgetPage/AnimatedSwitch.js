@@ -6,6 +6,8 @@ import {
   CSSTransition
 } from 'react-transition-group'
 
+import FullPageModal from 'gatsby-theme-atomic-design/src/atoms/FullPageModal'
+
 const duration = 800
 
 const fadeIn = keyframes`from { opacity: 0; } to { opacity: 1; }`
@@ -37,6 +39,8 @@ const Container = styled.div`
   }
 
   @media (min-width: 768px) {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +52,10 @@ const Container = styled.div`
       position: relative;
       background-color: ${props => props.theme.colors.white};
       overflow: auto;
+    }
+
+    ${ FullPageModal } {
+      position: absolute;
     }
   }
 `
