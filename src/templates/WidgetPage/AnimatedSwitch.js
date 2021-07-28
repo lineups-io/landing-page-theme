@@ -8,6 +8,7 @@ import {
 
 import FullPageModal from 'gatsby-theme-atomic-design/src/atoms/FullPageModal'
 import FloorplanCardsContainer from 'gatsby-theme-atomic-design/src/atoms/Floorplan/FloorplanCardsContainer'
+import FloorplanCardContent from 'gatsby-theme-atomic-design/src/atoms/Floorplan/FloorplanCardContent'
 
 const duration = 800
 
@@ -61,6 +62,10 @@ const Container = styled.div`
 
     ${ FloorplanCardsContainer } {
       overflow: unset;
+    }
+
+    ${ FloorplanCardContent } {
+      padding: 0;
     }
   }
 `
