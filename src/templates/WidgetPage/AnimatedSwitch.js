@@ -7,6 +7,7 @@ import {
 } from 'react-transition-group'
 
 import FullPageModal from 'gatsby-theme-atomic-design/src/atoms/FullPageModal'
+import FloorplanCardsContainer from 'gatsby-theme-atomic-design/src/atoms/Floorplan/FloorplanCardsContainer'
 
 const duration = 800
 
@@ -56,6 +57,10 @@ const Container = styled.div`
 
     ${ FullPageModal } {
       position: absolute;
+    }
+
+    ${ FloorplanCardsContainer } {
+      overflow: unset;
     }
   }
 `
