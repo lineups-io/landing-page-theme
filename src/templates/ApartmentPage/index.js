@@ -108,7 +108,7 @@ export const query = graphql`
     admin {
       apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
         result {
-          widgets {
+          widgets (status: "published") {
             _id
             title
             status
