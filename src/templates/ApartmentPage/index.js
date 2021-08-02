@@ -6,7 +6,7 @@ import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 
-import useEntrata from './useEntrata'
+import useEntrata from '../../hooks/useEntrata'
 
 const App = ({ data, location, pageContext }) => {
   const { apartment, site } = data.lineups

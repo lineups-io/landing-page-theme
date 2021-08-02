@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { getDates } from '../WidgetPage/utils'
+import { getDates } from './utils'
 
 const LOCAL_STORAGE_KEY = 'utm_lineups'
 

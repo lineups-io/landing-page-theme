@@ -15,8 +15,8 @@ import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
 import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 import CheckAvailability from 'gatsby-theme-atomic-design/src/templates/CheckAvailability'
 
-import useLocalStorage from './useLocalStorage.js'
-import useNavigate from './useNavigate.js'
+import useLocalStorage from '../../hooks/useLocalStorage.js'
+import useNavigate from '../../hooks/useNavigate.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
@@ -25,7 +25,7 @@ import confirmation from './confirmation.json'
 
 import ID from './id.js'
 
-import useEntrata from '../ApartmentPage/useEntrata'
+import useEntrata from '../../hooks/useEntrata'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
