@@ -4,13 +4,13 @@ import { graphql } from 'gatsby'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Locations'
 
-const Page = ({ data, location }) => {
+const Page = ({ data, location, pageContext }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
   return <>
     <Helmet title={title}>
-      <meta name='facebook-domain-verification' content='76lnkt649ymqshiq7otxnnps11mxl6' />
+      <meta name='facebook-domain-verification' content={pageContext.facebookDomainVerification} />
       {[
         { name: 'description', content: 'Find a Home' },
       ].map((props, i) => <meta key={i} {...props} />)}
