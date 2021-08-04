@@ -23,7 +23,7 @@ import NavRight from './NavRight'
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
-import ID from './id.js'
+import { ID } from '../../hooks/utils'
 
 import useEntrata from '../../hooks/useEntrata'
 
