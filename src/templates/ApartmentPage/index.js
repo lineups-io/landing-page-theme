@@ -15,12 +15,12 @@ const App = ({ data, location, pageContext }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
+  const [widget] = data.admin.apartment.result.widgets
   const {
     scheduleTimes,
     onSubmit,
   } = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
 
-  const [widget] = data.admin.apartment.result.widgets
   const props = {
     scheduleTimes,
     onSubmit: form => onSubmit(form).then(res => {
