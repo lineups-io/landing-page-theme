@@ -85,7 +85,7 @@ const Routes = ({
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
         request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-tour-request-alert', {
+        fetch('/.netlify/functions/send-schedule-tour-alert', {
           method: 'POST',
           body: JSON.stringify(request),
         })
@@ -93,7 +93,7 @@ const Routes = ({
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
         request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-contact-alert', {
+        fetch('/.netlify/functions/send-contact-us-alert', {
           method: 'POST',
           body: JSON.stringify(request),
         })

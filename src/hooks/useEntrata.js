@@ -30,7 +30,7 @@ const useEntrata = (propertyId, timezone) => {
 
       const [first, ...rest] = item ? JSON.parse(item) : []
 
-      return fetch('/.netlify/functions/entrata-send-lead', {
+      return fetch('/.netlify/functions/entrata-update-lead', {
         method: 'POST',
         body: JSON.stringify({
           source: 'Quick View',
