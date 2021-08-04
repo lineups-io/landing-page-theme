@@ -47,7 +47,7 @@ const App = ({ data, location, pageContext }) => {
       })
 
       if (widget && widget.scheduleTour && day && time) {
-        return fetch('/.netlify/functions/send-tour-request-alert', {
+        return fetch('/.netlify/functions/send-schedule-tour-alert', {
           method: 'POST',
           body: JSON.stringify({
             ...widget.scheduleTour,
@@ -67,7 +67,7 @@ const App = ({ data, location, pageContext }) => {
           }),
         })
       } else if (widget && widget.contactUs && question) {
-        return fetch('/.netlify/functions/send-contact-alert', {
+        return fetch('/.netlify/functions/send-contact-us-alert', {
           method: 'POST',
           body: JSON.stringify({
             ...widget.contactUs,
