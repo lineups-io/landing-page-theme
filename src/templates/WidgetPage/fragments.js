@@ -58,14 +58,20 @@ export const fragments = graphql`
 
   fragment WidgetSlidesFragment on Admin_Widget {
     guestCard {
+      vendor
+      vendorPropertyId
       emailTo
       emailCc
     }
     contactUs {
+      vendor
+      vendorPropertyId
       emailTo
       emailCc
     }
     scheduleTour {
+      vendor
+      vendorPropertyId
       emailTo
       emailCc
     }
