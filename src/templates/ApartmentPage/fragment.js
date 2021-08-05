@@ -47,6 +47,11 @@ export const fragments = graphql`
       latitude: lat
       longitude: lng
     }
+    businessHours {
+      day
+      openTime
+      closeTime
+    }
     priceSummary {
       bedrooms
       min {
@@ -160,9 +165,9 @@ export const fragments = graphql`
       longDescription
       timezone
       officeHours {
-        Day: day
-        OpenTime: openTime
-        CloseTime: closeTime
+        day
+        openTime
+        closeTime
       }
       amenities {
         type
