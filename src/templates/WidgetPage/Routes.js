@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
-import { camelCase, startCase } from 'lodash'
+import { startCase } from 'lodash'
 import createHash from 'sha.js'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
@@ -25,7 +25,7 @@ import confirmation from './confirmation.json'
 
 import { ID } from '../../hooks/utils'
 
-import useEntrata from '../../hooks/useEntrata'
+import useLeadManager from '../../hooks/useLeadManager'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
@@ -50,8 +50,14 @@ const Routes = ({
 
   const {
     scheduleTimes: dates = [],
-    onSubmit: callFunction,
-  } = useEntrata(info.apartment.externalDataSource.id, info.apartment.externalData.timezone)
+    submitGuestCard,
+    submitContactUs,
+    submitScheduleTour,
+  } = useLeadManager({
+    source: 'Apartment Stories',
+    apartment: info.apartment,
+    ...props,
+  })
 
   const updateStore = (data = {}) => {
     const key = location.hash.replace(/^#\//, '') || 'index'
@@ -67,67 +73,35 @@ const Routes = ({
     }
 
     if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
-      const { emailTo, emailCc } = props[camelCase(key)]
 
       const request = {
         ...store,
         user,
-        emailTo,
-        emailCc,
-        apartment: {
-          _id: info.apartment._id,
-          name: info.apartment.name,
-        },
         [key]: data,
+      }
+
+      const [bedrooms] = request.bedrooms || []
+      if (bedrooms) {
+        request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-schedule-tour-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        request.day = { value: day }
+        request.time = { value: time }
+        submitScheduleTour(request)
       } else if (key === 'contact-us') {
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-contact-us-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        submitContactUs(request)
       } else if (key === 'guest-card') {
         request.notes = [
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-guest-card-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        submitGuestCard(request)
       }
-
-      const tour = {}
-
-      if (key === 'schedule-tour') {
-        tour.day = { value: request['schedule-tour'].day }
-        tour.time = { value: request['schedule-tour'].time }
-      }
-
-      const [bedrooms] = request.bedrooms || []
-      if (bedrooms) {
-        tour.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
-      }
-
-      callFunction({
-        ...user,
-        ...tour,
-        notes: request.notes,
-        'move-in': request['move-in'],
-        question: request.question,
-      })
 
       setStore({
         ...store,
@@ -135,12 +109,12 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-      setStore({
-        ...store,
-        user,
-        [key]: data,
-      })
-    }
+    setStore({
+      ...store,
+      user,
+      [key]: data,
+    })
+  }
   }
 
   useEffect(() => {
@@ -167,7 +141,7 @@ const Routes = ({
       item_category: path.replace(/^\//, ''),
       item_brand: info.apartment.name,
       affiliation: info.account.name,
-    })
+  })
     return obj.status !== 'hidden' ? ({
       path,
       component: MultipleChoiceQuestion,

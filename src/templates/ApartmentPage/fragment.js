@@ -9,11 +9,21 @@ export const fragments = graphql`
       poster
       video
     }
+    guestCard {
+      vendor
+      vendorPropertyId
+      emailTo
+      emailCc
+    }
     contactUs {
+      vendor
+      vendorPropertyId
       emailTo
       emailCc
     }
     scheduleTour {
+      vendor
+      vendorPropertyId
       emailTo
       emailCc
     }

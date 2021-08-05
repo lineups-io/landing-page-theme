@@ -6,9 +6,13 @@ import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 
-import useEntrata from '../../hooks/useEntrata'
+import useLeadManager from '../../hooks/useLeadManager'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { ID } from '../../hooks/utils'
 
 const App = ({ data, location, pageContext }) => {
+  const [store] = useLocalStorage('store', { user: {} })
+
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
 
@@ -18,12 +22,16 @@ const App = ({ data, location, pageContext }) => {
   const [widget] = data.admin.apartment.result.widgets
   const {
     scheduleTimes,
-    onSubmit,
-  } = useEntrata(apartment.externalDataSource.id, apartment.externalData.timezone)
-
+    submitContactUs,
+    submitScheduleTour,
+  } = useLeadManager({
+    source: 'Quick View',
+    apartment,
+    ...widget,
+  })
   const props = {
     scheduleTimes,
-    onSubmit: form => onSubmit(form).then(res => {
+    onSubmit: form => {
       const {
         firstName,
         lastName,
@@ -46,50 +54,33 @@ const App = ({ data, location, pageContext }) => {
         tour_requested_time: time && time.value,
       })
 
-      if (widget && widget.scheduleTour && day && time) {
-        return fetch('/.netlify/functions/send-schedule-tour-alert', {
-          method: 'POST',
-          body: JSON.stringify({
-            ...widget.scheduleTour,
-            apartment: {
-              name: apartment.name,
-            },
-            user: {
-              firstName,
-              lastName,
-              email,
-              phone,
-            },
-            'schedule-tour': {
-              day: day.value,
-              time: time.value,
-            },
-          }),
-        })
-      } else if (widget && widget.contactUs && question) {
-        return fetch('/.netlify/functions/send-contact-us-alert', {
-          method: 'POST',
-          body: JSON.stringify({
-            ...widget.contactUs,
-            apartment: {
-              name: apartment.name,
-            },
-            user: {
-              firstName,
-              lastName,
-              email,
-              phone,
-            },
-            'contact-us': {
-              question,
-            },
-            question: `${ firstName } asked this question: ${ question }`,
-          }),
-        })
-      } else {
-        return res
+      const user = {
+        id: store.user.id || ID(),
+        firstName,
+        lastName,
+        email,
+        phone,
+        emailHash,
       }
-    })
+
+      if (day && time) {
+        return submitScheduleTour({
+          user,
+          'schedule-tour': {
+            day: day.value,
+            time: time.value,
+          },
+        })
+      } else if (question) {
+        return submitContactUs({
+          user,
+          'contact-us': {
+            question,
+          },
+          question: `${ firstName } asked this question: ${ question }`,
+        })
+      }
+    }
   }
 
   return (
