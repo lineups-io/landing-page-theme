@@ -68,7 +68,13 @@ export const fragments = graphql`
       description
       isFeatured
       isPublished
-      icon: fontAwesome
+    }
+    specials {
+      showOnWebsite
+      isActive
+      title
+      description
+      footer
     }
     priceSummary {
       bedrooms
@@ -114,6 +120,7 @@ export const fragments = graphql`
       description: title
       shortDescription: description
     }
+    longDescription
     features: uniqueSellingPoints {
       icon: fontAwesome
       title
@@ -188,7 +195,6 @@ export const fragments = graphql`
         description
         isFeatured
         isPublished
-        icon: fontAwesome
       }
       specials {
         showOnWebsite
