@@ -52,6 +52,14 @@ export const fragments = graphql`
       openTime
       closeTime
     }
+    amenities {
+      type
+      title
+      description
+      isFeatured
+      isPublished
+      icon: fontAwesome
+    }
     priceSummary {
       bedrooms
       min {
