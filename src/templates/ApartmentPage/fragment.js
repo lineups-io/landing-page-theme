@@ -103,11 +103,6 @@ export const fragments = graphql`
     }
     neighborhood {
       description
-      features {
-        icon: fontAwesome
-        title
-        description
-      }
     }
     prospectPortalUrl
     selfGuidedTourUrl
