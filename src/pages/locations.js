@@ -10,9 +10,9 @@ const Page = ({ data, location, pageContext }) => {
 
   return <>
     <Helmet title={title}>
-      <meta name='facebook-domain-verification' content={pageContext.facebookDomainVerification} />
       {[
         { name: 'description', content: 'Find a Home' },
+        { name: 'facebook-domain-verification', content: pageContext.facebookDomainVerification },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
     <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />

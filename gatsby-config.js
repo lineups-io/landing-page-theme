@@ -27,7 +27,7 @@ module.exports = {
       options: {
         context: {
           account: process.env.ACCOUNT,
-          facebookDomainVerification: '76lnkt649ymqshiq7otxnnps11mxl6',
+          facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
         },
       },
     },
