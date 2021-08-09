@@ -40,6 +40,7 @@ const Routes = ({
   info,
   intro,
   bedrooms,
+  schoolTerms,
   floorplanAmenities,
   communityAmenities,
   story,
@@ -193,7 +194,9 @@ const Routes = ({
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
     transform('/community-amenities', communityAmenities, '/move-in'),
-    {
+    schoolTerms && schoolTerms.options
+    ? transform('/move-in', schoolTerms, '/loading', 'value')
+    : {
       path: '/move-in',
       component: InfiniteCalendar,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
