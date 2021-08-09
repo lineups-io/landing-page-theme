@@ -134,7 +134,7 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next) => {
+  const transform = (path, obj, next, key = 'label') => {
     const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
@@ -161,7 +161,7 @@ const Routes = ({
         window.dataLayer = window.dataLayer || []
         window.dataLayer.push({ ecommerce: { items: undefined } })
         window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
-        navigate(next, selected.map(option => option.label))
+        navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
   }
