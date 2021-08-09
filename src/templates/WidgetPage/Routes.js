@@ -135,7 +135,7 @@ const Routes = ({
   const navigate = useNavigate(updateStore)
 
   const transform = (path, obj, next) => {
-    const options = obj.options.filter(option => option.active)
+    const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
       item_category: path.replace(/^\//, ''),
