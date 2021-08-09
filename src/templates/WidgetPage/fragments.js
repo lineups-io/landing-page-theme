@@ -90,6 +90,14 @@ export const fragments = graphql`
       columns
       options
     }
+    schoolTerms {
+      status
+      question
+      minChoices: minCount
+      maxChoices: maxCount
+      columns
+      options
+    }
     floorplanAmenities {
       status
       question
