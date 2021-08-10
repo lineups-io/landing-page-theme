@@ -9,6 +9,8 @@ const Place = props => {
     postalCode,
   } = props.address
 
+  const officeHours = props.externalData.officeHours || props.businessHours
+
   return {
     '@id': props.url,
     name: props.name,
@@ -30,12 +32,12 @@ const Place = props => {
       ...props.coordinates,
     },
     image: [props.defaultPhoto.src],
-    openingHoursSpecification: props.externalData.officeHours.map(o => ({
+    openingHoursSpecification: officeHours.map(o => ({
       '@context': 'http://schema.org',
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [o.Day],
-      opens: dayjs(o.OpenTime, 'h:mm A').format('HH:mm'),
-      closes: dayjs(o.CloseTime, 'h:mm A').format('HH:mm'),
+      dayOfWeek: [o.day],
+      opens: dayjs(`01/01/2021 ${o.openTime}`, 'MM/DD/YYYY h:mm A').format('HH:mm'),
+      closes: dayjs(`01/01/2021 ${o.closeTime}`, 'MM/DD/YYYY h:mm A').format('HH:mm'),
     })),
     sameAs: props.social.map(s => s.url),
     hasMap: `https://www.google.com/maps?q=place_id:${ props.googlePlaceId }`,
