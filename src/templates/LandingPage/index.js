@@ -6,7 +6,7 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/LandingPage'
 import { getSchemaOrgJSONLD } from './schema'
 
-export default ({ data, location }) => {
+const LandingPage = ({ data, location }) => {
   const {
     title,
     description,
@@ -36,14 +36,7 @@ export default ({ data, location }) => {
     return price < acc ? price : acc
   }, Number.MAX_VALUE)
 
-  const apartments = data.lineups.page.apartments.items.map(apartment => {
-    return {
-      ...apartment,
-      defaultPhoto: {
-        ...apartment.defaultPhoto,
-      },
-    }
-  })
+  const apartments = data.lineups.page.apartments.items
 
   return <>
     <Helmet title={title}>
@@ -90,3 +83,5 @@ export const query = graphql`
     }
   }
 `
+
+export default LandingPage
