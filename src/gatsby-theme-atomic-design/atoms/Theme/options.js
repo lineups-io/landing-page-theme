@@ -8,6 +8,7 @@ export const colors = {
   primary: '#333333',
   secondary: '#333333',
   tertiary: '#FED141',
+  special: '#FED141',
   gray50: '#FAFAFA',
   gray100: '#F5F5F5',
   gray200: '#EEEEEE',
@@ -20,6 +21,9 @@ export const colors = {
   gray900: '#212121',
   white: '#ffffff',
   black: '#333333',
+  black400: '#8c8d8e',
+  black500: '#282929',
+  red: '#e5203c',
 }
 
 export const fonts = {
