@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import sortBy from 'lodash.sortby'
 
 import { Container, Card, Caption } from './styled'
@@ -13,9 +13,7 @@ export default props => {
           node {
             name
             childImageSharp {
-              fluid(maxWidth: 725 maxHeight: 425 cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width: 725 height: 425 transformOptions: { cropFocus: CENTER })
             }
           }
         }
@@ -36,7 +34,7 @@ export default props => {
       <Card key={i}
         href={market.marketPage && market.marketPage.slug}
       >
-        <GatsbyImage fluid={market.image.node.childImageSharp.fluid} />
+        <GatsbyImage image={market.image.node.childImageSharp.gatsbyImageData} />
         <Caption>{market.title}</Caption>
       </Card>
     )}
