@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
-import { camelCase, startCase } from 'lodash'
+import { startCase } from 'lodash'
 import createHash from 'sha.js'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
@@ -12,19 +12,20 @@ import ScheduleTour from 'gatsby-theme-atomic-design/src/templates/ScheduleTour'
 import ContactUs from 'gatsby-theme-atomic-design/src/templates/ContactUs'
 import Confirmation from 'gatsby-theme-atomic-design/src/templates/Confirmation'
 import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
+import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 import CheckAvailability from 'gatsby-theme-atomic-design/src/templates/CheckAvailability'
 
-import useLocalStorage from './useLocalStorage.js'
-import useNavigate from './useNavigate.js'
+import useLocalStorage from '../../hooks/useLocalStorage.js'
+import useNavigate from '../../hooks/useNavigate.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
-import ID from './id.js'
+import { ID } from '../../hooks/utils'
 
-import useEntrata from '../ApartmentPage/useEntrata'
+import useLeadManager from '../../hooks/useLeadManager'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
 
@@ -34,8 +35,6 @@ const getBedroomsFilter = (data = []) => {
   if (!bedrooms) return
   else return bedrooms === 'Studio' ? 0 : Number.parseInt(bedrooms)
 }
-
-const EmptyComponent = () => null
 
 const Routes = ({
   info,
@@ -52,8 +51,14 @@ const Routes = ({
 
   const {
     scheduleTimes: dates = [],
-    onSubmit: callFunction,
-  } = useEntrata(info.apartment.externalDataSource.id, info.apartment.externalData.timezone)
+    submitGuestCard,
+    submitContactUs,
+    submitScheduleTour,
+  } = useLeadManager({
+    source: 'Apartment Stories',
+    apartment: info.apartment,
+    ...props,
+  })
 
   const updateStore = (data = {}) => {
     const key = location.hash.replace(/^#\//, '') || 'index'
@@ -69,71 +74,35 @@ const Routes = ({
     }
 
     if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
-      const { emailTo, emailCc } = props[camelCase(key)]
 
       const request = {
         ...store,
         user,
-        emailTo,
-        emailCc,
-        apartment: {
-          _id: info.apartment._id,
-          name: info.apartment.name,
-        },
         [key]: data,
       }
 
-      if (request['move-in'] && request['move-in'][0]) {
-        request['move-in'] = request['move-in'][0]
+      const [bedrooms] = request.bedrooms || []
+      if (bedrooms) {
+        request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-tour-request-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        request.day = { value: day }
+        request.time = { value: time }
+        submitScheduleTour(request)
       } else if (key === 'contact-us') {
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-contact-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        submitContactUs(request)
       } else if (key === 'guest-card') {
         request.notes = [
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
-        request.source = 'Apartment Stories'
-        fetch('/.netlify/functions/send-guest-card-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        submitGuestCard(request)
       }
-
-      const tour = {}
-
-      if (key === 'schedule-tour') {
-        tour.day = { value: request['schedule-tour'].day }
-        tour.time = { value: request['schedule-tour'].time }
-      }
-
-      const [bedrooms] = request.bedrooms || []
-      if (bedrooms) {
-        tour.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
-      }
-
-      callFunction({
-        ...user,
-        ...tour,
-        notes: request.notes,
-        'move-in': request['move-in'],
-        question: request.question,
-      })
 
       setStore({
         ...store,
@@ -141,12 +110,12 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-      setStore({
-        ...store,
-        user,
-        [key]: data,
-      })
-    }
+    setStore({
+      ...store,
+      user,
+      [key]: data,
+    })
+  }
   }
 
   useEffect(() => {
@@ -167,14 +136,13 @@ const Routes = ({
   const navigate = useNavigate(updateStore)
 
   const transform = (path, obj, next, key = 'label') => {
-    if (!obj || !obj.options) return { path, component: EmptyComponent }
-    const options = obj.options.filter(option => option.active)
+    const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
       item_category: path.replace(/^\//, ''),
       item_brand: info.apartment.name,
       affiliation: info.account.name,
-    })
+  })
     return obj.status !== 'hidden' ? ({
       path,
       component: MultipleChoiceQuestion,
@@ -225,8 +193,16 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, schoolTerms && schoolTerms.options ? '/move-in' : '/loading'),
-    transform('/move-in', schoolTerms, '/loading', 'value'),
+    transform('/community-amenities', communityAmenities, '/move-in'),
+    schoolTerms && schoolTerms.options
+    ? transform('/move-in', schoolTerms, '/loading', 'value')
+    : {
+      path: '/move-in',
+      component: InfiniteCalendar,
+      NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
+      onSubmit: date => navigate('/loading', date),
+      lastDate: store['move-in'] && dayjs(store['move-in']).toDate(),
+    },
     {
       path: '/loading',
       component: Spinner,
