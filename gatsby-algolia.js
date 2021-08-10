@@ -57,6 +57,7 @@ const fragments = `
         AllTime
       }
       floorplans {
+        id
         floorplan: name
         bedrooms
         units {
@@ -173,6 +174,8 @@ const transformer = ({ data }) => {
       availability.forEach(({ __typename: c, ...unit }) => {
         docs.push({
           ...apartment,
+          groupBy: apartment.id,
+          id: [apartment.id, floorplan.id, unit.unitId].join('_'),
           rent: unit.unitRent,
           floorplan: {
             ...floorplan,
@@ -189,6 +192,8 @@ const transformer = ({ data }) => {
       if (docs.length === 0) {
         docs.push({
           ...apartment,
+          groupBy: apartment.id,
+          id: [apartment.id, floorplan.id].join('_'),
           floorplan: {
             ...floorplan,
             marketRent: floorplan.marketRent && floorplan.marketRent.min,
@@ -200,6 +205,7 @@ const transformer = ({ data }) => {
     if (docs.length === 0) {
       docs.push({
         ...apartment,
+        groupBy: apartment.id,
       })
     }
 
@@ -235,7 +241,7 @@ const queries = [
         'rent',
       ],
       distinct: 1,
-      attributeForDistinct: 'id',
+      attributeForDistinct: 'groupBy',
     },
   },
 ]

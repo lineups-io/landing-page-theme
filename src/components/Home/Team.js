@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import Section from './Section'
@@ -15,9 +15,7 @@ export default () => {
     query getTeamData {
       team: file(relativePath: { eq: "index/team.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1600 cropFocus: CENTER) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH transformOptions: { cropFocus: CENTER })
         }
       }
     }
@@ -25,7 +23,7 @@ export default () => {
 
   return <>
     <Section id='team-pic' dark noPadding>
-      <GatsbyImage fluid={data.team.childImageSharp.fluid} />
+      <GatsbyImage image={data.team.childImageSharp.gatsbyImageData} />
     </Section>
     <Section id='team' dark>
       <Container>

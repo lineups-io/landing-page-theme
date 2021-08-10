@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
-export default ({ data, location }) => {
+const SearchPage = ({ data, location }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
@@ -39,3 +39,5 @@ export const query = graphql`
     }
   }
 `
+
+export default SearchPage

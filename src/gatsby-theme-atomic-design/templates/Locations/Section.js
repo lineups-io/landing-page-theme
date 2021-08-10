@@ -7,6 +7,7 @@ const CustomSection = styled(Section)`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.9em;
+    color: ${ props => props.theme.colors.primary };
   }
 `
 
