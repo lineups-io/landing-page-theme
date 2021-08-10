@@ -36,14 +36,7 @@ const LandingPage = ({ data, location }) => {
     return price < acc ? price : acc
   }, Number.MAX_VALUE)
 
-  const apartments = data.lineups.page.apartments.items.map(apartment => {
-    return {
-      ...apartment,
-      defaultPhoto: {
-        ...apartment.defaultPhoto,
-      },
-    }
-  })
+  const apartments = data.lineups.page.apartments.items
 
   return <>
     <Helmet title={title}>
