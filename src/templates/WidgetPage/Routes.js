@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import dayjs from 'dayjs'
-import { camelCase, startCase } from 'lodash'
-import crypto from 'crypto'
+import { startCase } from 'lodash'
+import createHash from 'sha.js'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -15,23 +15,19 @@ import Story from 'gatsby-theme-atomic-design/src/templates/VideoWidget'
 import InfiniteCalendar from 'gatsby-theme-atomic-design/src/templates/InfiniteCalendar'
 import CheckAvailability from 'gatsby-theme-atomic-design/src/templates/CheckAvailability'
 
-import useLocalStorage from './useLocalStorage.js'
-import useNavigate from './useNavigate.js'
+import useLocalStorage from '../../hooks/useLocalStorage.js'
+import useNavigate from '../../hooks/useNavigate.js'
 import NavLeft from './NavLeft'
 import NavRight from './NavRight'
 
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
-import ID from './id.js'
+import { ID } from '../../hooks/utils'
+
+import useLeadManager from '../../hooks/useLeadManager'
 
 const formatPhone = str => `tel:+1${ str.replace(/\D/g, '') }`
-
-const callFunction = data =>
-  fetch('/.netlify/functions/realpage-ilm-update-lead', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
 
 const getBedroomsFilter = (data = []) => {
   const [bedrooms] = data
@@ -44,18 +40,30 @@ const Routes = ({
   info,
   intro,
   bedrooms,
+  schoolTerms,
   floorplanAmenities,
   communityAmenities,
   story,
-  neighborhoodFeatures,
   location,
   ...props
 }) => {
   const [store, setStore] = useLocalStorage('store', { user: {} })
+
+  const {
+    scheduleTimes: dates = [],
+    submitGuestCard,
+    submitContactUs,
+    submitScheduleTour,
+  } = useLeadManager({
+    source: 'Apartment Stories',
+    apartment: info.apartment,
+    ...props,
+  })
+
   const updateStore = (data = {}) => {
     const key = location.hash.replace(/^#\//, '') || 'index'
     const email = data.email || store.user.email
-    const emailHash = email && crypto.createHash('sha1').update(email).digest('base64')
+    const emailHash = email && createHash('sha1').update(email).digest('base64')
     const user = {
       id: store.user.id || ID(),
       firstName: data.firstName || store.user.firstName,
@@ -66,42 +74,35 @@ const Routes = ({
     }
 
     if (key.match(/^(guest-card|schedule-tour|contact-us)$/)) {
-      const { emailTo, emailCc } = props[camelCase(key)]
 
       const request = {
         ...store,
         user,
-        emailTo,
-        emailCc,
-        apartment: {
-          _id: info.apartment._id,
-          name: info.apartment.name,
-        },
         [key]: data,
+      }
+
+      const [bedrooms] = request.bedrooms || []
+      if (bedrooms) {
+        request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
-        fetch('/.netlify/functions/send-tour-request-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        request.day = { value: day }
+        request.time = { value: time }
+        submitScheduleTour(request)
       } else if (key === 'contact-us') {
         const { question } = data
-        request.notes = `${ user.firstName } asked this question: ${ question }`
-        fetch('/.netlify/functions/send-contact-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        request.question = `${ user.firstName } asked this question: ${ question }`
+        submitContactUs(request)
       } else if (key === 'guest-card') {
-        fetch('/.netlify/functions/send-guest-card-alert', {
-          method: 'POST',
-          body: JSON.stringify(request),
-        })
+        request.notes = [
+          'Beds: ' + (request.bedrooms || 'No preference selected'),
+          'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
+        ].join(', ')
+        submitGuestCard(request)
       }
-
-      callFunction(request)
 
       setStore({
         ...store,
@@ -109,12 +110,12 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-      setStore({
-        ...store,
-        user,
-        [key]: data,
-      })
-    }
+    setStore({
+      ...store,
+      user,
+      [key]: data,
+    })
+  }
   }
 
   useEffect(() => {
@@ -134,14 +135,14 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next) => {
-    const options = obj.options.filter(option => option.active)
+  const transform = (path, obj, next, key = 'label') => {
+    const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
       item_category: path.replace(/^\//, ''),
       item_brand: info.apartment.name,
       affiliation: info.account.name,
-    })
+  })
     return obj.status !== 'hidden' ? ({
       path,
       component: MultipleChoiceQuestion,
@@ -161,7 +162,7 @@ const Routes = ({
         window.dataLayer = window.dataLayer || []
         window.dataLayer.push({ ecommerce: { items: undefined } })
         window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
-        navigate(next, selected.map(option => option.label))
+        navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
   }
@@ -192,9 +193,10 @@ const Routes = ({
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/neighborhood-features'),
-    transform('/neighborhood-features', neighborhoodFeatures, '/move-in'),
-    {
+    transform('/community-amenities', communityAmenities, '/move-in'),
+    schoolTerms && schoolTerms.options
+    ? transform('/move-in', schoolTerms, '/loading', 'value')
+    : {
       path: '/move-in',
       component: InfiniteCalendar,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
@@ -246,6 +248,7 @@ const Routes = ({
       path: '/schedule-tour',
       component: ScheduleTour,
       ...store.user,
+      dates,
       onSubmit: data => navigate('/schedule-tour-confirmation', data),
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       privacyPolicyUrl: info.privacyPolicyUrl,
@@ -286,14 +289,11 @@ const Routes = ({
     },
   ]
 
-  return routes.map((route, i) => {
-    if (!route) return null
-
-    const { component: Component, path, ...props } = route
-    return <Route key={i} exact path={path}>
+  return routes.map(({ component: Component, path, ...props }, i) =>
+    <Route key={i} exact path={path}>
       <Component {...props} />
     </Route>
-  })
+  )
 }
 
 export default Routes

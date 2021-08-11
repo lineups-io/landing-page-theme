@@ -8,12 +8,29 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
+const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+  resolve: 'gatsby-plugin-google-tagmanager',
+  options: {
+    id,
+    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
+  },
+}))
+
 module.exports = {
   siteMetadata: {
     title: process.env.TITLE,
     siteUrl: process.env.URL,
   },
   'plugins': [
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          account: process.env.ACCOUNT,
+          facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,12 +50,7 @@ module.exports = {
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: process.env.GOOGLE_TAG_MANAGER_ID,
-      },
-    },
+    ...gatsbyPluginGoogleTagmanager,
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
@@ -98,6 +110,7 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
     {

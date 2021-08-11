@@ -10,6 +10,7 @@ exports.handler = async function(event, context) {
   }
 
   const {
+    source,
     emailCc,
     user: {
       firstName: first_name,
@@ -30,9 +31,9 @@ exports.handler = async function(event, context) {
     ['contact-us']: {
       question,
     } = {},
-    ['floorplan-amenities']: floorplanAmenities,
-    ['community-amenities']: communityAmenities,
-    ['neighborhood-features']: neighborhoodFeatures,
+    ['floorplan-amenities']: floorplanAmenities = [],
+    ['community-amenities']: communityAmenities = [],
+    ['neighborhood-features']: neighborhoodFeatures = [],
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
@@ -49,7 +50,7 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-2785159db67141f38d4ab99182f1de47'
+  const template_id = 'd-cc33424567d249b7b17ca8db966ab547'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).format('hh:mm a') : ''
@@ -78,6 +79,7 @@ exports.handler = async function(event, context) {
 
   // TODO: make from email an environment variable
   const body = {
+    source,
     from: { email: 'hi@lineups.io' },
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
