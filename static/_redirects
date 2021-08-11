@@ -33,6 +33,8 @@ https://citycrossingapartments.com/* https://rockstar.apartments/houston-tx/city
 https://www.citycrossingapartments.com/* https://rockstar.apartments/houston-tx/city-crossing/?redirected=citycrossingapartments 301!
 https://churchillsquareapts.com/* https://rockstar.apartments/corpus-christi-tx/churchill-square/?redirected=churchillsquareapts 301!
 https://www.churchillsquareapts.com/* https://rockstar.apartments/corpus-christi-tx/churchill-square/?redirected=churchillsquareapts 301!
+https://valenciaplaceliving.com/* https://rockstar.apartments/houston-tx/valencia-place/?redirected=valenciaplaceliving 301!
+https://www.valenciaplaceliving.com/* https://rockstar.apartments/houston-tx/valencia-place/?redirected=valenciaplaceliving 301!
 
 # Redirect default Netlify subdomain to primary domain
 https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
