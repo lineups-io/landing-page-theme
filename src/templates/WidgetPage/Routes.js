@@ -169,6 +169,8 @@ const Routes = ({
 
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
+  const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value')
+
   const routes = [
     {
       path: '/',
@@ -194,9 +196,7 @@ const Routes = ({
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
     transform('/community-amenities', communityAmenities, '/move-in'),
-    schoolTerms && schoolTerms.options
-    ? transform('/move-in', schoolTerms, '/loading', 'value')
-    : {
+    selectTerm || {
       path: '/move-in',
       component: InfiniteCalendar,
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
