@@ -20,6 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@percy/agent": "^0.28.6",
     "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.9",
@@ -29,6 +30,7 @@
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-netlify": "^2.3.3",
+    "gatsby-plugin-percy": "^0.1.4",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.6.9",
     "gatsby-plugin-sitemap": "^2.4.3",

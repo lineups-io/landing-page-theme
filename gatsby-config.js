@@ -93,6 +93,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    'gatsby-plugin-percy',
     ...algolia,
   ]
 }
