@@ -1,3 +1,5 @@
+const Math = require('core-js/es/math')
+
 const LOCAL_STORAGE_KEY = 'utm_lineups'
 
 exports.onClientEntry = () => {
