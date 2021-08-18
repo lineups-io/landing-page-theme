@@ -5,6 +5,7 @@ import createHash from 'sha.js'
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
+import Widget from './Widget'
 
 import useLeadManager from '../../hooks/useLeadManager'
 import useLocalStorage from '../../hooks/useLocalStorage'
@@ -90,6 +91,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
+        <Widget {...widget} />
     </>
   )
 }
