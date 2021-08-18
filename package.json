@@ -20,6 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@percy/agent": "^0.28.6",
     "@sendgrid/client": "^7.4.2",
     "btoa": "^1.2.1",
     "dayjs": "^1.10.4",
@@ -33,13 +34,14 @@
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-netlify": "^3.0.0",
+    "gatsby-plugin-percy": "^0.1.4",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-plugin-sitemap": "^3.0.0",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-graphql": "^3.0.0",
     "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.2.0",
-    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v3.1.26",
+    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v3.1.27",
     "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "numeral": "^2.0.6",
