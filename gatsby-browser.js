@@ -1,3 +1,4 @@
+require('./src/gatsby-theme-atomic-design/atoms/Typography/fonts.css')
 const Math = require('core-js/es/math')
 
 const LOCAL_STORAGE_KEY = 'utm_lineups'
