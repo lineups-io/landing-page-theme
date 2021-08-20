@@ -7,6 +7,25 @@ const data = {
     gallery: {
       sections: [
         {
+          title: 'Intro',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          thumbnail: 'https://assets.website-files.com/5ed193e524047375a5db54c2/5efaa85e00afb001546c3b83_Generation%20Grove%20Clubhouse%20-%2009.jpg',
+          media: [
+            {
+              type: 'video/mp4',
+              url: 'https://res.cloudinary.com/news-apartmentlineup-com/video/upload/c_scale,w_800/v1629487348/landscape.mp4',
+              pos: [ 0, 0 ],
+              dim: [ 16, 9 ]
+            },
+            {
+              type: 'video/mp4',
+              url: 'https://res.cloudinary.com/news-apartmentlineup-com/video/upload/c_scale,w_425/v1629487278/Untitled_project_2021-08-20_14_18.mp4',
+              pos: [ 16, 0 ],
+              dim: [ 5, 9 ]
+            },
+          ]
+        },
+        {
           title: 'Community Amenities',
           description: [
             'Executive Business Center with Computers',
