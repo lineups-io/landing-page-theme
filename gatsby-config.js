@@ -54,7 +54,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/noindex/*', '/search'],
+        excludes: ['/noindex/*', '/search'],
       },
     },
     'gatsby-plugin-meta-redirect',
