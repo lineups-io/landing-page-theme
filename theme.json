@@ -177,7 +177,7 @@
         }
       },
       "gallery-thumbnail": {
-        "width": "150px",
+        "width": ["100%", "150px"],
         "color": "text",
         "textDecoration": "none",
         "fontFamily": "body",
