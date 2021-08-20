@@ -21,8 +21,8 @@
       }
     },
     "fonts": {
-      "body": "Inter, sans-serif",
-      "heading": "Inter, sans-serif",
+      "body": "Open Sans, sans-serif",
+      "heading": "Playfair Display, serif",
       "monospace": "Menlo, monospace"
     },
     "fontSizes": [
