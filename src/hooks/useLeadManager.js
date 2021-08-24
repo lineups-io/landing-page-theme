@@ -21,7 +21,7 @@ const useLeadManager = ({
   const hours = apartment.externalData.officeHours || apartment.businessHours
 
   useEffect(() => {
-    if (scheduleTour.vendor === 'entrata') {
+    if (scheduleTour.vendor.match(/entrata/i)) {
       fetch('/.netlify/functions/entrata-get-appointment-times', {
         method: 'POST',
         body: JSON.stringify({
