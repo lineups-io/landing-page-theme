@@ -65,7 +65,7 @@ const useLeadManager = ({
 
     const [first, ...rest] = item ? JSON.parse(item) : []
 
-    return fetch(`${vendor}-update-lead`, {
+    return fetch(`${vendor.toLowerCase()}-update-lead`, {
       method: 'POST',
       body: JSON.stringify({
         ...request,
