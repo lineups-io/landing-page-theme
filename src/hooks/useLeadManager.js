@@ -65,7 +65,7 @@ const useLeadManager = ({
 
     const [first, ...rest] = item ? JSON.parse(item) : []
 
-    return fetch(`${vendor.toLowerCase()}-update-lead`, {
+    return fetch(`/.netlify/functions/${vendor.toLowerCase()}-update-lead`, {
       method: 'POST',
       body: JSON.stringify({
         ...request,
