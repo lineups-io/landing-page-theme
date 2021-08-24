@@ -39,13 +39,13 @@ exports.handler = async function(event, context) {
       customer: [
         {
           name: {
-            firstName: form.firstName,
-            lastName: form.lastName
+            firstName: form.user.firstName,
+            lastName: form.user.lastName
           },
           phone: {
-            cellPhoneNumber: form.phone
+            cellPhoneNumber: form.user.phone
           },
-          email: form.email
+          email: form.user.email
         }
       ]
     },
