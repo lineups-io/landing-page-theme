@@ -79,6 +79,7 @@ const useLeadManager = ({
 
   const submitGuestCard = data => {
     const request = {
+      apartment,
       ...data,
       ...guestCard,
     }
@@ -93,6 +94,7 @@ const useLeadManager = ({
 
   const submitContactUs = data => {
     const request = {
+      apartment,
       ...data,
       ...contactUs,
     }
@@ -107,6 +109,7 @@ const useLeadManager = ({
 
   const submitScheduleTour = data => {
     const request = {
+      apartment,
       ...data,
       ...scheduleTour,
     }
