@@ -21,7 +21,7 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
       let next = setTime(hr.date, hr.startTime, tz)
 
       while (next.valueOf() < close.valueOf()) {
-        const value = next.format('hh:mma')
+        const value = next.format('hh:mm A')
         times.push({ value, label: value })
         next = next.add(duration, 'minute')
       }
