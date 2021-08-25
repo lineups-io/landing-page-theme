@@ -11,7 +11,7 @@ dayjs.extend(timezone)
 const {
   ENTRATA_API_URI: uri,
   ENTRATA_API_USER: user,
-  ENTRATA_API_KEY: pass
+  ENTRATA_API_KEY: pass,
   SLACK_ALERTS_WEBHOOK
 } = process.env
 
