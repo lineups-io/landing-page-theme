@@ -11,7 +11,8 @@ dayjs.extend(timezone)
 const {
   ENTRATA_API_URI: uri,
   ENTRATA_API_USER: user,
-  ENTRATA_API_KEY: pass
+  ENTRATA_API_KEY: pass,
+  SLACK_ALERTS_WEBHOOK
 } = process.env
 
 
@@ -112,6 +113,42 @@ exports.handler = async function(event, context) {
   }).then(({ response }) => {
     if (response.code !== 200) {
       console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
+
+      if (SLACK_ALERTS_WEBHOOK) {
+        return request.post(SLACK_ALERTS_WEBHOOK, {
+          json: true,
+          body: {
+            blocks: [
+              {
+                type: 'header',
+                text: {
+                  type: 'plain_text',
+                  text: 'Lead Creation Failed'
+                }
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*Request*\`\`\`${JSON.stringify(body)}\`\`\``
+                }
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*Response*\`\`\`${JSON.stringify(response)}\`\`\``
+                }
+              }
+            ]
+          },
+        }).then(() => {
+          return {
+            statusCode: response.code,
+            body: JSON.stringify(response)
+          }
+        })
+      }
     }
 
     return {
