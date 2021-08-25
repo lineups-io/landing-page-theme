@@ -58,8 +58,8 @@ exports.handler = async function(event, context) {
   const template_id = 'd-e8d7372deb3b476695936950be5e9134'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
-  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mm A').format('hh:mm a') : ''
-  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mm A').add(30, 'minute').format('hh:mm a') : ''
+  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
+  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
 
   const dynamic_template_data = {
     apartment_name,
