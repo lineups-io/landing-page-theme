@@ -124,7 +124,7 @@ exports.handler = async function(event, context) {
           `\`${JSON.stringify(response)}\``,
         ]
 
-        fetch({
+        request({
           method: 'POST',
           uri: SLACK_ALERTS_WEBHOOK,
           json: true,
