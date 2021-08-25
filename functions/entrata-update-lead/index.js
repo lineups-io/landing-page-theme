@@ -59,7 +59,7 @@ exports.handler = async function(event, context) {
 
   if (form.day && form.time) {
     const day = dayjs().format('MM/DD/YYYY')
-    const timeTo = dayjs(`${day}T${form.time.value}`, 'MM/DD/YYYYThh:mm A').add(form.duration, 'minute')
+    const timeTo = dayjs(`${day}T${form.time.value}`, 'MM/DD/YYYYThh:mma').add(form.duration, 'minute')
     prospect.events = {
       event: [
         {
@@ -67,7 +67,7 @@ exports.handler = async function(event, context) {
           date: today,
           appointmentDate: dayjs(form.day.value).format('MM/DD/YYYY'),
           timeFrom: form.time.value,
-          timeTo: timeTo.format('hh:mm A'),
+          timeTo: timeTo.format('hh:mma'),
           eventReasons: 'Tour Community',
           comments: form.notes,
         }
