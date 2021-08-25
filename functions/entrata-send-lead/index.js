@@ -115,15 +115,6 @@ exports.handler = async function(event, context) {
       console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
 
       if (SLACK_ALERTS_WEBHOOK) {
-        const text = [
-          `### Lead Creation Failed`,
-          `**Request**`,
-          `\`${JSON.stringify(request)}\``,
-          "",
-          `**Response**`,
-          `\`${JSON.stringify(response)}\``,
-        ]
-
         request({
           method: 'POST',
           uri: SLACK_ALERTS_WEBHOOK,
@@ -131,10 +122,24 @@ exports.handler = async function(event, context) {
           body: {
             blocks: [
               {
+                type: 'header',
+                text: {
+                  type: 'plain_text',
+                  text: 'Lead Creation Failed'
+                }
+              },
+              {
                 type: 'section',
                 text: {
                   type: 'mrkdwn',
-                  text: text.join('\n'),
+                  text: `*Request*\`\`\`${JSON.stringify(request)}\`\`\``
+                }
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*Response*\`\`\`${JSON.stringify(response)}\`\`\``
                 }
               }
             ]
