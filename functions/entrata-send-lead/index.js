@@ -132,7 +132,7 @@ exports.handler = async function(event, context) {
                 type: 'section',
                 text: {
                   type: 'mrkdwn',
-                  text: `*Request*\`\`\`${JSON.stringify(request)}\`\`\``
+                  text: `*Request*\`\`\`${JSON.stringify(body)}\`\`\``
                 }
               },
               {
