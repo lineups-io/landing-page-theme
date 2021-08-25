@@ -115,9 +115,7 @@ exports.handler = async function(event, context) {
       console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
 
       if (SLACK_ALERTS_WEBHOOK) {
-        request({
-          method: 'POST',
-          uri: SLACK_ALERTS_WEBHOOK,
+        request.post(SLACK_ALERTS_WEBHOOK, {
           json: true,
           body: {
             blocks: [
