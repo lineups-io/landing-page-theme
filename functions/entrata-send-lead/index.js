@@ -12,6 +12,7 @@ const {
   ENTRATA_API_URI: uri,
   ENTRATA_API_USER: user,
   ENTRATA_API_KEY: pass
+  SLACK_ALERTS_WEBHOOK
 } = process.env
 
 
@@ -112,6 +113,34 @@ exports.handler = async function(event, context) {
   }).then(({ response }) => {
     if (response.code !== 200) {
       console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
+
+      if (SLACK_ALERTS_WEBHOOK) {
+        const text = [
+          `### Lead Creation Failed`,
+          `**Request**`,
+          `\`${JSON.stringify(request)}\``,
+          "",
+          `**Response**`,
+          `\`${JSON.stringify(response)}\``,
+        ]
+
+        fetch({
+          method: 'POST',
+          uri: SLACK_ALERTS_WEBHOOK,
+          json: true,
+          body: {
+            blocks: [
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: text.join('\n'),
+                }
+              }
+            ]
+          },
+        })
+      }
     }
 
     return {
