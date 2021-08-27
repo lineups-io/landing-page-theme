@@ -34,7 +34,7 @@ const data = {
             'Covered Parking',
             'Game Room & Billiards',
           ].join(' - '),
-          thumbnail: 'https://assets.website-files.com/5ed193e524047375a5db54c2/5efaa85e00afb001546c3b83_Generation%20Grove%20Clubhouse%20-%2009.jpg',
+          thumbnail: 'https://cdn.filestackcontent.com/dRMJU8UCSMe9ZmIdcHzf',
           media: [
             {
               type: 'image/jpeg',
@@ -102,7 +102,7 @@ const data = {
             'Reserved Parking',
             'Game Room & Billiards',
           ].join(' - '),
-          thumbnail: 'https://assets.website-files.com/5ed193e524047375a5db54c2/5efa9e8bea363f3dd17d00cc_Generation%20Grove%201x1%20Model%20-%20bed%2020.jpg',
+          thumbnail: 'https://cdn.filestackcontent.com/dRMJU8UCSMe9ZmIdcHzf',
           media: [
             {
               type: 'image/jpeg',
@@ -141,7 +141,7 @@ const data = {
           description: [
             'Our luxury apartments are available in a large selection of floor plans that have been equipped with the best features and amenities to enhance your living experience. Ranging from 598 to 1,552 square feet, you’ll have no problem finding the perfect size home for your needs. '
           ].join(' - '),
-          thumbnail: 'https://assets.website-files.com/5ed193e524047375a5db54c2/5efa9e8bea363f3dd17d00cc_Generation%20Grove%201x1%20Model%20-%20bed%2020.jpg',
+          thumbnail: 'https://cdn.filestackcontent.com/a0iNF2CzQyCM1B9huIBa',
           media: [
             {
               type: 'image/jpeg',
