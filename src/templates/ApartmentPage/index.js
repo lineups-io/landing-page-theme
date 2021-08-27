@@ -91,7 +91,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
-        <Widget {...widget} />
+        {widget ? <Widget {...widget} /> : null}
     </>
   )
 }
