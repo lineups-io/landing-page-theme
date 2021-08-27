@@ -43,7 +43,7 @@
     "gatsby-source-graphql": "^3.0.0",
     "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v2.2.0",
     "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v3.1.31",
-    "gatsby-theme-lineups": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-lineups.git#v1.0.3",
+    "gatsby-theme-lineups": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-lineups.git#v1.0.4",
     "gatsby-transformer-remark": "^4.9.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "numeral": "^2.0.6",
