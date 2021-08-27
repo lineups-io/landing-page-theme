@@ -21,7 +21,7 @@ const useLeadManager = ({
   const hours = apartment.externalData.officeHours || apartment.businessHours
 
   useEffect(() => {
-    if (scheduleTour.vendor === 'entrata') {
+    if (scheduleTour.vendor.match(/entrata/i)) {
       fetch('/.netlify/functions/entrata-get-appointment-times', {
         method: 'POST',
         body: JSON.stringify({
@@ -65,7 +65,7 @@ const useLeadManager = ({
 
     const [first, ...rest] = item ? JSON.parse(item) : []
 
-    return fetch(`${vendor}-update-lead`, {
+    return fetch(`/.netlify/functions/${vendor.toLowerCase()}-update-lead`, {
       method: 'POST',
       body: JSON.stringify({
         ...request,
@@ -79,6 +79,7 @@ const useLeadManager = ({
 
   const submitGuestCard = data => {
     const request = {
+      apartment,
       ...data,
       ...guestCard,
     }
@@ -93,6 +94,7 @@ const useLeadManager = ({
 
   const submitContactUs = data => {
     const request = {
+      apartment,
       ...data,
       ...contactUs,
     }
@@ -107,6 +109,7 @@ const useLeadManager = ({
 
   const submitScheduleTour = data => {
     const request = {
+      apartment,
       ...data,
       ...scheduleTour,
     }

@@ -63,6 +63,7 @@ export const fragments = graphql`
       closeTime
     }
     amenities {
+      icon
       type
       title
       description
