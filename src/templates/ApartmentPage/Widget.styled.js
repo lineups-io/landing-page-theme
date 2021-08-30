@@ -126,7 +126,7 @@ export const Wrapper = styled(motion.div).attrs({
     display: ${ props => props.open ? 'none' : 'block' };
   }
 
-  ${ Iframe } {
+  ${ Iframe }, ${ Close } {
     display: ${ props => props.open ? 'block' : 'none' };
   }
 `
