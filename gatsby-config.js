@@ -1,5 +1,6 @@
 const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
+const themeUi = require('./theme.json')
 const queries = require('./gatsby-algolia.js')
 
 console.log('[site] NODE_ENV=' + activeEnv)
@@ -51,7 +52,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/noindex/*', '/search'],
+        excludes: ['/noindex/*', '/search'],
       },
     },
     'gatsby-plugin-meta-redirect',
@@ -110,6 +111,10 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    {
+      resolve: `gatsby-theme-lineups`,
+      options: { themeUi },
+    },
     'gatsby-plugin-percy',
     {
       resolve: 'gatsby-plugin-algolia',
