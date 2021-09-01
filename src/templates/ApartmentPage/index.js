@@ -67,9 +67,11 @@ const App = ({ data, location, pageContext }) => {
       if (day && time) {
         return submitScheduleTour({
           user,
+          day,
+          time,
           'schedule-tour': {
-            day: day.value,
-            time: time.value,
+            day: day && day.value,
+            time: time && time.value,
           },
         })
       } else if (question) {
@@ -91,7 +93,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
-        <Widget {...widget} />
+        {widget ? <Widget {...widget} /> : null}
     </>
   )
 }

@@ -56,11 +56,15 @@ const Widget = ({ _id, title, intro }) => {
         </video>
         : null}
     </Bubble>
-    {loaded || open ? <Iframe>
+    {loaded || open
+      ? <>
       <Close onClick={toggleOpen}>&times;</Close>
-      {!loaded ? <Spinner /> : null}
-      <iframe ref={ref} title={title} {...iframe} />
-    </Iframe> : null}
+      <Iframe>
+        {!loaded ? <Spinner /> : null}
+        <iframe ref={ref} title={title} {...iframe} />
+        </Iframe>
+      </>
+    : null}
   </Wrapper>
 }
 
