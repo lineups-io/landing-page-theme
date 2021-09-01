@@ -11,7 +11,8 @@ dayjs.extend(timezone)
 const {
   ENTRATA_API_URI: uri,
   ENTRATA_API_USER: user,
-  ENTRATA_API_KEY: pass
+  ENTRATA_API_KEY: pass,
+  SLACK_ALERTS_WEBHOOK
 } = process.env
 
 
@@ -39,13 +40,13 @@ exports.handler = async function(event, context) {
       customer: [
         {
           name: {
-            firstName: form.firstName,
-            lastName: form.lastName
+            firstName: form.user.firstName,
+            lastName: form.user.lastName
           },
           phone: {
-            cellPhoneNumber: form.phone
+            cellPhoneNumber: form.user.phone
           },
-          email: form.email
+          email: form.user.email
         }
       ]
     },
@@ -58,7 +59,7 @@ exports.handler = async function(event, context) {
 
   if (form.day && form.time) {
     const day = dayjs().format('MM/DD/YYYY')
-    const timeTo = dayjs(`${day}T${form.time.value}`, 'MM/DD/YYYYThh:mmA').add(form.duration, 'minute')
+    const timeTo = dayjs(`${day}T${form.time.value}`, 'MM/DD/YYYYThh:mma').add(form.duration, 'minute')
     prospect.events = {
       event: [
         {
@@ -66,7 +67,7 @@ exports.handler = async function(event, context) {
           date: today,
           appointmentDate: dayjs(form.day.value).format('MM/DD/YYYY'),
           timeFrom: form.time.value,
-          timeTo: timeTo.format('hh:mmA'),
+          timeTo: timeTo.format('hh:mma'),
           eventReasons: 'Tour Community',
           comments: form.notes,
         }
@@ -112,6 +113,42 @@ exports.handler = async function(event, context) {
   }).then(({ response }) => {
     if (response.code !== 200) {
       console.error(`request failed`, JSON.stringify(body), JSON.stringify(response))
+
+      if (SLACK_ALERTS_WEBHOOK) {
+        return request.post(SLACK_ALERTS_WEBHOOK, {
+          json: true,
+          body: {
+            blocks: [
+              {
+                type: 'header',
+                text: {
+                  type: 'plain_text',
+                  text: 'Lead Creation Failed'
+                }
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*Request*\`\`\`${JSON.stringify(body)}\`\`\``
+                }
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*Response*\`\`\`${JSON.stringify(response)}\`\`\``
+                }
+              }
+            ]
+          },
+        }).then(() => {
+          return {
+            statusCode: response.code,
+            body: JSON.stringify(response)
+          }
+        })
+      }
     }
 
     return {
