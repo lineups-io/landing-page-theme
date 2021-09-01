@@ -69,6 +69,10 @@ const App = ({ data, location, pageContext }) => {
           user,
           day,
           time,
+          'schedule-tour': {
+            day: day && day.value,
+            time: time && time.value,
+          },
         })
       } else if (question) {
         return submitContactUs({
