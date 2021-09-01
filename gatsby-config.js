@@ -114,6 +114,7 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    'gatsby-plugin-percy',
     {
       resolve: `gatsby-theme-lineups`,
       options: { themeUi },
