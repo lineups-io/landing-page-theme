@@ -9,6 +9,7 @@ export const colors = {
   secondary: '#00454d',
   tertiary: '#97A3AE',
   gold: '#c4b000',
+  special: '#c4b000',
   gray50: '#FAFAFA',
   gray100: '#F5F5F5',
   gray200: '#EEEEEE',
@@ -21,6 +22,9 @@ export const colors = {
   gray900: '#212121',
   white: '#ffffff',
   black: '#424a52',
+  black400: '#8c8d8e',
+  black500: '#282929',
+  red: '#e5203c',
 }
 
 export const fonts = {
