@@ -1,24 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
-import Layout from 'gatsby-theme-atomic-design/src/templates/Blank'
+import Layout from 'gatsby-theme-atomic-design/src/templates/PageNotFound'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Heading from 'gatsby-theme-atomic-design/src/atoms/Typography/Heading'
-
-const Placeholder = styled.div`
-  text-align: center;
-  margin-top: 60px;
-  min-height: 500px;
-
-  ${ Heading } {
-   font-size: 4em;
-  }
-
-  p {
-    font-size: 2em;
-  }
-`
 
 const Page = ({ data, location }) => {
   const { site } = data.lineups
@@ -29,10 +13,6 @@ const Page = ({ data, location }) => {
   return <>
       <Helmet title={title} />
       <Layout trackingData={trackingData} {...site}>
-        <Placeholder>
-          <Heading>404</Heading>
-          <p>Page Not Found</p>
-        </Placeholder>
       </Layout>
   </>
 }
