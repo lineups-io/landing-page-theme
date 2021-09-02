@@ -1,4 +1,7 @@
 const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
 const client = require('@sendgrid/client')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
