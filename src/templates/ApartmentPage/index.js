@@ -32,7 +32,7 @@ const App = ({ data, location, pageContext }) => {
     }
   }
 
-  useTracking({}, { dispatchOnMount })
+  const { trackEvent } = useTracking({}, { dispatchOnMount })
 
   const [widget] = data.admin.apartment.result.widgets
   const {
@@ -57,9 +57,8 @@ const App = ({ data, location, pageContext }) => {
         time,
       } = form
 
-      window.dataLayer = window.dataLayer || []
       const emailHash = email && createHash('sha1').update(email).digest('base64')
-      window.dataLayer.push({
+      trackEvent({
         event: 'quickview_lead',
         account: pageContext.account,
         apartment: apartment.name,
