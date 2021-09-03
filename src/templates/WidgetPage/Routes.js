@@ -95,16 +95,43 @@ const Routes = ({
         request.day = { value: day }
         request.time = { value: time }
         submitScheduleTour(request)
+          .then(response => {
+            trackEvent({
+              event: 'custom.form.complete',
+              moveInDate: request['move-in'],
+              userId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       } else if (key === 'contact-us') {
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
         submitContactUs(request)
+          .then(response => {
+            trackEvent({
+              event: 'custom.form.complete',
+              moveInDate: request['move-in'],
+              userId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       } else if (key === 'guest-card') {
         request.notes = [
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
         submitGuestCard(request)
+          .then(response => {
+            trackEvent({
+              event: 'custom.form.complete',
+              moveInDate: request['move-in'],
+              userId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       }
 
       setStore({

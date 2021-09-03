@@ -86,6 +86,17 @@ const App = ({ data, location, pageContext }) => {
             day: day && day.value,
             time: time && time.value,
           },
+        }).then(response => {
+          trackEvent({
+            event: 'custom.form.complete',
+            tour: {
+              day: day && day.value,
+              time: time && time.value,
+            },
+            userId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
         })
       } else if (question) {
         return submitContactUs({
@@ -94,6 +105,13 @@ const App = ({ data, location, pageContext }) => {
             question,
           },
           question: `${ firstName } asked this question: ${ question }`,
+        }).then(response => {
+          trackEvent({
+            event: 'custom.form.complete',
+            userId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
         })
       }
     }
