@@ -95,8 +95,7 @@ const Routes = ({
         request.day = { value: day }
         request.time = { value: time }
         submitScheduleTour(request)
-          .then(({ response }) => response.json())
-          .then(response => {
+          .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],
@@ -109,8 +108,7 @@ const Routes = ({
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
         submitContactUs(request)
-          .then(({ response }) => response.json())
-          .then(response => {
+          .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],
@@ -125,8 +123,7 @@ const Routes = ({
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
         submitGuestCard(request)
-          .then(({ response }) => response.json())
-          .then(response => {
+          .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],

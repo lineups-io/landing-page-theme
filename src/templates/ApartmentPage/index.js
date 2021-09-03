@@ -86,8 +86,8 @@ const App = ({ data, location, pageContext }) => {
             day: day && day.value,
             time: time && time.value,
           },
-        }).then(({ response }) =>  response.json())
-        .then(response => {
+
+        }).then(({ response }) => {
           trackEvent({
             event: 'custom.form.complete',
             tour: {
@@ -106,8 +106,8 @@ const App = ({ data, location, pageContext }) => {
             question,
           },
           question: `${ firstName } asked this question: ${ question }`,
-        }).then(({ response }) =>  response.json())
-        .then(response => {
+
+        }).then(({ response }) => {
           trackEvent({
             event: 'custom.form.complete',
             userId: response.code === 200
