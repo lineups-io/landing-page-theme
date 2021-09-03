@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
 import dayjs from 'dayjs'
 import { startCase } from 'lodash'
 import createHash from 'sha.js'
@@ -290,9 +291,18 @@ const Routes = ({
   ]
 
   return routes.map(({ component: Component, path, ...props }, i) =>
-    <Route key={i} exact path={path}>
+    <Route key={i} exact path={path}
+      render={({ match }) =>
+        <CSSTransition
+          in={match !== null}
+          timeout={800}
+          classNames='fade'
+          unmountOnExit
+        >
       <Component {...props} />
-    </Route>
+        </CSSTransition>
+      }
+    />
   )
 }
 
