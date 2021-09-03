@@ -155,7 +155,9 @@ const Routes = ({
         const items = options.map(mapToItem)
         window.dataLayer = window.dataLayer || []
         // added 1ms timeout to fire page_view first
-        setTimeout(() => window.dataLayer.push({ event: 'view_item', ecommerce: { items } }), 1)
+        setTimeout(() => {
+          window.dataLayer.push({ event: 'view_item', ecommerce: { items } })
+        }, 1)
       },
       onSubmit: data => {
         const selected = options.filter(option => data.indexOf(option.value) > -1)
