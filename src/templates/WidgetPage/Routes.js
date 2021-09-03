@@ -157,6 +157,13 @@ const Routes = ({
         // added 1ms timeout to fire page_view first
         setTimeout(() => {
           trackEvent({ event: 'view_item', ecommerce: { items } })
+          trackEvent({
+            event: 'custom.amenities.shown',
+            amenities: {
+              name: obj.question,
+              options: options.map(option => option[key]),
+            },
+          })
         }, 1)
       },
       onSubmit: data => {
@@ -164,6 +171,13 @@ const Routes = ({
         const items = selected.map(mapToItem)
         trackEvent({ ecommerce: { items: undefined } })
         trackEvent({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({
+          event: 'custom.amenities.selected',
+          amenities: {
+            name: obj.question,
+            selected: selected.map(option => option[key])
+          },
+        })
         navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
@@ -300,7 +314,7 @@ const Routes = ({
           classNames='fade'
           unmountOnExit
         >
-      <Component {...props} />
+          <Component {...props} />
         </CSSTransition>
       }
     />
