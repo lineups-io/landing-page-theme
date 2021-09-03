@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import createHash from 'sha.js'
+import { useTracking } from 'react-tracking'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
@@ -85,6 +86,15 @@ const App = ({ data, location, pageContext }) => {
       }
     }
   }
+
+  useTracking({
+    event: 'custom.page.load',
+    siteType: 'brand site',
+    pageType: 'quick view',
+    apartment: apartment.name,
+    market: apartment.primaryMarket.market || '(not set)',
+    submarket: apartment.primaryMarket.submarket || '(not set)',
+  }, { dispatchOnMount: true })
 
   return (
     <>

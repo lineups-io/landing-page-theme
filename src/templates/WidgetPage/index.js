@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { StaticRouter, HashRouter } from 'react-router-dom'
+import { useTracking } from 'react-tracking'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
 
@@ -15,16 +16,32 @@ const WidgetPage = ({ data, location }) => {
     slides,
     info,
   } = data.admin.widget
+  const primaryMarket = info.apartment.primaryMarket ? info.apartment.primaryMarket : info.apartment.markets[0]
 
   const Router = typeof window === 'undefined' ? StaticRouter : HashRouter
 
+  const dispatchOnMount = () => {
+    const hasParent = window !== window.top
+    const sameDomain = window.location.host === window.top.location.host
+
+    return {
+      event: 'custom.page.load',
+      siteType: hasParent ? 'iframe' : 'brand site',
+      pageType: hasParent ? (sameDomain ? 'quick view' : 'apartment') : 'lead magnet',
+      apartment: info.apartment.name,
+      market: primaryMarket.market || '(not set)',
+      submarket: primaryMarket.submarket || '(not set)',
+    }
+  }
+  useTracking({}, { dispatchOnMount })
+
   // TODO: update components to use styles
   return <Theme theme={styles}>
-    <Router location={location}>
-      <Switch location={location}>
-        <Routes {...slides} info={info} />
-      </Switch>
-    </Router>
+      <Router location={location}>
+        <Switch location={location}>
+          <Routes {...slides} info={info} />
+        </Switch>
+      </Router>
   </Theme>
 }
 
