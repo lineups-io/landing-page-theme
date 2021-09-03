@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group'
 import dayjs from 'dayjs'
 import { startCase } from 'lodash'
 import createHash from 'sha.js'
+import { useTracking } from 'react-tracking'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -48,6 +49,7 @@ const Routes = ({
   location,
   ...props
 }) => {
+  const { trackEvent } = useTracking()
   const [store, setStore] = useLocalStorage('store', { user: {} })
 
   const {
@@ -120,10 +122,9 @@ const Routes = ({
   }
 
   useEffect(() => {
-    window.dataLayer = window.dataLayer || []
     const title = location.hash.replace(/^#\//, '') || 'home'
     const { user } = store
-    window.dataLayer.push({
+    trackEvent({
       event: 'page_view',
       page_location: window.location.href,
       page_title: `${ info.apartment.name } - ${ startCase(title) }`,
@@ -153,18 +154,16 @@ const Routes = ({
       options,
       onMount: () => {
         const items = options.map(mapToItem)
-        window.dataLayer = window.dataLayer || []
         // added 1ms timeout to fire page_view first
         setTimeout(() => {
-          window.dataLayer.push({ event: 'view_item', ecommerce: { items } })
+          trackEvent({ event: 'view_item', ecommerce: { items } })
         }, 1)
       },
       onSubmit: data => {
         const selected = options.filter(option => data.indexOf(option.value) > -1)
         const items = selected.map(mapToItem)
-        window.dataLayer = window.dataLayer || []
-        window.dataLayer.push({ ecommerce: { items: undefined } })
-        window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({ ecommerce: { items: undefined } })
+        trackEvent({ event: 'add_to_wishlist', ecommerce: { items } })
         navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
