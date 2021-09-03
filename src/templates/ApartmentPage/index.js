@@ -21,6 +21,19 @@ const App = ({ data, location, pageContext }) => {
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
 
+  const dispatchOnMount = () => {
+    return {
+      event: 'custom.page.load',
+      siteType: 'brand site',
+      pageType: 'quick view',
+      apartment: apartment.name,
+      market: apartment.primaryMarket.market || '(not set)',
+      submarket: apartment.primaryMarket.submarket || '(not set)',
+    }
+  }
+
+  useTracking({}, { dispatchOnMount })
+
   const [widget] = data.admin.apartment.result.widgets
   const {
     scheduleTimes,
@@ -86,15 +99,6 @@ const App = ({ data, location, pageContext }) => {
       }
     }
   }
-
-  useTracking({
-    event: 'custom.page.load',
-    siteType: 'brand site',
-    pageType: 'quick view',
-    apartment: apartment.name,
-    market: apartment.primaryMarket.market || '(not set)',
-    submarket: apartment.primaryMarket.submarket || '(not set)',
-  }, { dispatchOnMount: true })
 
   return (
     <>
