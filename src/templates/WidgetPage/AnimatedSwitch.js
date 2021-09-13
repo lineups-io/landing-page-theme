@@ -75,9 +75,9 @@ const Container = styled.div`
   }
 `
 
-const AnimatedSwitch = ({ location, children }) =>
+const AnimatedSwitch = ({ children }) =>
   <Container>
-    <Switch location={location}>
+    <Switch>
       {children}
     </Switch>
   </Container>

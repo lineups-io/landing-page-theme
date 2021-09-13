@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, useLocation } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import dayjs from 'dayjs'
 import { startCase } from 'lodash'
@@ -46,9 +46,9 @@ const Routes = ({
   floorplanAmenities,
   communityAmenities,
   story,
-  location,
   ...props
 }) => {
+  const location = useLocation()
   const { trackEvent } = useTracking()
   const [store, setStore] = useLocalStorage('store', { user: {} })
 
@@ -149,7 +149,7 @@ const Routes = ({
   }
 
   useEffect(() => {
-    const title = location.hash.replace(/^#\//, '') || 'home'
+    const title = location.pathname.replace(/^\//, '') || 'home'
     const { user } = store
     trackEvent({
       event: 'page_view',
