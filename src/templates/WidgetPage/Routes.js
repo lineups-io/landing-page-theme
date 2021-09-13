@@ -63,8 +63,8 @@ const Routes = ({
     ...props,
   })
 
-  const updateStore = (data = {}) => {
-    const key = location.hash.replace(/^#\//, '') || 'index'
+  const updateStore = (data = {}, prev) => {
+    const key = prev.pathname.replace(/^\//, '') || 'index'
     const email = data.email || store.user.email
     const emailHash = email && createHash('sha1').update(email).digest('base64')
     const user = {
