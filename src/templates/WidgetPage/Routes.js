@@ -233,8 +233,12 @@ const Routes = ({
           src: intro.closedCaptions,
          }
       ],
-      onBeginTour: () => navigate('/bedrooms'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onBeginTour: () => {
+        navigate('/bedrooms')
+      },
+      onScheduleTour: () => {
+        navigate('/schedule-tour')
+      },
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities'),
     transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
