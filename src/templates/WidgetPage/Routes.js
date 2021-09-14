@@ -89,10 +89,18 @@ const Routes = ({
         request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
+      let daysToMoveIn
+
+      if (request['move-in']) {
+        const today = dayjs()
+        daysToMoveIn = dayjs(request['move-in']).diff(today, 'day')
+      }
+
       trackEvent({
         event: 'custom.form.submit',
         action: 'submit',
         moveInDate: request['move-in'],
+        daysToMoveIn,
       })
 
       if (key === 'schedule-tour') {
