@@ -248,9 +248,17 @@ const Routes = ({
          }
       ],
       onBeginTour: () => {
+        trackEvent({
+          event: 'custom.click.cta',
+          action: 'Begin Tour',
+        })
         navigate('/bedrooms')
       },
       onScheduleTour: () => {
+        trackEvent({
+          event: 'custom.click.cta',
+          action: 'Schedule Tour',
+        })
         navigate('/schedule-tour')
       },
     },
