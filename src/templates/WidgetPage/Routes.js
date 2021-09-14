@@ -154,12 +154,12 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-    setStore({
-      ...store,
-      user,
-      [key]: data,
-    })
-  }
+      setStore({
+        ...store,
+        user,
+        [key]: data,
+      })
+    }
   }
 
   useEffect(() => {
