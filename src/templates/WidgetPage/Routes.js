@@ -99,6 +99,7 @@ const Routes = ({
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],
+              action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId
                 : undefined,
@@ -112,6 +113,7 @@ const Routes = ({
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],
+              action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId
                 : undefined,
@@ -127,6 +129,7 @@ const Routes = ({
             trackEvent({
               event: 'custom.form.complete',
               moveInDate: request['move-in'],
+              action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId
                 : undefined,
