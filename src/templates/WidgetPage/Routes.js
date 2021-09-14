@@ -219,7 +219,7 @@ const Routes = ({
           event: 'custom.amenities.selected',
           amenities: {
             name: obj.question,
-            selected: selected.map(option => option[key])
+            options: selected.map(option => option[key])
           },
         })
         navigate(next, selected.map(option => option[key]))
