@@ -84,6 +84,9 @@ const App = ({ data, location, pageContext }) => {
           day: day && day.value,
           time: time && time.value,
         },
+        hashedEmail: emailHash,
+        hashedPhone: phone && createHash('sha1').update(phone).digest('base64'),
+        userId: user.id,
       })
 
       if (day && time) {

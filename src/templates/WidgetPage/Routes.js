@@ -101,6 +101,9 @@ const Routes = ({
         action: 'submit',
         moveInDate: request['move-in'],
         daysToMoveIn,
+        hashedEmail: emailHash,
+        hashedPhone: user.phone && createHash('sha1').update(user.phone).digest('base64'),
+        userId: user.id,
       })
 
       if (key === 'schedule-tour') {
