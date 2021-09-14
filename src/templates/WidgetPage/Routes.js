@@ -89,6 +89,12 @@ const Routes = ({
         request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
+      trackEvent({
+        event: 'custom.form.submit',
+        action: 'submit',
+        moveInDate: request['move-in'],
+      })
+
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
@@ -98,7 +104,6 @@ const Routes = ({
           .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
-              moveInDate: request['move-in'],
               action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId
@@ -112,7 +117,6 @@ const Routes = ({
           .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
-              moveInDate: request['move-in'],
               action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId
@@ -128,7 +132,6 @@ const Routes = ({
           .then(({ response }) => {
             trackEvent({
               event: 'custom.form.complete',
-              moveInDate: request['move-in'],
               action: 'complete',
               crmId: response.code === 200
                 ? response.result.prospects.prospect[0].applicationId

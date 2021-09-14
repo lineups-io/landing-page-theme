@@ -77,6 +77,15 @@ const App = ({ data, location, pageContext }) => {
         emailHash,
       }
 
+      trackEvent({
+        event: 'custom.form.submit',
+        action: 'submit',
+        tour: {
+          day: day && day.value,
+          time: time && time.value,
+        },
+      })
+
       if (day && time) {
         return submitScheduleTour({
           user,
@@ -90,10 +99,6 @@ const App = ({ data, location, pageContext }) => {
         }).then(({ response }) => {
           trackEvent({
             event: 'custom.form.complete',
-            tour: {
-              day: day && day.value,
-              time: time && time.value,
-            },
             action: 'complete',
             crmId: response.code === 200
               ? response.result.prospects.prospect[0].applicationId
