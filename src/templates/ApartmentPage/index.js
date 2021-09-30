@@ -7,12 +7,13 @@ import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 import Widget from './Widget'
+import GalleryModal from './GalleryModal'
 
 import useLeadManager from '../../hooks/useLeadManager'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { ID } from '../../hooks/utils'
 
-const App = ({ data, location, pageContext }) => {
+const App = ({ data, location, pageContext, navigate }) => {
   const [store] = useLocalStorage('store', { user: {} })
 
   const { apartment, site } = data.lineups
@@ -45,6 +46,10 @@ const App = ({ data, location, pageContext }) => {
     ...widget,
   })
   const props = {
+    openPhotoGallery: () => {
+      const to = `${location.pathname}${location.search ? location.search + '&gallery' : '?gallery'}`
+      navigate(to)
+    },
     scheduleTimes,
     onSubmit: form => {
       const {
@@ -136,6 +141,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
+        <GalleryModal {...apartment} />
         {widget ? <Widget {...widget} /> : null}
     </>
   )
