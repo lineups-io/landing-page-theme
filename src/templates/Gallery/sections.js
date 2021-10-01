@@ -17,8 +17,7 @@ const buildSections = props => {
   if (playlist && playlist.length > 0) {
     sections.push({
       title: 'Intro',
-      // TODO: get a better thumbnail
-      thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
+      thumbnail: 'https://cdn.filestackcontent.com/GPOX9fSFR52ajC9CAvZq',
       media: playlist.map((video, i) => ({
         ...video,
         url: video.src,
@@ -48,8 +47,7 @@ const buildSections = props => {
   if (floorplanVirtualTours && floorplanVirtualTours.length > 0) {
     sections.push({
       title: 'Floorplans',
-      // TODO: get a better thumbnail
-      thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
+      thumbnail: 'https://cdn.filestackcontent.com/QGOW0fYIToIcABzgHBpQ',
       media: floorplanVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
         type: 'embed/matterport',
@@ -63,8 +61,7 @@ const buildSections = props => {
   if (communityVirtualTours && communityVirtualTours.length > 0) {
     sections.push({
       title: 'Community',
-      // TODO: get a better thumbnail
-      thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
+      thumbnail: 'https://cdn.filestackcontent.com/FijLdgN0QSaeIrsYj9OA',
       media: communityVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
         type: 'embed/matterport',
@@ -78,8 +75,7 @@ const buildSections = props => {
   if (googlePlaceId) {
     sections.push({
       title: 'Neighborhood',
-      // TODO: get a better thumbnail
-      thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
+      thumbnail: 'https://cdn.filestackcontent.com/1hQllDaQTyuFnl8LoYmR',
       media: [
         {
           type: 'embed/googlemaps',
