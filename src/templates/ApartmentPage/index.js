@@ -22,6 +22,10 @@ const handleMissingFields = apartment => ({
     amenities: [],
     specials: [],
   },
+  floorplans: (apartment.floorplans || []).map(floorplan => ({
+    ...floorplan,
+    floorplanAvailabilityUrl: floorplan.floorplanAvailabilityUrl || apartment.floorPlanUrl,
+  }))
 })
 
 const App = ({ data, location, pageContext, navigate }) => {
