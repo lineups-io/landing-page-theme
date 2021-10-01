@@ -1,6 +1,14 @@
 export default {
   links: {
+    back: {
+      px: 4,
+      bg: 'white',
+      color: 'text',
+      cursor: 'pointer',
+      textDecoration: 'none',
+    },
     gallery: {
+      cursor: 'pointer',
       width: ['100%', '150px', '150px'],
       color: 'text',
       textDecoration: 'none',
