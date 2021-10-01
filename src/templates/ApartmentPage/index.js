@@ -13,10 +13,21 @@ import useLeadManager from '../../hooks/useLeadManager'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { ID } from '../../hooks/utils'
 
+const handleMissingFields = apartment => ({
+  ...apartment,
+  externalData: {
+    ...apartment.externalData,
+    officeHours: [],
+    amenities: [],
+    specials: [],
+  },
+})
+
 const App = ({ data, location, pageContext, navigate }) => {
   const [store] = useLocalStorage('store', { user: {} })
 
-  const { apartment, site } = data.lineups
+  const apartment = handleMissingFields(data.lineups.apartment)
+  const { site } = data.lineups
   const { seo = {} } = apartment
 
   const title = seo ? seo.title : apartment.name
