@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { StaticRouter, HashRouter } from 'react-router-dom'
+import { useTracking } from 'react-tracking'
 
 import Theme from 'gatsby-theme-atomic-design/src/atoms/Theme'
 
@@ -9,22 +10,38 @@ import Routes from './Routes'
 
 import './index.css'
 
-export default ({ data, location }) => {
+const WidgetPage = ({ data }) => {
   const {
     styles,
     slides,
     info,
   } = data.admin.widget
+  const primaryMarket = info.apartment.primaryMarket ? info.apartment.primaryMarket : info.apartment.markets[0]
 
   const Router = typeof window === 'undefined' ? StaticRouter : HashRouter
 
+  const dispatchOnMount = () => {
+    const hasParent = window !== window.top
+    const sameDomain = window.location.host === window.top.location.host
+
+    return {
+      event: 'custom.page.load',
+      siteType: hasParent ? 'iframe' : 'brand site',
+      pageType: hasParent ? (sameDomain ? 'quick view' : 'apartment') : 'lead magnet',
+      apartment: info.apartment.name,
+      market: primaryMarket.market || '(not set)',
+      submarket: primaryMarket.submarket || '(not set)',
+    }
+  }
+  useTracking({}, { dispatchOnMount })
+
   // TODO: update components to use styles
   return <Theme theme={styles}>
-    <Router location={location}>
-      <Switch location={location}>
-        <Routes {...slides} info={info} />
-      </Switch>
-    </Router>
+      <Router>
+        <Switch>
+          <Routes {...slides} info={info} />
+        </Switch>
+      </Router>
   </Theme>
 }
 
@@ -49,105 +66,6 @@ export const query = graphql`
       }
     }
   }
-
-  fragment WidgetDefaultFragment on Admin_Widget {
-    _id
-    createdAt
-    userId
-    status
-    title
-    description
-    privacyPolicyUrl
-    apartment {
-      _id
-      name
-      prospectPhoneNumber
-      floorPlanUrl
-      floorplans {
-        id
-        floorplan: name
-        bedrooms
-        bathrooms
-        squareFeet {
-          min
-        }
-        floorPlanAvailabilityUrl
-        units {
-          id
-          effectiveRent {
-            min
-          }
-          dateAvailable
-          unitAvailabilityUrl
-        }
-        images: media {
-          src: url
-          alt
-          title
-          tags
-        }
-      }
-    }
-    account {
-      name
-      theme
-    }
-  }
-
-  fragment WidgetSlidesFragment on Admin_Widget {
-    guestCard {
-      emailTo
-      emailCc
-    }
-    contactUs {
-      emailTo
-      emailCc
-    }
-    scheduleTour {
-      emailTo
-      emailCc
-    }
-    intro {
-      status
-      heading
-      poster
-      video
-      closedCaptions
-    }
-    bedrooms {
-      status
-      question
-      minChoices: minCount
-      maxChoices: maxCount
-      columns
-      options
-    }
-    floorplanAmenities {
-      status
-      question
-      minChoices: minCount
-      maxChoices: maxCount
-      columns
-      options
-    }
-    communityAmenities {
-      status
-      question
-      minChoices: minCount
-      maxChoices: maxCount
-      columns
-      options
-    }
-    story {
-      data
-    }
-    neighborhoodFeatures {
-      status
-      question
-      minChoices: minCount
-      maxChoices: maxCount
-      columns
-      options
-    }
-  }
 `
+
+export default WidgetPage

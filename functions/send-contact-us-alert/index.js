@@ -1,13 +1,10 @@
 const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
 const client = require('@sendgrid/client')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
-
-const convertToNumber = desired_bedrooms => {
-  if (!desired_bedrooms) return
-
-  return desired_bedrooms === 'Studio' ? 0 : Number.parseInt(desired_bedrooms.replace(/\D/g, ''))
-}
 
 exports.handler = async function(event, context) {
   // Only allow POST
@@ -16,7 +13,8 @@ exports.handler = async function(event, context) {
   }
 
   const {
-    emailTo,
+    source,
+    emailCc,
     user: {
       firstName: first_name,
       lastName: last_name,
@@ -36,9 +34,9 @@ exports.handler = async function(event, context) {
     ['contact-us']: {
       question,
     } = {},
-    ['floorplan-amenities']: floorplanAmenities,
-    ['community-amenities']: communityAmenities,
-    ['neighborhood-features']: neighborhoodFeatures,
+    ['floorplan-amenities']: floorplanAmenities = [],
+    ['community-amenities']: communityAmenities = [],
+    ['neighborhood-features']: neighborhoodFeatures = [],
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
@@ -55,11 +53,11 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-e8d7372deb3b476695936950be5e9134'
+  const template_id = 'd-cd3794cd642b4032be344caa4a043e28'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
-  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).format('hh:mm a') : ''
-  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).add(30, 'minute').format('hh:mm a') : ''
+  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
+  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
 
   const dynamic_template_data = {
     apartment_name,
@@ -68,23 +66,28 @@ exports.handler = async function(event, context) {
     email,
     cell_phone,
     desired_move_in: desired_move_in && dayjs(desired_move_in).format('MM/DD/YYYY'),
-    desired_bedrooms: convertToNumber(desired_bedrooms),
+    desired_bedrooms,
     apartment_tour: tour_date ? 'Apartment Tour' : '',
     tour_date,
     tour_start_time,
     tour_end_time,
     comments: comments.join('\n\n'),
+    question,
+    floorplan: { options: floorplanAmenities.map(name => ({ name })) },
+    community: { options: communityAmenities.map(name => ({ name })) },
   }
 
-  const to = emailTo.split(',').map(email => ({ email }))
+  const to = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
+  if (!to) return
 
   // TODO: make from email an environment variable
   const body = {
+    source,
     from: { email: 'hi@lineups.io' },
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
     template_id,
-    content: [{ type: 'text/plain', value: 'You should not see this' }],
+    content: [{ type: 'text/html', value: 'You should not see this' }],
   }
 
   const request = {
