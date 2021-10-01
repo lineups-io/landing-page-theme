@@ -6,7 +6,7 @@ import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 
 import Home from '../components/Home'
 
-const Page = ({ data, location }) => {
+const Page = ({ data, location, pageContext }) => {
   const { site } = data.lineups
 
   const title = 'Texas Apartments for Rent'
@@ -14,7 +14,9 @@ const Page = ({ data, location }) => {
 
   return <>
       <Helmet title={title}>
-        <meta name='facebook-domain-verification' content='bq5g4xftictglw22muiefe14l1llyx' />
+        {[
+          { name: 'facebook-domain-verification', content: pageContext.facebookDomainVerification },
+        ].map((props, i) => <meta key={i} {...props} />)}
       </Helmet>
       <Layout trackingData={trackingData} {...site}>
           <Home />
