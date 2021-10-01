@@ -16,6 +16,7 @@ import { ID } from '../../hooks/utils'
 const handleMissingFields = apartment => ({
   ...apartment,
   externalData: {
+    timezone: 'CST',
     ...apartment.externalData,
     officeHours: [],
     amenities: [],
