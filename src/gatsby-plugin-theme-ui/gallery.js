@@ -23,4 +23,11 @@ export default {
       }
     }
   },
+  boxes: {
+    placeholder: {
+      bg: 'muted',
+      width: '100%',
+      height: '100%',
+    },
+  },
 }
