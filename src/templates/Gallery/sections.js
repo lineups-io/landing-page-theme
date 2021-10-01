@@ -1,3 +1,8 @@
+const getMatterportModelId = src => {
+  const [, modelId] = src.match(/\?m=([^&]+)/)
+  return modelId
+}
+
 const buildSections = props => {
   const {
     playlist,
@@ -45,10 +50,10 @@ const buildSections = props => {
       title: 'Floorplans',
       // TODO: get a better thumbnail
       thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
-      media: floorplanVirtualTours.map((tour, i) => ({
+      media: floorplanVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
         type: 'embed/matterport',
-        // TODO: get matterport modelId
+        modelId: getMatterportModelId(src),
         pos: [ 0, i * 9 ],
         dim: [ 16, 9 ],
       }))
@@ -60,10 +65,10 @@ const buildSections = props => {
       title: 'Community',
       // TODO: get a better thumbnail
       thumbnail: 'https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807',
-      media: communityVirtualTours.map((tour, i) => ({
+      media: communityVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
         type: 'embed/matterport',
-        // TODO: get matterport modelId
+        modelId: getMatterportModelId(src),
         pos: [ 0, i * 9 ],
         dim: [ 16, 9 ],
       }))
