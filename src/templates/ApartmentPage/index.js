@@ -25,6 +25,9 @@ const handleMissingFields = apartment => ({
   floorplans: (apartment.floorplans || []).map(floorplan => ({
     ...floorplan,
     floorplanAvailabilityUrl: floorplan.floorplanAvailabilityUrl || apartment.floorPlanUrl,
+    images: floorplan.images.length > 0 ? floorplan.images : [{
+      src: 'https://cdn.filestackcontent.com/36ea2p8qTm6FdpnCvQNn'
+    }],
   }))
 })
 
