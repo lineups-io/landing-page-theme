@@ -43,6 +43,7 @@ const App = ({ data, location, pageContext, navigate }) => {
   } = useLeadManager({
     source: 'Quick View',
     apartment,
+    scheduleTour: { vendor: '' },
     ...widget,
   })
   const props = {
