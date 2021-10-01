@@ -3,12 +3,15 @@ const getEmbed = src => {
 
   if (src.match(/matterport/)) {
     obj.type ='embed/matterport'
-    const [, modelId] = src.match(/\?m=([^&]+)/)
+    const [,, modelId] = src.match(/\?(m|model)=([^&]+)/)
     obj.modelId = modelId
 
   } else if (src.match(/youtube/)) {
     obj.type ='video/mp4'
     obj.url = src
+
+  } else {
+    console.warn('Unrecognized domain', src)
   }
 
   return obj
