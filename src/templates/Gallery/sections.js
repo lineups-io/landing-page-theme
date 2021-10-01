@@ -1,6 +1,17 @@
-const getMatterportModelId = src => {
-  const [, modelId] = src.match(/\?m=([^&]+)/)
-  return modelId
+const getEmbed = src => {
+  const obj = {}
+
+  if (src.match(/matterport/)) {
+    obj.type ='embed/matterport'
+    const [, modelId] = src.match(/\?m=([^&]+)/)
+    obj.modelId = modelId
+
+  } else if (src.match(/youtube/)) {
+    obj.type ='video/mp4'
+    obj.url = src
+  }
+
+  return obj
 }
 
 const buildSections = props => {
@@ -50,8 +61,7 @@ const buildSections = props => {
       thumbnail: 'https://cdn.filestackcontent.com/QGOW0fYIToIcABzgHBpQ',
       media: floorplanVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
-        type: 'embed/matterport',
-        modelId: getMatterportModelId(src),
+        ...getEmbed(src),
         pos: [ 0, i * 9 ],
         dim: [ 16, 9 ],
       }))
@@ -64,8 +74,7 @@ const buildSections = props => {
       thumbnail: 'https://cdn.filestackcontent.com/FijLdgN0QSaeIrsYj9OA',
       media: communityVirtualTours.map(({ src, ...tour }, i) => ({
         ...tour,
-        type: 'embed/matterport',
-        modelId: getMatterportModelId(src),
+        ...getEmbed(src),
         pos: [ 0, i * 9 ],
         dim: [ 16, 9 ],
       }))
