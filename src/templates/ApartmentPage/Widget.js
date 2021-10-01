@@ -17,16 +17,14 @@ const Widget = ({ _id, title, intro }) => {
     const { contentWindow } = ref.current || {}
     // When the modal is hidden...
     if (open) {
-      const scrollY = document.body.style.top
+      const scrollY = document.body.style.top.replace(/px$/, '')
       document.body.style.top = ''
-      document.body.style.width = ''
       document.body.style.position = ''
       window.scrollTo(0, parseInt(scrollY || '0') * -1)
 
       if (contentWindow) contentWindow.postMessage('close')
     } else {
       document.body.style.top = `-${window.scrollY}px`
-      document.body.style.width = '100%'
       document.body.style.position = 'fixed'
 
       if (contentWindow) contentWindow.postMessage('open')
@@ -58,11 +56,15 @@ const Widget = ({ _id, title, intro }) => {
         </video>
         : null}
     </Bubble>
-    {loaded || open ? <Iframe>
+    {loaded || open
+      ? <>
       <Close onClick={toggleOpen}>&times;</Close>
-      {!loaded ? <Spinner /> : null}
-      <iframe ref={ref} title={title} {...iframe} />
-    </Iframe> : null}
+      <Iframe>
+        {!loaded ? <Spinner /> : null}
+        <iframe ref={ref} title={title} {...iframe} />
+        </Iframe>
+      </>
+    : null}
   </Wrapper>
 }
 

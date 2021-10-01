@@ -1,19 +1,133 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import createHash from 'sha.js'
+import { useTracking } from 'react-tracking'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
-import Layout from 'gatsby-theme-atomic-design/src/templates/Microsite'
+import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
 import JsonLd from './JsonLd'
 import Widget from './Widget'
 
-const App = ({ data, location }) => {
+import useLeadManager from '../../hooks/useLeadManager'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { ID } from '../../hooks/utils'
+
+const App = ({ data, location, pageContext }) => {
+  const [store] = useLocalStorage('store', { user: {} })
+
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
-  // FIXME: using first published widget which will not work if we have multiple
-  const [widget] = data.admin.apartment.result.widgets.filter(w => w.status === 'published')
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
+
+  const dispatchOnMount = () => {
+    return {
+      event: 'custom.page.load',
+      siteType: 'brand site',
+      pageType: 'quick view',
+      apartment: apartment.name,
+      market: apartment.primaryMarket.market || '(not set)',
+      submarket: apartment.primaryMarket.submarket || '(not set)',
+    }
+  }
+
+  const { trackEvent } = useTracking({}, { dispatchOnMount })
+
+  const [widget] = data.admin.apartment.result.widgets
+  const {
+    scheduleTimes,
+    submitContactUs,
+    submitScheduleTour,
+  } = useLeadManager({
+    source: 'Quick View',
+    apartment,
+    ...widget,
+  })
+  const props = {
+    scheduleTimes,
+    onSubmit: form => {
+      const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        question,
+        day,
+        time,
+      } = form
+
+      const emailHash = email && createHash('sha1').update(email).digest('base64')
+      trackEvent({
+        event: 'quickview_lead',
+        account: pageContext.account,
+        apartment: apartment.name,
+        user_email_hash: emailHash,
+        question,
+        tour_requested_day: day && day.value,
+        tour_requested_time: time && time.value,
+      })
+
+      const user = {
+        id: store.user.id || ID(),
+        firstName,
+        lastName,
+        email,
+        phone,
+        emailHash,
+      }
+
+      trackEvent({
+        event: 'custom.form.submit',
+        action: 'submit',
+        tour: {
+          day: day && day.value,
+          time: time && time.value,
+        },
+        hashedEmail: emailHash,
+        hashedPhone: phone && createHash('sha1').update(phone).digest('base64'),
+        userId: user.id,
+      })
+
+      if (day && time) {
+        return submitScheduleTour({
+          user,
+          day,
+          time,
+          'schedule-tour': {
+            day: day && day.value,
+            time: time && time.value,
+          },
+
+        }).then(({ response }) => {
+          trackEvent({
+            event: 'custom.form.complete',
+            action: 'complete',
+            crmId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
+        })
+      } else if (question) {
+        return submitContactUs({
+          user,
+          'contact-us': {
+            question,
+          },
+          question: `${ firstName } asked this question: ${ question }`,
+
+        }).then(({ response }) => {
+          trackEvent({
+            event: 'custom.form.complete',
+            action: 'complete',
+            crmId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
+        })
+      }
+    }
+  }
 
   return (
     <>
@@ -21,7 +135,7 @@ const App = ({ data, location }) => {
           <meta name='description' content={seo ? seo.description : ''} />
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
-        <Layout trackingData={trackingData} {...site} apartment={apartment} />
+        <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
         {widget ? <Widget {...widget} /> : null}
     </>
   )
@@ -32,14 +146,8 @@ export const query = graphql`
     admin {
       apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
         result {
-          widgets {
-            _id
-            title
-            status
-            intro {
-              poster
-              video
-            }
+          widgets (status: "published") {
+            ...WidgetFields
           }
         }
       }
@@ -50,174 +158,7 @@ export const query = graphql`
           ...FooterFields
       }
       apartment: getApartmentById(id: $id) {
-        name
-        marketingWebsiteUrl
-        logo {
-          src: url
-          alt
-        }
-        primaryMarket {
-          market
-          state {
-            name
-          }
-          marketPage {
-            slug
-          }
-        }
-        googlePlaceId
-        address {
-          line1
-          city
-          state
-          postalCode
-        }
-        coordinates {
-          latitude: lat
-          longitude: lng
-        }
-        priceSummary {
-          bedrooms
-          min {
-            effectiveRent {
-              min
-            }
-          }
-          max {
-            effectiveRent {
-              min
-            }
-          }
-        }
-        telephone: prospectPhoneNumber
-        residentPortalUrl
-        onlineLeasingUrl
-        awardsPhoto {
-          mediaType
-          src: url
-          alt
-        }
-        defaultPhoto {
-          mediaType
-          src: url
-          alt
-        }
-        mediaGallery {
-          mediaType
-          src: url
-          alt
-        }
-        playlist {
-          mediaType
-          src: url
-          alt
-        }
-        seo {
-          title
-          description
-        }
-        headline: shortDescription {
-          description: title
-          shortDescription: description
-        }
-        features: uniqueSellingPoints {
-          icon: fontAwesome
-          title
-          description
-        }
-        neighborhood {
-          description
-          features {
-            icon: fontAwesome
-            title
-            description
-          }
-        }
-        prospectPortalUrl
-        selfGuidedTourUrl
-        externalDataSource {
-          vendor
-          id
-        }
-        floorPlanUrl
-        realPage {
-          siteId
-          wid
-        }
-        floorplanVirtualTours {
-          name
-          summary
-          thumbnail {
-            mediaType
-            src: url
-            alt
-          }
-          src: url
-        }
-        communityVirtualTours {
-          name
-          summary
-          thumbnail {
-            mediaType
-            src: url
-            alt
-          }
-          src: url
-        }
-        floorplans {
-          id
-          floorplan: name
-          bedrooms
-          bathrooms
-          squareFeet {
-            min
-          }
-          floorPlanAvailabilityUrl
-          units {
-            id
-            effectiveRent {
-              min
-            }
-            dateAvailable
-            unitAvailabilityUrl
-          }
-          images: media {
-            src: url
-            alt
-            title
-            tags
-          }
-        }
-        longDescription
-        officeHours: businessHours {
-          Day: day
-          OpenTime: openTime
-          CloseTime: closeTime
-        }
-        amenities {
-          type
-          title
-          description
-          isFeatured
-          isPublished
-          isOptional
-          icon: fontAwesome
-        }
-        specials {
-          isActive
-          title
-          description
-          footer
-          startDate
-          endDate
-        }
-        nearbyCommunities: nearby(limit: 3) {
-          ...ApartmentFields
-        }
-        social {
-          icon: fontAwesome
-          url: title
-        }
+        ...ApartmentFields2
       }
     }
   }

@@ -1,5 +1,6 @@
 const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
+const themeUi = require('./theme.json')
 const queries = require('./gatsby-algolia.js')
 
 console.log('[site] NODE_ENV=' + activeEnv)
@@ -8,12 +9,29 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
+const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+  resolve: 'gatsby-plugin-google-tagmanager',
+  options: {
+    id,
+    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
+  },
+}))
+
 module.exports = {
   siteMetadata: {
     title: process.env.TITLE,
     siteUrl: process.env.URL,
   },
   'plugins': [
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          account: process.env.ACCOUNT,
+          facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -30,19 +48,14 @@ module.exports = {
         background_color: '#FFFFFF',
         theme_color: '#E51F3B',
         display: 'minimal-ui',
-        icon: 'src/images/icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon.svg', // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: process.env.GOOGLE_TAG_MANAGER_ID,
-      },
-    },
+    ...gatsbyPluginGoogleTagmanager,
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/noindex/*', '/search'],
+        excludes: ['/noindex/*', '/search'],
       },
     },
     'gatsby-plugin-meta-redirect',
@@ -98,8 +111,15 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    'gatsby-plugin-percy',
+    {
+      resolve: `gatsby-theme-lineups`,
+      options: { themeUi },
+    },
+    'gatsby-plugin-percy',
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
