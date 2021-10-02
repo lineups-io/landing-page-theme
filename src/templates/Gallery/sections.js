@@ -1,3 +1,11 @@
+const allowed = tour => {
+  if (tour.src && tour.src.match(/matterport|youtube|spinattic/i))
+    return true
+  else {
+    console.warn('Unrecognized domain', tour.src)
+  }
+}
+
 const getEmbed = src => {
   const obj = {}
 
@@ -9,6 +17,10 @@ const getEmbed = src => {
   } else if (src.match(/youtube/)) {
     obj.type ='video/mp4'
     obj.url = src
+
+  } else if (src.match(/spinattic/)) {
+    obj.type ='embed/matterport'
+    obj.src = src
 
   } else {
     console.warn('Unrecognized domain', src)
@@ -62,7 +74,7 @@ const buildSections = props => {
     sections.push({
       title: 'Floorplans',
       thumbnail: 'https://cdn.filestackcontent.com/QGOW0fYIToIcABzgHBpQ',
-      media: floorplanVirtualTours.map(({ src, ...tour }, i) => ({
+      media: floorplanVirtualTours.filter(allowed).map(({ src, ...tour }, i) => ({
         ...tour,
         ...getEmbed(src),
         pos: [ 0, i * 9 ],
@@ -75,7 +87,7 @@ const buildSections = props => {
     sections.push({
       title: 'Community',
       thumbnail: 'https://cdn.filestackcontent.com/FijLdgN0QSaeIrsYj9OA',
-      media: communityVirtualTours.map(({ src, ...tour }, i) => ({
+      media: communityVirtualTours.filter(allowed).map(({ src, ...tour }, i) => ({
         ...tour,
         ...getEmbed(src),
         pos: [ 0, i * 9 ],
