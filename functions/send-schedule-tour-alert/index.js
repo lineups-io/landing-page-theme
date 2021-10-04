@@ -79,7 +79,7 @@ exports.handler = async function(event, context) {
   }
   console.log('[DEBUG] dynamic_template_data', dynamic_template_data)
 
-  const to = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
+  const to = emailCc ? emailCc.split(/ *, */).map(email => ({ email })) : undefined
   if (!to) return
 
   // TODO: make from email an environment variable
