@@ -104,5 +104,11 @@ exports.handler = async function(event, context) {
     body,
   }
 
-  return client.request(request).then(([response]) => response)
+  return client.request(request).then(response => {
+    const [{ statusCode, body }] = response
+    return {
+      statusCode,
+      body: JSON.stringify(statusCode === 202 ? { message: 'Email sent' } : body),
+    }
+  })
 }
