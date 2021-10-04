@@ -87,7 +87,7 @@ exports.handler = async function(event, context) {
     comments: comments.join('\n\n'),
   }
 
-  const to = emailTo.split(',').map(email => ({ email }))
+  const to = emailTo.split(/ *, */).map(email => ({ email }))
 
   // TODO: make from email an environment variable
   const body = {

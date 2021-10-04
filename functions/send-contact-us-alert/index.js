@@ -77,7 +77,7 @@ exports.handler = async function(event, context) {
     community: { options: communityAmenities.map(name => ({ name })) },
   }
 
-  const to = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
+  const to = emailCc ? emailCc.split(/ *, */).map(email => ({ email })) : undefined
   if (!to) return
 
   // TODO: make from email an environment variable
