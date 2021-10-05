@@ -5,6 +5,7 @@ export const fragments = graphql`
     _id
     title
     status
+    showOnWebsite
     intro {
       poster
       video
