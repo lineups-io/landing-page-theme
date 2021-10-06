@@ -17,6 +17,8 @@ const App = ({ data, location, pageContext }) => {
 
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
+  if (!apartment.externalData.officeHours)
+    apartment.externalData.officeHours = []
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
