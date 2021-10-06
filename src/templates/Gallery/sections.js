@@ -49,8 +49,8 @@ const buildSections = props => {
         url: video.src,
         // TODO: determine correct type
         type: 'video/mp4',
-        pos: [ 0, i * 9 ],
-        dim: [ 16, 9 ],
+        pos: [ 0, i * 3 ],
+        dim: [ 4, 3 ],
       }))
     })
   }
@@ -64,8 +64,8 @@ const buildSections = props => {
         ...image,
         // TODO: determine correct type
         type: 'image/jpeg',
-        pos: [ 0, i * 9 ],
-        dim: [ 16, 9 ],
+        pos: [ 0, i * 3 ],
+        dim: [ 4, 3 ],
       }))
     })
   }
@@ -77,8 +77,8 @@ const buildSections = props => {
       media: floorplanVirtualTours.filter(allowed).map(({ src, ...tour }, i) => ({
         ...tour,
         ...getEmbed(src),
-        pos: [ 0, i * 9 ],
-        dim: [ 16, 9 ],
+        pos: [ 0, i * 3 ],
+        dim: [ 4, 3 ],
       }))
     })
   }
@@ -90,8 +90,8 @@ const buildSections = props => {
       media: communityVirtualTours.filter(allowed).map(({ src, ...tour }, i) => ({
         ...tour,
         ...getEmbed(src),
-        pos: [ 0, i * 9 ],
-        dim: [ 16, 9 ],
+        pos: [ 0, i * 3 ],
+        dim: [ 4, 3 ],
       }))
     })
   }
@@ -105,7 +105,7 @@ const buildSections = props => {
           type: 'embed/googlemaps',
           placeId: googlePlaceId,
           pos: [ 0, 0 ],
-          dim: [ 16, 9 ],
+          dim: [ 4, 3 ],
         }
       ]
     })
