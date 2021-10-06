@@ -36,7 +36,7 @@ const App = ({ data, location, pageContext }) => {
 
   const { trackEvent } = useTracking({}, { dispatchOnMount })
 
-  const [widget] = data.admin.apartment.result.widgets
+  const [widget] = data.admin.apartment.result.widgets.filter(widget => ['published', 'archived'].indexOf(widget.status) > -1)
   const {
     scheduleTimes,
     submitContactUs,
@@ -149,7 +149,7 @@ export const query = graphql`
     admin {
       apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
         result {
-          widgets (status: "published") {
+          widgets {
             ...WidgetFields
           }
         }
