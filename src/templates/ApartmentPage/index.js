@@ -25,7 +25,7 @@ const handleMissingFields = apartment => ({
     ...floorplan,
     floorplanAvailabilityUrl: floorplan.floorplanAvailabilityUrl || apartment.floorPlanUrl,
     images: floorplan.images.length > 0 ? floorplan.images : [{
-      src: 'https://cdn.filestackcontent.com/36ea2p8qTm6FdpnCvQNn'
+      src: 'https://cdn.filestackcontent.com/t4R6LJmpSi2yLdjiHnHF'
     }],
   }))
 })
