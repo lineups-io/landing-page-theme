@@ -200,7 +200,9 @@ const Routes = ({
         const items = options.map(mapToItem)
         // added 1ms timeout to fire page_view first
         setTimeout(() => {
+          trackEvent({ ecommerce: { items: undefined } })
           trackEvent({ event: 'view_item', ecommerce: { items } })
+          trackEvent({ amenities: { options: undefined } })
           trackEvent({
             event: 'custom.amenities.shown',
             amenities: {
@@ -215,6 +217,7 @@ const Routes = ({
         const items = selected.map(mapToItem)
         trackEvent({ ecommerce: { items: undefined } })
         trackEvent({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({ amenities: { options: undefined } })
         trackEvent({
           event: 'custom.amenities.selected',
           amenities: {
