@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { useTracking } from 'react-tracking'
 
 import numeral from 'numeral'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
@@ -37,6 +38,16 @@ const LandingPage = ({ data, location }) => {
   }, Number.MAX_VALUE)
 
   const apartments = data.lineups.page.apartments.items
+
+  useTracking({
+      event: 'custom.page.load',
+      siteType: 'brand site',
+      pageType: 'regional page',
+      market: (market && market.title) || '(not set)',
+      submarket: (submarket && submarket.title) || '(not set)',
+      term: (termGroup && termGroup.name) || '(not set)',
+      ppc: noindex ? 'true' : 'false',
+  }, { dispatchOnMount: true })
 
   return <>
     <Helmet title={title}>
