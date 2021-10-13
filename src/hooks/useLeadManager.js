@@ -84,11 +84,11 @@ const useLeadManager = ({
       ...guestCard,
     }
     console.debug('submitGuestCard', request)
-    return updateLead(request).then(() =>
+    return updateLead(request).then(res =>
       fetch('/.netlify/functions/send-guest-card-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      })
+      }).then(() => res.json())
     ).then(response => ({ request, response }))
   }
 
@@ -99,11 +99,11 @@ const useLeadManager = ({
       ...contactUs,
     }
     console.debug('submitContactUs', request)
-    return updateLead(request).then(() =>
+    return updateLead(request).then(res =>
       fetch('/.netlify/functions/send-contact-us-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      })
+      }).then(() => res.json())
     ).then(response => ({ request, response }))
   }
 
@@ -114,11 +114,11 @@ const useLeadManager = ({
       ...scheduleTour,
     }
     console.debug('submitScheduleTour', request)
-    return updateLead(request).then(() =>
+    return updateLead(request).then(res =>
       fetch('/.netlify/functions/send-schedule-tour-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      })
+      }).then(() => res.json())
     ).then(response => ({ request, response }))
   }
 
