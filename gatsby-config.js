@@ -65,13 +65,14 @@ module.exports = {
         allPageHeaders: [
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
+          'Link: <https://lineups.imgix.net>; rel=preconnect;',
+          'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
+          'Link: <https://res.cloudinary.com>; rel=preconnect;',
         ],
         headers: {
           '/widgets/*': [
             'X-Frame-Options: SAMEORIGIN',
             `Content-Security-Policy: frame-ancestors *`,
-            'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
-            'Link: <https://res.cloudinary.com>; rel=preconnect;',
           ],
         },
       },
