@@ -9,12 +9,11 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
-const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+const gtm = JSON.parse(process.env.GOOGLE_TAG_MANAGER)
+
+const gatsbyPluginGoogleTagmanager = gtm.map(options => ({
   resolve: 'gatsby-plugin-google-tagmanager',
-  options: {
-    id,
-    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
-  },
+  options,
 }))
 
 module.exports = {
