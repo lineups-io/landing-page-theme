@@ -9,12 +9,11 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
-const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+const gtm = JSON.parse(process.env.GOOGLE_TAG_MANAGER)
+
+const gatsbyPluginGoogleTagmanager = gtm.map(options => ({
   resolve: 'gatsby-plugin-google-tagmanager',
-  options: {
-    id,
-    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
-  },
+  options,
 }))
 
 module.exports = {
@@ -65,13 +64,14 @@ module.exports = {
         allPageHeaders: [
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
+          'Link: <https://lineups.imgix.net>; rel=preconnect;',
+          'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
+          'Link: <https://res.cloudinary.com>; rel=preconnect;',
         ],
         headers: {
           '/widgets/*': [
             'X-Frame-Options: SAMEORIGIN',
             `Content-Security-Policy: frame-ancestors *`,
-            'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
-            'Link: <https://res.cloudinary.com>; rel=preconnect;',
           ],
         },
       },
@@ -114,6 +114,7 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    'gatsby-plugin-percy',
     {
       resolve: `gatsby-theme-lineups`,
       options: { themeUi },
