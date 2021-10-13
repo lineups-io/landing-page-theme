@@ -53,11 +53,12 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-cc33424567d249b7b17ca8db966ab547'
+  const template_id = 'd-89e5acf560f843789bcaeed6eb7a339b'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
   const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
+  console.log('[DEBUG] tour_start_time', `${ tour_date } ${ time } => ${ tour_start_time }/ ${ tour_end_time }`)
 
   const dynamic_template_data = {
     apartment_name,
@@ -76,6 +77,7 @@ exports.handler = async function(event, context) {
     floorplan: { options: floorplanAmenities.map(name => ({ name })) },
     community: { options: communityAmenities.map(name => ({ name })) },
   }
+  console.log('[DEBUG] dynamic_template_data', dynamic_template_data)
 
   const to = emailCc ? emailCc.split(/ *, */).map(email => ({ email })) : undefined
   if (!to) return

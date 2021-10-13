@@ -73,23 +73,17 @@ export const query = graphql`
     }
     rockstarCares: file(relativePath: { eq: "residents/rockstar-cares.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 850 height: 500)
       }
     }
     portal: file(relativePath: { eq: "residents/portal.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 850 height: 500)
       }
     }
     feedback: file(relativePath: { eq: "residents/feedback.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 850 maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 850 height: 500)
       }
     }
   }

@@ -1,4 +1,7 @@
 const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
 const client = require('@sendgrid/client')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
@@ -55,11 +58,19 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-e8d7372deb3b476695936950be5e9134'
+  let template_id
+
+  if (question) {
+    template_id = 'd-fb71a73df909488883d33d770410cb36'
+  } else if (day && time) {
+    template_id = 'd-a8fb491e8a3a40f596f7826a8bc44a1b'
+  } else {
+    template_id = 'd-56878ce4adb1497a85ce0fd779f9ed64'
+  }
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
-  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).format('hh:mm a') : ''
-  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).add(30, 'minute').format('hh:mm a') : ''
+  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
+  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
 
   const dynamic_template_data = {
     apartment_name,
@@ -76,7 +87,7 @@ exports.handler = async function(event, context) {
     comments: comments.join('\n\n'),
   }
 
-  const to = emailTo.split(',').map(email => ({ email }))
+  const to = emailTo.split(/ *, */).map(email => ({ email }))
 
   // TODO: make from email an environment variable
   const body = {
@@ -93,5 +104,11 @@ exports.handler = async function(event, context) {
     body,
   }
 
-  return client.request(request).then(([response]) => response)
+  return client.request(request).then(response => {
+    const [{ statusCode, body }] = response
+    return {
+      statusCode,
+      body: JSON.stringify(statusCode === 202 ? { message: 'Email sent' } : body),
+    }
+  })
 }
