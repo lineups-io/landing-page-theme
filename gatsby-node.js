@@ -83,7 +83,7 @@ exports.createPages = ({ graphql, actions }) => {
           lineupsId
           enabledFeatures
           marketingWebsiteUrl
-          floorPlanUrl
+          # floorPlanUrl
         }
       }
       allLineupsPage {
