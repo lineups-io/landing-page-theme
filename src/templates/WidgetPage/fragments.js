@@ -14,6 +14,14 @@ export const fragments = graphql`
       name
       prospectPhoneNumber
       floorPlanUrl
+      primaryMarket {
+        market
+        submarket
+      }
+      markets {
+        market
+        submarket
+      }
       externalDataSource {
         id
       }

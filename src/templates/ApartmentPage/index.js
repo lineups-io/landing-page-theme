@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import createHash from 'sha.js'
+import { useTracking } from 'react-tracking'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/QuickView'
@@ -19,6 +20,19 @@ const App = ({ data, location, pageContext }) => {
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
+
+  const dispatchOnMount = () => {
+    return {
+      event: 'custom.page.load',
+      siteType: 'brand site',
+      pageType: 'quick view',
+      apartment: apartment.name,
+      market: apartment.primaryMarket.market || '(not set)',
+      submarket: apartment.primaryMarket.submarket || '(not set)',
+    }
+  }
+
+  const { trackEvent } = useTracking({}, { dispatchOnMount })
 
   const [widget] = data.admin.apartment.result.widgets
   const {
@@ -43,9 +57,8 @@ const App = ({ data, location, pageContext }) => {
         time,
       } = form
 
-      window.dataLayer = window.dataLayer || []
       const emailHash = email && createHash('sha1').update(email).digest('base64')
-      window.dataLayer.push({
+      trackEvent({
         event: 'quickview_lead',
         account: pageContext.account,
         apartment: apartment.name,
@@ -64,6 +77,18 @@ const App = ({ data, location, pageContext }) => {
         emailHash,
       }
 
+      trackEvent({
+        event: 'custom.form.submit',
+        action: 'submit',
+        tour: {
+          day: day && day.value,
+          time: time && time.value,
+        },
+        hashedEmail: emailHash,
+        hashedPhone: phone && createHash('sha1').update(phone).digest('base64'),
+        userId: user.id,
+      })
+
       if (day && time) {
         return submitScheduleTour({
           user,
@@ -73,6 +98,15 @@ const App = ({ data, location, pageContext }) => {
             day: day && day.value,
             time: time && time.value,
           },
+
+        }).then(({ response }) => {
+          trackEvent({
+            event: 'custom.form.complete',
+            action: 'complete',
+            crmId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
         })
       } else if (question) {
         return submitContactUs({
@@ -81,6 +115,15 @@ const App = ({ data, location, pageContext }) => {
             question,
           },
           question: `${ firstName } asked this question: ${ question }`,
+
+        }).then(({ response }) => {
+          trackEvent({
+            event: 'custom.form.complete',
+            action: 'complete',
+            crmId: response.code === 200
+              ? response.result.prospects.prospect[0].applicationId
+              : undefined,
+          })
         })
       }
     }
