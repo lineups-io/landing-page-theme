@@ -21,7 +21,7 @@ const WidgetPage = ({ data }) => {
   const Router = typeof window === 'undefined' ? StaticRouter : HashRouter
 
   const dispatchOnMount = () => {
-    const hasParent = window !== window.top
+    const hasParent = window !== window.parent
     const referrer = document.referrer
     const sameDomain = !referrer || window.location.hostname === (new URL(referrer)).hostname
 
