@@ -1,6 +1,10 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
+import {
+  TransitionGroup,
+  CSSTransition
+} from 'react-transition-group'
 
 import FullPageModal from 'gatsby-theme-atomic-design/src/atoms/FullPageModal'
 import FloorplanCardsContainer from 'gatsby-theme-atomic-design/src/atoms/Floorplan/FloorplanCardsContainer'
@@ -75,11 +79,15 @@ const Container = styled.div`
   }
 `
 
-const AnimatedSwitch = ({ children }) =>
+const AnimatedSwitch = ({ location, children }) =>
   <Container>
-    <Switch>
-      {children}
-    </Switch>
+    <TransitionGroup>
+      <CSSTransition key={location.hash} classNames='fade' timeout={duration}>
+        <Switch location={location}>
+          {children}
+        </Switch>
+      </CSSTransition>
+    </TransitionGroup>
   </Container>
 
 export default AnimatedSwitch
