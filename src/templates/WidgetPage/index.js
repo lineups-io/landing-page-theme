@@ -22,7 +22,8 @@ const WidgetPage = ({ data }) => {
 
   const dispatchOnMount = () => {
     const hasParent = window !== window.top
-    const sameDomain = window.location.host === window.top.location.host
+    const referrer = document.referrer
+    const sameDomain = !referrer || window.location.hostname === (new URL(referrer)).hostname
 
     return {
       event: 'custom.page.load',
