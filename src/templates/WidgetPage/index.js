@@ -10,7 +10,7 @@ import Routes from './Routes'
 
 import './index.css'
 
-const WidgetPage = ({ data }) => {
+const WidgetPage = ({ data, location }) => {
   const {
     styles,
     slides,
@@ -38,8 +38,8 @@ const WidgetPage = ({ data }) => {
 
   // TODO: update components to use styles
   return <Theme theme={styles}>
-      <Router>
-        <Switch>
+      <Router location={location}>
+        <Switch location={location}>
           <Routes {...slides} info={info} />
         </Switch>
       </Router>
