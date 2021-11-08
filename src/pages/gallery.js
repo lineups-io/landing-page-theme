@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import Gallery from 'gatsby-theme-lineups/src/templates/Gallery'
 
@@ -208,7 +209,10 @@ const data = {
 }
 
 const GalleryPage = () => {
-  return <Gallery {...data.lineups.gallery} />
+  return <>
+    <Helmet title='Gallery' />
+    <Gallery {...data.lineups.gallery} />
+  </>
 }
 
 export default GalleryPage
