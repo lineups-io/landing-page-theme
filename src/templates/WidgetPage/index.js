@@ -10,7 +10,7 @@ import Routes from './Routes'
 
 import './index.css'
 
-const WidgetPage = ({ data }) => {
+const WidgetPage = ({ data, location }) => {
   const {
     styles,
     slides,
@@ -21,8 +21,9 @@ const WidgetPage = ({ data }) => {
   const Router = typeof window === 'undefined' ? StaticRouter : HashRouter
 
   const dispatchOnMount = () => {
-    const hasParent = window !== window.top
-    const sameDomain = window.location.host === window.top.location.host
+    const hasParent = window !== window.parent
+    const referrer = document.referrer
+    const sameDomain = !referrer || window.location.hostname === (new URL(referrer)).hostname
 
     return {
       event: 'custom.page.load',
@@ -37,8 +38,8 @@ const WidgetPage = ({ data }) => {
 
   // TODO: update components to use styles
   return <Theme theme={styles}>
-      <Router>
-        <Switch>
+      <Router location={location}>
+        <Switch location={location}>
           <Routes {...slides} info={info} />
         </Switch>
       </Router>
