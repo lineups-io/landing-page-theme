@@ -180,7 +180,8 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next, key = 'label') => {
+  const totalSteps = 4
+  const transform = (path, obj, next, key = 'label', stepNo) => {
     const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
@@ -199,9 +200,13 @@ const Routes = ({
         const items = options.map(mapToItem)
         // added 1ms timeout to fire page_view first
         setTimeout(() => {
+          trackEvent({ ecommerce: { items: undefined } })
           trackEvent({ event: 'view_item', ecommerce: { items } })
+          trackEvent({ amenities: { options: undefined } })
           trackEvent({
             event: 'custom.amenities.shown',
+            stepNo,
+            totalSteps,
             amenities: {
               name: obj.question,
               options: options.map(option => option[key]),
@@ -214,8 +219,11 @@ const Routes = ({
         const items = selected.map(mapToItem)
         trackEvent({ ecommerce: { items: undefined } })
         trackEvent({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({ amenities: { options: undefined } })
         trackEvent({
           event: 'custom.amenities.selected',
+          stepNo,
+          totalSteps,
           amenities: {
             name: obj.question,
             options: selected.map(option => option[key])
@@ -228,7 +236,7 @@ const Routes = ({
 
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
-  const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value')
+  const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value', 4)
 
   const routes = [
     {
@@ -264,9 +272,9 @@ const Routes = ({
         navigate('/schedule-tour')
       },
     },
-    transform('/bedrooms', bedrooms, '/floorplan-amenities'),
-    transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/move-in'),
+    transform('/bedrooms', bedrooms, '/floorplan-amenities', 'label', 1),
+    transform('/floorplan-amenities', floorplanAmenities, '/community-amenities', 'label', 2),
+    transform('/community-amenities', communityAmenities, '/move-in', 'label', 3),
     selectTerm || {
       path: '/move-in',
       component: InfiniteCalendar,

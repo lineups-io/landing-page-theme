@@ -1,4 +1,4 @@
-export default {
+const base = {
   styles: {
     root: {
       WebkitFontSmoothing: 'antialiased',
@@ -33,3 +33,5 @@ export default {
     container: 1340,
   },
 }
+
+export default base
