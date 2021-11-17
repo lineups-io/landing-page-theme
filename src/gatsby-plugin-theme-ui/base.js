@@ -1,4 +1,4 @@
-export default {
+const base = {
   styles: {
     root: {
       WebkitFontSmoothing: 'antialiased',
@@ -6,8 +6,8 @@ export default {
     },
   },
   fonts: {
-    body: 'Inter, sans-serif',
-    heading: 'Inter, sans-serif',
+    body: 'proxima-nova, sans-serif',
+    heading: 'utopia-std, serif',
   },
   text: {
     heading: {
@@ -20,8 +20,8 @@ export default {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#192c51',
-    secondary: '#6e97ca',
+    primary: '#316884',
+    secondary: '#f04f27',
     muted: '#f6f6f6',
   },
   breakpoints: [
@@ -33,3 +33,5 @@ export default {
     container: 1340,
   },
 }
+
+export default base

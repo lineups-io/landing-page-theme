@@ -1,4 +1,4 @@
-export default {
+const gallery = {
   links: {
     back: {
       px: 4,
@@ -31,3 +31,5 @@ export default {
     },
   },
 }
+
+export default gallery

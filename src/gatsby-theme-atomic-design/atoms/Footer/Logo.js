@@ -1,13 +1,5 @@
-import styled from 'styled-components'
+import React from 'react'
 
-import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
+const FooterLogo = () => <div />
 
-const Logo = styled(Icon).attrs({
-  icon: 'FooterLogo',
-})`
-  margin: 7px 0;
-  height: 50px;
-  width: 189px;
-`
-
-export default Logo
+export default FooterLogo

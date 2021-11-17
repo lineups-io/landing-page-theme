@@ -1,25 +1,11 @@
 import styled from 'styled-components'
 
-import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
+import Logo from 'gatsby-theme-atomic-design/src/atoms/Nav/Logo'
 
-const Logo = styled(Icon).attrs({
-  icon: 'HeaderLogo',
-})`
-  margin: 15px 0;
-  height: 34px;
-  width: 130px;
-
-  @media (min-width: 375px) {
-    margin: 11px 0;
-    height: 42px;
-    width: 160px;
-  }
-
-  @media (min-width: 425px) {
-    margin: 7px 0;
-    height: 50px;
-    width: 189px;
-  }
+const CustomLogo = styled(Logo)`
+  margin: 0;
+  width: 128px;
+  height: 35px;
 `
 
-export default Logo
+export default CustomLogo
