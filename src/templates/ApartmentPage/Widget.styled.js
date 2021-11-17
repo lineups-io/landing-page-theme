@@ -85,6 +85,8 @@ export const Iframe = styled.div`
     width: 100%;
     height: 0;
     padding-top: 177.78%;
+    max-height: 100%;
+    overflow: hidden;
   }
 
   iframe {
