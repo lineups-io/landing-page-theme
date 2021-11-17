@@ -1,3 +1,5 @@
 import React from 'react'
 
-export default () => <div />
+const FooterLogo = () => <div />
+
+export default FooterLogo

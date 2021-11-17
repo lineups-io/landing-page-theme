@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, useLocation } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { startCase } from 'lodash'
 import createHash from 'sha.js'
+import { useTracking } from 'react-tracking'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
 import MultipleChoiceQuestion from 'gatsby-theme-atomic-design/src/templates/MultipleChoiceQuestion'
@@ -44,9 +45,10 @@ const Routes = ({
   floorplanAmenities,
   communityAmenities,
   story,
-  location,
   ...props
 }) => {
+  const location = useLocation()
+  const { trackEvent } = useTracking()
   const [store, setStore] = useLocalStorage('store', { user: {} })
 
   const {
@@ -60,8 +62,8 @@ const Routes = ({
     ...props,
   })
 
-  const updateStore = (data = {}) => {
-    const key = location.hash.replace(/^#\//, '') || 'index'
+  const updateStore = (data = {}, prev) => {
+    const key = prev.pathname.replace(/^\//, '') || 'index'
     const email = data.email || store.user.email
     const emailHash = email && createHash('sha1').update(email).digest('base64')
     const user = {
@@ -86,22 +88,66 @@ const Routes = ({
         request.bedrooms = bedrooms === 'Studio' ? '0' : bedrooms.replace(/[^0-9]/g, '')
       }
 
+      let daysToMoveIn
+
+      if (request['move-in']) {
+        const today = dayjs()
+        daysToMoveIn = dayjs(request['move-in']).diff(today, 'day')
+      }
+
+      trackEvent({
+        event: 'custom.form.submit',
+        action: 'submit',
+        moveInDate: request['move-in'],
+        daysToMoveIn,
+        hashedEmail: emailHash,
+        hashedPhone: user.phone && createHash('sha1').update(user.phone).digest('base64'),
+        userId: user.id,
+      })
+
       if (key === 'schedule-tour') {
         const { day, time } = data
         request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
         request.day = { value: day }
         request.time = { value: time }
         submitScheduleTour(request)
+          .then(({ response }) => {
+            trackEvent({
+              event: 'custom.form.complete',
+              action: 'complete',
+              crmId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       } else if (key === 'contact-us') {
         const { question } = data
         request.question = `${ user.firstName } asked this question: ${ question }`
         submitContactUs(request)
+          .then(({ response }) => {
+            trackEvent({
+              event: 'custom.form.complete',
+              action: 'complete',
+              crmId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       } else if (key === 'guest-card') {
         request.notes = [
           'Beds: ' + (request.bedrooms || 'No preference selected'),
           'Move In: ' + (request['move-in'] ? dayjs(request['move-in']).format('ddd - MMM D, YYYY') : 'No date selected'),
         ].join(', ')
         submitGuestCard(request)
+          .then(({ response }) => {
+            trackEvent({
+              event: 'custom.form.complete',
+              action: 'complete',
+              crmId: response.code === 200
+                ? response.result.prospects.prospect[0].applicationId
+                : undefined,
+            })
+          })
       }
 
       setStore({
@@ -110,19 +156,18 @@ const Routes = ({
         [key]: undefined,
       })
     } else {
-    setStore({
-      ...store,
-      user,
-      [key]: data,
-    })
-  }
+      setStore({
+        ...store,
+        user,
+        [key]: data,
+      })
+    }
   }
 
   useEffect(() => {
-    window.dataLayer = window.dataLayer || []
-    const title = location.hash.replace(/^#\//, '') || 'home'
+    const title = location.pathname.replace(/^\//, '') || 'home'
     const { user } = store
-    window.dataLayer.push({
+    trackEvent({
       event: 'page_view',
       page_location: window.location.href,
       page_title: `${ info.apartment.name } - ${ startCase(title) }`,
@@ -135,7 +180,8 @@ const Routes = ({
 
   const navigate = useNavigate(updateStore)
 
-  const transform = (path, obj, next, key = 'label') => {
+  const totalSteps = 4
+  const transform = (path, obj, next, key = 'label', stepNo) => {
     const options = obj.options ? obj.options.filter(option => option.active) : []
     const mapToItem = option => ({
       item_name: option.label,
@@ -152,16 +198,37 @@ const Routes = ({
       options,
       onMount: () => {
         const items = options.map(mapToItem)
-        window.dataLayer = window.dataLayer || []
         // added 1ms timeout to fire page_view first
-        setTimeout(() => window.dataLayer.push({ event: 'view_item', ecommerce: { items } }), 1)
+        setTimeout(() => {
+          trackEvent({ ecommerce: { items: undefined } })
+          trackEvent({ event: 'view_item', ecommerce: { items } })
+          trackEvent({ amenities: { options: undefined } })
+          trackEvent({
+            event: 'custom.amenities.shown',
+            stepNo,
+            totalSteps,
+            amenities: {
+              name: obj.question,
+              options: options.map(option => option[key]),
+            },
+          })
+        }, 1)
       },
       onSubmit: data => {
         const selected = options.filter(option => data.indexOf(option.value) > -1)
         const items = selected.map(mapToItem)
-        window.dataLayer = window.dataLayer || []
-        window.dataLayer.push({ ecommerce: { items: undefined } })
-        window.dataLayer.push({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({ ecommerce: { items: undefined } })
+        trackEvent({ event: 'add_to_wishlist', ecommerce: { items } })
+        trackEvent({ amenities: { options: undefined } })
+        trackEvent({
+          event: 'custom.amenities.selected',
+          stepNo,
+          totalSteps,
+          amenities: {
+            name: obj.question,
+            options: selected.map(option => option[key])
+          },
+        })
         navigate(next, selected.map(option => option[key]))
       },
     }) : undefined
@@ -169,7 +236,7 @@ const Routes = ({
 
   const onCall = () => window.open(formatPhone(info.apartment.prospectPhoneNumber))
 
-  const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value')
+  const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value', 4)
 
   const routes = [
     {
@@ -190,12 +257,24 @@ const Routes = ({
           src: intro.closedCaptions,
          }
       ],
-      onBeginTour: () => navigate('/bedrooms'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onBeginTour: () => {
+        trackEvent({
+          event: 'custom.click.cta',
+          action: 'Begin Tour',
+        })
+        navigate('/bedrooms')
+      },
+      onScheduleTour: () => {
+        trackEvent({
+          event: 'custom.click.cta',
+          action: 'Schedule Tour',
+        })
+        navigate('/schedule-tour')
+      },
     },
-    transform('/bedrooms', bedrooms, '/floorplan-amenities'),
-    transform('/floorplan-amenities', floorplanAmenities, '/community-amenities'),
-    transform('/community-amenities', communityAmenities, '/move-in'),
+    transform('/bedrooms', bedrooms, '/floorplan-amenities', 'label', 1),
+    transform('/floorplan-amenities', floorplanAmenities, '/community-amenities', 'label', 2),
+    transform('/community-amenities', communityAmenities, '/move-in', 'label', 3),
     selectTerm || {
       path: '/move-in',
       component: InfiniteCalendar,

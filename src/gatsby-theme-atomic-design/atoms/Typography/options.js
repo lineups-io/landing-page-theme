@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['Playfair Display', 'serif'],
   bodyFontFamily: ['Open Sans', 'sans-serif'],
   bodyWeight: 500,
@@ -11,3 +11,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions
