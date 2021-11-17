@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['Inter', 'sans-serif'],
   bodyFontFamily: ['Inter', 'sans-serif'],
   headerWeight: 500,
@@ -10,3 +10,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions
