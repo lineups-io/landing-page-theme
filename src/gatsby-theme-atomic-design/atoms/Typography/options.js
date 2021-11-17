@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['Avenir', 'sans-serif'],
   bodyFontFamily: ['Avenir', 'sans-serif'],
   bodyWeight: 500,
@@ -14,3 +14,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions

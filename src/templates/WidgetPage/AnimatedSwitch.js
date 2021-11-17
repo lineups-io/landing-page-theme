@@ -27,6 +27,10 @@ const Container = styled.div`
     height: 100%;
   }
 
+  .fade-exit {
+    display: none;
+  }
+
   .fade-enter-active {
     animation-name: ${ fadeIn };
     animation-duration: ${ duration }ms;

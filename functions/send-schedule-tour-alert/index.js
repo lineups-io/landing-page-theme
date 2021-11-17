@@ -56,9 +56,9 @@ exports.handler = async function(event, context) {
   const template_id = 'd-89e5acf560f843789bcaeed6eb7a339b'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
-  console.log('[DEBUG] tour_start_time', `${ tour_date } ${ time }`)
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
   const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
+  console.log('[DEBUG] tour_start_time', `${ tour_date } ${ time } => ${ tour_start_time }/ ${ tour_end_time }`)
 
   const dynamic_template_data = {
     apartment_name,
@@ -77,8 +77,9 @@ exports.handler = async function(event, context) {
     floorplan: { options: floorplanAmenities.map(name => ({ name })) },
     community: { options: communityAmenities.map(name => ({ name })) },
   }
+  console.log('[DEBUG] dynamic_template_data', dynamic_template_data)
 
-  const to = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
+  const to = emailCc ? emailCc.split(/ *, */).map(email => ({ email })) : undefined
   if (!to) return
 
   // TODO: make from email an environment variable
@@ -97,5 +98,11 @@ exports.handler = async function(event, context) {
     body,
   }
 
-  return client.request(request).then(([response]) => response)
+  return client.request(request).then(response => {
+    const [{ statusCode, body }] = response
+    return {
+      statusCode,
+      body: JSON.stringify(statusCode === 202 ? { message: 'Email sent' } : body),
+    }
+  })
 }
