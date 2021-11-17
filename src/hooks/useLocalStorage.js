@@ -33,7 +33,7 @@ const useLocalStorage = (key, initialValue) => {
       // A more advanced implementation would handle the error case
       console.log(error);
     }
-  }, [storedValue]);
+  }, [storedValue, namespacedKey]);
 
   return [storedValue, setStoredValue];
 }
