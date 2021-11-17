@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['proxima-nova', 'serif'],
   bodyFontFamily: ['Catamaran', 'sans-serif'],
   bodyWeight: 500,
@@ -10,3 +10,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions
