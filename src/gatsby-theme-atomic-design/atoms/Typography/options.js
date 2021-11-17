@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['Work Sans', 'sans-serif'],
   bodyFontFamily: ['Work Sans', 'sans-serif'],
   bodyWeight: 400,
@@ -10,3 +10,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions
