@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['utopia-std', 'serif'],
   bodyFontFamily: ['proxima-nova', 'sans-serif'],
   bodyWeight: 500,
@@ -11,3 +11,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions

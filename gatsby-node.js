@@ -2,6 +2,15 @@
 const createLineupsApartmentPage = (node, createPage) => {
   const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id } = node
   if (enabledFeatures.indexOf('microsite') > -1) {
+    const gallery = path.replace(/\/?$/, '') + '/gallery/'
+    console.log('[site] creating gallery page', gallery)
+    createPage({
+      path: gallery,
+      component: require.resolve('./src/templates/Gallery/index.js'),
+      context: {
+        id,
+      },
+    })
     console.log('[site] creating apartment page', path)
     return createPage({
       path,

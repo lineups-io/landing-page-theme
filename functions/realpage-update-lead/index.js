@@ -79,7 +79,7 @@ exports.handler = async function(event, context) {
     comments: comments.join('\n\n'),
   }
 
-  const to = emailTo.split(',').map(email => ({ email }))
+  const to = emailTo.split(/ *, */).map(email => ({ email }))
 
   // TODO: make from email an environment variable
   const body = {
@@ -96,5 +96,11 @@ exports.handler = async function(event, context) {
     body,
   }
 
-  return client.request(request).then(([response]) => response)
+  return client.request(request).then(response => {
+    const [{ statusCode, body }] = response
+    return {
+      statusCode,
+      body: JSON.stringify(statusCode === 202 ? { message: 'Email sent' } : body),
+    }
+  })
 }
