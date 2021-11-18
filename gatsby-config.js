@@ -27,8 +27,8 @@ module.exports = {
         context: {
           account: process.env.ACCOUNT,
           facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
-          algoliaAppId: process.env.ALGOLIA_APP_ID,
-          algoliaSearchKey: process.env.ALGOLIA_SEARCH_KEY,
+          algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
+          algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
         },
       },
     },
@@ -75,7 +75,7 @@ module.exports = {
             `Content-Security-Policy: frame-ancestors *`,
           ],
           '/search/': [
-            `Link: <https://${ ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
+            `Link: <https://${ GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
           ],
         },
       },
