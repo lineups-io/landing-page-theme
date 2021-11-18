@@ -75,8 +75,6 @@ export const Iframe = styled.div`
   -webkit-overflow-scrolling: touch;
 
   @media (max-width: 374.9px) {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
   }
 
   &::before {
