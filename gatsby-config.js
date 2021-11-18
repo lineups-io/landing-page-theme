@@ -27,8 +27,6 @@ module.exports = {
         context: {
           account: process.env.ACCOUNT,
           facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
-          algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
-          algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
         },
       },
     },
