@@ -76,7 +76,7 @@ export const Iframe = styled.div`
   height: 100%;
 
   @media (min-width: 768px) {
-    height: 0;
+    height: fit-content;
 
     &::before {
       content: '';
