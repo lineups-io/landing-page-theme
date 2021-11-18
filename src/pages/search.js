@@ -5,13 +5,13 @@ import algoliasearch from 'algoliasearch/lite'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
-const SearchPage = ({ data, location, navigate, pageContext }) => {
+const SearchPage = ({ data, location, navigate }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
   const searchClient = algoliasearch(
-    pageContext.algoliaAppId,
-    pageContext.algoliaSearchKey,
+    process.env.GATSBY_ALGOLIA_APP_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_KEY,
   )
 
   return <>
