@@ -73,16 +73,18 @@ export const Iframe = styled.div`
   background-color: #fff;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  height: 100%;
 
-  @media (max-width: 374.9px) {
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    width: 100%;
+  @media (min-width: 768px) {
     height: 0;
-    padding-top: 177.78%;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-top: 177.78%;
+    }
   }
 
   iframe {
