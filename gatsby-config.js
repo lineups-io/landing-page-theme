@@ -73,7 +73,7 @@ module.exports = {
             `Content-Security-Policy: frame-ancestors *`,
           ],
           '/search/': [
-            `Link: <https://${ GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
+            `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
           ],
         },
       },
