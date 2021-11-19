@@ -1,12 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { useTracking } from 'react-tracking'
 
 import numeral from 'numeral'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/LandingPage'
 import { getSchemaOrgJSONLD } from './schema'
 
-export default ({ data, location }) => {
+const LandingPage = ({ data, location }) => {
   const {
     title,
     description,
@@ -36,14 +37,17 @@ export default ({ data, location }) => {
     return price < acc ? price : acc
   }, Number.MAX_VALUE)
 
-  const apartments = data.lineups.page.apartments.items.map(apartment => {
-    return {
-      ...apartment,
-      defaultPhoto: {
-        ...apartment.defaultPhoto,
-      },
-    }
-  })
+  const apartments = data.lineups.page.apartments.items
+
+  useTracking({
+      event: 'custom.page.load',
+      siteType: 'brand site',
+      pageType: 'regional page',
+      market: (market && market.title) || '(not set)',
+      submarket: (submarket && submarket.title) || '(not set)',
+      term: (termGroup && termGroup.name) || '(not set)',
+      ppc: noindex ? 'true' : 'false',
+  }, { dispatchOnMount: true })
 
   return <>
     <Helmet title={title}>
@@ -90,3 +94,5 @@ export const query = graphql`
     }
   }
 `
+
+export default LandingPage

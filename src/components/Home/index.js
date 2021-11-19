@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { faChevronRight } from './faChevronRight'
 
 import Hero from './Hero'
@@ -15,16 +15,12 @@ export default () => {
     query getHomePagePhotos {
       lobby: file(relativePath: { eq: "index/lobby.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 2000 maxHeight: 500 cropFocus: CENTER) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 2000 height: 500 transformOptions: { cropFocus: CENTER })
         }
       }
       kitchen: file(relativePath: { eq: "index/kitchen.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 2000 maxHeight: 500 cropFocus: CENTER) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 2000 height: 500 transformOptions: { cropFocus: CENTER })
         }
       }
     }
@@ -65,7 +61,7 @@ export default () => {
         </Row>
       </Container>
     </Section>
-    <GatsbyImage fluid={lobby.childImageSharp.fluid} />
+    <GatsbyImage image={getImage(lobby)} />
     <Section id='rockstar-cares'>
       <Container>
         <Row>
@@ -100,7 +96,7 @@ export default () => {
         </Row>
       </Container>
     </Section>
-    <GatsbyImage fluid={kitchen.childImageSharp.fluid} />
+    <GatsbyImage image={getImage(kitchen)} />
     <Section id='rockstar-pride'>
       <Container>
         <Row>

@@ -8,12 +8,28 @@ require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
+const gtm = JSON.parse(process.env.GOOGLE_TAG_MANAGER)
+
+const gatsbyPluginGoogleTagmanager = gtm.map(options => ({
+  resolve: 'gatsby-plugin-google-tagmanager',
+  options,
+}))
+
 module.exports = {
   siteMetadata: {
     title: process.env.TITLE,
     siteUrl: process.env.URL,
   },
   'plugins': [
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          account: process.env.ACCOUNT,
+          facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,16 +49,11 @@ module.exports = {
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: process.env.GOOGLE_TAG_MANAGER_ID,
-      },
-    },
+    ...gatsbyPluginGoogleTagmanager,
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/noindex/*', '/search'],
+        excludes: ['/noindex/*', '/search'],
       },
     },
     'gatsby-plugin-meta-redirect',
@@ -52,13 +63,17 @@ module.exports = {
         allPageHeaders: [
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
+          'Link: <https://lineups.imgix.net>; rel=preconnect;',
+          'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
+          'Link: <https://res.cloudinary.com>; rel=preconnect;',
         ],
         headers: {
           '/widgets/*': [
             'X-Frame-Options: SAMEORIGIN',
             `Content-Security-Policy: frame-ancestors *`,
-            'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
-            'Link: <https://res.cloudinary.com>; rel=preconnect;',
+          ],
+          '/search/': [
+            `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
           ],
         },
       },
@@ -98,8 +113,15 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
+    'gatsby-plugin-percy',
+    {
+      resolve: `gatsby-theme-lineups`,
+      options: { },
+    },
+    'gatsby-plugin-percy',
     {
       resolve: 'gatsby-plugin-algolia',
       options: {

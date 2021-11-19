@@ -16,6 +16,11 @@ export const Close = styled.button`
   right: 12.5px;
   cursor: pointer;
   z-index: 2;
+
+  @media (min-width: 768px) {
+    left: calc(375px + 20px - (25px / 2));
+    top: calc(100% - 20px - (375px * 1.7778) - (25px / 2));
+  }
 `
 
 export const Bubble = styled.button`
@@ -66,18 +71,20 @@ export const Iframe = styled.div`
   max-width: 425px;
   max-height: 100%;
   background-color: #fff;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
 
-  @media (max-width: 374.9px) {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
+  @media (min-width: 768px) {
+    height: fit-content;
 
-  &::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 0;
-    padding-top: 177.78%;
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-top: 177.78%;
+    }
   }
 
   iframe {
@@ -124,7 +131,7 @@ export const Wrapper = styled(motion.div).attrs({
     display: ${ props => props.open ? 'none' : 'block' };
   }
 
-  ${ Iframe } {
+  ${ Iframe }, ${ Close } {
     display: ${ props => props.open ? 'block' : 'none' };
   }
 `
