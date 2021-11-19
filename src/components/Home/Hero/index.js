@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import Hero from './styled'
 import Section from '../Section'
@@ -12,16 +12,14 @@ export default () => {
     query getHeroData {
       hero: file(relativePath: { eq: "index/pool.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 2000 maxHeight: 800 cropFocus: CENTER) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 2000 height: 800 transformOptions: { cropFocus: CENTER })
         }
       }
     }
   `)
 
   return <Section id='hero' noPadding>
-    <GatsbyImage fluid={data.hero.childImageSharp.fluid} />
+    <GatsbyImage image={getImage(data.hero)} />
     <Container>
       <Hero>
         <Hero.Header>Life Made Simple is:</Hero.Header>

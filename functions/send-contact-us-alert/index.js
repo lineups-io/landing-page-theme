@@ -1,4 +1,7 @@
 const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
 const client = require('@sendgrid/client')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
@@ -10,6 +13,7 @@ exports.handler = async function(event, context) {
   }
 
   const {
+    source,
     emailCc,
     user: {
       firstName: first_name,
@@ -30,9 +34,9 @@ exports.handler = async function(event, context) {
     ['contact-us']: {
       question,
     } = {},
-    ['floorplan-amenities']: floorplanAmenities,
-    ['community-amenities']: communityAmenities,
-    ['neighborhood-features']: neighborhoodFeatures,
+    ['floorplan-amenities']: floorplanAmenities = [],
+    ['community-amenities']: communityAmenities = [],
+    ['neighborhood-features']: neighborhoodFeatures = [],
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
@@ -49,11 +53,11 @@ exports.handler = async function(event, context) {
   if (notes) comments.splice(0, 0, `${ notes }\n--------------`)
 
   // TODO: make template_id an environment variable ???
-  const template_id = 'd-a4aaa776cc13446e83372cd600b91a07'
+  const template_id = 'd-cd3794cd642b4032be344caa4a043e28'
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
-  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).format('hh:mm a') : ''
-  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`).add(30, 'minute').format('hh:mm a') : ''
+  const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
+  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
 
   const dynamic_template_data = {
     apartment_name,
@@ -73,11 +77,12 @@ exports.handler = async function(event, context) {
     community: { options: communityAmenities.map(name => ({ name })) },
   }
 
-  const to = emailCc ? emailCc.split(',').map(email => ({ email })) : undefined
+  const to = emailCc ? emailCc.split(/ *, */).map(email => ({ email })) : undefined
   if (!to) return
 
   // TODO: make from email an environment variable
   const body = {
+    source,
     from: { email: 'hi@lineups.io' },
     personalizations: [{ to, dynamic_template_data }],
     subject: 'You should not see this subject',
@@ -91,5 +96,11 @@ exports.handler = async function(event, context) {
     body,
   }
 
-  return client.request(request).then(([response]) => response)
+  return client.request(request).then(response => {
+    const [{ statusCode, body }] = response
+    return {
+      statusCode,
+      body: JSON.stringify(statusCode === 202 ? { message: 'Email sent' } : body),
+    }
+  })
 }
