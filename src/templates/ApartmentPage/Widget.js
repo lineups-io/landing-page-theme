@@ -20,12 +20,14 @@ const Widget = ({ _id, title, intro }) => {
       const scrollY = document.body.style.top.replace(/px$/, '')
       document.body.style.top = ''
       document.body.style.position = ''
+      document.body.style.width = ''
       window.scrollTo(0, parseInt(scrollY || '0') * -1)
 
       if (contentWindow) contentWindow.postMessage('close')
     } else {
       document.body.style.top = `-${window.scrollY}px`
       document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
 
       if (contentWindow) contentWindow.postMessage('open')
     }
