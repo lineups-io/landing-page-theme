@@ -1,12 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import algoliasearch from 'algoliasearch/lite'
 
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
-const SearchPage = ({ data, location }) => {
+const SearchPage = ({ data, location, navigate }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
+
+  const searchClient = algoliasearch(
+    process.env.GATSBY_ALGOLIA_APP_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_KEY,
+  )
 
   return <>
     <Helmet title={title}>
@@ -14,7 +20,7 @@ const SearchPage = ({ data, location }) => {
         { name: 'robots', content: 'noindex,nofollow' },
       ].map((props, i) => <meta key={i} {...props} />)}
     </Helmet>
-    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} />
+    <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} location={location} navigate={navigate} searchClient={searchClient} />
   </>
 }
 
