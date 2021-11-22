@@ -15,12 +15,12 @@ export default () => {
     query getHomePagePhotos {
       lobby: file(relativePath: { eq: "index/lobby.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 2000 height: 500 transformOptions: { cropFocus: CENTER })
+          gatsbyImageData(layout: FULL_WIDTH aspectRatio: 4 transformOptions: { cropFocus: CENTER })
         }
       }
       kitchen: file(relativePath: { eq: "index/kitchen.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 2000 height: 500 transformOptions: { cropFocus: CENTER })
+          gatsbyImageData(layout: FULL_WIDTH aspectRatio: 4 transformOptions: { cropFocus: CENTER })
         }
       }
     }
