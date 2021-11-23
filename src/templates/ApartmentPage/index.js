@@ -17,6 +17,8 @@ const App = ({ data, location, pageContext }) => {
 
   const { apartment, site } = data.lineups
   const { seo = {} } = apartment
+  if (!apartment.externalData.officeHours)
+    apartment.externalData.officeHours = []
 
   const title = seo ? seo.title : apartment.name
   const trackingData = { title, page: location.pathname, apartment: apartment.name }
@@ -34,7 +36,7 @@ const App = ({ data, location, pageContext }) => {
 
   const { trackEvent } = useTracking({}, { dispatchOnMount })
 
-  const [widget] = data.admin.apartment.result.widgets
+  const [widget] = data.admin.apartment.result.widgets.filter(widget => ['published', 'archived'].indexOf(widget.status) > -1)
   const {
     scheduleTimes,
     submitContactUs,
@@ -45,6 +47,7 @@ const App = ({ data, location, pageContext }) => {
     ...widget,
   })
   const props = {
+    galleryUrl: location.pathname.replace(/\/?$/, '') + '/gallery/',
     scheduleTimes,
     onSubmit: form => {
       const {
@@ -136,7 +139,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
-        {widget ? <Widget {...widget} /> : null}
+        {widget && widget.showOnWebsite ? <Widget {...widget} /> : null}
     </>
   )
 }
@@ -146,7 +149,7 @@ export const query = graphql`
     admin {
       apartment(input: { filter: { publicId: { _eq: $publicId } } }) {
         result {
-          widgets (status: "published") {
+          widgets {
             ...WidgetFields
           }
         }
