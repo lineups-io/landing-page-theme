@@ -1,4 +1,4 @@
-import typography from 'gatsby-theme-atomic-design/src/atoms/Typography/options'
+import typography from '../Typography/options'
 
 const { headerFontFamily, bodyFontFamily } = typography
 
@@ -8,6 +8,7 @@ export const colors = {
   primary: '#ca3022',
   secondary: '#ca3022',
   tertiary: '#ca3022',
+  special: '#67B39F',
   gray50: '#FAFAFA',
   gray100: '#F5F5F5',
   gray200: '#EEEEEE',
@@ -20,6 +21,9 @@ export const colors = {
   gray900: '#212121',
   white: '#ffffff',
   black: '#333333',
+  black400: '#8c8d8e',
+  black500: '#282929',
+  red: '#e5203c',
 }
 
 export const fonts = {
