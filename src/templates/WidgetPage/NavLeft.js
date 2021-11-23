@@ -11,7 +11,7 @@ const NavLeft = props => {
     const [,qs] = window.location.href.split('?')
     if (qs) {
       const query = {}
-      qs.split('&').map(str => {
+      qs.split('&').forEach(str => {
         const [key, val] = str.split('=')
         query[key] = val
       })
