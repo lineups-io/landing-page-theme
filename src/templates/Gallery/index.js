@@ -9,11 +9,17 @@ import buildSections from './sections'
 import Icon from 'gatsby-theme-atomic-design/src/atoms/Icon'
 
 // TODO: add Helmet
-const GalleryPage = ({ data, location }) => {
+const GalleryPage = ({ data, location, navigate }) => {
   const back = location.pathname.replace(/gallery\/?$/, '')
+
+  const goBack = e => {
+    e.preventDefault()
+    navigate(back, { replace: true })
+  }
+
   return <>
     <Container py={3}>
-      <Link to={back} variant='links.back'>
+      <Link to={back} variant='links.back' onClick={goBack}>
         <Icon icon='ChevronLeft' />
         <Text px={1}>Back</Text>
       </Link>
