@@ -2,7 +2,6 @@ const base = {
   styles: {
     root: {
       WebkitFontSmoothing: 'antialiased',
-      letterSpacing: '1px',
     },
   },
   fonts: {
