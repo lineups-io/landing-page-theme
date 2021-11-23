@@ -1,6 +1,5 @@
 const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
-const themeUi = require('./theme.json')
 const queries = require('./gatsby-algolia.js')
 
 console.log('[site] NODE_ENV=' + activeEnv)
@@ -73,6 +72,9 @@ module.exports = {
             'X-Frame-Options: SAMEORIGIN',
             `Content-Security-Policy: frame-ancestors *`,
           ],
+          '/search/': [
+            `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
+          ],
         },
       },
     },
@@ -117,7 +119,7 @@ module.exports = {
     'gatsby-plugin-percy',
     {
       resolve: `gatsby-theme-lineups`,
-      options: { themeUi },
+      options: { },
     },
     'gatsby-plugin-percy',
     {
