@@ -48,7 +48,7 @@ export const query = graphql`
     }
     background: file(relativePath: { eq: "contact-us/background.jpg" }) {
       childImageSharp {
-        gatsbyImageData(width: 1600 transformOptions: { cropFocus: CENTER })
+        gatsbyImageData(layout: FULL_WIDTH transformOptions: { cropFocus: CENTER })
       }
     }
   }

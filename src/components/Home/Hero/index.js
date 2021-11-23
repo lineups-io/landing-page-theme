@@ -12,7 +12,7 @@ export default () => {
     query getHeroData {
       hero: file(relativePath: { eq: "index/hero.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 2000 height: 800 transformOptions: { cropFocus: CENTER })
+          gatsbyImageData(layout: FULL_WIDTH aspectRatio: 2.5 transformOptions: { cropFocus: CENTER })
         }
       }
     }
