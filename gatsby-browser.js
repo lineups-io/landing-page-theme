@@ -16,16 +16,21 @@ exports.onClientEntry = () => {
     })
 
     if (query[LOCAL_STORAGE_KEY]) {
-      const item = window.localStorage.getItem(LOCAL_STORAGE_KEY)
+      try {
+        const item = window.localStorage.getItem(LOCAL_STORAGE_KEY)
 
-      const value = item ? JSON.parse(item) : []
+        const value = item ? JSON.parse(item) : []
 
-      value.push({
-        id: query[LOCAL_STORAGE_KEY],
-        dt: new Date(),
-      })
+        value.push({
+          id: query[LOCAL_STORAGE_KEY],
+          dt: new Date(),
+        })
 
-      window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(value))
+        window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(value))
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.error(error);
+      }
     }
   }
 }
