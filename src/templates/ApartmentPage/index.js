@@ -55,7 +55,8 @@ const App = ({ data, location, pageContext }) => {
 
   const { trackEvent } = useTracking({}, { dispatchOnMount })
 
-  const widget = data.admin.apartment.result.widgets.find(widget => widget.status === 'published' && widget.showOnWebsite)
+  const [widget] = data.admin.apartment.result.widgets.filter(widget => ['published', 'archived'].indexOf(widget.status) > -1)
+  const bubble = data.admin.apartment.result.widgets.find(widget => widget.status === 'published' && widget.showOnWebsite)
   const {
     scheduleTimes,
     submitContactUs,
@@ -159,7 +160,7 @@ const App = ({ data, location, pageContext }) => {
           <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
         </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
-        {widget ? <Widget {...widget} /> : null}
+        {bubble ? <Widget {...bubble} /> : null}
     </>
   )
 }
