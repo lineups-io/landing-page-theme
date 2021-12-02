@@ -70,7 +70,7 @@ module.exports = {
         headers: {
           '/widgets/*': [
             'X-Frame-Options: SAMEORIGIN',
-            `Content-Security-Policy: frame-ancestors *; frame-src *`,
+            `Content-Security-Policy: frame-ancestors *`,
           ],
           '/search/': [
             `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
