@@ -124,11 +124,6 @@
   display: none;
 }
 
-.lineups___wrapper.open .lineups___iframe-container,
-.lineups___wrapper:not(.open) .lineups___bubble {
-  display: block;
-}
-
 /* Imported from https://loading.io/css/ */
 .lds-hourglass {
   display: inline-block;
