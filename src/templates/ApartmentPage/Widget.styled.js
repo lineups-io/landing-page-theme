@@ -128,11 +128,11 @@ export const Wrapper = styled(motion.div).attrs({
   }
 
   ${ Bubble } {
-    display: ${ props => props.open ? 'none' : 'block' };
+    display: ${ props => props.open ? 'none' : '' };
   }
 
   ${ Iframe }, ${ Close } {
-    display: ${ props => props.open ? 'block' : 'none' };
+    display: ${ props => props.open ? '' : 'none' };
   }
 `
 
