@@ -6,11 +6,13 @@ import {
   Close,
   Iframe,
   Spinner,
+  Hide,
 } from './Widget.styled'
 
 const Widget = ({ _id, title, intro }) => {
   const [open, setOpen] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const ref = useRef()
 
   const toggleOpen = () => {
@@ -49,7 +51,7 @@ const Widget = ({ _id, title, intro }) => {
     }]
   }
 
-  return <Wrapper open={open}>
+  return <Wrapper open={open} hidden={hidden}>
     <Bubble onClick={toggleOpen}>
       <span>{bubble.text}</span>
       {bubble.sources.length > 0
@@ -58,6 +60,9 @@ const Widget = ({ _id, title, intro }) => {
         </video>
         : null}
     </Bubble>
+    <Hide onClick={() => setHidden(!hidden)}>
+      {hidden ? 'Unhide' : 'Hide'}
+    </Hide>
     {loaded || open
       ? <>
       <Close onClick={toggleOpen}>&times;</Close>
