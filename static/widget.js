@@ -1,6 +1,7 @@
 const CLASSNAME = {
   Wrapper: 'lineups___wrapper',
   Bubble: 'lineups___bubble',
+  Hide: 'lineups___hide',
   IframeContainer: 'lineups___iframe-container',
   Iframe: 'lineups___iframe',
   Widget: 'lineups___widget',
@@ -55,6 +56,15 @@ class Lineups {
 
     wrapper.appendChild(bubble)
 
+    const hide = createElement('button', {
+      class: CLASSNAME.Hide,
+    })
+    hide.innerHTML = 'Hide'
+    hide.onclick = this.toggleHide.bind(this)
+    this.hide = hide
+
+    wrapper.appendChild(hide)
+
     document.body.appendChild(wrapper)
     this.wrapper = wrapper
   }
@@ -66,6 +76,16 @@ class Lineups {
   toggleOpen() {
     if (this.wrapper.className.match(/ open$/)) this.close()
     else this.open()
+  }
+
+  toggleHide() {
+    if (this.wrapper.className.match(/ hide/)) {
+      this.wrapper.className = this.wrapper.className.replace(/ hide/g, '')
+      this.hide.innerHTML = 'Hide'
+    } else {
+      this.wrapper.className = this.wrapper.className + ' hide'
+      this.hide.innerHTML = 'Unhide'
+    }
   }
 
   open() {
