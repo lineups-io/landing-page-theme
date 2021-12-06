@@ -138,7 +138,7 @@ export const Wrapper = styled(motion.div).attrs({
   bottom: 0;
   left: ${props => props.hidden && !props.open ? -125 : 0}px;
   transition: left 200ms;
-  z-index: 1025;
+  z-index: 100000;
 
   background-color: ${ props => props.open ? 'rgba(0, 0, 0, 0.8)' : 'transparent' };
   width: ${ props => props.open ? '100%' : undefined };
