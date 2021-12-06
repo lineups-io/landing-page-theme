@@ -123,6 +123,9 @@ class Lineups {
 
     this.wrapper.className = this.wrapper.className + ' open'
     if (this.iframe && this.iframe.postMessage) this.iframe.postMessage('open')
+
+    this.wrapper.className = this.wrapper.className.replace(/ hide/g, '')
+    this.hide.innerHTML = 'Hide'
   }
 
   close() {
