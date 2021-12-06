@@ -52,7 +52,7 @@ const Widget = ({ _id, title, intro }) => {
     }]
   }
 
-  return <Wrapper open={open} hidden={hidden}>
+  return <Wrapper open={open} hide={hidden}>
     <Bubble onClick={toggleOpen}>
       <span>{bubble.text}</span>
       {bubble.sources.length > 0
