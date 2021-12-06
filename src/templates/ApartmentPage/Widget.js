@@ -32,6 +32,7 @@ const Widget = ({ _id, title, intro }) => {
       document.body.style.width = '100%'
 
       if (contentWindow) contentWindow.postMessage('open')
+      setHidden()
     }
 
     setOpen(!open)

@@ -82,7 +82,7 @@ export const Hide = styled.button`
     display: none;
 
     &:hover, ${ Bubble }:hover + & {
-      display: flex;
+      display: flex !important;
     }
   }
 `
@@ -152,6 +152,10 @@ export const Wrapper = styled(motion.div).attrs({
 
   ${ Bubble }, ${ Hide } {
     display: ${ props => props.open ? 'none' : '' };
+  }
+
+  ${ Hide } {
+    display: ${ props => props.hidden ? 'none' : '' };
   }
 
   ${ Iframe }, ${ Close } {
