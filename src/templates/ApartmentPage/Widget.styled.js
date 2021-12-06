@@ -136,7 +136,7 @@ export const Wrapper = styled(motion.div).attrs({
 })`
   position: fixed;
   bottom: 0;
-  left: ${props => props.hidden && !props.open ? -125 : 0}px;
+  left: ${props => props.hide && !props.open ? -125 : 0}px;
   transition: left 200ms;
   z-index: 100000;
 
@@ -155,7 +155,7 @@ export const Wrapper = styled(motion.div).attrs({
   }
 
   ${ Hide } {
-    display: ${ props => props.hidden ? 'none' : '' };
+    display: ${ props => props.hide ? 'none' : '' };
   }
 
   ${ Iframe }, ${ Close } {
