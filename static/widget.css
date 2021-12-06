@@ -81,7 +81,7 @@
 
   .lineups___hide:hover,
   .lineups___bubble:hover + .lineups___hide {
-    display: flex;
+    display: flex !important;
   }
 }
 
@@ -151,6 +151,7 @@
 
 .lineups___wrapper.open .lineups___bubble,
 .lineups___wrapper.open .lineups___hide,
+.lineups___wrapper.hide .lineups___hide,
 .lineups___wrapper:not(.open) .lineups___iframe-container {
   display: none;
 }
