@@ -74,7 +74,7 @@ class Lineups {
   }
 
   toggleOpen() {
-    if (this.wrapper.className.match(/ open$/)) this.close()
+    if (this.wrapper.className.match(/ open/)) this.close()
     else this.open()
   }
 
@@ -121,12 +121,12 @@ class Lineups {
       this.iframe = iframe
     }
 
-    this.wrapper.className = `${CLASSNAME.Wrapper} open`
+    this.wrapper.className = this.wrapper.className + ' open'
     if (this.iframe && this.iframe.postMessage) this.iframe.postMessage('open')
   }
 
   close() {
-    this.wrapper.className = CLASSNAME.Wrapper
+    this.wrapper.className = this.wrapper.className.replace(/ open/g, '')
     if (this.iframe && this.iframe.postMessage) this.iframe.postMessage('close')
   }
 }
