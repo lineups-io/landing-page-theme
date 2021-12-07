@@ -1,3 +1,49 @@
+const storageAvailable = function(type) {
+  var storage
+  try {
+    storage = window[type]
+    var x = '__storage_test__'
+    storage.setItem(x, x)
+    storage.removeItem(x)
+    return true
+  }
+  catch(e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      // everything except Firefox
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      (storage && storage.length !== 0)
+  }
+}
+
+const storage = {
+  location: 'sessionStorage',
+  key: 'lineups___widget___state',
+}
+
+const getState = function() {
+  const item = storageAvailable(storage.location) && window[storage.location].getItem(storage.key)
+  try {
+    return item ? JSON.parse(item) : {}
+  } catch(e) {
+    console.error(e)
+    return {}
+  }
+}
+
+const setState = function(value) {
+  if (storageAvailable(storage.location)) {
+    window[storage.location].setItem(storage.key, JSON.stringify(value))
+  }
+}
+
 const CLASSNAME = {
   Wrapper: 'lineups___wrapper',
   Bubble: 'lineups___bubble',
@@ -65,6 +111,12 @@ class Lineups {
 
     wrapper.appendChild(hide)
 
+    const state = getState()
+    if (state.hidden) {
+      wrapper.className = wrapper.className + ' hide'
+      hide.innerHTML = 'Unhide'
+    }
+
     document.body.appendChild(wrapper)
     this.wrapper = wrapper
   }
@@ -82,9 +134,11 @@ class Lineups {
     if (this.wrapper.className.match(/ hide/)) {
       this.wrapper.className = this.wrapper.className.replace(/ hide/g, '')
       this.hide.innerHTML = 'Hide'
+      setState({ hidden: false })
     } else {
       this.wrapper.className = this.wrapper.className + ' hide'
       this.hide.innerHTML = 'Unhide'
+      setState({ hidden: true })
     }
   }
 
