@@ -25,6 +25,7 @@ exports.handler = async function(event, context) {
   const form = JSON.parse(event.body)
   const {
     propertyId,
+    propertyName,
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
   } = form
@@ -114,7 +115,7 @@ exports.handler = async function(event, context) {
     const { response } = results
     return request.post('https://hooks.zapier.com/hooks/catch/1820627/bmg8s5o/', {
       json: true,
-      body: { request: body, response },
+      body: { request: body, response, propertyName },
     }).then(() => results)
   }).then(({ response }) => {
     if (response.code !== 200) {
