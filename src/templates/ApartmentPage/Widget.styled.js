@@ -65,6 +65,28 @@ export const Bubble = styled.button`
   }
 `
 
+export const Hide = styled.button`
+  cursor: pointer;
+  background-color: #192c51;
+  padding: 0 10px;
+  color: #fff;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -22.5px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  @media (min-width: 768px) {
+    display: none;
+
+    &:hover, ${ Bubble }:hover + & {
+      display: flex !important;
+    }
+  }
+`
+
 export const Iframe = styled.div`
   position: relative;
   width: 100%;
@@ -114,8 +136,9 @@ export const Wrapper = styled(motion.div).attrs({
 })`
   position: fixed;
   bottom: 0;
-  left: 0;
-  z-index: 1025;
+  left: ${props => props.hide && !props.open ? -125 : 0}px;
+  transition: left 200ms;
+  z-index: 100000;
 
   background-color: ${ props => props.open ? 'rgba(0, 0, 0, 0.8)' : 'transparent' };
   width: ${ props => props.open ? '100%' : undefined };
@@ -124,15 +147,19 @@ export const Wrapper = styled(motion.div).attrs({
   align-items: center;
 
   @media (min-width: 768px) {
-    align-items: flex-end;
+    align-items: ${ props => props.open ? 'flex-end' : '' };
   }
 
-  ${ Bubble } {
-    display: ${ props => props.open ? 'none' : 'block' };
+  ${ Bubble }, ${ Hide } {
+    display: ${ props => props.open ? 'none' : '' };
+  }
+
+  ${ Hide } {
+    display: ${ props => props.hide ? 'none' : '' };
   }
 
   ${ Iframe }, ${ Close } {
-    display: ${ props => props.open ? 'block' : 'none' };
+    display: ${ props => props.open ? '' : 'none' };
   }
 `
 
