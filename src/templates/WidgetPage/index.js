@@ -39,7 +39,7 @@ const WidgetPage = ({ data, location }) => {
   // TODO: update components to use styles
   return <Theme theme={styles}>
       <Router location={location}>
-        <Switch location={location}>
+        <Switch>
           <Routes {...slides} info={info} />
         </Switch>
       </Router>
