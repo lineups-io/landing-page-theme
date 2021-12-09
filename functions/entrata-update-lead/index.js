@@ -29,6 +29,7 @@ const handler = async function(event, context) {
     propertyName,
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
+    retry,
   } = form
   const today = dayjs().utc().tz('America/Denver').format('MM/DD/YYYYTHH:mm:ss')
 
@@ -152,10 +153,10 @@ const handler = async function(event, context) {
           },
         }).then(() => {
           try {
-            if (originatingLeadSourceId && response.result && response.result.prospects.prospect[0].message === `Invalid value for 'originatingLeadSourceId'.`) {
+            if (!retry && response.result && response.result.prospects.prospect[0].message === `Invalid value for 'originatingLeadSourceId'.`) {
               return handler({
                 ...event,
-                body: JSON.stringify({ ...form, originatingLeadSourceId: undefined })
+                body: JSON.stringify({ ...form, originatingLeadSourceId: undefined, retry: true })
               }, context)
             }
           } catch (e) {
