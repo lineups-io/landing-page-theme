@@ -70,6 +70,7 @@ const useLeadManager = ({
       body: JSON.stringify({
         ...request,
         duration,
+        propertyName: apartment && apartment.name,
         propertyId: vendorPropertyId || propertyId,
         originatingLeadSourceId: first && first.id,
         additionalLeadSourceIds: rest.map(l => l.id).join(','),
