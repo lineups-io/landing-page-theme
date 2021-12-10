@@ -63,6 +63,7 @@ const App = ({ data, location, pageContext }) => {
     submitScheduleTour,
   } = useLeadManager({
     source: 'Quick View',
+    account: pageContext.account,
     apartment,
     scheduleTour: { vendor: '' },
     ...widget,
