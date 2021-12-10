@@ -180,6 +180,7 @@ class Lineups {
 
     this.wrapper.className = this.wrapper.className.replace(/ hide/g, '')
     this.hide.innerHTML = 'Hide'
+    setState({ hidden: false })
   }
 
   close() {
