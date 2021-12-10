@@ -16,7 +16,7 @@ const {
 } = process.env
 
 
-exports.handler = async function(event, context) {
+const handler = async function(event, context) {
   // Only allow POST
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
@@ -25,9 +25,11 @@ exports.handler = async function(event, context) {
   const form = JSON.parse(event.body)
   const {
     propertyId,
+    account,
     propertyName,
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
+    retry,
   } = form
   const today = dayjs().utc().tz('America/Denver').format('MM/DD/YYYYTHH:mm:ss')
 
@@ -115,7 +117,7 @@ exports.handler = async function(event, context) {
     const { response } = results
     return request.post('https://hooks.zapier.com/hooks/catch/1820627/bmg8s5o/', {
       json: true,
-      body: { request: body, response, propertyName },
+      body: { request: body, response, propertyName, account },
     }).then(() => results)
   }).then(({ response }) => {
     if (response.code !== 200) {
@@ -150,6 +152,16 @@ exports.handler = async function(event, context) {
             ]
           },
         }).then(() => {
+          try {
+            if (!retry && response.result && response.result.prospects.prospect[0].message === `Invalid value for 'originatingLeadSourceId'.`) {
+              return handler({
+                ...event,
+                body: JSON.stringify({ ...form, originatingLeadSourceId: undefined, retry: true })
+              }, context)
+            }
+          } catch (e) {
+            console.error(e)
+          }
           return {
             statusCode: response.code,
             body: JSON.stringify(response)
@@ -165,3 +177,4 @@ exports.handler = async function(event, context) {
   })
 }
 
+exports.handler = handler
