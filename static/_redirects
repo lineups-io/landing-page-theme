@@ -36,6 +36,25 @@ https://www.churchillsquareapts.com/* https://rockstar.apartments/corpus-christi
 https://valenciaplaceliving.com/* https://rockstar.apartments/houston-tx/valencia-place/?redirected=valenciaplaceliving 301!
 https://www.valenciaplaceliving.com/* https://rockstar.apartments/houston-tx/valencia-place/?redirected=valenciaplaceliving 301!
 
+# Redirect to individual property websites
+/humble-tx/bender-hollow/ https://benderhollowapts.com/ 301!
+/rosenberg-tx/brookmore-hollow/ https://brookmorehollow.com/ 301!
+/baytown-tx/cedar-ridge/ https://cedarridgebaytown.com/ 301!
+/houston-tx/city-crossing/ https://citycrossingapts.com/ 301!
+/humble-tx/deerbrook-forest/ https://deerbrookforestapts.com/ 301!
+/humble-tx/deerbrook-garden/ https://deerbrookgardens.com/ 301!
+/houston-tx/green-meadows/ https://greenmeadowshouston.com/ 301!
+/alvin-tx/meadow-park/ https://meadowparkalvin.com/ 301!
+/humble-tx/meadowbrook/ https://meadowbrookhumble.com/ 301!
+/alvin-tx/newport-oaks/ https://newportoaks.com/ 301!
+/kingsville-tx/oak-tree-apartments/ https://oaktreekingsville.com/ 301!
+/humble-tx/parkside-apartments/ https://parksidehumble.com/ 301!
+/baytown-tx/reserve-on-garth-rd/ https://reserveongarth.com/ 301!
+/alvin-tx/steeplechase/ https://steeplechaseaptsliving.com/ 301!
+/humble-tx/waterchase/ https://www.waterchaseapts.com/ 301!
+/angleton-tx/westport/ https://westportangleton.com/ 301!
+/rosenberg-tx/westwood-village/ https://westwoodvillageapts.com/ 301!
+
 # Redirect default Netlify subdomain to primary domain
 https://rockstarliving.netlify.com/* https://rockstar.apartments/:splat 301!
 https://rockstarliving.netlify.app/* https://rockstar.apartments/:splat 301!
