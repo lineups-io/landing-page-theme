@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import shajs from 'sha.js'
 
 dayjs.extend(utc)
 
@@ -67,4 +68,8 @@ export const ID = () => {
   // Convert it to base 36 (numbers + letters), and grab the first 9 characters
   // after the decimal.
   return '_' + Math.random().toString(36).substr(2, 9)
+}
+
+export const hash = (val, alg = 'sha256', dig = 'hex') => {
+  return val && shajs(alg).update(val).digest(dig)
 }
