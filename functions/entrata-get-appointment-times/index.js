@@ -28,7 +28,7 @@ exports.handler = async function(event, context) {
       params: {
         propertyId: propertyId,
         fromDate: dayjs().format('MM/DD/YYYY'),
-        toDate: dayjs().add(7, 'days').format('MM/DD/YYYY')
+        toDate: dayjs().add(7, 'days').format('MM/DD/YYYY'),
       }
     }
   }
