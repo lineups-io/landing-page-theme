@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-import Logo from 'gatsby-theme-atomic-design/src/atoms/Nav/Logo'
+import src from './logo.png'
 
-const CustomLogo = styled(Logo)`
+const CustomLogo = styled.img.attrs({
+  src,
+})`
   margin: 0;
-  width: 128px;
   height: 35px;
 `
 
