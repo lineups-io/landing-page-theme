@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Route, useLocation } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { startCase } from 'lodash'
-import createHash from 'sha.js'
 import { useTracking } from 'react-tracking'
 
 import VideoPlayer from 'gatsby-theme-atomic-design/src/templates/VideoPlayer'
@@ -24,7 +23,7 @@ import NavRight from './NavRight'
 import loading from './loading.json'
 import confirmation from './confirmation.json'
 
-import { ID } from '../../hooks/utils'
+import { ID, hash } from '../../hooks/utils'
 
 import useLeadManager from '../../hooks/useLeadManager'
 
@@ -66,7 +65,7 @@ const Routes = ({
   const updateStore = (data = {}, prev) => {
     const key = prev.pathname.replace(/^\//, '') || 'index'
     const email = data.email || store.user.email
-    const emailHash = email && createHash('sha1').update(email).digest('base64')
+    const emailHash = hash(email)
     const user = {
       id: store.user.id || ID(),
       firstName: data.firstName || store.user.firstName,
@@ -102,7 +101,7 @@ const Routes = ({
         moveInDate: request['move-in'],
         daysToMoveIn,
         hashedEmail: emailHash,
-        hashedPhone: user.phone && createHash('sha1').update(user.phone).digest('base64'),
+        hashedPhone: hash(user.phone),
         userId: user.id,
       })
 
