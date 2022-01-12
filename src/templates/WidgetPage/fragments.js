@@ -57,6 +57,9 @@ export const fragments = graphql`
         openTime
         closeTime
       }
+      primaryMarket {
+        market
+      }
     }
     account {
       name
