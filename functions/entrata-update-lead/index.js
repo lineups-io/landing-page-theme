@@ -26,11 +26,13 @@ const handler = async function(event, context) {
   const {
     propertyId,
     account,
+    apartment,
     propertyName,
     originatingLeadSourceId = '64528',
     additionalLeadSourceIds = '',
     retry,
   } = form
+  const primaryMarket = apartment && apartment.primaryMarket && apartment.primaryMarket.market
   const today = dayjs().utc().tz('America/Denver').format('MM/DD/YYYYTHH:mm:ss')
 
   const prospect = {
@@ -117,7 +119,7 @@ const handler = async function(event, context) {
     const { response } = results
     return request.post('https://hooks.zapier.com/hooks/catch/1820627/bmg8s5o/', {
       json: true,
-      body: { request: body, response, propertyName, account },
+      body: { request: body, response, propertyName, account, primaryMarket },
     }).then(() => results)
   }).then(({ response }) => {
     if (response.code !== 200) {
