@@ -19,8 +19,8 @@ const base = {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#316884',
-    secondary: '#f04f27',
+    primary: '#005089',
+    secondary: '#00aea7',
     muted: '#f6f6f6',
   },
   breakpoints: [
