@@ -7,6 +7,14 @@ import ApartmentPicker from 'gatsby-theme-atomic-design/src/templates/ApartmentP
 
 const cards = [
   {
+    title: 'Resident Portal',
+    image: 'portal',
+    body: `
+      Schedule rent payments, submit maintenance requests,
+      renew your lease, and more.
+    `,
+  },
+  {
     title: 'Renters Insurance',
     image: 'insurance',
     body: `
@@ -17,14 +25,6 @@ const cards = [
       href: 'https://www.insureyourstuff.com/quote/quoteStep2.aspx?cid=109',
       children: 'Learn More',
     },
-  },
-  {
-    title: 'Resident Portal',
-    image: 'portal',
-    body: `
-      Schedule rent payments, submit maintenance requests,
-      renew your lease, and more.
-    `,
   },
   {
     title: 'Feedback',

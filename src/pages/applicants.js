@@ -7,6 +7,11 @@ import ApartmentPicker from 'gatsby-theme-atomic-design/src/templates/ApartmentP
 
 const cards = [
   {
+    title: 'Online Leasing',
+    image: 'portal',
+    body: 'View available apartments and lease online.',
+  },
+  {
     title: 'Renters Insurance',
     image: 'insurance',
     body: `
@@ -17,11 +22,6 @@ const cards = [
       href: 'https://www.insureyourstuff.com/quote/quoteStep2.aspx?cid=109',
       children: 'Learn More',
     },
-  },
-  {
-    title: 'Online Leasing',
-    image: 'portal',
-    body: 'View available apartments and lease online.',
   },
   {
     title: 'Feedback',
