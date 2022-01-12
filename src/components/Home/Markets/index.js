@@ -35,7 +35,7 @@ export default props => {
         href={market.marketPage && market.marketPage.slug}
       >
         <GatsbyImage image={market.image.node.childImageSharp.gatsbyImageData} />
-        <Caption>{market.title}</Caption>
+        <Caption>{market.title.match(/^san francisco$/i) ? 'Bay Area' : market.title}</Caption>
       </Card>
     )}
   </Container>
