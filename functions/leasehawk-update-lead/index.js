@@ -85,6 +85,7 @@ exports.handler = async function(event, context) {
     tour_start_time,
     tour_end_time,
     comments: comments.join('\n\n'),
+    question,
   }
 
   const to = emailTo.split(/ *, */).map(email => ({ email }))
