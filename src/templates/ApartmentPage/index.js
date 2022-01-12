@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import createHash from 'sha.js'
 import { useTracking } from 'react-tracking'
 
 import Helmet  from 'gatsby-theme-atomic-design/src/organisms/Helmet'
@@ -10,7 +9,7 @@ import Widget from './Widget'
 
 import useLeadManager from '../../hooks/useLeadManager'
 import useLocalStorage from '../../hooks/useLocalStorage'
-import { ID } from '../../hooks/utils'
+import { ID, hash } from '../../hooks/utils'
 
 const App = ({ data, location, pageContext }) => {
   const [store] = useLocalStorage('store', { user: {} })
@@ -62,7 +61,7 @@ const App = ({ data, location, pageContext }) => {
         time,
       } = form
 
-      const emailHash = email && createHash('sha1').update(email).digest('base64')
+      const emailHash = hash(email)
       trackEvent({
         event: 'quickview_lead',
         account: pageContext.account,
@@ -90,7 +89,7 @@ const App = ({ data, location, pageContext }) => {
           time: time && time.value,
         },
         hashedEmail: emailHash,
-        hashedPhone: phone && createHash('sha1').update(phone).digest('base64'),
+        hashedPhone: hash(phone),
         userId: user.id,
       })
 
