@@ -29,6 +29,11 @@ exports.handler = async function(event, context) {
         propertyId: propertyId,
         fromDate: dayjs().format('MM/DD/YYYY'),
         toDate: dayjs().add(7, 'days').format('MM/DD/YYYY'),
+        calendarEventCategoryIds: [
+          '1', // General
+          '2', // Resident
+          '3', // Leasing
+        ].join(',')
       }
     }
   }
