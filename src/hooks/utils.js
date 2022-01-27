@@ -20,11 +20,13 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
 
       const close = setTime(hr.date, hr.endTime, tz)
       let next = setTime(hr.date, hr.startTime, tz)
+      let end = dayjs(next).add(duration, 'minute')
 
-      while (next.valueOf() < close.valueOf()) {
+      while (end.valueOf() <= close.valueOf()) {
         const value = next.format('hh:mma')
         times.push({ value, label: value })
         next = next.add(duration, 'minute')
+        end = dayjs(next).add(duration, 'minute')
       }
 
       return {
