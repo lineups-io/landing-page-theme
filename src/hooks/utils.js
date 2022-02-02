@@ -11,7 +11,7 @@ const DEFAULT_TIMEZONE = '-0700'
 const setTime = (date, time, tz = DEFAULT_TIMEZONE) => {
   const str = tz.replace(/[^-0-9]/g, '') || '0'
   const offset = Number.parseInt(str) / 100
-  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_TIMEZONE)}`, 'MM/DD/YYYY HH:mm:ssZZ').utcOffset(offset)
+  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_TIMEZONE)}`, 'MM/DD/YYYY HH:mm:ssZZ').utc().utcOffset(offset)
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
