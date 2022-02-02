@@ -26,8 +26,10 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
       const now = dayjs().valueOf()
 
       while (next.valueOf() >= now && end.valueOf() <= close.valueOf()) {
-        const value = next.format('hh:mma')
-        times.push({ value, label: value })
+        const offset = Number.parseInt(DEFAULT_TIMEZONE) / 100
+        const value = next.utc().utcOffset(offset).format('hh:mma')
+        const label = next.format('hh:mma')
+        times.push({ value, label })
         next = next.add(duration, 'minute')
         end = dayjs(next).add(duration, 'minute')
       }
