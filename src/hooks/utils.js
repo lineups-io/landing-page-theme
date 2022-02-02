@@ -35,7 +35,7 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
       const close = setTime(hr.date, hr.endTime).tz(localTimezone)
       let next = setTime(hr.date, hr.startTime).tz(localTimezone)
       let end = dayjs(next).add(duration, 'minute')
-      const now = dayjs().valueOf()
+      const now = dayjs.tz(Date.now(), localTimezone)
 
       while (next.valueOf() >= now && end.valueOf() <= close.valueOf()) {
         const offset = Number.parseInt(DEFAULT_TIMEZONE) / 100
