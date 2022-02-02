@@ -20,9 +20,10 @@ const getTimezone = str => {
 }
 
 const DEFAULT_TIMEZONE = getTimezone('Mountain Time')
+const DEFAULT_OFFSET = '-0700'
 
 const setTime = (date, time) => {
-  return dayjs(`${date} ${time.replace(/MST$/, '-0700')}`, 'MM/DD/YYYY HH:mm:ssZZ')
+  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
@@ -39,7 +40,7 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
 
       while (end.valueOf() <= close.valueOf()) {
         if (next.valueOf() >= now) {
-          const offset = Number.parseInt(DEFAULT_TIMEZONE) / 100
+          const offset = Number.parseInt(DEFAULT_OFFSET) / 100
           const value = next.utc().utcOffset(offset).format('hh:mma')
           const label = next.format('hh:mma')
           times.push({ value, label })
