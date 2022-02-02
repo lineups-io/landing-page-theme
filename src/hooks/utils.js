@@ -1,7 +1,9 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import shajs from 'sha.js'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
+dayjs.extend(customParseFormat)
 dayjs.extend(utc)
 
 const DEFAULT_TIMEZONE = '-0700'
