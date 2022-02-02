@@ -55,6 +55,7 @@ exports.handler = async function(event, context) {
   // TODO: make template_id an environment variable ???
   const template_id = 'd-cc33424567d249b7b17ca8db966ab547'
 
+  // TODO: remove tour fields from dynamic_template_data
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time.label }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
   const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time.label }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
