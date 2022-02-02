@@ -2,6 +2,9 @@ const request = require('request-promise-native')
 const btoa = require('btoa')
 const dayjs = require('dayjs')
 const merge = require('deepmerge')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+
+dayjs.extend(customParseFormat)
 
 const {
   ENTRATA_API_URI: uri,
