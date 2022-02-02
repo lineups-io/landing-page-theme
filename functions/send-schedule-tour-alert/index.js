@@ -37,6 +37,7 @@ exports.handler = async function(event, context) {
     ['floorplan-amenities']: floorplanAmenities = [],
     ['community-amenities']: communityAmenities = [],
     ['neighborhood-features']: neighborhoodFeatures = [],
+    duration = 30,
   } = JSON.parse(event.body)
 
   const [desired_bedrooms] = bedrooms || []
@@ -57,7 +58,7 @@ exports.handler = async function(event, context) {
 
   const tour_date = day ? dayjs(day).format('MM/DD/YYYY') : ''
   const tour_start_time = tour_date && time ? dayjs(`${ tour_date } ${ time.label }`, 'MM/DD/YYYY hh:mma').format('hh:mm a') : ''
-  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time.label }`, 'MM/DD/YYYY hh:mma').add(30, 'minute').format('hh:mm a') : ''
+  const tour_end_time = tour_date && time ? dayjs(`${ tour_date } ${ time.label }`, 'MM/DD/YYYY hh:mma').add(duration, 'minute').format('hh:mm a') : ''
   console.log('[DEBUG] tour_start_time', `${ tour_date } ${ time.label } => ${ tour_start_time }/ ${ tour_end_time }`)
 
   const dynamic_template_data = {
