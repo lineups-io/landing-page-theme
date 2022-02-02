@@ -19,7 +19,6 @@ const getTimezone = str => {
   return tz
 }
 
-const DEFAULT_TIMEZONE = getTimezone('Mountain Time')
 const DEFAULT_OFFSET = '-0700'
 
 const setTime = (date, time) => {
