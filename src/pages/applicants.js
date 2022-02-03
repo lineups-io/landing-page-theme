@@ -7,11 +7,6 @@ import ApartmentPicker from 'gatsby-theme-atomic-design/src/templates/ApartmentP
 
 const cards = [
   {
-    title: 'Online Leasing',
-    image: 'portal',
-    body: 'View available apartments and lease online.',
-  },
-  {
     title: 'Renters Insurance',
     image: 'insurance',
     body: `
@@ -76,11 +71,6 @@ export const query = graphql`
       }
     }
     insurance: file(relativePath: { eq: "residents/insurance.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 850 height: 500)
-      }
-    }
-    portal: file(relativePath: { eq: "residents/portal.jpg" }) {
       childImageSharp {
         gatsbyImageData(width: 850 height: 500)
       }

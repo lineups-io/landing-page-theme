@@ -7,14 +7,6 @@ import ApartmentPicker from 'gatsby-theme-atomic-design/src/templates/ApartmentP
 
 const cards = [
   {
-    title: 'Resident Portal',
-    image: 'portal',
-    body: `
-      Schedule rent payments, submit maintenance requests,
-      renew your lease, and more.
-    `,
-  },
-  {
     title: 'Renters Insurance',
     image: 'insurance',
     body: `
@@ -79,11 +71,6 @@ export const query = graphql`
       }
     }
     insurance: file(relativePath: { eq: "residents/insurance.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 850 height: 500)
-      }
-    }
-    portal: file(relativePath: { eq: "residents/portal.jpg" }) {
       childImageSharp {
         gatsbyImageData(width: 850 height: 500)
       }
