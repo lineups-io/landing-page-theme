@@ -48,6 +48,7 @@ const Page = ({ data, location }) => {
         trackingData={trackingData}
         site={site}
         h1='Welcome Neighbors.'
+        h2='Select your community below to schedule rent payments, submit maintenance requests, renew your lease, and more.'
         cards={cards}
         apartments={apartments.items}
         {...images}

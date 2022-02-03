@@ -48,6 +48,7 @@ const Page = ({ data, location }) => {
         trackingData={trackingData}
         site={site}
         h1='Welcome Future Neighbors.'
+        h2='Select your community below to lease online.'
         cards={cards}
         apartments={apartments.items}
         {...images}
