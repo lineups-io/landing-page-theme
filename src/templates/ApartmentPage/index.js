@@ -100,7 +100,7 @@ const App = ({ data, location, pageContext }) => {
           time,
           'schedule-tour': {
             day: day && day.value,
-            time: time && time.value,
+            time,
           },
 
         }).then(({ response }) => {

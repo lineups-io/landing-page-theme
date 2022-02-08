@@ -107,9 +107,9 @@ const Routes = ({
 
       if (key === 'schedule-tour') {
         const { day, time } = data
-        request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time}`
+        request.notes = `TOUR REQUESTED FOR ${dayjs(day).format('ddd - MMM D, YYYY')} at ${time.label}`
         request.day = { value: day }
-        request.time = { value: time }
+        request.time = time
         submitScheduleTour(request)
           .then(({ response }) => {
             trackEvent({
