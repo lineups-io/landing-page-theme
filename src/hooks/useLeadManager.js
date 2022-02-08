@@ -115,6 +115,7 @@ const useLeadManager = ({
       apartment,
       ...data,
       ...scheduleTour,
+      duration,
     }
     console.debug('submitScheduleTour', request)
     return updateLead(request).then(res =>
