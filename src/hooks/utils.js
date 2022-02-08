@@ -1,30 +1,51 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import shajs from 'sha.js'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import timezone from 'dayjs/plugin/timezone'
 
+dayjs.extend(customParseFormat)
 dayjs.extend(utc)
+dayjs.extend(timezone)
 
-const DEFAULT_TIMEZONE = '-0700'
+const getTimezone = str => {
+  let tz = ''
+  if (str.match(/eastern/i)) tz = 'America/New_York'
+  else if (str.match(/central/i)) tz = 'America/Chicago'
+  else if (str.match(/mountain/i)) tz = 'America/Denver'
+  else if (str.match(/pacific/i)) tz = 'America/Los_Angeles'
+  else console.warn(`Timezone ${str} not supported`)
 
-const setTime = (date, time, tz = DEFAULT_TIMEZONE) => {
-  const str = tz.replace(/[^-0-9]/g, '') || '0'
-  const offset = Number.parseInt(str) / 100
-  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_TIMEZONE)}`, 'MM/DD/YYYY HH:mm:ssZZ').utcOffset(offset)
+  return tz
+}
+
+const DEFAULT_OFFSET = '-0700'
+
+const setTime = (date, time) => {
+  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
+  const localTimezone = getTimezone(tz)
   return businessHours
     .map(hr => {
       const date = dayjs(hr.date, 'MM/DD/YYYY')
       const times = []
 
-      const close = setTime(hr.date, hr.endTime, tz)
-      let next = setTime(hr.date, hr.startTime, tz)
+      const close = setTime(hr.date, hr.endTime).tz(localTimezone)
+      let next = setTime(hr.date, hr.startTime).tz(localTimezone)
+      let end = dayjs(next).add(duration, 'minute')
+      const now = dayjs.tz(Date.now(), localTimezone)
 
-      while (next.valueOf() < close.valueOf()) {
-        const value = next.format('hh:mma')
-        times.push({ value, label: value })
+      while (end.valueOf() <= close.valueOf()) {
+        if (next.valueOf() >= now) {
+          const offset = Number.parseInt(DEFAULT_OFFSET) / 100
+          const value = next.utc().utcOffset(offset).format('hh:mma')
+          const label = next.format('hh:mma')
+          times.push({ value, label })
+        }
         next = next.add(duration, 'minute')
+        end = dayjs(next).add(duration, 'minute')
       }
 
       return {
