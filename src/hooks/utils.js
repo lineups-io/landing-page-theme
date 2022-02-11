@@ -22,7 +22,10 @@ const getTimezone = str => {
 const MST_OFFSET = '-0700'
 
 const setTime = (date, time) => {
+  if (time.match(/MST$/))
   return dayjs(`${date} ${time.replace(/MST$/, MST_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
+  else
+    return dayjs(`${date} ${time}`, 'MM/DD/YYYY HH:mm:ss')
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
