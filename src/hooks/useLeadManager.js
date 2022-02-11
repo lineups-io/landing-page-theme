@@ -18,7 +18,9 @@ const useLeadManager = ({
   const [duration, setDuration] = useState(DEFAULT_DURATION)
 
   const propertyId = apartment.externalDataSource.id
-  const timezone = apartment.externalData.timezone
+  const {
+    timezone,
+  } = apartment.externalData
   const hours = apartment.externalData.officeHours || apartment.businessHours
 
   useEffect(() => {
