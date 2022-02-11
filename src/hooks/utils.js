@@ -10,7 +10,8 @@ dayjs.extend(timezone)
 
 const getTimezone = str => {
   let tz = ''
-  if (str.match(/eastern/i)) tz = 'America/New_York'
+  if (!str) tz = dayjs.tz.guess()
+  else if (str.match(/eastern/i)) tz = 'America/New_York'
   else if (str.match(/central/i)) tz = 'America/Chicago'
   else if (str.match(/mountain/i)) tz = 'America/Denver'
   else if (str.match(/pacific/i)) tz = 'America/Los_Angeles'
@@ -23,7 +24,7 @@ const MST_OFFSET = '-0700'
 
 const setTime = (date, time) => {
   if (time.match(/MST$/))
-  return dayjs(`${date} ${time.replace(/MST$/, MST_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
+    return dayjs(`${date} ${time.replace(/MST$/, MST_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
   else
     return dayjs(`${date} ${time}`, 'MM/DD/YYYY HH:mm:ss')
 }
