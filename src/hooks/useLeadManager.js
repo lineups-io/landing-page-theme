@@ -20,8 +20,9 @@ const useLeadManager = ({
   const propertyId = apartment.externalDataSource.id
   const {
     timezone,
+    officeHours = [],
   } = apartment.externalData
-  const hours = apartment.externalData.officeHours || apartment.businessHours
+  const hours = officeHours.length > 0 ? officeHours : apartment.businessHours
 
   useEffect(() => {
     if (scheduleTour.vendor.match(/entrata/i)) {
