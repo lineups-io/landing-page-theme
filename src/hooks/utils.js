@@ -10,7 +10,8 @@ dayjs.extend(timezone)
 
 const getTimezone = str => {
   let tz = ''
-  if (str.match(/eastern/i)) tz = 'America/New_York'
+  if (!str) tz = dayjs.tz.guess()
+  else if (str.match(/eastern/i)) tz = 'America/New_York'
   else if (str.match(/central/i)) tz = 'America/Chicago'
   else if (str.match(/mountain/i)) tz = 'America/Denver'
   else if (str.match(/pacific/i)) tz = 'America/Los_Angeles'
@@ -19,10 +20,13 @@ const getTimezone = str => {
   return tz
 }
 
-const DEFAULT_OFFSET = '-0700'
+const MST_OFFSET = '-0700'
 
 const setTime = (date, time) => {
-  return dayjs(`${date} ${time.replace(/MST$/, DEFAULT_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
+  if (time.match(/MST$/))
+    return dayjs(`${date} ${time.replace(/MST$/, MST_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
+  else
+    return dayjs(`${date} ${time}`, 'MM/DD/YYYY HH:mm:ss')
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
@@ -39,7 +43,7 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
 
       while (end.valueOf() <= close.valueOf()) {
         if (next.valueOf() >= now) {
-          const offset = Number.parseInt(DEFAULT_OFFSET) / 100
+          const offset = Number.parseInt(MST_OFFSET) / 100
           const value = next.utc().utcOffset(offset).format('hh:mma')
           const label = next.format('hh:mma')
           times.push({ value, label })
