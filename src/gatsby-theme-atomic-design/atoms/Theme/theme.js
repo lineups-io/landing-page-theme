@@ -1,6 +1,6 @@
 import { gutter, colors, fonts } from './options'
 
-export default {
+const theme = {
   gutter,
   colors: {
     ...colors,
@@ -24,3 +24,5 @@ export default {
     black: colors.white,
   },
 }
+
+export default theme

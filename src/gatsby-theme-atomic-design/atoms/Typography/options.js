@@ -1,4 +1,4 @@
-export default {
+const typographyOptions = {
   headerFontFamily: ['Calluna', 'serif'],
   bodyFontFamily: ['Beauchef', 'sans-serif'],
   bodyWeight: 400,
@@ -10,3 +10,5 @@ export default {
     }
   },
 }
+
+export default typographyOptions
