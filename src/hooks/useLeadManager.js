@@ -82,6 +82,20 @@ const useLeadManager = ({
       }),
     }).then(res => {
       return res.json()
+    }).then(crmData => {
+      return fetch(`http://localhost:9000/.netlify/functions/save-lead`, {
+        method: 'POST',
+        body: JSON.stringify({
+          firstName: request.user.firstName,
+          lastName: request.user.lastName,
+          email: request.user.email,
+          phone: request.user.phone,
+          apartmentId: apartment && apartment._id,
+          propertyId: vendorPropertyId || propertyId,
+          vendor: vendor.toLowerCase(),
+          crmData,
+        }),
+      }).then(() => crmData)
     })
   }
 
