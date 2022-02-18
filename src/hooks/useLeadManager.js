@@ -80,6 +80,8 @@ const useLeadManager = ({
         originatingLeadSourceId: first && first.id,
         additionalLeadSourceIds: rest.map(l => l.id).join(','),
       }),
+    }).then(res => {
+      return res.json()
     })
   }
 
@@ -94,7 +96,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-guest-card-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
@@ -109,7 +111,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-contact-us-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
@@ -125,7 +127,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-schedule-tour-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
