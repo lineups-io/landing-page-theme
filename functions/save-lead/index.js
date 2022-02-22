@@ -83,7 +83,6 @@ exports.handler = async function(event, context) {
     })
   }).then(body => {
     return {
-      headers: { 'Access-Control-Allow-Origin': '*' },
       statusCode: 200,
       body,
     }
