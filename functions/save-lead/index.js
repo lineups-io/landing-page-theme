@@ -36,6 +36,12 @@ const query = `
   }
 `
 
+const convertToNumber = desired_bedrooms => {
+  if (!desired_bedrooms) return
+
+  return desired_bedrooms === 'Studio' ? 0 : Number.parseInt(desired_bedrooms.replace(/\D/g, ''))
+}
+
 exports.handler = async function(event, context) {
   const {
     firstName,
@@ -46,6 +52,11 @@ exports.handler = async function(event, context) {
     propertyId,
     crmData,
     vendor,
+    bedrooms,
+    ['move-in']: moveInDate,
+    ['floorplan-amenities']: floorplanAmenities,
+    ['community-amenities']: communityAmenities,
+    ['neighborhood-features']: nearby,
   } = JSON.parse(event.body)
 
   const variables = {
@@ -68,6 +79,14 @@ exports.handler = async function(event, context) {
         password: String
         id: ID
         */
+      },
+
+      preferences: {
+        bedrooms: convertToNumber(bedrooms),
+        moveInDate,
+        floorplanAmenities,
+        communityAmenities,
+        nearby,
       },
     },
   }
