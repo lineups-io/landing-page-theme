@@ -83,7 +83,7 @@ const useLeadManager = ({
     }).then(res => {
       return res.json()
     }).then(crmData => {
-      return fetch(`http://localhost:9000/.netlify/functions/save-lead`, {
+      return fetch(`/.netlify/functions/save-lead`, {
         method: 'POST',
         body: JSON.stringify({
           firstName: request.user.firstName,
