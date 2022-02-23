@@ -5,8 +5,8 @@ const base = {
     },
   },
   fonts: {
-    body: 'futura-pt, sans-serif',
-    heading: 'futura-pt, sans-serif',
+    body: 'proxima-nova, sans-serif',
+    heading: 'utopia-std, serif',
   },
   text: {
     heading: {
@@ -19,8 +19,8 @@ const base = {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#005089',
-    secondary: '#00aea7',
+    primary: '#316884',
+    secondary: '#f04f27',
     muted: '#f6f6f6',
   },
   breakpoints: [
