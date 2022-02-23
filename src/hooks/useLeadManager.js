@@ -80,6 +80,22 @@ const useLeadManager = ({
         originatingLeadSourceId: first && first.id,
         additionalLeadSourceIds: rest.map(l => l.id).join(','),
       }),
+    }).then(res => {
+      return res.json()
+    }).then(crmData => {
+      return fetch(`http://localhost:9000/.netlify/functions/save-lead`, {
+        method: 'POST',
+        body: JSON.stringify({
+          firstName: request.user.firstName,
+          lastName: request.user.lastName,
+          email: request.user.email,
+          phone: request.user.phone,
+          apartmentId: apartment && apartment._id,
+          propertyId: vendorPropertyId || propertyId,
+          vendor: vendor.toLowerCase(),
+          crmData,
+        }),
+      }).then(() => crmData)
     })
   }
 
@@ -94,7 +110,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-guest-card-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
@@ -109,7 +125,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-contact-us-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
@@ -125,7 +141,7 @@ const useLeadManager = ({
       fetch('/.netlify/functions/send-schedule-tour-alert', {
         method: 'POST',
         body: JSON.stringify(request),
-      }).then(() => res.json())
+      }).then(() => res)
     ).then(response => ({ request, response }))
   }
 
