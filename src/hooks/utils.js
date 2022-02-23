@@ -26,7 +26,7 @@ const setTime = (date, time) => {
   if (time.match(/MST$/))
     return dayjs(`${date} ${time.replace(/MST$/, MST_OFFSET)}`, 'MM/DD/YYYY HH:mm:ssZZ')
   else
-    return dayjs(`${date} ${time}`, 'MM/DD/YYYY h:mm a')
+    return dayjs(`${date} ${time.toLowerCase()}`, 'MM/DD/YYYY h:mm a')
 }
 
 export const getDates = (businessHours = [], duration = 30, tz) => {
