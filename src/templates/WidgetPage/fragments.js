@@ -27,6 +27,11 @@ export const fragments = graphql`
       }
       externalData {
         timezone
+        officeHours {
+          day
+          openTime
+          closeTime
+        }
       }
       floorplans {
         id
