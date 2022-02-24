@@ -44,10 +44,12 @@ const convertToNumber = desired_bedrooms => {
 
 exports.handler = async function(event, context) {
   const {
-    firstName,
-    lastName,
-    email,
-    phone,
+    user: {
+      firstName,
+      lastName,
+      email,
+      phone,
+    },
     apartmentId,
     propertyId,
     crmData,
