@@ -86,10 +86,7 @@ const useLeadManager = ({
       return fetch(`/.netlify/functions/save-lead`, {
         method: 'POST',
         body: JSON.stringify({
-          firstName: request.user.firstName,
-          lastName: request.user.lastName,
-          email: request.user.email,
-          phone: request.user.phone,
+          ...request,
           apartmentId: apartment && apartment._id,
           propertyId: vendorPropertyId || propertyId,
           vendor: vendor.toLowerCase(),
