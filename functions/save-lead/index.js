@@ -1,4 +1,7 @@
 const request = require('request-promise-native')
+const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 const {
   GRAPHQL_API_URI = 'http://localhost:4000/dev/api/graphql',
@@ -85,7 +88,7 @@ exports.handler = async function(event, context) {
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
-        moveInDate,
+        moveInDate: dayjs(moveInDate, 'MM/DD/YYYY').toISOString(),
         floorplanAmenities,
         communityAmenities,
         nearby,
