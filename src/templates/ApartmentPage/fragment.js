@@ -31,6 +31,7 @@ export const fragments = graphql`
   }
 
   fragment ApartmentFields2 on Lineups_Apartment {
+    _id
     name
     marketingWebsiteUrl
     logo {
