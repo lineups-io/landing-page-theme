@@ -238,6 +238,14 @@ const Routes = ({
 
   const selectTerm = schoolTerms && schoolTerms.options && transform('/move-in', schoolTerms, '/loading', 'value', 4)
 
+  const onScheduleTour = () => {
+    if (info.apartment.scheduleTourUrl) {
+      window.open(info.apartment.scheduleTourUrl)
+    } else {
+      navigate('/schedule-tour')
+    }
+  }
+
   const routes = [
     {
       path: '/',
@@ -269,7 +277,7 @@ const Routes = ({
           event: 'custom.click.cta',
           action: 'Schedule Tour',
         })
-        navigate('/schedule-tour')
+        onScheduleTour()
       },
     },
     transform('/bedrooms', bedrooms, '/floorplan-amenities', 'label', 1),
@@ -307,7 +315,7 @@ const Routes = ({
       onCheckAvailibility: () => navigate('/check-availability'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onScheduleTour,
     },
     {
       path: '/check-availability',
@@ -320,7 +328,7 @@ const Routes = ({
       NavLeft: () => <NavLeft onClick={() => navigate(-1)} />,
       onCall,
       onContactUs: () => navigate('/contact-us'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onScheduleTour,
       onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
@@ -341,7 +349,7 @@ const Routes = ({
       onStartOver: () => navigate('/'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onScheduleTour,
       onCheckAvailibility: () => navigate('/check-availability'),
     },
     {
@@ -363,7 +371,7 @@ const Routes = ({
       onStartOver: () => navigate('/'),
       onCall,
       onContactUs: () => navigate('/contact-us'),
-      onScheduleTour: () => navigate('/schedule-tour'),
+      onScheduleTour,
       onCheckAvailibility: () => navigate('/check-availability'),
     },
   ]

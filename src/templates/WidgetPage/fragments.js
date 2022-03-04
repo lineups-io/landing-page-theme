@@ -14,6 +14,7 @@ export const fragments = graphql`
       name
       prospectPhoneNumber
       floorPlanUrl
+      scheduleTourUrl
       primaryMarket {
         market
         submarket
