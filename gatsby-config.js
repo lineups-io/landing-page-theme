@@ -2,30 +2,17 @@ const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development
 
 const queries = require('./gatsby-algolia.js')
 
-console.log('[landing-page-site] ' + activeEnv)
+console.log('[site] NODE_ENV=' + activeEnv)
 
 require('dotenv').config({
   path: `${ __dirname }/.env.${ activeEnv }`,
 })
 
-const algolia = process.env.ALGOLIA_ADMIN_KEY ? [
-  {
-    resolve: 'gatsby-plugin-algolia',
-    options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID,
-      apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      queries,
-      chunkSize: 10000, // default: 1000
-    },
-  },
-] : []
+const gtm = JSON.parse(process.env.GOOGLE_TAG_MANAGER)
 
-const gatsbyPluginGoogleTagmanager = process.env.GOOGLE_TAG_MANAGER_ID.split(',').map((id, index) => ({
+const gatsbyPluginGoogleTagmanager = gtm.map(options => ({
   resolve: 'gatsby-plugin-google-tagmanager',
-  options: {
-    id,
-    routeChangeEventName: index > 0 ? 'IGNORE_gatsby-route-change' : undefined,
-  },
+  options,
 }))
 
 module.exports = {
@@ -34,6 +21,15 @@ module.exports = {
     siteUrl: process.env.URL,
   },
   'plugins': [
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          account: process.env.ACCOUNT,
+          facebookDomainVerification: process.env.FACEBOOK_DOMAIN_VERIFICATION,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,7 +53,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/noindex/*', '/search'],
+        excludes: ['/noindex/*', '/search'],
       },
     },
     'gatsby-plugin-meta-redirect',
@@ -67,7 +63,19 @@ module.exports = {
         allPageHeaders: [
           'Link: <https://www.googletagmanager.com>; rel=preconnect;',
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
+          'Link: <https://lineups.imgix.net>; rel=preconnect;',
+          'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
+          'Link: <https://res.cloudinary.com>; rel=preconnect;',
         ],
+        headers: {
+          '/widgets/*': [
+            'X-Frame-Options: SAMEORIGIN',
+            `Content-Security-Policy: frame-ancestors *`,
+          ],
+          '/search/': [
+            `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
+          ],
+        },
       },
     },
     {
@@ -78,6 +86,17 @@ module.exports = {
         url: process.env.GRAPHQL_API_URI,
         headers: {
           Authorization: `Bearer ${ process.env.GRAPHQL_API_KEY }`,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Admin',
+        fieldName: 'admin',
+        url: process.env.ADMIN_GRAPHQL_URI,
+        headers: {
+          Authorization: `Bearer ${ process.env.ADMIN_GRAPHQL_KEY }`,
         },
       },
     },
@@ -94,8 +113,23 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
     'gatsby-theme-atomic-design',
-    ...algolia,
+    'gatsby-plugin-percy',
+    {
+      resolve: `gatsby-theme-lineups`,
+      options: { },
+    },
+    'gatsby-plugin-percy',
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
   ]
 }
