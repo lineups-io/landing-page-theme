@@ -1,4 +1,7 @@
 const request = require('request-promise-native')
+const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 const {
   GRAPHQL_API_URI = 'http://localhost:4000/dev/api/graphql',
@@ -41,6 +44,8 @@ const convertToNumber = desired_bedrooms => {
 
   return desired_bedrooms === 'Studio' ? 0 : Number.parseInt(desired_bedrooms.replace(/\D/g, ''))
 }
+
+const isDate = d => typeof d.getMonth === 'function'
 
 exports.handler = async function(event, context) {
   const {
@@ -85,7 +90,7 @@ exports.handler = async function(event, context) {
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
-        moveInDate,
+        moveInDate: isDate(moveInDate) ? moveInDate : dayjs(moveInDate, 'MM/DD/YYYY').toDate(),
         floorplanAmenities,
         communityAmenities,
         nearby,
