@@ -89,6 +89,7 @@ const Routes = ({
       }
 
       let daysToMoveIn
+      request['move-in'] = Array.isArray(request['move-in']) ? request['move-in'][0] : request['move-in']
 
       if (request['move-in']) {
         const today = dayjs()

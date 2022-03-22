@@ -44,7 +44,9 @@ export const getDates = (businessHours = [], duration = 30, tz) => {
 
       while (end.valueOf() <= close.valueOf()) {
         if (next.valueOf() >= now) {
-          const offset = Number.parseInt(MST_OFFSET) / 100
+          // MDT => GMT-0600 or MST => GMT-0700
+          const isDaylightSaving = next.offsetName().match(/dt$/i)
+          const offset = isDaylightSaving ? -6 : -7
           const value = next.utc().utcOffset(offset).format('hh:mma')
           const label = next.format('hh:mma')
           times.push({ value, label })
