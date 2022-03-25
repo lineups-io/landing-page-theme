@@ -100,7 +100,7 @@ exports.handler = async function(event, context) {
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
-        moveInDate: isDate(moveInDate) ? moveInDate : dayjs(moveInDate, 'MM/DD/YYYY').toDate(),
+        moveInDate: !moveInDate || isDate(moveInDate) ? moveInDate : dayjs(moveInDate, 'MM/DD/YYYY').toDate(),
         floorplanAmenities,
         communityAmenities,
         nearby,
