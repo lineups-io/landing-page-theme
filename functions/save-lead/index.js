@@ -64,7 +64,7 @@ exports.handler = async function(event, context) {
     ['floorplan-amenities']: floorplanAmenities,
     ['community-amenities']: communityAmenities,
     ['neighborhood-features']: nearby,
-    ...form,
+    ...form
   } = JSON.parse(event.body)
 
   let requestedTourDate
