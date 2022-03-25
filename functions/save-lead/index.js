@@ -64,7 +64,15 @@ exports.handler = async function(event, context) {
     ['floorplan-amenities']: floorplanAmenities,
     ['community-amenities']: communityAmenities,
     ['neighborhood-features']: nearby,
+    ...form,
   } = JSON.parse(event.body)
+
+  let requestedTourDate
+
+  if (form.day && form.time) {
+    const day = dayjs(form.day.value).format('MM/DD/YYYY')
+    requestedTourDate = dayjs(`${day} ${form.time.label}`, 'MM/DD/YYYY hh:mma').toDate()
+  }
 
   const variables = {
     doc: {
@@ -87,6 +95,8 @@ exports.handler = async function(event, context) {
         id: ID
         */
       },
+
+      requestedTourDate,
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
