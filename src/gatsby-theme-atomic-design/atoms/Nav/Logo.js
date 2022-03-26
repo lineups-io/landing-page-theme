@@ -4,8 +4,8 @@ import Logo from 'gatsby-theme-atomic-design/src/atoms/Nav/Logo'
 
 const CustomLogo = styled(Logo)`
   margin: 0;
-  width: 73.5px;
-  height: 64px;
+  width: 128px;
+  height: 35px;
 `
 
 export default CustomLogo

@@ -20,7 +20,7 @@ const base = {
     text: '#000',
     background: '#fff',
     primary: '#316884',
-    secondary: '#316884',
+    secondary: '#f04f27',
     muted: '#f6f6f6',
   },
   breakpoints: [
