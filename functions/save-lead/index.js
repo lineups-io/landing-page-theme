@@ -45,7 +45,16 @@ const convertToNumber = desired_bedrooms => {
   return desired_bedrooms === 'Studio' ? 0 : Number.parseInt(desired_bedrooms.replace(/\D/g, ''))
 }
 
-const isDate = d => typeof d.getMonth === 'function'
+const getDate = str => {
+  if (!str)
+    return
+  else if (dayjs(str).isValid())
+    return dayjs(str).toDate()
+  else if (dayjs(str, 'MM/DD/YYYY').isValid())
+    return dayjs(str, 'MM/DD/YYYY').toDate()
+  else
+    return str
+}
 
 exports.handler = async function(event, context) {
   const {
@@ -100,7 +109,7 @@ exports.handler = async function(event, context) {
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
-        moveInDate: !moveInDate || isDate(moveInDate) ? moveInDate : dayjs(moveInDate, 'MM/DD/YYYY').toDate(),
+        moveInDate: getDate(moveInDate),
         floorplanAmenities,
         communityAmenities,
         nearby,
