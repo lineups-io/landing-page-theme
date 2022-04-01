@@ -8,37 +8,6 @@ const {
   GRAPHQL_API_KEY = '',
 } = process.env
 
-const query = `
-  fragment LeadFields on Lead {
-    _id
-    firstName
-    lastName
-    email
-    phone
-
-    vendor
-
-    propertyId
-    # property
-
-    leadId
-    # lead
-
-    # activity
-
-    apartmentId
-    # apartment
-    createdAt
-    updatedAt
-  }
-
-  mutation saveLead ($doc: LeadInput) {
-    insertLead(doc: $doc) {
-      ...LeadFields
-    }
-  }
-`
-
 const convertToNumber = desired_bedrooms => {
   if (!desired_bedrooms) return
 
@@ -73,6 +42,8 @@ exports.handler = async function(event, context) {
     ['floorplan-amenities']: floorplanAmenities,
     ['community-amenities']: communityAmenities,
     ['neighborhood-features']: nearby,
+    question,
+    notes,
     ...form
   } = JSON.parse(event.body)
 
@@ -106,6 +77,8 @@ exports.handler = async function(event, context) {
       },
 
       requestedTourDate,
+      question,
+      notes,
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
@@ -117,15 +90,12 @@ exports.handler = async function(event, context) {
     },
   }
 
-  return request.post(GRAPHQL_API_URI, {
+  return request.post(GRAPHQL_API_URI.replace(/graphql$/, 'save-lead'), {
     headers: {
       Authorization: `Bearer ${GRAPHQL_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      query,
-      variables,
-    })
+    body: variables.doc,
   }).then(body => {
     return {
       statusCode: 200,
