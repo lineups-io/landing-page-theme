@@ -95,11 +95,12 @@ exports.handler = async function(event, context) {
       Authorization: `Bearer ${GRAPHQL_API_KEY}`,
       'Content-Type': 'application/json',
     },
+    json: true,
     body: variables.doc,
   }).then(body => {
     return {
       statusCode: 200,
-      body,
+      body: JSON.stringify(body),
     }
   })
 }
