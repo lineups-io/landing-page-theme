@@ -18,9 +18,9 @@ const getDate = str => {
   if (!str)
     return
   else if (dayjs(str).isValid())
-    return dayjs(str).toDate()
+    return dayjs(str).toISOString()
   else if (dayjs(str, 'MM/DD/YYYY').isValid())
-    return dayjs(str, 'MM/DD/YYYY').toDate()
+    return dayjs(str, 'MM/DD/YYYY').toISOString()
   else
     return str
 }
@@ -51,7 +51,7 @@ exports.handler = async function(event, context) {
 
   if (form.day && form.time) {
     const day = dayjs(form.day.value).format('MM/DD/YYYY')
-    requestedTourDate = dayjs(`${day} ${form.time.label}`, 'MM/DD/YYYY hh:mma').toDate()
+    requestedTourDate = dayjs(`${day} ${form.time.label}`, 'MM/DD/YYYY hh:mma').toISOString()
   }
 
   const variables = {
