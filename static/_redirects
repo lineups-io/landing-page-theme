@@ -1,5 +1,4 @@
 # Optional: Redirect default Netlify subdomain to primary domain
-https://rentals.bluestonemap.com/* https://rentals.bluestonemap.com/:splat 301!
 https://rentals.bluestonemap.app/* https://rentals.bluestonemap.com/:splat 301!
 
 / /locations/
