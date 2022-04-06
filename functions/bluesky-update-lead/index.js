@@ -1,4 +1,4 @@
-exports.handler = function(event, context) {
+exports.handler = async function(event, context) {
   // Only allow POST
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
