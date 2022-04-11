@@ -121,7 +121,6 @@ module.exports = {
       resolve: `gatsby-theme-lineups`,
       options: { },
     },
-    'gatsby-plugin-percy',
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
