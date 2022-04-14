@@ -8,37 +8,6 @@ const {
   GRAPHQL_API_KEY = '',
 } = process.env
 
-const query = `
-  fragment LeadFields on Lead {
-    _id
-    firstName
-    lastName
-    email
-    phone
-
-    vendor
-
-    propertyId
-    # property
-
-    leadId
-    # lead
-
-    # activity
-
-    apartmentId
-    # apartment
-    createdAt
-    updatedAt
-  }
-
-  mutation saveLead ($doc: LeadInput) {
-    insertLead(doc: $doc) {
-      ...LeadFields
-    }
-  }
-`
-
 const convertToNumber = desired_bedrooms => {
   if (!desired_bedrooms) return
 
@@ -49,9 +18,9 @@ const getDate = str => {
   if (!str)
     return
   else if (dayjs(str).isValid())
-    return dayjs(str).toDate()
+    return dayjs(str).toISOString()
   else if (dayjs(str, 'MM/DD/YYYY').isValid())
-    return dayjs(str, 'MM/DD/YYYY').toDate()
+    return dayjs(str, 'MM/DD/YYYY').toISOString()
   else
     return str
 }
@@ -73,6 +42,8 @@ exports.handler = async function(event, context) {
     ['floorplan-amenities']: floorplanAmenities,
     ['community-amenities']: communityAmenities,
     ['neighborhood-features']: nearby,
+    question,
+    notes,
     ...form
   } = JSON.parse(event.body)
 
@@ -80,7 +51,7 @@ exports.handler = async function(event, context) {
 
   if (form.day && form.time) {
     const day = dayjs(form.day.value).format('MM/DD/YYYY')
-    requestedTourDate = dayjs(`${day} ${form.time.label}`, 'MM/DD/YYYY hh:mma').toDate()
+    requestedTourDate = dayjs(`${day} ${form.time.label}`, 'MM/DD/YYYY hh:mma').toISOString()
   }
 
   const variables = {
@@ -106,6 +77,8 @@ exports.handler = async function(event, context) {
       },
 
       requestedTourDate,
+      question,
+      notes,
 
       preferences: {
         bedrooms: convertToNumber(bedrooms),
@@ -117,19 +90,17 @@ exports.handler = async function(event, context) {
     },
   }
 
-  return request.post(GRAPHQL_API_URI, {
+  return request.post(GRAPHQL_API_URI.replace(/graphql$/, 'save-lead'), {
     headers: {
       Authorization: `Bearer ${GRAPHQL_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      query,
-      variables,
-    })
+    json: true,
+    body: variables.doc,
   }).then(body => {
     return {
       statusCode: 200,
-      body,
+      body: JSON.stringify(body),
     }
   })
 }
