@@ -50,10 +50,6 @@ Hero.Subheader = styled.h3`
   color: #fff !important;
   font-size: 1.8em;
   line-height: 44px;
-
-  @media (min-width: 576px) {
-    margin-left: 39px;
-  }
 `
 
 Hero.Link = styled(Link)`
@@ -64,10 +60,6 @@ Hero.Link = styled(Link)`
   color: #fff;
   padding: 0;
 
-  @media (min-width: 576px) {
-    margin-left: 39px;
-  }
-
   &:hover {
     color: #fff;
     text-decoration: none;
@@ -75,6 +67,12 @@ Hero.Link = styled(Link)`
 
   > svg {
     margin-left: 6px;
+  }
+`
+
+Hero.Indent = styled.div`
+  @media (min-width: 576px) {
+    padding-left: 39px;
   }
 `
 

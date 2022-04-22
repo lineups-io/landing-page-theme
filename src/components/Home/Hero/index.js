@@ -22,10 +22,12 @@ export default () => {
     <Container>
       <Hero>
         <Hero.Header>Life Made Simple is:</Hero.Header>
-        <Hero.Subheader>Reserving your new home online.</Hero.Subheader>
-        <Hero.Link href='/locations/'>
-            View Our Locations
-        </Hero.Link>
+        <Hero.Indent>
+          <Hero.Subheader>Reserving your new home online.</Hero.Subheader>
+          <Hero.Link href='/locations/'>
+              View Our Locations
+          </Hero.Link>
+        </Hero.Indent>
       </Hero>
     </Container>
   </Section>
