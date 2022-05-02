@@ -1,6 +1,6 @@
 const typographyOptions = {
-  headerFontFamily: ['utopia-std', 'serif'],
-  bodyFontFamily: ['proxima-nova', 'sans-serif'],
+  headerFontFamily: ['Playfair Display', 'serif'],
+  bodyFontFamily: ['Avenir Next', 'sans-serif'],
   bodyWeight: 500,
   scaleRatio: 2.5,
   overrideThemeStyles: function overrideThemeStyles(vr, options, styles) {

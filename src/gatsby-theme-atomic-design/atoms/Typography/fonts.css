@@ -1,1 +1,33 @@
-@import url('https://use.typekit.net/dvz7vdi.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@900&display=swap');
+
+@font-face {
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Linotype - AvenirNextLTPro-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Linotype - AvenirNextLTPro-Medium.otf') format('opentyp');
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Linotype - AvenirNextLTPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Linotype - AvenirNextLTPro-Light.otf') format('opentype');
+}
