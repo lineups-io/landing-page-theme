@@ -12,11 +12,11 @@ const CustomLink = styled(Link)`
   &:hover,
   &.active,
   .active & {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.secondary};
   }
 
   &::before {
-    display: none;
+    background-color: ${props => props.theme.colors.secondary};
   }
 `
 
