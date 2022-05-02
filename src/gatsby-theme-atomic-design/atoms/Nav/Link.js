@@ -16,7 +16,7 @@ const CustomLink = styled(Link)`
   }
 
   &::before {
-    display: none;
+    background-color: ${props => props.theme.colors.primary};
   }
 `
 
