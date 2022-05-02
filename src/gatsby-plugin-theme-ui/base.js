@@ -5,8 +5,8 @@ const base = {
     },
   },
   fonts: {
-    body: 'proxima-nova, sans-serif',
-    heading: 'utopia-std, serif',
+    body: 'Avenir Next, sans-serif',
+    heading: 'Poynter Oldstyle Display, serif',
   },
   text: {
     heading: {
