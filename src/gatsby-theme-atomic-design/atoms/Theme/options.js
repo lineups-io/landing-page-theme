@@ -5,9 +5,9 @@ const { headerFontFamily, bodyFontFamily } = typography
 export const gutter = 15
 
 export const colors = {
-  primary: '#f04f27',
-  secondary: '#316884',
-  tertiary: '#316884',
+  primary: '#0078AC',
+  secondary: '#0078AC',
+  tertiary: '#AE152E',
   special: '#67B39F',
   gray50: '#FAFAFA',
   gray100: '#F5F5F5',
