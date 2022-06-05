@@ -7,6 +7,10 @@ const CustomMarket = styled(Market)`
   font-weight: lighter;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  &::after {
+    background-color: ${ props => props.theme.colors.primary };
+  }
 `
 
 export default CustomMarket

@@ -14,6 +14,7 @@ const CustomSection = styled(Section)`
 
   h4 {
     font-weight: 500;
+    color: ${ props => props.theme.colors.primary };
   }
 
   ${ ListItem } ${ Link } {
