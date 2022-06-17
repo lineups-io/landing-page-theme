@@ -105,6 +105,13 @@ Hero.IconButton = styled.button`
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+Hero.Spacer = styled.div`
+  height: 20px;
 `
 
 Hero.ModalContainer = styled.div`
