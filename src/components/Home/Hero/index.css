@@ -21,7 +21,7 @@
 @media (min-width: 992px) {
   .ReactModal__Content {
     border-radius: 4px !important;
-    max-height: 550px !important;
+    max-height: 775px !important;
     max-width: 80vw !important;
     inset: 40px !important;
   }
