@@ -75,6 +75,9 @@ module.exports = {
           '/search/': [
             `Link: <https://${ process.env.GATSBY_ALGOLIA_APP_ID }-dsn.algolia.net>; rel=preconnect;`,
           ],
+          '/': [
+            'Link: <https://lineups-apartment-search-aim2022.netlify.app>; rel=prerender;',
+          ],
         },
       },
     },
