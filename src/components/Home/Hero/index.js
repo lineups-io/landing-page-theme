@@ -47,7 +47,6 @@ export default () => {
       <Hero.IconButton onClick={() => setOpen(false)}>
         <Icon icon={faTimes} />
       </Hero.IconButton>
-      <Hero.Spacer />
       <iframe src='https://lineups-apartment-search-aim2022.netlify.app/' />
     </Modal>
   </Section>

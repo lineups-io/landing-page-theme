@@ -110,10 +110,6 @@ Hero.IconButton = styled.button`
   right: 0;
 `
 
-Hero.Spacer = styled.div`
-  height: 20px;
-`
-
 Hero.ModalContainer = styled.div`
   .ReactModal__Content {
     padding: 0;
