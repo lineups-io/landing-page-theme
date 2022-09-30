@@ -1,8 +1,9 @@
 const typographyOptions = {
-  headerFontFamily: ['Avenir', 'sans-serif'],
-  bodyFontFamily: ['Avenir', 'sans-serif'],
+  headerFontFamily: ['ff-good-headline-web-pro-con', 'sans-serif'],
+  bodyFontFamily: ['ff-good-headline-condensed-p', 'sans-serif'],
   bodyWeight: 500,
   scaleRatio: 2.5,
+  baseFontSize: '20px',
   overrideThemeStyles: function overrideThemeStyles(vr, options, styles) {
     return {
       'h1': {
