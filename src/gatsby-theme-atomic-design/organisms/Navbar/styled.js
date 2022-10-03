@@ -131,6 +131,10 @@ export const Menu = styled.div`
 `
 
 export const HamburgerMenu = styled.div`
+  .hamburger__bun {
+    background-color: ${ props => props.theme.colors.black };
+  }
+
   ${ Menu } {
     z-index: 1010;
     display: flex;
