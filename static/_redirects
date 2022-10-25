@@ -1,5 +1,5 @@
 # Redirect default Netlify subdomain to primary domain
-# https://s2-residential.netlify.com/* https://search.lives2residential.com/:splat 301!
-# https://s2-residential.netlify.app/* https://search.lives2residential.com/:splat 301!
+https://s2-residential.netlify.com/* https://search.lives2residential.com/:splat 301!
+https://s2-residential.netlify.app/* https://search.lives2residential.com/:splat 301!
 
 / /locations/
