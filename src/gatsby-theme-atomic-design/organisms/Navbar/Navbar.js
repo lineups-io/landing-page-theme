@@ -19,7 +19,7 @@ const Navbar = ({ menu = [] }) => {
   )
 
   menuItems.push(
-    <FeaturedMenuItem key="find-a-community" href="locations">
+    <FeaturedMenuItem key="find-a-community" href="/search/?hitsPerPage=50&noheader=false&start=map">
       <span>Find a Community</span>
       <FontAwesomeIcon icon={faArrowRight} />
     </FeaturedMenuItem>
