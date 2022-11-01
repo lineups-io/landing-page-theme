@@ -13,7 +13,7 @@ import {
 import { ReactComponent as Logo } from "./logo.svg"
 import Hamburger from "./Hamburger"
 
-const Navbar = ({ menu = [] }) => {
+const Navbar = ({ menu = [], logo }) => {
   const menuItems = menu.map((item, i) =>
     <MenuItem key={i} href={item.href}>{item.title}</MenuItem>
   )
@@ -27,7 +27,7 @@ const Navbar = ({ menu = [] }) => {
 
   return (
     <Container>
-      <Brand>
+      <Brand href={logo.url}>
         <Logo />
       </Brand>
       <Menu>{menuItems}</Menu>

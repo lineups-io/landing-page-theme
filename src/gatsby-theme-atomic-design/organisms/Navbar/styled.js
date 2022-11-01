@@ -22,7 +22,7 @@ export const Container = styled.div`
   }
 `
 
-export const Brand = styled.div`
+export const Brand = styled.a`
   svg {
       width: 192px;
       height: 28px;
