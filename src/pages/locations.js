@@ -6,17 +6,20 @@ import Layout from 'gatsby-theme-atomic-design/src/templates/Locations'
 
 import Header from '../components/Locations/Header'
 
+export const Head = ({ pageContext }) => {
+  return <Helmet title='Search'>
+    {[
+      { name: 'description', content: 'Find a Home' },
+      { name: 'facebook-domain-verification', content: pageContext.facebookDomainVerification },
+    ].map((props, i) => <meta key={i} {...props} />)}
+  </Helmet>
+}
+
 const Page = ({ data, location, pageContext }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
 
   return <>
-    <Helmet title={title}>
-      {[
-        { name: 'description', content: 'Find a Home' },
-        { name: 'facebook-domain-verification', content: pageContext.facebookDomainVerification },
-      ].map((props, i) => <meta key={i} {...props} />)}
-    </Helmet>
     <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} header={<Header />} />
   </>
 }
