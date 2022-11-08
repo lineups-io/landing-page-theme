@@ -11,6 +11,16 @@ import useLeadManager from '../../hooks/useLeadManager'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { ID, hash } from '../../hooks/utils'
 
+export const Head = ({ data }) => {
+  const { apartment } = data.lineups
+  const { seo = {} } = apartment
+  const title = seo ? seo.title : apartment.name
+  return <Helmet title={title}>
+    <meta name='description' content={seo ? seo.description : ''} />
+    <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
+  </Helmet>
+}
+
 const App = ({ data, location, pageContext }) => {
   const [store] = useLocalStorage('store', { user: {} })
 
@@ -135,10 +145,6 @@ const App = ({ data, location, pageContext }) => {
 
   return (
     <>
-        <Helmet title={title}>
-          <meta name='description' content={seo ? seo.description : ''} />
-          <script type='application/ld+json'>{JSON.stringify(JsonLd(apartment))}</script>
-        </Helmet>
         <Layout trackingData={trackingData} {...site} apartment={apartment} {...props} />
         {bubble ? <Widget {...bubble} /> : null}
     </>
