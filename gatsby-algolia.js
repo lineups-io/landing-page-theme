@@ -4,6 +4,14 @@ const fragments = `
     name
     adLabel
     spotlight
+    type
+    primaryMarket {
+      state {
+        name
+      }
+      market
+      submarket
+    }
     address {
       line1
       city
