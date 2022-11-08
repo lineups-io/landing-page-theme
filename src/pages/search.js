@@ -5,6 +5,14 @@ import algoliasearch from 'algoliasearch/lite'
 import Helmet from 'gatsby-theme-atomic-design/src/organisms/Helmet'
 import Layout from 'gatsby-theme-atomic-design/src/templates/Search'
 
+export const Head = () => {
+  return <Helmet title='Search'>
+    {[
+      { name: 'robots', content: 'noindex,nofollow' },
+    ].map((props, i) => <meta key={i} {...props} />)}
+  </Helmet>
+}
+
 const SearchPage = ({ data, location, navigate }) => {
   const title = 'Search'
   const trackingData = { title, page: location.pathname }
@@ -15,11 +23,6 @@ const SearchPage = ({ data, location, navigate }) => {
   )
 
   return <>
-    <Helmet title={title}>
-      {[
-        { name: 'robots', content: 'noindex,nofollow' },
-      ].map((props, i) => <meta key={i} {...props} />)}
-    </Helmet>
     <Layout trackingData={trackingData} {...data.lineups.site} markets={data.lineups.markets} location={location} navigate={navigate} searchClient={searchClient} />
   </>
 }
