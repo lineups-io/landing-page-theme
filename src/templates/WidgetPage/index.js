@@ -11,7 +11,7 @@ import Routes from './Routes'
 import './index.css'
 
 export const Head = ({ data }) => {
-  const { theme } = data.admin.widget.info.account
+  const theme = data.admin.widget.info.account.theme
   return <style id='theme-fonts'>{theme.fonts}</style>
 }
 
