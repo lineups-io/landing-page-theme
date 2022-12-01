@@ -243,7 +243,7 @@ const queries = [
       attributesForFaceting: [
         'state',
         'market',
-        'submarket',
+        'searchable(submarket)',
         'floorplan.bedrooms',
         'unit.dateAvailableTimestamp',
         'rent',
