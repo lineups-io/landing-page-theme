@@ -149,11 +149,17 @@ const transformer = ({ data }) => {
       const mkt = st + ' > ' + m.market
       const sub = m.submarket && mkt + ' > ' + m.submarket
 
-      if (apartment.state.indexOf(st) === -1) { apartment.state.push(st) }
+      if (apartment.state.indexOf(st) === -1) {
+        apartment.state.push(st)
+      }
 
-      if (apartment.market.indexOf(mkt) === -1) { apartment.market.push(mkt) }
+      if (apartment.market.indexOf(mkt) === -1) {
+        apartment.market.push(mkt)
+      }
 
-      if (sub && apartment.submarket.indexOf(sub) === -1) { apartment.submarket.push(sub) }
+      if (sub && apartment.submarket.indexOf(sub) === -1) {
+        apartment.submarket.push(sub)
+      }
     })
 
     const docs = []
