@@ -140,6 +140,7 @@ const transformer = ({ data }) => {
     apartment.state = []
     apartment.market = []
     apartment.submarket = []
+    apartment.allMarkets = []
     apartment.externalData = {
       propertyAverageRating: externalData && externalData.propertyAverageRating,
     }
@@ -151,14 +152,17 @@ const transformer = ({ data }) => {
 
       if (apartment.state.indexOf(st) === -1) {
         apartment.state.push(st)
+        apartment.allMarkets.push(st)
       }
 
       if (apartment.market.indexOf(mkt) === -1) {
         apartment.market.push(mkt)
+        apartment.allMarkets.push(mkt.split(' > ').reverse().join(', '))
       }
 
       if (sub && apartment.submarket.indexOf(sub) === -1) {
         apartment.submarket.push(sub)
+        apartment.allMarkets.push(sub.split(' > ').reverse().join(', '))
       }
     })
 
@@ -249,10 +253,11 @@ const queries = [
       attributesForFaceting: [
         'state',
         'market',
-        'searchable(submarket)',
+        'submarket',
         'floorplan.bedrooms',
         'unit.dateAvailableTimestamp',
         'rent',
+        'searchable(allMarkets)',
       ],
       distinct: 1,
       attributeForDistinct: 'groupBy',
