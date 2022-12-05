@@ -39,6 +39,7 @@ const fragments = `
       }
       market
       submarket
+      marketingCoop
     }
     floorPlans {
       id
@@ -156,12 +157,14 @@ const transformer = ({ data }) => {
 
       if (apartment.market.indexOf(mkt) === -1) {
         apartment.market.push(mkt)
-        apartment.allMarkets.push('- ' + mkt.split(' > ').reverse().join(', '))
+        if (!m.marketingCoop)
+          apartment.allMarkets.push('- ' + mkt.split(' > ').reverse().join(', '))
       }
 
       if (sub && apartment.submarket.indexOf(sub) === -1) {
         apartment.submarket.push(sub)
-        apartment.allMarkets.push(sub.split(' > ').reverse().join(', '))
+        if (!m.marketingCoop)
+          apartment.allMarkets.push(sub.split(' > ').reverse().join(', '))
       }
     })
 
