@@ -156,7 +156,7 @@ const transformer = ({ data }) => {
 
       if (apartment.market.indexOf(mkt) === -1) {
         apartment.market.push(mkt)
-        apartment.allMarkets.push(mkt.split(' > ').reverse().join(', '))
+        apartment.allMarkets.push('- ' + mkt.split(' > ').reverse().join(', '))
       }
 
       if (sub && apartment.submarket.indexOf(sub) === -1) {
