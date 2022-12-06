@@ -263,6 +263,18 @@ const queries = [
       ],
       distinct: 1,
       attributeForDistinct: 'groupBy',
+      ranking: [
+        'desc(spotlight)',
+        'asc(name)',
+        'typo',
+        'geo',
+        'words',
+        'filters',
+        'proximity',
+        'attribute',
+        'exact',
+        'custom',
+      ],
     },
   },
 ]
