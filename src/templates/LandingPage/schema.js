@@ -8,7 +8,7 @@ export const getSchemaOrgJSONLD = (breadcrumb, apartments) => {
   const keys = ['market', 'submarket']
   keys.forEach((key, i) => {
     const item = breadcrumb[key]
-    if (item) {
+    if (item && item.marketPage) {
       breadcrumbList.push({
         '@type': 'ListItem',
         'position': i + 1,
