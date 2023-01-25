@@ -1,4 +1,7 @@
 // gatsby-node.js
+const dayjs = require('dayjs')
+const sort = dayjs().date() % 2 === 0 ? '1' : '-1'
+
 const createLineupsApartmentPage = (node, createPage) => {
   const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id } = node
   if (enabledFeatures.indexOf('microsite') > -1) {
@@ -49,6 +52,7 @@ const createLineupsPage = (node, createPage) => {
     context: {
       id,
       page,
+      sort,
     },
   })
 }

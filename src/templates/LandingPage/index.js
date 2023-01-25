@@ -98,7 +98,7 @@ const LandingPage = ({ data, location }) => {
 }
 
 export const query = graphql`
-  query getLineupsPage($page: ID! $account: ID!) {
+  query getLineupsPage($page: ID! $account: ID! $sort: String!) {
     lineups {
       site: getAccountById(id: $account) {
           ...NavFields
@@ -112,7 +112,7 @@ export const query = graphql`
         ...BreadcrumbFields
         apartments(
           filter: { status: published }
-          sort: [["spotlight", "-1"], ["name", "1"]]
+          sort: [["spotlight", "-1"], ["name", $sort]]
         ) {
           count
           items {
