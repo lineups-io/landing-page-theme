@@ -33,6 +33,10 @@ const fragments = `
       url
       alt
     }
+    carousel: landingPageCarousel {
+      url
+      alt
+    }
     markets {
       state {
         name
