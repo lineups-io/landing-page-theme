@@ -20,7 +20,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@percy/agent": "^0.28.6",
     "@sendgrid/client": "^7.4.2",
     "@theme-ui/presets": "^0.11.3",
     "assert": "^2.0.0",
@@ -37,18 +36,16 @@
     "gatsby-plugin-manifest": "^4.0.0",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-netlify": "^4.0.0",
-    "gatsby-plugin-percy": "^0.1.4",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^4.0.0",
     "gatsby-plugin-sitemap": "^5.0.0",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-source-graphql": "^4.0.0",
-    "gatsby-source-landing-pages": "https://github.com/lineups-io/gatsby-source-landing-pages.git#v3.0.0",
-    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v4.0.13",
-    "gatsby-theme-lineups": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-lineups.git#v2.0.0",
+    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v4.0.15",
     "gatsby-transformer-remark": "^5.0.0",
     "gatsby-transformer-sharp": "^4.0.0",
     "numeral": "^2.0.6",
+    "polished": "^3.6.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -57,6 +54,7 @@
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
     "sha.js": "^2.4.11",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "theme-ui": "^0.15.7"
   }
 }
