@@ -101,7 +101,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-landing-pages',
+      resolve: `gatsby-theme-atomic-design`,
       options: {
         account: process.env.ACCOUNT,
         url: process.env.GRAPHQL_API_URI,
@@ -115,12 +115,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-image',
     'gatsby-plugin-remove-serviceworker',
-    'gatsby-theme-atomic-design',
-    'gatsby-plugin-percy',
-    {
-      resolve: `gatsby-theme-lineups`,
-      options: { },
-    },
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
