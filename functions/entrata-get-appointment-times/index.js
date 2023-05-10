@@ -23,7 +23,7 @@ const getCalendarAvailability = (propertyId, date) => {
       params: {
         propertyId: propertyId,
         fromDate: dayjs(date).format('MM/DD/YYYY'),
-        toDate: dayjs(date).add(6, 'days').format('MM/DD/YYYY'),
+        toDate: dayjs(date).add(7, 'days').format('MM/DD/YYYY'),
         calendarEventCategoryIds: [
           '1', // General
           '2', // Resident
@@ -54,7 +54,7 @@ exports.handler = async function(event, context) {
 
   return Promise.all([
     getCalendarAvailability(propertyId, dayjs()),
-    getCalendarAvailability(propertyId, dayjs().add(7, 'days')),
+    getCalendarAvailability(propertyId, dayjs().add(8, 'days')),
   ]).then(values => {
     return merge.all(values)
   }).then(({ response }) => {
