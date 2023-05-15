@@ -3,7 +3,8 @@ const dayjs = require('dayjs')
 const sort = dayjs().date() % 2 === 0 ? '1' : '-1'
 
 const createLineupsApartmentPage = (node, createPage) => {
-  const { enabledFeatures, marketingWebsiteUrl: path, lineupsId: id } = node
+  const { enabledFeatures, marketingWebsiteUrl: url, lineupsId: id } = node
+  const [path] = url.split('?')
   if (enabledFeatures.indexOf('microsite') > -1) {
     const gallery = path.replace(/\/?$/, '') + '/gallery/'
     console.log('[site] creating gallery page', gallery)
