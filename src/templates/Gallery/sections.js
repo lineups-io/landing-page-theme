@@ -6,6 +6,10 @@ const getEmbed = src => {
     const [,, modelId] = src.match(/\?(m|model)=([^&]+)/)
     obj.modelId = modelId
 
+  } else if (src.match(/google/)) {
+    obj.type ='embed/iframe'
+    obj.src = src
+
   } else if (src.match(/youtube/)) {
     obj.type ='video/mp4'
     obj.url = src
