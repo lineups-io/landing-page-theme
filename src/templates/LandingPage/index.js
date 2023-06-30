@@ -35,10 +35,7 @@ export const Head = ({ data }) => {
     return price < acc ? price : acc
   }, Number.MAX_VALUE)
 
-  const apartments = data.lineups.page.apartments.items.map(a => ({
-    ...a,
-    carousel: a.tour.length > 0 ? a.tour : a.carousel,
-  }))
+  const apartments = data.lineups.page.apartments.items
 
   return <Helmet title={title}>
     {[
@@ -120,10 +117,6 @@ export const query = graphql`
           count
           items {
             ...ApartmentFields
-            tour {
-              url
-              alt
-            }
           }
         }
       }
