@@ -94,7 +94,7 @@ const LandingPage = ({ data, location }) => {
 
   const apartments = data.lineups.page.apartments.items.map(a => ({
     ...a,
-    carousel: a.tour.length > 0 ? a.tour : a.carousel,
+    carousel: a.tour && a.tour.length > 0 ? a.tour : a.carousel,
   }))
 
   return <>
