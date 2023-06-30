@@ -92,8 +92,13 @@ const LandingPage = ({ data, location }) => {
       ppc: noindex ? 'true' : 'false',
   }, { dispatchOnMount: true })
 
+  const apartments = data.lineups.page.apartments.items.map(a => ({
+    ...a,
+    carousel: a.tour.length > 0 ? a.tour : a.carousel,
+  }))
+
   return <>
-    <Layout trackingData={trackingData} {...data.lineups.site} {...data.lineups.page} bestPrice={bestPrice} />
+    <Layout trackingData={trackingData} {...data.lineups.site} {...data.lineups.page} apartments={apartments} bestPrice={bestPrice} />
   </>
 }
 
