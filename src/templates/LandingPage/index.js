@@ -125,6 +125,10 @@ export const query = graphql`
           count
           items {
             ...ApartmentFields
+            tour {
+              url
+              alt
+            }
           }
         }
       }
