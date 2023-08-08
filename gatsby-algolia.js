@@ -37,6 +37,10 @@ const fragments = `
       url
       alt
     }
+    tour {
+      url
+      alt
+    }
     markets {
       state {
         name
