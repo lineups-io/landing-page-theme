@@ -65,6 +65,7 @@ module.exports = {
           'Link: <https://www.google-analytics.com>; rel=preconnect;',
           'Link: <https://lineups.imgix.net>; rel=preconnect;',
           'Link: <https://cdn.filestackcontent.com>; rel=preconnect;',
+          'Link: <https://cdn.lineups.io>; rel=preconnect;',
           'Link: <https://res.cloudinary.com>; rel=preconnect;',
         ],
         headers: {
