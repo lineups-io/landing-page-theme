@@ -15,6 +15,7 @@ const getTimezone = str => {
   else if (str.match(/central/i)) tz = 'America/Chicago'
   else if (str.match(/mountain/i)) tz = 'America/Denver'
   else if (str.match(/pacific/i)) tz = 'America/Los_Angeles'
+  else if (str.match(/alaska/i)) tz = 'America/Anchorage'
   else console.warn(`Timezone ${str} not supported`)
 
   return tz
