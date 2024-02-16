@@ -268,6 +268,10 @@ const queries = [
         'unit.dateAvailableTimestamp',
         'rent',
         'searchable(allMarkets)',
+        'type',
+      ],
+      searchableAttributes: [
+        'name',
       ],
       distinct: 1,
       attributeForDistinct: 'groupBy',
