@@ -272,6 +272,7 @@ const queries = [
       ],
       searchableAttributes: [
         'name',
+        'allMarkets',
       ],
       distinct: 1,
       attributeForDistinct: 'groupBy',
