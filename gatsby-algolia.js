@@ -29,6 +29,7 @@ const fragments = `
       name
       icon
     }
+    amenityIcons
     defaultPhoto {
       url
       alt
@@ -269,6 +270,7 @@ const queries = [
         'rent',
         'searchable(allMarkets)',
         'type',
+        'amenityIcons',
       ],
       searchableAttributes: [
         'name',
