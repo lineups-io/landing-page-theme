@@ -218,7 +218,7 @@ const transformer = ({ data }) => {
         })
       })
 
-      if (docs.length === 0) {
+      if (availability.length === 0) {
         docs.push({
           ...apartment,
           groupBy: apartment.id,
