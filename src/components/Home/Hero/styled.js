@@ -50,10 +50,6 @@ Hero.Subheader = styled.h3`
   color: #fff !important;
   font-size: 1.8em;
   line-height: 44px;
-
-  @media (min-width: 576px) {
-    margin-left: 39px;
-  }
 `
 
 Hero.Link = styled(Link)`
@@ -64,10 +60,6 @@ Hero.Link = styled(Link)`
   color: #fff;
   padding: 0;
 
-  @media (min-width: 576px) {
-    margin-left: 39px;
-  }
-
   &:hover {
     color: #fff;
     text-decoration: none;
@@ -75,6 +67,84 @@ Hero.Link = styled(Link)`
 
   > svg {
     margin-left: 6px;
+  }
+`
+
+Hero.Indent = styled.div`
+  @media (min-width: 576px) {
+    padding-left: 39px;
+  }
+`
+
+Hero.SearchButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${ props => props.theme.gray900 };
+  background-color: white;
+  color: black !important;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  svg path {
+    fill: black;
+  }
+
+  svg + span {
+    padding-left: 8px;
+    cursor: text;
+  }
+
+  @media (min-width: 576px) {
+    min-width: 325px;
+  }
+`
+
+Hero.IconButton = styled.button`
+  padding: 8px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+Hero.ModalContainer = styled.div`
+  .ReactModal__Content {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    inset: 0;
+  }
+
+  @media (min-width: 992px) {
+    .ReactModal__Content {
+      max-height: 80vh;
+      max-width: 600px;
+      inset: 40px;
+    }
+  }
+
+  .ReactModal__Content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  iframe {
+    border: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 992px) {
+    iframe {
+      max-width: 550px;
+    }
   }
 `
 

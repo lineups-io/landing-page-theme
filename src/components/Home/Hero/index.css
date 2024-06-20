@@ -1,0 +1,43 @@
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Content {
+  border-radius: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
+  inset: 0 !important;
+  margin-top: 0 !important;
+}
+
+.ReactModal__Content > div {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 992px) {
+  .ReactModal__Content {
+    border-radius: 4px !important;
+    max-height: 775px !important;
+    max-width: 80vw !important;
+    inset: 40px !important;
+  }
+}
+
+.ReactModal__Content > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.ReactModal__Content iframe {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
