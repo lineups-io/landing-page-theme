@@ -23,12 +23,14 @@ const getEmbed = src => {
 
 const buildSections = props => {
   const {
-    playlist,
-    mediaGallery,
     floorplanVirtualTours,
     communityVirtualTours,
     googlePlaceId,
   } = props
+  const playlist = []
+  const mediaGallery = props.tour && props.tour.length > 0
+    ? props.tour
+    : (props.carousel || [props.defaultPhoto])
 
   const sections = []
 

@@ -101,17 +101,14 @@ export const fragments = graphql`
       alt
     }
     defaultPhoto {
-      mediaType
       src: url
       alt
     }
-    mediaGallery {
-      mediaType
+    carousel: landingPageCarousel {
       src: url
       alt
     }
-    playlist {
-      mediaType
+    tour {
       src: url
       alt
     }
