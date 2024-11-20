@@ -41,7 +41,7 @@
     "gatsby-plugin-sitemap": "^5.0.0",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-source-graphql": "^4.0.0",
-    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v4.2.13",
+    "gatsby-theme-atomic-design": "git+https://GITHUB_ACCESS_TOKEN:x-oauth-basic@github.com/lineups-io/gatsby-theme-atomic-design.git#v4.2.14",
     "gatsby-transformer-remark": "^5.0.0",
     "gatsby-transformer-sharp": "^4.0.0",
     "numeral": "^2.0.6",
